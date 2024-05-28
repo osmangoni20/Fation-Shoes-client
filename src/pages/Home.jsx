@@ -1,7 +1,9 @@
 import { useLoaderData } from "react-router-dom";
-import Accordion from "../component/Home/Accordion";
 import Banner from "../component/Home/Banner";
 import Product from "../component/Home/Product";
+import OurService from "../component/Home/OurService";
+import Review from "../component/Home/Review";
+import Add from "../component/Home/Add";
 
 
 
@@ -11,8 +13,10 @@ const Home = () => {
         <div>
      
         <Banner/>
+        <Add/>
         <Product shoes={data}/>
-        <Accordion/>
+        <OurService/>
+        <Review/>
     
         </div>
     );

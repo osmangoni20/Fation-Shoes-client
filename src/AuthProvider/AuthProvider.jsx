@@ -31,7 +31,9 @@
         };
         const createUser=(email,password)=>{
             console.log(email,password)
-            return createUserWithEmailAndPassword(auth,email,password).catch(
+            return createUserWithEmailAndPassword(auth,email,password).then(
+                logOut()
+            ).catch(
                 (error)=>{
                     console.log(error)
                     if(error?.code==="auth/network-request-failed"){

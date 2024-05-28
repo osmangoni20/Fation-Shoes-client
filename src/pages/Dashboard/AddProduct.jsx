@@ -1,6 +1,6 @@
 
 import { useForm } from "react-hook-form";
-import { json } from "react-router-dom";
+
 const AddProduct = () => {
     const {register,handleSubmit, reset, formState:{errors}}=useForm()
     const url="http://localhost:3000/shoes"
@@ -21,10 +21,10 @@ const AddProduct = () => {
     }
     return (
         <div>
-           
+           <h1 className="text-center font-serif font-extralight ">Add New Product</h1>
             <form className="min-w-[720px]" onSubmit={handleSubmit(onSubmit)}>
 
-                <div className="w-full my-2 max-w-md">
+                <div className="w-full my-2">
                     <label className="text-bold block" htmlFor="pd_name">Product Name</label>
                     <input  type="text" id="pd_name" {...register("pd_name")}/>
                 </div>

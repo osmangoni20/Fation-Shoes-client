@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router-dom";
 const EditProduct = () => {
     const {register,handleSubmit, formState:{errors}}=useForm()
     const shoe=useLoaderData();
-    const{id}=shoe;
+   
     const [editInputField,setInputField]=useState({...shoe});
     const HandleEditInputField=(e)=>{
         e.preventDefault();
@@ -26,7 +26,8 @@ const EditProduct = () => {
     }
     return (
         <div>
-           
+          <h1 className="text-center font-serif font-extralight ">Edit Product</h1>
+
             <form className="min-w-[720px]" onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="w-full my-2">

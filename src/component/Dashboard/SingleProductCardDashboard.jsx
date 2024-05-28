@@ -16,8 +16,8 @@
             }
             return (
                 <div>
-                    <div className="card w-80 bg-base-100 shadow-xl">
-                <figure className="h-[180px] w-full"><img src={pd_image} alt="Shoes" /></figure>
+                    <div className="card w-80 h-[450px] pt-5 bg-base-100 shadow-xl text-black">
+                <figure className="h-[200px] w-full"><img src={pd_image} alt="Shoes" /></figure>
                 <div className="card-body">
                 <h2 className="card-title">
                 {pd_name}

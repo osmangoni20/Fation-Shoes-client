@@ -14,7 +14,7 @@
         }
         return (
             <div >
-                <div className="flex flex-wrap gap-5 justify-center align-to items-start">
+                <div className="grid grid-cols-3 gap-1 justify-center align-to items-start">
                 {
                     shoesData?.map((shoe)=><SingleProductCardDashboard
                      shoe={shoe} key={shoe.id}
