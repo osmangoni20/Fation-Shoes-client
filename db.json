@@ -1,0 +1,249 @@
+{
+  "shoes": [
+    {
+      "id": "1",
+      "pd_brand": "Nike",
+      "pd_name": "Air Max 270",
+      "pd_price": "500",
+      "pd_description": "The Nike Air Max 270 is inspired by two icons of big Air: the Air Max 180 and Air Max 93. It features the largest heel Air unit yet for a super-soft ride.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "pd_image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-7562.jpg?t=st=1716642533~exp=1716646133~hmac=bce6a6a0fa8ee4a2996d22e75d623b992acde78d8856f119df258e4b4e6b09f7&w=740",
+      "pd_id": "1"
+    },
+    {
+      "id": "2",
+      "pd_brand": "Adidas",
+      "pd_name": "Ultraboost 21",
+      "pd_price": 180,
+      "pd_description": "Responsive running shoes with a precise fit. The Adidas Ultraboost 21 provides comfort and support, featuring a Boost midsole for energy return.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "pd_image": "https://img.freepik.com/free-photo/brown-leather-shoes_1203-7561.jpg?t=st=1716642551~exp=1716646151~hmac=bd688ce94bf24a0a569dbd88b664d1267b1169aa9187be5e0e9969edb74e353d&w=740"
+    },
+    {
+      "id": "3",
+      "pd_brand": "Puma",
+      "pd_name": "RS-X3",
+      "pd_price": 110,
+      "pd_description": "The Puma RS-X3 reinvents the original RS design with bold colors and extra style. It's a game-changer in the RS line, offering a retro yet modern look.",
+      "pd_size": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "pd_image": "https://img.freepik.com/free-psd/view-bowling-shoes_23-2150953861.jpg?w=740&t=st=1716642562~exp=1716643162~hmac=439e55fe73254e35eea7f65f81d29e464b179fd7594a8c7f653e585ca00fbef7"
+    },
+    {
+      "id": "4",
+      "pd_brand": "Reebok",
+      "pd_name": "Club C 85",
+      "pd_price": 70,
+      "pd_description": "Classic and versatile, the Reebok Club C 85 has a soft leather upper for a clean look. The low-cut design provides a sleek and sophisticated silhouette.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "pd_image": "https://img.freepik.com/free-photo/men-shoes_1203-7424.jpg?t=st=1716642566~exp=1716646166~hmac=60488c5f7e9ca737d0fa09fdfc28f77138411f10c125d1c3d8fe5658aa3c1d71&w=740"
+    },
+    {
+      "id": "5",
+      "pd_brand": "New Balance",
+      "pd_name": "574 Core",
+      "pd_price": 80,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/cartoon-illustration-pair-yellow-shoes-with-black-soles_988987-24647.jpg?w=740"
+    },
+    {
+      "id": "6",
+      "pd_brand": "New Row",
+      "pd_name": "Core t20",
+      "pd_price": 850,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
+    },
+    {
+      "id": "7",
+      "pd_brand": "New Row",
+      "pd_name": "Core t20",
+      "pd_price": 850,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
+    },
+    {
+      "id": "8",
+      "pd_brand": "New Row",
+      "pd_name": "Core t20",
+      "pd_price": 850,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
+    },
+    {
+      "id": "9",
+      "pd_brand": "New Row",
+      "pd_name": "Core t20",
+      "pd_price": 850,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
+    },
+    {
+      "id": "10",
+      "pd_brand": "New Row",
+      "pd_name": "Core t20",
+      "pd_price": 850,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
+    },
+    {
+      "id": "11",
+      "pd_brand": "New Row",
+      "pd_name": "Core t20",
+      "pd_price": 850,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
+    },
+    {
+      "id": "12",
+      "pd_brand": "New Row",
+      "pd_name": "Core t20",
+      "pd_price": 850,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
+    },
+    {
+      "id": "13",
+      "pd_brand": "New Row",
+      "pd_name": "Core t20",
+      "pd_price": 850,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
+    },
+    {
+      "id": "14",
+      "pd_brand": "New Row",
+      "pd_name": "Core t20",
+      "pd_price": 850,
+      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
+      "pd_size": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
+    }
+  ]
+}
