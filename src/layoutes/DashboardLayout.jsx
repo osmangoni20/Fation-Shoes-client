@@ -4,11 +4,12 @@
   const DashboardLayout = () => {
     const {logOut,user}=useAuth()
     return (
-      <div className="grid grid-cols-10 text-white">
-        <div className=" min-h-screen col-span-2 font-mono flex flex-col justify-between bg-gray-700 py-5">
+      <div className="grid grid-cols-10 ">
+        <div className=" text-white min-h-screen col-span-2 font-mono flex flex-col justify-between bg-gray-700 py-5">
           <div className="flex flex-col justify-center items-center text-xl">
             <figure>
-              <img className="avatar drop-shadow-lg border-double border-8 border-gray-400 shadow-2xl rounded-full m-2" src={user?.photoURL}/>
+              <img className="h-[120px] w-[120px] rounded-full border-4  border-dotted
+              avatar drop-shadow-lg  border-gray-400 shadow-2xl  m-2" src={user?.photoURL}/>
             </figure>
             <h3 className="uppercase text-2xl">{user?.displayName}</h3>
             <p className="lowercase text-sm">{user?.email}</p>

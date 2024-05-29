@@ -23,23 +23,26 @@ const UserReview=[
 
 const Review = () => {
     return (
-        <div className="flex items-center gap-10">
+       <div>
+        <h1 className="text-6xl font-serif text-center">Review</h1>
+        <div className="flex items-center gap-10 py-10 px-5">
            {
             UserReview.map(user=>(
-                <div className="flex justify-center" key={user.id}>
+                <div key={user.id}>
                   
-                   <figure className="">
-                        <img className="h-[100px] w-[100px] rounded-lg " src={user?.user_image}></img>
+                   <figure className=" flex justify-center">
+                        <img className=" h-[100px] w-[100px] rounded-full " src={user?.user_image}></img>
                     </figure>
                     <div>
-                    <h1>{user?.user_name}</h1>
-                    <p>{user?.user_review}</p>
+                    <h1 className="font-serif pt-5">{user?.user_name}</h1>
+                    <p className="text-justify">{user?.user_review}</p>
                     </div>
                
                 </div>
             ))
            }
         </div>
+       </div>
     );
 };
 

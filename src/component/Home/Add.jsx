@@ -1,7 +1,7 @@
 
 const Add = () => {
     return (
-        <div className='flex gap-1'>
+        <div className='flex justify-center gap-5'>
             <figure>
                 <img className='h-[300px]' src='https://img.freepik.com/premium-psd/black-friday-sale-promotion-banner_1005441-1063.jpg?size=626&ext=jpg&ga=GA1.1.291005766.1716642525&semt=ais_user'></img>
             </figure>

@@ -2,9 +2,9 @@
   "shoes": [
     {
       "id": "1",
-      "pd_brand": "Nike",
+      "pd_brand": "Nike Bd",
       "pd_name": "Air Max 270",
-      "pd_price": "500",
+      "pd_price": "600",
       "pd_description": "The Nike Air Max 270 is inspired by two icons of big Air: the Air Max 180 and Air Max 93. It features the largest heel Air unit yet for a super-soft ride.",
       "pd_size": [
         6,
@@ -211,24 +211,6 @@
     },
     {
       "id": "13",
-      "pd_brand": "New Row",
-      "pd_name": "Core t20",
-      "pd_price": 850,
-      "pd_description": "The New Balance 574 Core combines athletic style with comfort. It's an all-time classic, perfect for everyday wear with its durable materials and supportive fit.",
-      "pd_size": [
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13
-      ],
-      "pd_image": "https://img.freepik.com/premium-photo/handmade-men-s-leather-moccasins-loafers-isolated-white-background_722820-5233.jpg?w=740"
-    },
-    {
-      "id": "14",
       "pd_brand": "New Row",
       "pd_name": "Core t20",
       "pd_price": 850,

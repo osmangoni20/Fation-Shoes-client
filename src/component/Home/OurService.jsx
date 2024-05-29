@@ -1,16 +1,19 @@
 const OurService = () => {
   return (
-    <div className="bg-light">
-      <h1>Our Service</h1>
+    <div className="flex justify-center bg-gray-50 my-5">
 
-      <div className=" my-3 flex items-center align-middle gap-20 border-t-2 border-b-2 border-gray-500">
+ 
+    <div>
+      <h1 className="text-center text-5xl py-5">Our Service</h1>
+
+      <div className=" my-3 p-5 flex items-center align-middle gap-20 ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6"
+          className="size-16"
         >
           <path
             strokeLinecap="round"
@@ -20,7 +23,7 @@ const OurService = () => {
         </svg>
 
         <span>
-          <h2>FREE IN-STORE PICK UP</h2>
+          <h2 className="text-xl font-serif font-bold">FREE IN-STORE PICK UP</h2>
           <p>
             Choose the pick up option and get eligible orders ready in under 48
             hours.
@@ -28,14 +31,14 @@ const OurService = () => {
         </span>
       </div>
 
-      <div className=" my-3 flex items-center align-middle gap-20 border-t-2 border-b-2 border-gray-500">
+      <div className=" my-3 p-5 flex items-center align-middle gap-20 ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6"
+          className="size-16"
         >
           <path
             strokeLinecap="round"
@@ -45,19 +48,19 @@ const OurService = () => {
         </svg>
 
         <span>
-          <h2>FREE SHIPPING</h2>
+          <h2 className="text-xl font-serif font-bold">FREE SHIPPING</h2>
           <p>Shoe Perks Members get FREE standard shipping on all orders.</p>
         </span>
       </div>
 
-      <div className=" my-3 flex items-center align-middle gap-20 border-t-2 border-b-2 border-gray-500">
+      <div className=" my-3 p-5 flex items-center align-middle gap-20 ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="size-6"
+          className="size-16"
         >
           <path
             strokeLinecap="round"
@@ -67,19 +70,19 @@ const OurService = () => {
         </svg>
 
         <span>
-          <h2>SAME DAY DELIVERY</h2>
+          <h2 className="text-xl font-serif font-bold">SAME DAY DELIVERY</h2>
           <p>Eligible items ordered by 1pm CST arrive the same day.</p>
         </span>
       </div>
 
-      <div className=" my-3 flex items-center align-middle gap-20 border-t-2 border-b-2 border-gray-500">
+      <div className=" my-3 p-5 flex items-center align-middle gap-20 ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="size-6"
+          className="size-16"
         >
           <path
             strokeLinecap="round"
@@ -89,21 +92,21 @@ const OurService = () => {
         </svg>
 
         <span>
-          <h2>FLEXIBLE PAYMENT METHODS</h2>
+          <h2 className="text-xl font-serif font-bold">FLEXIBLE PAYMENT METHODS</h2>
           <p>
             Choose from Bakash, Nagad, Roket, PayPal, & all major credit cards.
           </p>
         </span>
       </div>
 
-      <div className=" my-3 flex items-center align-middle gap-20 border-t-2 border-b-2 border-gray-500">
+      <div className=" my-3 p-5 flex items-center align-middle gap-20 ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6"
+          className="size-16"
         >
           <path
             strokeLinecap="round"
@@ -113,10 +116,11 @@ const OurService = () => {
         </svg>
 
         <span>
-          <h2>CONVENIENT HELP OPTIONS</h2>
+          <h2 className="text-xl font-serif font-bold">CONVENIENT HELP OPTIONS</h2>
           <p>Connect with our team your way via chat, email or phone.</p>
         </span>
       </div>
+    </div>
     </div>
   );
 };

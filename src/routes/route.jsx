@@ -12,6 +12,7 @@ import ProductDetails from "../component/shared/ProductDetails";
 import AddProduct from "../pages/Dashboard/AddProduct";
 import AllProducts from "../pages/Dashboard/AllProducts";
 import EditProduct from "../pages/Dashboard/EditProduct";
+import Profile from "../pages/Dashboard/Profile";
 const route =createBrowserRouter([
     {
         path: "/",
@@ -62,7 +63,7 @@ const route =createBrowserRouter([
       {
         path:"user_profile",
         element:<PrivateRoute>
-          <AllProducts/>
+          <Profile/>
         </PrivateRoute>,
         loader:()=>fetch('http://localhost:3000/shoes'),
       },

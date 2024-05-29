@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 
-const toast = ({ message }) => {
+const Toast = ({ children,isOpen }) => {
+    console.log(isOpen)
+    
   return (
-    <div>
-      <div className="toast toast-top toast-end">
+    <div className={`${isOpen?"visible":"invisible"}`}>
+      <div className={`toast toast-top toast-end`}>
         <div className="alert alert-info">
-          <span>{message}</span>
+          <span>{children}</span>
         </div>
         {/* <div className="alert alert-success">
     <span>Message sent successfully.</span>
@@ -14,4 +17,4 @@ const toast = ({ message }) => {
   );
 };
 
-export default toast;
+export default Toast;
