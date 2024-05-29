@@ -1,26 +1,56 @@
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Toast from "../../component/shared/Toast";
+import Modal from "../../component/shared/Modal";
+import { useLoaderData } from "react-router-dom";
 
 const AddProduct = () => {
     const {register,handleSubmit, reset, formState:{errors}}=useForm()
+    const [isOpen,setModel]=useState(false)
+    const [showTost,setToast]=useState(false);
+    const [isSubmitData, setSubmitData]=useState(null)
     const url="http://localhost:3000/shoes"
-    const onSubmit= async(data)=>{
-        console.log(data)
+
+    const shoe=useLoaderData();
+    const isSubmit= async()=>{
         await fetch(url,{
             method:"POST",
             headers:{
                 "Content-type":"application/json"
             },
-            body:JSON.stringify(data)
+            body:JSON.stringify(isSubmitData)
         }).then(res=>res.json())
-        .then((data)=>{
+        .then(async(data)=>{
+            setModel(false)
             console.log(data),
-            alert("Successfully Done")
+            setToast(true)
+
+           await setTimeout(()=>{
+                setToast(false)
+            },[2000])
             reset()
         })
     }
+
+    const isClose=()=>{
+        setModel(false)
+    }
+
+    const onSubmit= async(data)=>{
+        setModel(true)
+        console.log(data)
+        await setSubmitData(data);
+    }
     return (
         <div>
+            {showTost&&<Toast isOpen={showTost}>New Product Add Successfully Done</Toast>}
+            <Modal isClose={isClose} isOpen={isOpen} isSubmit={isSubmit}>
+                <Modal.Header>Are You Confirm Add A New Product</Modal.Header>
+                <div className="flex justify-center">
+                <Modal.Submit>Yes</Modal.Submit>
+                </div>
+            </Modal>
            <h1 className="text-center font-serif font-extralight ">Add New Product</h1>
             <form className="min-w-[720px]" onSubmit={handleSubmit(onSubmit)}>
 
@@ -42,7 +72,7 @@ const AddProduct = () => {
                 </div>
                 <div className="w-full my-2">
                     <label className="text-bold " htmlFor="pd_id">Product ID</label>
-                    <input  type="text" id="pd_id" {...register("pd_id")}/>
+                    <input value={shoe?.length+1}  type="text" id="pd_id" {...register("pd_id")}/>
                 </div>
                 <div className="w-full my-2">
                     <label className="text-bold " htmlFor="pd_description">Product Description</label>

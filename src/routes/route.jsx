@@ -70,7 +70,8 @@ const route =createBrowserRouter([
       
       {
         path:'add-products',
-        element:<PrivateRoute><AddProduct/></PrivateRoute>
+        element:<PrivateRoute><AddProduct/></PrivateRoute>,
+        loader:()=>fetch('http://localhost:3000/shoes'),
       },
      
       

@@ -23,8 +23,8 @@ const UserReview=[
 
 const Review = () => {
     return (
-       <div >
-        <h1 className="text-6xl text-center py-10">Review</h1>
+       <div className="bg-gray-50 py-10">
+        <h1 className="text-6xl text-center font-serif py-10 ">Review</h1>
         <div className="flex  items-center gap-10 p-5">
            {
             UserReview.map(user=>(

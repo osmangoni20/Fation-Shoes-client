@@ -4,8 +4,8 @@ import SingleProduct from "./SingleProduct";
 const Product = ({shoes}) => {
     console.log(shoes)
     return (
-       <div className="py-10">
-            <h1 className="text-center text-5xl py-5">Our Products</h1>
+       <div className="py-20">
+            <h1 className="text-center font-serif text-5xl py-10">Our Featured Products</h1>
             <div className="flex flex-wrap justify-center gap-8 items-center my-5">
                 {
                     // eslint-disable-next-line react/prop-types
