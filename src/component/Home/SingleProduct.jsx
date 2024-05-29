@@ -12,7 +12,7 @@
         
             return (
                 <>
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card h-[450px] w-96 bg-base-100 shadow-xl">
         <figure><img src={pd_image} alt="Shoes" /></figure>
         <div className="card-body">
         <h2 className="card-title">
