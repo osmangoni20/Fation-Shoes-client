@@ -1,21 +1,32 @@
-const Banner = () => {
-  return (
-    <>
-      <div
-      className="hero h-[600px] bannerBg"
-       
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            {/* <h1 className="mb-5 text-5xl font-bold">Hello there</h1> */}
-            
-            {/* <button className="btn btn-primary">Get Started</button> */}
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+  const Banner = () => {
+    return (
+      <>
+        <div
+        className="h-[400px] bannerBg" >
+         
 
-export default Banner;
+          <div className="mx-auto h-full flex items-center p-10">
+            <div className="text-white">
+              <h1 className="text-5xl font-serif font-bold">Welcome </h1>
+              <h1 className="mb-5 text-5xl font-serif font-bold">Fation Shoes</h1>
+              <div className="flex gap-5  py-8">
+              <button className="btn bg-secondary text-white px-10 text-xl hover:bg-secondary">Get Started</button>
+              <button className="btn bg-primary text-white px-10 text-xl hover:bg-primary">About Us</button>
+              </div>
+            </div>
+       
+
+          <div>
+            {/* <figure>
+              <img  src="https://img.freepik.com/premium-photo/training-light-shoes-with-shock-absorption-sneakers-blue-background_124507-41738.jpg?w=740" className="max-w-md "/>
+            </figure> */}
+          </div>
+          </div>
+          
+         
+        </div>
+      </>
+    );
+  };
+
+  export default Banner;

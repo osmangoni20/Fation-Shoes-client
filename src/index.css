@@ -32,7 +32,7 @@
     .btn-solid{
         @apply px-10 py-2 text-center m-2 text-white rounded-md bg-purple-500
         hover:bg-purple-700 focus:bg-purple-700 font-semibold transition-all}
-}
+    }
 @layer base{
     h1{
         @apply text-4xl text-black;
@@ -40,6 +40,20 @@
 }
 
 .bannerBg{
-    background-image: url("/src/assets/image/shoe\ bg.jpg");
+    background-image: url("https://img.freepik.com/premium-vector/dark-geometric-black-abstract-background-elegant-decorative-design-pattern-vector_392592-2839.jpg?w=826");
     object-fit: cover;
+    width: 100%;
+    place-items: center;
+    background-size: cover;
+    background-position: center;
+}
+.bg-primary{
+    @apply bg-[#207F99]
+}
+.bg-secondary{
+    @apply bg-[#F5C913]
+}
+
+.bg-thirdly{
+    @apply bg-[#C91F1F]
 }

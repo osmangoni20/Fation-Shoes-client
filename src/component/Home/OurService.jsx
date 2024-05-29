@@ -1,10 +1,10 @@
 const OurService = () => {
   return (
-    <div className="flex justify-center bg-gray-50 my-5">
-
+    <div className="bg-gray-50">
+ <h1 className="text-center text-5xl py-10">Our Service</h1>
  
-    <div>
-      <h1 className="text-center text-5xl py-5">Our Service</h1>
+    <div className="grid grid-cols-2 gap-5">
+     
 
       <div className=" my-3 p-5 flex items-center align-middle gap-20 ">
         <svg
