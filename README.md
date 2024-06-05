@@ -11,7 +11,9 @@ install- npm and run project-
 ## Features
 
     1. Add Item from Dashboard
-    2. Delet Item from Dashboard
+    2. Delete Item from Dashboard
     3. Update Item from Dashboard
     4. Authenticate Users
     5. Dashboard Overview
+
+    https://fationshoes.onrender.com
