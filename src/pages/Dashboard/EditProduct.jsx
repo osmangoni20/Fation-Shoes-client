@@ -1,17 +1,16 @@
     import { useState } from "react";
     import { useForm } from "react-hook-form";
     import Modal from "../../component/shared/Modal";
-    import Toast from "../../component/shared/Toast";
 import { useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
 
     const EditProduct = () => {
         const {register,handleSubmit, }=useForm()
         const shoe=useLoaderData();
         const [isOpen,setModel]=useState(false);
-        const [apiActionSuccess, setApiAction]=useState(false);
-        const [showTost,setToast]=useState(false)
         const [EditData,setEditData]=useState(null)
         const token=localStorage.getItem('token-fation-shoe')
+        const notify = (message) => toast(message);
         const isClose=()=>{
             setModel(false)
         }
@@ -28,11 +27,7 @@ import { useLoaderData } from "react-router-dom";
               })
                 .then((res) => res.json())
                 .then( async() =>{
-                   setApiAction(true);
-                   setToast(true)
-                   await setTimeout(() => {
-                    setToast(false)
-                    }, 2000);
+                  notify("Update Successfully Done")
                 });
            
         }
@@ -50,9 +45,7 @@ import { useLoaderData } from "react-router-dom";
         return (
             <div>
                 
-                <Toast isOpen={showTost}>
-                    {apiActionSuccess?"Product Edit Successfully Done":"Internet Connection Disabled"}
-                </Toast>
+               
                
            <Modal isOpen={isOpen} isClose={isClose} isSubmit={isSubmit}>
                 <Modal.Header>
