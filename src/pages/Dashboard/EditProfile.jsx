@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Modal from "../../component/shared/Modal";
-import Toast from "../../component/shared/Toast";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 const EditProfile = () => {
 
-const {register,handleSubmit, formState:{errors}}=useForm()
+const {register,handleSubmit}=useForm()
 const [isOpen,setModel]=useState(false);
-const [apiActionSuccess, setApiAction]=useState(false);
-const [showTost,setToast]=useState(false)
 const [EditData,setEditData]=useState(null)
 const token=localStorage.getItem('token-fation-shoe')
 const{user,UpdateProfile,UpdatePassword,UpdateEmail}=useAuth()
@@ -22,7 +20,7 @@ useEffect(()=>{
      setUserData(data)
         });
 },[])
-
+const notify = (message) => toast(message);
 
 
 const isClose=()=>{
@@ -45,15 +43,13 @@ const isSubmit= async()=>{
         body: JSON.stringify(EditData),
     }).then((res) => res.json())
         .then( async() =>{
-            setToast(true)
-            setApiAction(true);
+           
             await UpdateProfile((EditData?.first_name),user?.photoURL)
-            console.log(EditData)
-        
-        await setTimeout(() => {
-            setToast(false)
-            }, 2000);
-        });
+           notify("Update Profile Successfully")
+    
+        }
+    
+    );
        
 
 }
@@ -70,10 +66,6 @@ const onSubmit= async(data)=>{
 return (
     <div>
         
-        <Toast isOpen={showTost}>
-            {apiActionSuccess?"Update Successfully Done":"Internet Connection Disabled"}
-        </Toast>
-    
 <Modal isOpen={isOpen} isClose={isClose} isSubmit={isSubmit}>
         <Modal.Header>
         Confirm Update Your Information 

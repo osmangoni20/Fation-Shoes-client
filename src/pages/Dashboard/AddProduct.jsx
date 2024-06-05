@@ -1,17 +1,15 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Toast from "../../component/shared/Toast";
 import Modal from "../../component/shared/Modal";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
-    const {register,handleSubmit, reset, formState:{errors}}=useForm()
+    const {register,handleSubmit}=useForm()
     const [isOpen,setModel]=useState(false)
-    const [showTost,setToast]=useState(false);
-    const [apiActionSuccess,setApiAction]=useState(false)
     const [isSubmitData, setSubmitData]=useState(null)
     const url="https://fation-shoes.onrender.com/add_product"
-
+    const notify = (message) => toast(message);
     const isSubmit= async()=>{
         await fetch(url,{
             method:"POST",
@@ -21,14 +19,8 @@ const AddProduct = () => {
             body:JSON.stringify(isSubmitData)
         }).then(res=>res.json())
         .then(async()=>{
-            setApiAction(true)
             setModel(false)
-            setToast(true)
-
-           await setTimeout(()=>{
-                setToast(false)
-            },[2000])
-            reset()
+          notify("Add Successfully Done")
         })
     }
 
@@ -44,10 +36,8 @@ const AddProduct = () => {
    
     return (
         <div>
-            {showTost&&
-            <Toast isOpen={showTost}>
-                {apiActionSuccess?"New Product Add Successfully Done":"Internet Connection Disabled"}
-            </Toast>}
+          
+        
             <Modal isClose={isClose} isOpen={isOpen} isSubmit={isSubmit}>
                 <Modal.Header>Are You Confirm Add A New Product</Modal.Header>
                 <div className="flex justify-center">

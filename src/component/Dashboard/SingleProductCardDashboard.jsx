@@ -2,7 +2,7 @@
         import { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../shared/Modal";
-import Toast from "../../component/shared/Toast";
+import toast from "react-hot-toast";
 
 
         // eslint-disable-next-line react/prop-types
@@ -10,9 +10,9 @@ import Toast from "../../component/shared/Toast";
             // eslint-disable-next-line react/prop-types
             const{_id,pd_name,pd_brand,pd_image,pd_description,pd_price,pd_size}=shoe;
             const [isOpen,setModel]=useState(false);
-            const [DeleteSuccess, setDeleteSuccess]=useState(false);
-            const [showToast,setToast]=useState(false)
+           
             const token=localStorage.getItem('token-fation-shoe')
+            const notify = (message) => toast(message);
             const isSubmit=()=>{
                 setModel(false)
                 const url=`https://fation-shoes.onrender.com/product/${_id}`;
@@ -23,11 +23,7 @@ import Toast from "../../component/shared/Toast";
                     }
                 }).then(res=>res.json()).then(async ()=>{
                     onDelete(_id);
-                    setToast(true)
-                    setDeleteSuccess(true)
-                    await setTimeout(() => {
-                        setToast(false)
-                        }, 2000);
+                    notify("Delete Successfully Done")
                     
                 });
 
@@ -40,11 +36,7 @@ import Toast from "../../component/shared/Toast";
             }
             return (
                 <div>
-                    {showToast&&
-            <Toast isOpen={showToast}>
-                {DeleteSuccess?"Product Delete Successfully Done":"Internet Connection Disabled"}
-            </Toast>}
-           
+            
        <Modal isOpen={isOpen} isClose={isClose} isSubmit={isSubmit}>
             <Modal.Header>
               Confirm Delete this product Information 
