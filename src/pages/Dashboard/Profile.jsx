@@ -7,7 +7,7 @@ const Profile = () => {
     const [userData,setUserData]=useState(null)
     const {user}=useAuth();
     useEffect(()=>{
-        fetch(`http://localhost:3000/user/${user?.email}`)
+        fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
             .then((res) => res.json())
             .then( (data) =>{
          setUserData(data)

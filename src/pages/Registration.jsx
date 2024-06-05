@@ -38,7 +38,7 @@ const Registration = () => {
               email:data?.user?.email,
               img:data?.user?.photoURL
           }
-          fetch('http://localhost:3000/add_user',{
+          fetch('https://fation-shoes.onrender.com/add_user',{
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

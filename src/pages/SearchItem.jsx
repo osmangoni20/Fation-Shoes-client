@@ -8,7 +8,7 @@ const SearchItem = () => {
     const[ProductData,setProductData]=useState([])
     
     useEffect(()=>{
-        fetch(`http://localhost:3000/product/?searchValue=${searchValue}&searchCategory=${category}`)
+        fetch(`https://fation-shoes.onrender.com/product/?searchValue=${searchValue}&searchCategory=${category}`)
         .then(res=>res.json())
         .then(data=>setProductData(data))
     },[searchValue,category])

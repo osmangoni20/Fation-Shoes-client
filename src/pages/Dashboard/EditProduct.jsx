@@ -17,7 +17,7 @@ import { useLoaderData } from "react-router-dom";
         }
         const isSubmit= async()=>{
             setModel(false)
-            await fetch(`http://localhost:3000/product/${shoe._id}`, {
+            await fetch(`https://fation-shoes.onrender.com/product/${shoe._id}`, {
                 method: "PATCH",
     
                 headers: {

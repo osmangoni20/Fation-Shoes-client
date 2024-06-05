@@ -41,7 +41,7 @@ const Login = () => {
                 img:data?.user?.photoURL
             }
             console.log(UserInfo)
-            fetch('http://localhost:3000/add_user',{
+            fetch('https://fation-shoes.onrender.com/add_user',{
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

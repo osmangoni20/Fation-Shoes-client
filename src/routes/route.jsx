@@ -29,7 +29,7 @@ const route =createBrowserRouter([
           {
             path: "/product/:id",
             element: <ProductDetails/>,
-            loader:({params})=>fetch(`http://localhost:3000/product/${params.id}`),
+            loader:({params})=>fetch(`https://fation-shoes.onrender.com/product/${params.id}`),
           },
           {
             path: "/about",
@@ -68,34 +68,34 @@ const route =createBrowserRouter([
         element:<PrivateRoute>
           <AllProducts/>
         </PrivateRoute>,
-        loader:()=>fetch('http://localhost:3000/product'),
+        loader:()=>fetch('https://fation-shoes.onrender.com/product'),
       },
       {
         path:"user_profile",
         element:<PrivateRoute>
           <Profile/>
         </PrivateRoute>,
-        loader:()=>fetch('http://localhost:3000/product'),
+        loader:()=>fetch('https://fation-shoes.onrender.com/product'),
       },
       {
         path:"/dashboard/user_profile/edit_profile",
         element:<PrivateRoute>
           <EditProfile/>
         </PrivateRoute>,
-        loader:()=>fetch('http://localhost:3000/user'),
+        loader:()=>fetch('https://fation-shoes.onrender.com/user'),
       },
       
       {
         path:'add-products',
         element:<PrivateRoute><AddProduct/></PrivateRoute>,
-        loader:()=>fetch('http://localhost:3000/product'),
+        loader:()=>fetch('https://fation-shoes.onrender.com/product'),
       },
      
       
       {
         path:"/dashboard/all-products/edit/:id",
         element:<EditProduct/>,
-        loader:({params})=>fetch(`http://localhost:3000/product/${params.id}`),
+        loader:({params})=>fetch(`https://fation-shoes.onrender.com/product/${params.id}`),
       }
 
       ],

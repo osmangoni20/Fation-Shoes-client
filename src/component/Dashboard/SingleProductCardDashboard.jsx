@@ -15,7 +15,7 @@ import Toast from "../../component/shared/Toast";
             const token=localStorage.getItem('token-fation-shoe')
             const isSubmit=()=>{
                 setModel(false)
-                const url=`http://localhost:3000/product/${_id}`;
+                const url=`https://fation-shoes.onrender.com/product/${_id}`;
                 fetch(url,{
                     method:"DELETE",
                     headers:{

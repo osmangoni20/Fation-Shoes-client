@@ -12,7 +12,7 @@ const Home = () => {
     const [data,setShoe]=useState([])
    
     useEffect(()=>{
-        fetch('http://localhost:3000/product').then(res=>res.json())
+        fetch('https://fation-shoes.onrender.com/product').then(res=>res.json())
         .then(data=>setShoe(data))
     },[])
     return (

@@ -10,7 +10,7 @@ const AddProduct = () => {
     const [showTost,setToast]=useState(false);
     const [apiActionSuccess,setApiAction]=useState(false)
     const [isSubmitData, setSubmitData]=useState(null)
-    const url="http://localhost:3000/add_product"
+    const url="https://fation-shoes.onrender.com/add_product"
 
     const isSubmit= async()=>{
         await fetch(url,{

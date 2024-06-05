@@ -15,7 +15,7 @@ const{user,UpdateProfile,UpdatePassword,UpdateEmail}=useAuth()
 const [userData,setUserData,]=useState(null)
 const [changePassword,setChangePassword]=useState(null);
 useEffect(()=>{
-    fetch(`http://localhost:3000/user/${user?.email}`)
+    fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
         .then((res) => res.json())
         .then( (data) =>{
             console.log(data)
@@ -36,7 +36,7 @@ const isSubmit= async()=>{
     setModel(false)
     
    await UpdateEmail(EditData?.email||user?.email).then(data=>console.log(data))
-  await fetch(`http://localhost:3000/user/${user?.email}`, {
+  await fetch(`https://fation-shoes.onrender.com/user/${user?.email}`, {
         method: "PATCH",
         headers: {
         "Content-type": "application/json",
