@@ -24,8 +24,8 @@ const UserReview=[
 const Review = () => {
     return (
        <div className="bg-gray-50 py-10">
-        <h1 className="text-6xl text-center font-serif py-10 ">Review</h1>
-        <div className="flex  items-center gap-10 p-5">
+        <h1 className="text-4xl text-center font-serif py-10 ">Customer Say</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 p-5">
            {
             UserReview.map(user=>(
                 <div key={user.id}>
@@ -34,7 +34,7 @@ const Review = () => {
                         <img className=" h-[100px] w-[100px] rounded-full " src={user?.user_image}></img>
                     </figure>
                     <div>
-                    <h1 className="font-serif py-5 text-center">{user?.user_name}</h1>
+                    <h3 className="font-serif py-5 text-center">{user?.user_name}</h3>
                     <p className="text-justify">{user?.user_review}</p>
                     </div>
                

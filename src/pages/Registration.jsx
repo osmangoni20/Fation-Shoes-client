@@ -3,13 +3,12 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import GoogleLogin from "../component/Login-Registration/GoogleLogin";
-import MobileLogin from "../component/Login-Registration/MobileLogin";
 import FacebookLogin from "../component/Login-Registration/FacebookLogin";
 
 
 const Registration = () => {
   const [passMatch, setPassMatch] = useState(true);
-  const {createUser,authError,user} = useAuth();
+  const {createUser,authError,user,logOut} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,7 +22,7 @@ const Registration = () => {
     const email = form.email.value;
     const password = form.password.value;
     const confirm_password = form.confirm_password.value;
-
+    const name=form.name.value;
     if (password !== confirm_password) {
       setPassMatch(false);
     }
@@ -31,7 +30,28 @@ const Registration = () => {
     console.log(email, password, confirm_password);
 
     if (password===confirm_password) {
-     await createUser(email,password)
+     await createUser(email,password).then(data=>{
+      if(data?.user?.email){
+          
+          const UserInfo={
+              name:name,
+              email:data?.user?.email,
+              img:data?.user?.photoURL
+          }
+          fetch('http://localhost:3000/add_user',{
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(UserInfo),
+          }).then(res=>res.json()).then((data)=>{
+            
+            localStorage.setItem('token',data?.token)
+            logOut()
+            navigate(from, { replace: true });
+          })
+      }
+     })
     }
   };
 
@@ -42,25 +62,32 @@ const Registration = () => {
   }, [user, from, navigate]);
 
   return (
-    <form onSubmit={handleSUbmit} className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Register now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+    <form onSubmit={handleSUbmit} className="hero min-h-screen">
+    <div className="hero-content  flex-col md:flex-row-reverse">
+      <div className="card shrink-0 w-96 shadow-2xl bg-base-100">
+        <div className="card-title items-center justify-center font-serif text-xl pt-5">
+        <h1>Registration</h1>
         </div>
-        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
+        <div className="card-body text-xl font-semibold">
+        <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                
+                className="input input-bordered"
+                name="name"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
-                placeholder="email"
+              
                 className="input input-bordered"
                 name="email"
                 required
@@ -72,7 +99,7 @@ const Registration = () => {
               </label>
               <input
                 type="password"
-                placeholder="password"
+               
                 className="input input-bordered"
                 name="password"
                 required
@@ -84,7 +111,7 @@ const Registration = () => {
               </label>
               <input
                 type="password"
-                placeholder="confirm password"
+               
                 className="input input-bordered"
                 name="confirm_password"
                 required
@@ -95,19 +122,19 @@ const Registration = () => {
                 <p className="text-red-500">Passwords do not match!</p>
               </div>
             )}
-            <div className="form-control mt-6">
+            <div className="form-control mt-6 ">
               <input
-                className="btn bg-red-500 text-white"
+                className="btn bg-primary text-white"
                 type="submit"
                 value="Register"
               />
             </div>
-            <div className="mt-6 lg:flex justify-center gap-6 ">
+            <div className="border-t-2 mt-6 border-primary md:flex justify-center gap-6 ">
             <GoogleLogin/>
-            <MobileLogin/>
+          
             <FacebookLogin/>
             </div>
-            <div className="mt-6">
+            <div >
               <p>
                 Already have an account?{" "}
                 <Link to="/login" className="text-red-500">

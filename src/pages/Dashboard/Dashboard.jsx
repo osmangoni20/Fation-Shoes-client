@@ -1,17 +1,206 @@
-import { useLoaderData } from "react-router-dom";
-import DashboardCard from "../../component/Dashboard/DashboardCard";
+    import { useLoaderData } from "react-router-dom";
+    import DashboardCard from "../../component/Dashboard/DashboardCard";
+import Graphs from "../../component/Dashboard/Graphs";
 
-
-const Dashboard = () => {
-    const shoe=useLoaderData();
-    console.log(shoe)
+    const Dashboard = () => {
+    const shoe = useLoaderData();
+    console.log(shoe);
     return (
-        <div className=" flex flex-wrap gap-10 justify-center align-middle items-center">
-           <DashboardCard title={"Total User"} number={5}/>
-           <DashboardCard title={"Total Order"} number={5}/>
-           <DashboardCard title={"Total Product"} number={5}/>
+        <div>
+        <div className="flex gap-3 font-serif font-extrabold">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-6"
+            >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+            />
+            </svg>
+
+            <h2>Dashboard</h2>
+        </div>
+
+        <div className="flex justify-center py-5">
+            <DashboardCard />
+        </div>
+        <div className="grid grid-cols-10 align-middle items-center gap-5">
+
+            
+            <div className="col-span-6 grid " >
+            <div className="flex gap-3 font-serif font-extrabold pt-10">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+    <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+    </svg>
+
+        
+            <h2>Product Category</h2>
+        </div>
+        <div>
+            <div className="">
+            <table className="table">
+                {/* head */}
+                <thead>
+                <tr>
+                    <th>
+                    <label>
+                        <input type="checkbox" className="checkbox" />
+                    </label>
+                    </th>
+                    <th>Category Name</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                   
+                </tr>
+                </thead>
+                <tbody>
+                {/* row 1 */}
+                <tr>
+                    <th>
+                    01
+                    </th>
+                    <td>
+                    <div className="flex items-center gap-3">
+                       
+                        <div className="mask  w-20 h-16">
+                            <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQHi40--0kaqEcY2uiNLQL3yIGidNSTuDsQLEcoRvyOoUxPCoHYyNhHac&s"
+                            alt="Avatar Tailwind CSS Component"
+                            />
+                        </div>
+                      
+                        <div>
+                        <div className="font-bold">Boots</div>
+                        <div className="text-sm opacity-50">Fation Shoe</div>
+                        </div>
+                    </div>
+                    </td>
+
+                    <td>
+                    <span className="badge badge-ghost badge-sm">
+                        500
+                    </span>
+                    </td>
+        
+                    <td>
+                    <button className="btn btn-ghost btn-xs">Available</button>
+                    </td>
+                </tr>
+
+
+                {/* row 2 */}
+                <tr>
+                    <th>
+                   02
+                    </th>
+                    <td>
+                    <div className="flex items-center gap-3">
+                       
+                        <div className="mask  w-20 h-16">
+                            <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbGUfb6mv4grwl8bm9lYpNVw2Y98Rm1qxi1s8LGEFKb-omAbrbl71sn1r&s"
+                            alt=""
+                            />
+                        </div>
+                      
+                        <div>
+                        <div className="font-bold">Formal Shoe</div>
+                        <div className="text-sm opacity-50">Fation Shoe</div>
+                        </div>
+                    </div>
+                    </td>
+
+                    <td>
+                    <span className="badge badge-ghost badge-sm">
+                        1200
+                    </span>
+                    </td>
+                   
+                    <td>
+                    <button className="btn btn-ghost btn-xs">Available</button>
+                    </td>
+                </tr>
+                {/* row 3 */}
+                <tr>
+                    <th>
+                   03
+                    </th>
+                    <td>
+                    <div className="flex items-center gap-3">
+                       
+                        <div className="mask  w-20 h-16">
+                            <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEWUN91DgnKIIclAXPN8nrQMM1aZMKRWsLG4esfjctp1eO2hB1pNvCCDw&s"
+                            alt=""
+                            />
+                        </div>
+                      
+                        <div>
+                        <div className="font-bold">Casual Shoe</div>
+                        <div className="text-sm opacity-50">Fation Shoe</div>
+                        </div>
+                    </div>
+                    </td>
+
+                    <td>
+                    <span className="badge badge-ghost badge-sm">
+                        500
+                    </span>
+                    </td>
+                  
+                    <td>
+                    <button className="btn btn-ghost btn-xs">Available</button>
+                    </td>
+                </tr>
+                {/* row 4 */}
+                <tr>
+                    <th>
+                   04
+                    </th>
+                    <td>
+                    <div className="flex items-center gap-3">
+                       
+                        <div className="mask  w-20 h-16">
+                            <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkXLxExBS_VI2NNSy1SK2Ml4trA28mhmGu7aJE_pdRSEVHLGAYT0o_--4&s"
+                            alt="Loafers"
+                            />
+                        </div>
+                      
+                        <div>
+                        <div className="font-bold">Loafers</div>
+                        <div className="text-sm opacity-50">Fation Shoe</div>
+                        </div>
+                    </div>
+                    </td>
+
+                    <td>
+                    <span className="badge badge-ghost badge-sm">
+                        1500
+                    </span>
+                    </td>
+                   
+                    <td>
+                    <button className="btn btn-ghost btn-xs">Available</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        
+            </div>
+            <div className="grid col-span-2 pt-10">
+            <Graphs />
+            </div>
+        </div>
         </div>
     );
-};
+    };
 
-export default Dashboard;
+    export default Dashboard;

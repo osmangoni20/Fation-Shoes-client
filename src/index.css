@@ -47,13 +47,39 @@
     background-size: cover;
     background-position: center;
 }
+.text-primary{
+    @apply text-[#207F99]
+}
+.text-secondary{
+    @apply text-[#F5C913]
+}
+.border-primary{
+    @apply border-[#207F99]
+}
+.text-optional-red{
+    @apply text-[#C91F1F]
+}
 .bg-primary{
     @apply bg-[#207F99]
 }
+
 .bg-secondary{
     @apply bg-[#F5C913]
 }
 
-.bg-thirdly{
+.bg-optional-red{
     @apply bg-[#C91F1F]
+}
+
+.bg-primaryOpacity{
+    @apply bg-[#85c7d9]
+}
+.profileDataList{
+    @apply flex gap-3 p-5 bg-primaryOpacity rounded-lg font-semibold font-serif;
+}
+.active{
+    @apply rounded-md p-3 bg-gray-500 flex align-baseline gap-5 font-semibold text-xl w-full
+}
+.pending{
+    @apply rounded-md p-3 flex align-baseline gap-5 font-semibold text-xl w-full;
 }

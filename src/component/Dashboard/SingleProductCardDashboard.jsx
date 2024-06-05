@@ -8,21 +8,25 @@ import Toast from "../../component/shared/Toast";
         // eslint-disable-next-line react/prop-types
         const SingleProductCardDashboard = ({shoe,onDelete}) => {
             // eslint-disable-next-line react/prop-types
-            const{id,pd_name,pd_brand,pd_image,pd_description,pd_price,pd_size}=shoe;
+            const{_id,pd_name,pd_brand,pd_image,pd_description,pd_price,pd_size}=shoe;
             const [isOpen,setModel]=useState(false);
             const [DeleteSuccess, setDeleteSuccess]=useState(false);
-
-
+            const [showToast,setToast]=useState(false)
+            const token=localStorage.getItem('token-fation-shoe')
             const isSubmit=()=>{
                 setModel(false)
-                const url=`http://localhost:3000/shoes/${id}`;
+                const url=`http://localhost:3000/product/${_id}`;
                 fetch(url,{
                     method:"DELETE",
-                }).then(res=>res.json()).then(async data=>{
+                    headers:{
+                        authorization:`Bearer ${token}`
+                    }
+                }).then(res=>res.json()).then(async ()=>{
+                    onDelete(_id);
+                    setToast(true)
                     setDeleteSuccess(true)
                     await setTimeout(() => {
-                        setDeleteSuccess(false)
-                        onDelete(data.id);
+                        setToast(false)
                         }, 2000);
                     
                 });
@@ -36,8 +40,9 @@ import Toast from "../../component/shared/Toast";
             }
             return (
                 <div>
-                     {DeleteSuccess&&<Toast isOpen={DeleteSuccess}>
-                Delete Successfully Done
+                    {showToast&&
+            <Toast isOpen={showToast}>
+                {DeleteSuccess?"Product Delete Successfully Done":"Internet Connection Disabled"}
             </Toast>}
            
        <Modal isOpen={isOpen} isClose={isClose} isSubmit={isSubmit}>
@@ -65,10 +70,10 @@ import Toast from "../../component/shared/Toast";
                 <p>{pd_description?.slice(0,40)}</p>
                 </div>
                 <div className="flex gap-1 justify-center items-center">
-                <Link to={`/product/${id}`}>
+                <Link to={`/product/${_id}`}>
                 <button className="btn btn-secondary font-bold text-white">See Details</button>
                 </Link>
-                <Link to={`edit/${id}`}>
+                <Link to={`edit/${_id}`}>
                 <button className="btn bg-indigo-600 text-white">Edit</button>
                 </Link>
                 <button onClick={()=>HandleItemDelete()} className="btn bg-red-500 text-white">Delete</button>

@@ -4,8 +4,12 @@ import SingleProduct from "./SingleProduct";
 const TendingProducts = ({shoes}) => {
     console.log(shoes)
     return (
-       <div className="py-5">
-            <h1 className="font-serif text-4xl p-5">Top Tending Products</h1>
+      <>
+      {
+        // eslint-disable-next-line react/prop-types
+        shoes?.length?<div>
+ <div className="py-5">
+            <h1 className="font-serif text-3xl p-5">Remanded Shoe</h1>
             <div className="flex flex-wrap justify-center gap-8 items-center my-3">
                 {
                     // eslint-disable-next-line react/prop-types
@@ -13,6 +17,11 @@ const TendingProducts = ({shoes}) => {
                 }
             </div>
        </div>
+        </div>:<div className="p-5">
+
+        </div>
+      }
+      </>
     );
 };
 

@@ -1,14 +1,36 @@
 import useAuth from "../../hooks/useAuth";
 
 
-const GoogleLogin = () => {
+const GoogleLogin =  () => {
     const {googleLogin}=useAuth()
-    const HandleSignIn=()=>{
-        googleLogin()
+    const HandleSignIn= async()=>{
+       await googleLogin().then(data=>{
+        if(data?.user?.email){
+            
+            const UserInfo={
+                name:data?.user?.displayName,
+                email:data?.user?.email,
+                img:data?.user?.photoURL
+            }
+            fetch('http://localhost:3000/add_user',{
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(UserInfo),
+            }).then(res=>res.json()).then(data=>{
+                console.log(data)
+            
+                localStorage.setItem('token',data?.token)
+            })
+        }
+       })
+        
+       
     }
     return (
         <div className="w-full ">
-            <button onClick={HandleSignIn} className="btn bg-red-600 p-2 w-full my-5 text-white text-bold">
+            <button onClick={HandleSignIn} className="btn bg-secondary border-primary border-dashed p-2 w-full my-5 text-white text-bold">
                 Google
             </button>
         </div>

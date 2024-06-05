@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-base-200 text-base-content">
+  <footer className="footer sm:flex-col p-10 bg-base-200 text-base-content">
   <nav>
     <h6 className="footer-title">Services</h6> 
     <a className="link link-hover">Branding</a>
@@ -25,12 +25,12 @@ const Footer = () => {
   </nav> 
   <form>
     <h6 className="footer-title">Newsletter</h6> 
-    <fieldset className="form-control w-80">
+    <fieldset className="form-control md:w-80">
       <label className="label">
         <span className="label-text">Enter your email address</span>
       </label> 
-      <div className="join">
-        <input type="text" placeholder="username@site.com" className="input input-bordered join-item" /> 
+      <div className="join w-full">
+        <input type="text" placeholder="username@site.com" className="input input-bordered join-ite" /> 
         <button className="btn btn-primary join-item">Subscribe</button>
       </div>
     </fieldset>

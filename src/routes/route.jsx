@@ -13,6 +13,8 @@ import AddProduct from "../pages/Dashboard/AddProduct";
 import AllProducts from "../pages/Dashboard/AllProducts";
 import EditProduct from "../pages/Dashboard/EditProduct";
 import Profile from "../pages/Dashboard/Profile";
+import EditProfile from "../pages/Dashboard/EditProfile";
+import SearchItem from "../pages/SearchItem";
 const route =createBrowserRouter([
     {
         path: "/",
@@ -22,16 +24,24 @@ const route =createBrowserRouter([
           {
             path: "/",
             element: <Home/>,
-            loader:()=>fetch('http://localhost:3000/shoes'),
+            
           },
           {
             path: "/product/:id",
             element: <ProductDetails/>,
-            loader:({params})=>fetch(`http://localhost:3000/shoes/${params.id}`),
+            loader:({params})=>fetch(`http://localhost:3000/product/${params.id}`),
           },
           {
             path: "/about",
             element: <About/>,
+          },
+          {
+            path:'/searchProduct/:searchValue',
+            element:<SearchItem/>
+          },
+          {
+            path:'/searchProduct/:category/:searchValue',
+            element:<SearchItem/>
           },
           {
             path: "/login",
@@ -49,7 +59,7 @@ const route =createBrowserRouter([
         errorElement: <ErrorPage/>,
         
         children: [
-          { path: "", element: (
+          { path: "home", element: (
           <PrivateRoute><Dashboard/></PrivateRoute>
         ) 
       },
@@ -58,27 +68,34 @@ const route =createBrowserRouter([
         element:<PrivateRoute>
           <AllProducts/>
         </PrivateRoute>,
-        loader:()=>fetch('http://localhost:3000/shoes'),
+        loader:()=>fetch('http://localhost:3000/product'),
       },
       {
         path:"user_profile",
         element:<PrivateRoute>
           <Profile/>
         </PrivateRoute>,
-        loader:()=>fetch('http://localhost:3000/shoes'),
+        loader:()=>fetch('http://localhost:3000/product'),
+      },
+      {
+        path:"/dashboard/user_profile/edit_profile",
+        element:<PrivateRoute>
+          <EditProfile/>
+        </PrivateRoute>,
+        loader:()=>fetch('http://localhost:3000/user'),
       },
       
       {
         path:'add-products',
         element:<PrivateRoute><AddProduct/></PrivateRoute>,
-        loader:()=>fetch('http://localhost:3000/shoes'),
+        loader:()=>fetch('http://localhost:3000/product'),
       },
      
       
       {
         path:"/dashboard/all-products/edit/:id",
         element:<EditProduct/>,
-        loader:({params})=>fetch(`http://localhost:3000/shoes/${params.id}`),
+        loader:({params})=>fetch(`http://localhost:3000/product/${params.id}`),
       }
 
       ],

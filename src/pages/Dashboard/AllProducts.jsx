@@ -9,7 +9,8 @@
         const [shoesData,setLoadShoesData]=useState(shoes);
         
         const HandleDelete=(id)=>{
-            const UpdateData=shoesData.filter((item)=>item?.id!=id);
+            console.log("delete id",id);
+            const UpdateData=shoesData.filter((item)=>item?._id!==id);
             setLoadShoesData(UpdateData);
         }
         return (
@@ -17,7 +18,7 @@
                 <div className="grid grid-cols-3 gap-1 justify-center align-to items-start">
                 {
                     shoesData?.map((shoe)=><SingleProductCardDashboard
-                     shoe={shoe} key={shoe.id}
+                     shoe={shoe} key={shoe._id}
                      onDelete={HandleDelete}/>)
                 }
             </div>

@@ -18,7 +18,7 @@ import { createPortal } from 'react-dom';
                    <div>
                    <div onClick={(e)=>HandleOuterClose(e)} className={`fixed inset-0 flex justify-center items-center bg-gray-500/75  
                    ${isOpen?"visible":"invisible"}`}>
-                        <div ref={contentRef} className='relative bg-white w-full max-w-sm rounded p-4'>
+                        <div ref={contentRef} className='relative text-black bg-white w-full max-w-sm rounded-lg  p-4'>
 
                         <Modal.Close></Modal.Close>
                       
@@ -39,11 +39,11 @@ import { createPortal } from 'react-dom';
         const CloseButton=({children})=>{
             const {isClose}=useContext(ModalContext)
             return(
-                <button onClick={isClose} className='absolute right-0 top-0'>
+                <button onClick={isClose} className='absolute right-1 top-1'>
                     {
                         children?<span className='text-xl font-semibold'>{children}</span>:
                         <svg xmlns="http://www.w3.org/2000/svg" 
-                        className='size-5 p-0.5 bg-red-600 rounded-sm text-white'
+                        className='size-5 p-0.5 bg-primary rounded-md text-white'
                         fill="none" viewBox="0 0 24 24" strokeWidth="2.5"
                         stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round"
@@ -58,7 +58,7 @@ import { createPortal } from 'react-dom';
             const {isSubmit}=useContext(ModalContext)
             return(
                 
-    <button onClick={isSubmit} className='mt-3 btn btn-solid'>
+    <button onClick={isSubmit} className='mt-3 px-10 text-white font-semibold btn bg-primary hover:bg-secondary'>
                     {children}
                 </button>
             

@@ -1,8 +1,9 @@
-        import { GoogleAuthProvider, signOut, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, } from "firebase/auth";
+        import { GoogleAuthProvider, signOut, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail, updateProfile, updateEmail, updatePassword, sendEmailVerification, } from "firebase/auth";
         import { createContext, useEffect, useState } from "react";
 
         export const authContext = createContext(null);
         import { app } from "../Firebase/Firebase.config";
+import { FacebookAuthProvider } from "firebase/auth/cordova";
         const auth = getAuth(app);
 
         // eslint-disable-next-line react/prop-types
@@ -11,7 +12,7 @@
             const [loading,setLoading]=useState(true)
             const [authError,setError]=useState({})
             const googleProvider = new GoogleAuthProvider();
-
+            const facebookProvider=new FacebookAuthProvider();
     useEffect(() => {
         const unsubscribe=onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -29,15 +30,28 @@
             setLoading(true)
             return signInWithPopup(auth, googleProvider)
         };
+        const facebookLogin=()=>{
+            return signInWithPopup(auth, facebookProvider).catch(error=>{
+                console.log(error)
+            })
+        }
+        const resetPassword=(email)=>{
+            return sendPasswordResetEmail(auth, email).catch((error) => {
+              const errorCode = error.code;
+              setError({errorName:errorCode,error})
+              // ..
+            });
+        }
         const createUser=(email,password)=>{
             console.log(email,password)
-            return createUserWithEmailAndPassword(auth,email,password).then(
-                logOut()
-            ).catch(
+            return createUserWithEmailAndPassword(auth,email,password).catch(
                 (error)=>{
                     console.log(error)
                     if(error?.code==="auth/network-request-failed"){
                         setError({errorName:"Your internet connection down",error} )
+                    }
+                    else if(error.code==="auth/email-already-in-use"){
+                        setError({errorName:"User already have a account ",error} )
                     }
                 }
             );
@@ -56,13 +70,26 @@
                 }
             );
         }
-
+        const UpdateProfile=(name,img)=>{
+            console.log(name,img)
+          return  updateProfile(auth.currentUser, {
+                displayName: name, photoURL: img
+              })
+        }
+        const UpdateEmail=(email)=>{
+            console.log(email)
+            return updateEmail(auth.currentUser, `${email}`).catch(error=>console.log(error))
+        }
+        const UpdatePassword=(newPassword)=>{
+            console.log(newPassword)
+            return updatePassword(auth.currentUser, newPassword).catch(error=>console.log(error))
+        }
         const logOut=()=>{
             signOut(auth).then(() => {
                 setUser()
               })
         }
-        const authInfo = {user,loading, createUser,signIn,logOut, googleLogin,authError};
+        const authInfo = {user,loading, UpdateProfile,UpdateEmail,UpdatePassword, facebookLogin,resetPassword, createUser,signIn,logOut, googleLogin,authError};
         return (
             <authContext.Provider value={authInfo}>{children}</authContext.Provider>
         );
