@@ -9,7 +9,7 @@ const TendingProducts = ({shoes}) => {
         // eslint-disable-next-line react/prop-types
         shoes?.length?<div>
  <div className="py-5">
-            <h1 className="font-serif text-3xl p-5">Remanded Shoe</h1>
+            <h1 className="font-serif text-3xl p-x-10">CASUAL SHOES</h1>
             <div className="flex flex-wrap justify-center gap-8 items-center my-3">
                 {
                     // eslint-disable-next-line react/prop-types
