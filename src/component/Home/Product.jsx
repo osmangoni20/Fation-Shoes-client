@@ -12,7 +12,7 @@ const Product = ({shoes}) => {
             <div className="flex flex-wrap justify-center gap-8 items-center my-5">
                 {
                     // eslint-disable-next-line react/prop-types
-                    shoes?.slice(0,3)?.map((shoe,index)=><SingleProduct shoe={shoe} key={index}/>)
+                    shoes?.slice(0,6)?.map((shoe,index)=><SingleProduct shoe={shoe} key={index}/>)
                 }
             </div>
        </div>

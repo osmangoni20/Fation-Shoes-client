@@ -18,7 +18,8 @@ const AddProduct = () => {
             },
             body:JSON.stringify(isSubmitData)
         }).then(res=>res.json())
-        .then(async()=>{
+        .then(async(data)=>{
+            console.log(data)
             setModel(false)
           notify("Add Successfully Done")
         })
