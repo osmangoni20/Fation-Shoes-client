@@ -15,6 +15,7 @@ import EditProduct from "../pages/Dashboard/EditProduct";
 import Profile from "../pages/Dashboard/Profile";
 import EditProfile from "../pages/Dashboard/EditProfile";
 import SearchItem from "../pages/SearchItem";
+
 const route =createBrowserRouter([
     {
         path: "/",

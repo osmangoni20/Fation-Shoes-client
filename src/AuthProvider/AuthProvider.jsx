@@ -19,7 +19,7 @@ import { FacebookAuthProvider } from "firebase/auth/cordova";
             setUser(user)
                 setLoading(false)
             }else{
-                setLoading(false)
+                setLoading(true)
             }
            return(()=>{
             return unsubscribe()
@@ -31,6 +31,7 @@ import { FacebookAuthProvider } from "firebase/auth/cordova";
             return signInWithPopup(auth, googleProvider)
         };
         const facebookLogin=()=>{
+            setLoading(true)
             return signInWithPopup(auth, facebookProvider).catch(error=>{
                 console.log(error)
             })
