@@ -3,9 +3,10 @@
 const Loader = () => {
     return (
         <div className="flex items-center justify-center">
-            <p className="text-6xl font-bold ">L</p>
-            <div className="w-10 h-8 border-red-500 rounded-full animate-spin"></div>
-            <p className="text-6xl font-bold ">ading</p>
+          <span className="loading loading-ring loading-xs"></span>
+<span className="loading loading-ring loading-sm"></span>
+<span className="loading loading-ring loading-md"></span>
+<span className="loading loading-ring loading-lg"></span>
         </div>
     );
 };
