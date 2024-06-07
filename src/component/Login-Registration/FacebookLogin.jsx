@@ -2,9 +2,9 @@ import useAuth from "../../hooks/useAuth";
 
 
 const FacebookLogin = () => {
-    const {googleLogin}=useAuth()
+    const {facebookLogin}=useAuth()
     const HandleSignIn= async()=>{
-       await googleLogin().then(data=>{
+       await facebookLogin().then(data=>{
         if(data?.user?.email){
             
             const UserInfo={
@@ -26,7 +26,7 @@ const FacebookLogin = () => {
     }
     return (
         <div className="w-full ">
-            <button onClick={HandleSignIn} className="btn bg-primary border-primary border-dashed p-2 w-full my-5 text-white text-bold">
+            <button onClick={HandleSignIn} className="btn bg-primary border-white border-dashed p-2 w-full my-5 text-white text-bold">
                 Facebook
             </button>
         </div>
