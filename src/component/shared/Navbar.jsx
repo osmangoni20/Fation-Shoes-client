@@ -21,9 +21,9 @@ const Navbar = () => {
     setTotalCartItem(cartList?.length)
   },[cartList])
  
-
+console.log(user)
   return (
-    <div>
+    <div className="">
       <div className="flex text-xl px-2 justify-between items-center ghost_bg py-2 text-black">
         <h6>+8801878403884</h6>
         <ul className="flex items-center gap-3 left-0 justify-between">
@@ -59,7 +59,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar  bg-base-100 sticky top-0 shadow-xl z-10">
+      <div className="navbar  bg-base-100  sticky  shadow-xl z-40">
         <div className="navbar-start ">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -170,7 +170,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden md:flex">
-          <ul className="menu menu-horizontal px-1 text-xl">
+          <ul className="menu menu-horizontal px-1 text-lg font-semibold">
             <li>
               <Link to={"/searchProduct/category/casual_shoes"}>
                 CASUAL SHOES
@@ -249,7 +249,7 @@ const Navbar = () => {
               <div>
                 <img
                   className="w-12 h-12 rounded-full mx-2"
-                  src={user?.photoURL}
+                  src={user?.photoURL} alt=""
                 />
               </div>
             ) : (

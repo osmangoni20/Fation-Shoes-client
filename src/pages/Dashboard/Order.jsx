@@ -34,7 +34,8 @@ const Order = () => {
                 <th>Alternative Mobile</th>
                 <th>Date</th>
                 <th className="text-blue-700">Total Pay</th>
-                <th>Action</th>
+                <th>Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -42,7 +43,7 @@ const Order = () => {
               {orderData?.map((orderList) => (
                 <tr key={orderList._id}>
                   <td>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 md:w-[100px]">
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
                           <img
@@ -53,7 +54,7 @@ const Order = () => {
                       </div>
 
                       <div>
-                        <h4 className="text-sm opacity-50">
+                        <h4 className="text-md">
                           {orderList?.customer_name}
                         </h4>
                       </div>
@@ -78,6 +79,11 @@ const Order = () => {
                   <td>
                     <p className=" text-blue-700 text-md font-medium">
                       {orderList?.payable_cost} Tk.
+                    </p>
+                  </td>
+                  <td>
+                    <p className="text-md font-medium text-yellow-500">
+                      {orderList?.status}
                     </p>
                   </td>
                   <td>
