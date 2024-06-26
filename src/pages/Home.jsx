@@ -16,14 +16,14 @@ const Home = () => {
         .then(data=>setShoe(data))
     },[])
     return (
-        <div>
+        <div className="ghost_bg">
      
         <Banner/>
-       
+        <OurService/>
         <Product shoes={data}/>
         <Add/>
        <TendingProducts shoes={data}/>
-         <OurService/>
+        
         
         <Review/>
     

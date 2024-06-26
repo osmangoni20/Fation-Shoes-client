@@ -7,7 +7,7 @@ const UserAuthProfileCard = ({ isOpen }) => {
   console.log(isOpen);
   return (
     <div className={`${isOpen ? "visible relative" : "invisible"}`}>
-      <div className="card w-80 bg-base-100 shadow-xl fixed right-1 top-18 mt-10">
+      <div className="card w-80 bg-base-100 shadow-xl z-40 absolute right-1 top-18 mt-10">
         <div className="bg-primaryOpacity h-32 flex justify-center">
           <figure className="px-10 pt-10 h-[200px]  w-[200px] border-primary border-dotted rounded-full">
             {user?.photoURL ? (
@@ -36,8 +36,8 @@ const UserAuthProfileCard = ({ isOpen }) => {
         </div>
         <div className="card-body w-full ">
           {
-            user&&<div className="flex-col justify-center text-center font-semibold text-md p-2 ">
-            <h2 className="text-xl">{user?.displayName||"Guest User"}</h2>
+            user&&<div className="flex-col  font-semibold text-md p-2 ">
+            <h3 className="text-xl">{user?.displayName||"Guest User"}</h3>
             <p>{user?.email}</p>
           </div>
           }

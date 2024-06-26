@@ -48,10 +48,10 @@ import toast from "react-hot-toast";
                     <div className="card w-80 h-[450px] pt-5 bg-base-100 shadow-xl text-black">
                 <figure className="h-[200px] w-full"><img src={pd_image} alt="Shoes" /></figure>
                 <div className="card-body">
-                <h2 className="card-title">
+                <h3 className="card-title">
                 {pd_name}
                 <div className="badge badge-secondary">{pd_brand}</div>
-                </h2>
+                </h3>
             
                 <div className="card-actions justify-top">
                 <div className="badge badge-outline bg-gray-500 p-2 text-white font-bold text-md">{ pd_price} $</div> 

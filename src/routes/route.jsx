@@ -15,6 +15,9 @@ import EditProduct from "../pages/Dashboard/EditProduct";
 import Profile from "../pages/Dashboard/Profile";
 import EditProfile from "../pages/Dashboard/EditProfile";
 import SearchItem from "../pages/SearchItem";
+import OrderCart from "../component/Order/OrderCart";
+import ShippingAddress from "../component/Order/ShippingAddress";
+import Order from "../pages/Dashboard/Order";
 
 const route =createBrowserRouter([
     {
@@ -51,6 +54,14 @@ const route =createBrowserRouter([
           {
             path:"/register",
             element:<Registration/>
+          },
+          {
+            path:"/order_cart/:email",
+            element:<OrderCart/>
+          },
+          {
+            path:"/order",
+            element:<ShippingAddress/>
           }
         ],
       },
@@ -70,6 +81,10 @@ const route =createBrowserRouter([
           <AllProducts/>
         </PrivateRoute>,
         loader:()=>fetch('https://fation-shoes.onrender.com/product'),
+      },
+      {
+        path:"order",
+        element:<Order/>
       },
       {
         path:"user_profile",

@@ -23,7 +23,7 @@ import Graphs from "../../component/Dashboard/Graphs";
             />
             </svg>
 
-            <h2>Dashboard</h2>
+            <h3 className="text-xl">Dashboard</h3>
         </div>
 
         <div className="flex justify-center py-5">
@@ -39,7 +39,7 @@ import Graphs from "../../component/Dashboard/Graphs";
     </svg>
 
         
-            <h2>Product Category</h2>
+            <h3 className="text-xl">Product Category</h3>
         </div>
         <div>
             <div className="">

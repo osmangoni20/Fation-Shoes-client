@@ -5,6 +5,9 @@ import { RouterProvider } from 'react-router-dom'
 import route from './routes/route.jsx'
 import AuthProvider from './AuthProvider/AuthProvider.jsx'
 import { Toaster } from 'react-hot-toast';
+import { createContext } from 'vm'
+import ListAddCart from './context/ListAddCart.jsx'
+export const  cartCountContext=createContext();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
@@ -18,7 +21,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     },
   }}
 />
-    <RouterProvider router={route} />
+  <ListAddCart>
+  <RouterProvider router={route} />
+  </ListAddCart>
     </AuthProvider>
   </React.StrictMode>,
 )
