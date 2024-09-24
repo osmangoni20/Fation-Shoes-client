@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks";
 
 
 // eslint-disable-next-line react/prop-types
 const CheckOutSummary = () => {
-  const {total,subTotal,shippingCost}=useSelector(state=>state.cartR)
+  const {total,subTotal,shippingCost}=useAppSelector(state=>state.cartR)
 
     return (
         <div>

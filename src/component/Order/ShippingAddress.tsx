@@ -1,44 +1,47 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import CheckOutSummary from "./CheckOutSummary";
 import Modal from "../shared/Modal";
-import { useForm } from "react-hook-form";
+import { FormProps, useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import { useAppSelector } from "../../redux/hooks";
+import { TProductInfo } from "../Home/SingleProduct";
 
+type TOrder={ order_product: TProductInfo[];
+     status: string; shippingInfo: object; 
+      payable_cost: number; payment_method: string; }
 
 
 const ShippingAddress = () => {
-    const{user}=useAuth()
+    const{user}:any=useAuth()
     const navigate=useNavigate();
     const {register, handleSubmit}=useForm()
     const[isOpen,setModel]=useState(false);
-        const [submitData, setSubmitData]=useState(null)
-        const [payment_method,setPayment_method]=useState(null);
+        const [submitData, setSubmitData]=useState<TOrder>()
+        const [payment_method,setPayment_method]=useState('');
     const url="https://fation-shoes.onrender.com/add_order"
-    const [itemCollection, setItemCollection] = useState(
-        JSON.parse(localStorage.getItem("cartItemList"))
-      );
-    const [subTotal, setTotalPayableTaka] = useState(0);
+    const {products,total}=useAppSelector((state)=>state.cartR)
+    // const [itemCollection, setItemCollection] = useState(
+    //     JSON.parse(localStorage.getItem("cartItemList"))
+    //   );
     // eslint-disable-next-line no-undef
-  const shippingCost=50;
-    useEffect(() => {
-      const totalTk = itemCollection.reduce(
-        (total, item) => total + item.order_price * item.pd_quantity,
-        0
-      );
-      setItemCollection( JSON.parse(localStorage.getItem("cartItemList")));
-      console.log(totalTk);
-      setTotalPayableTaka(totalTk);
-    }, []);
+
+  
   
     const isClose=()=>{
         setModel(false)
     }
     const onSubmit= async(data)=>{
         setModel(true)
-        await setSubmitData({itemCollection,status:"confirm",...data, email:user?.email,payable_cost:subTotal+shippingCost});
+        const newOrder={
+            order_product:products,
+            status:"pending",
+            shippingInfo:data,
+            payable_cost:total,
+            payment_method}
+        setSubmitData(newOrder);
     }
  const isSubmit= async()=>{
     console.log(submitData)
@@ -57,6 +60,10 @@ const ShippingAddress = () => {
         })
     }
 
+        const HandlePaymentMethod=(e:ChangeEvent<HTMLInputElement>) => {
+            e.preventDefault();
+            setPayment_method(e.currentTarget.value)
+        }
 
     return (
         <div className="ghost_bg">
@@ -86,20 +93,20 @@ const ShippingAddress = () => {
         </div> */}
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_name">Your Name</label>
-                    <input  type="text" placeholder="Your Name" id="customer_name" {...register("customer_name")}/>
+                    <input  type="text" placeholder="Your Name"  required id="customer_name" {...register("customer_name")}/>
                 </div>
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_email">Your Email</label>
-                    <input  type="text" id="customer_email" {...register("customer_email")}/>
+                    <input  type="text" id="customer_email" required {...register("customer_email") }/>
                 </div>
                 
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_mobile1">Mobile No</label>
-                    <input  type="text" placeholder="Mobile No" id="customer_mobile1" {...register("customer_mobile1")}/>
+                    <input  type="text" placeholder="Mobile No" required id="customer_mobile1" {...register("customer_mobile1")}/>
                 </div>
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_mobile2">Alternative Mobile No</label>
-                    <input  type="text" placeholder="Alternative Mobile" id="customer_mobile2" {...register("customer_mobile2")}/>
+                    <input  type="text" placeholder="Alternative Mobile" required id="customer_mobile2" {...register("customer_mobile2")}/>
                 </div>
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_country">Country</label>
@@ -112,7 +119,7 @@ const ShippingAddress = () => {
                 </div>
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_receive_address">Product Receive Address</label>
-                    <textarea  type="text" placeholder="Product Receive Address"  id="customer_receive_address"
+                    <textarea  placeholder="Product Receive Address" required  id="customer_receive_address"
                      {...register("customer_receive_address")}/>
                 </div>
            </div>
@@ -123,7 +130,7 @@ const ShippingAddress = () => {
                 <ul>
                 <li className="flex items-center gap-3">
                     <input value={"cash_on_delivery"}  {...register("payment_method")}
-                     onChange={(e)=>setPayment_method(e.target.value)} name="payment_method" type="radio"   className="border-none" />
+                     onChange={(e)=>HandlePaymentMethod(e)} name="payment_method" type="radio"   className="border-none" />
                      Cash On Delivery</li>
                 </ul>
             </div>
@@ -134,12 +141,12 @@ const ShippingAddress = () => {
                 
                 <li className="flex items-center gap-3 paymentMethodCart">
                 <input value={"bkash"} {...register("payment_method")}
-                onChange={(e)=>setPayment_method(e.target.value)} 
+                onChange={(e)=>HandlePaymentMethod(e)} 
                 name="payment_method" type="radio"  className="border-none" />
                 Bkash</li>
                 <li className="flex items-center gap-3 paymentMethodCart">
                 <input value={"nagod"} {...register("payment_method")}
-                 onChange={(e)=>setPayment_method(e.target.value)} name="payment_method" type="radio"   className="border-none" />
+                 onChange={(e)=>HandlePaymentMethod(e)} name="payment_method" type="radio"   className="border-none" />
                 Nagod</li>
             </ul>
           </div>
@@ -153,7 +160,7 @@ const ShippingAddress = () => {
         </div>
         </div>
         <div className="col-span-1 my-6">
-         <CheckOutSummary subTotal={subTotal}></CheckOutSummary>
+         <CheckOutSummary></CheckOutSummary>
         </div>
         </div>
         </div>
