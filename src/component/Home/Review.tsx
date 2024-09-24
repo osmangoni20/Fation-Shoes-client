@@ -1,4 +1,5 @@
 
+import React from 'react';
 import quoteImg from '../../assets/quote.png'
 const UserReview=[
     {

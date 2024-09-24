@@ -1,27 +1,22 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import UserAuthProfileCard from "./UserAuthProfileCard";
 import instagram from "../../assets/instagram.png";
 import twitter from "../../assets/twitter.png";
 import youtube from "../../assets/youtube.png";
 import whatsapp from "../../assets/whatsapp.png";
 import facebook from "../../assets/facebook.png";
-import  { orderCartContext } from "../../context/ListAddCart";
+import { useSelector } from "react-redux";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [showProfileDialog, setProfileDialog] = useState(false);
   const [searchValue, setSearchValue] = useState(null);
-  const [totalcartItem,setTotalCartItem]=useState(0);
   const HandleUserProfile = () => {
     setProfileDialog(!showProfileDialog);
   };
-  const {cartList}=useContext(orderCartContext);
-  useEffect(()=>{
-    setTotalCartItem(cartList?.length)
-  },[cartList])
- 
-console.log(user)
+
+  const {products}=useSelector(state=>state.cartR)
   return (
     <div className="">
       <div className="flex text-xl px-2 justify-between items-center ghost_bg py-2 text-black">
@@ -238,7 +233,7 @@ console.log(user)
               </svg>
             </Link>
             <span className="rounded-full px-2 absolute  bg-red-600 text-white 
-             top-0 right-0">{totalcartItem}</span>
+             top-0 right-0">{products?.length}</span>
           </div>
          
           <div

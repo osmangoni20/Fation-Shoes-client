@@ -1,7 +1,15 @@
+import React from "react";
 import SingleProduct from "./SingleProduct";
+type TProductInfo={
+    _id:string,
+    pd_name:string,
+    pd_brand:string,
+    pd_price:number,
+    pd_image:string
+}
 
 // eslint-disable-next-line react/prop-types
-const Product = ({shoes}) => {
+const Product = ({shoes}:{shoes:TProductInfo[]}) => {
     console.log(shoes)
     return (<>
        {

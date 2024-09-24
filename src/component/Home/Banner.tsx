@@ -1,10 +1,11 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
   const Banner = () => {
     return (
       <>
         <div
-        className="h-[600px] w-full py-5 pb-10 banner" >
+        className={`h-[600px] w-full py-5 pb-10 banner bg-[url('../../assets/image/top-Shoe-Banners-1.jpg')]`} >
         
           <div className="flex h-full flex-col justify-end pl-36 ">
             <div className="text-white ">

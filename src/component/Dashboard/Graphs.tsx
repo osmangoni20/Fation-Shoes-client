@@ -1,3 +1,4 @@
+import React from "react";
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis } from "recharts";
 
 const Graphs = () => {

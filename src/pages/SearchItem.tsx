@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
-import SingleProduct from '../component/Home/SingleProduct';
+import SingleProduct, { TProductInfo } from '../component/Home/SingleProduct';
 import { useEffect, useState } from 'react';
+import React from 'react';
 
 const SearchItem = () => {
     const {category, searchValue}=useParams();
    
-    const[ProductData,setProductData]=useState([])
+    const[ProductData,setProductData]=useState<TProductInfo[]>([])
     
     useEffect(()=>{
         fetch(`https://fation-shoes.onrender.com/product/?searchValue=${searchValue}&searchCategory=${category}`)

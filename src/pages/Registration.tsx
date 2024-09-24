@@ -4,13 +4,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import GoogleLogin from "../component/Login-Registration/GoogleLogin";
 import FacebookLogin from "../component/Login-Registration/FacebookLogin";
+import { useSignUpMutation } from "../redux/api/auth/auth.ts";
+import React from "react";
 
 
 const Registration = () => {
   const [passMatch, setPassMatch] = useState(true);
-  const {createUser,authError,user,logOut} = useAuth();
+  const {createUser,authError,user,logOut}:any = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const [signUp]=useSignUpMutation(undefined)
 
   const from = location?.state?.from?.pathname || "/";
 
@@ -33,23 +36,25 @@ const Registration = () => {
      await createUser(email,password).then(data=>{
       if(data?.user?.email){
           
-          const UserInfo={
+          const userInfo={
               name:name,
               email:data?.user?.email,
               img:data?.user?.photoURL
           }
-          fetch('https://fation-shoes.onrender.com/add_user',{
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(UserInfo),
-          }).then(res=>res.json()).then((data)=>{
+          signUp(userInfo)
+      
+          // fetch('https://fation-shoes.onrender.com/auth/register',{
+          //     method: "POST",
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //     },
+          //     body: JSON.stringify(userInfo),
+          // }).then(res=>res.json()).then((data)=>{
             
-            localStorage.setItem('token',data?.token)
-            logOut()
-            navigate(from, { replace: true });
-          })
+          //   localStorage.setItem('token',data?.token)
+          //   logOut()
+          //   navigate(from, { replace: true });
+          // })
       }
      })
     }

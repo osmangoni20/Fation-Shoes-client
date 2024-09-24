@@ -1,7 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useContext, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { orderCartContext } from "../../context/ListAddCart";
+
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/features/CartSlice";
 const UserReview = [
   {
     id: "1",
@@ -38,6 +42,7 @@ const ProductDetails = () => {
   const {user}=useAuth()
   const [add_to_cart_button,set_add_button]=useState(true)
   const {setCart}=useContext(orderCartContext);
+  const dispatch=useDispatch()
   const {
     id,
     pd_name,
@@ -50,6 +55,8 @@ const ProductDetails = () => {
   } = shoe;
   let cartItem=JSON.parse(localStorage.getItem('cartItemList'))||[]
 const HandleAdd_to_Cart=()=>{
+
+    dispatch(addToCart(shoe))
     set_add_button(true)
      cartItem?.push({...shoe, pd_quantity:1, order_price:Number(pd_price) - Number(pd_price) * 0.2});
      console.log(cartItem)

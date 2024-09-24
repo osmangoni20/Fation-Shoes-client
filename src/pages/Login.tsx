@@ -5,12 +5,13 @@ import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import FacebookLogin from "../component/Login-Registration/FacebookLogin";
 import toast  from 'react-hot-toast';
+import React from "react";
 
 
 const Login = () => {
   
   const notify = (message) => toast(message);
-  const {signIn,authError,user,resetPassword}=useAuth()
+  const {signIn,authError,user,resetPassword}:any=useAuth()
   console.log(user)
   const navigate = useNavigate();
   const location = useLocation();

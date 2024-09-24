@@ -1,7 +1,9 @@
+import React from "react";
 import { Link, useRouteError } from "react-router-dom";
 
-const ErrorPage = () => {
-  const { status, error } = useRouteError();
+const ErrorPage:React.FC = () => {
+  // const { status, error } = useRouteError();
+  const {status,error}:any=useRouteError() 
   return (
     <div>
       <div className="container flex flex-col justify-center items-center text-center h-screen py-32">
