@@ -2,18 +2,26 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TProductInfo } from "../../component/Home/SingleProduct";
 
 type TInitialState={
+    email:string,
     order_product: TProductInfo[];
     status: string;
     shippingInfo: object;
-    payable_cost: number;
-    payment_info: object;
+    price: number;
+    payment_info: {
+        payment_method:string,
+        transactionId:string
+    }
 }
 const initialState:TInitialState={
+    email:"",
     order_product:[],
     status:"",
     shippingInfo:{},
-    payable_cost:0,
-    payment_info:{}
+    price:0,
+    payment_info:{
+        payment_method:'',
+        transactionId:''
+    }
 }
 
 const OrderSlice=createSlice({
@@ -21,13 +29,20 @@ const OrderSlice=createSlice({
     initialState,
     reducers:{
         add_new_order:(state,action:PayloadAction<TInitialState>)=>{
-            state=action.payload
+           
+            state.email=action.payload.email
+            state.order_product=action.payload.order_product
+            state.price=action.payload.price
+            state.shippingInfo=action.payload.shippingInfo
+            state.payment_info=action.payload.payment_info
+            state.status=action.payload.status
+            console.log(state)
         },
-        paymentInfoUpdate:(state,action:PayloadAction<TInitialState>)=>{
+        paymentInfoUpdate:(state,action:PayloadAction<any>)=>{
             state.payment_info={...state.payment_info,...action.payload}
         }
     }
 })
 
-export const {add_new_order}=OrderSlice.actions
+export const {add_new_order, paymentInfoUpdate}=OrderSlice.actions
 export default OrderSlice.reducer

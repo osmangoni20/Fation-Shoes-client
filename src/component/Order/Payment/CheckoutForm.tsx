@@ -10,11 +10,13 @@ import Modal from '../../shared/Modal';
 import { orderPostApi } from './orderApi';
 import './CheckoutForm.css';
 import useAuth from '../../../hooks/useAuth';
+import { paymentInfoUpdate } from '../../../redux/features/OrderSlice';
+
 const CheckoutForm = () => {
 
     const stripe = useStripe();
     const elements = useElements();
-    const submitOrderData=useAppSelector(state=>state.orderR)
+    const {shippingInfo,email,order_product,payment_info,price,status}=useAppSelector(state=>state.orderR)
     const dispatch=useAppDispatch()
     const navigate=useNavigate()
     const[isModel,setModel]=useState(false);
@@ -25,20 +27,22 @@ const CheckoutForm = () => {
     const{user}:any=useAuth()
   
      useEffect(() => {
-
+console.log(shippingInfo)
       if(total<0){
         setError(" The amount must be greater than or equal to the minimum charge amount")
+      }else{
+        fetch("https://fation-shoes.onrender.com/create-payment-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({price:500}),
+        }).then(res=>res.json())
+        .then(data=>{
+          console.log(data.clientSecret)
+          setClientSecret(data.clientSecret);
+        })
+       
       }
-      fetch("http://localhost:3000/create-payment-intent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({price:500}),
-      }).then(res=>res.json())
-      .then(data=>{
-        console.log(data.clientSecret)
-        setClientSecret(data.clientSecret);
-      })
-     
+   
      }, [total])
     const isClose=()=>{
         setModel(false)
@@ -60,18 +64,8 @@ const CheckoutForm = () => {
       console.log(error,paymentMethod)
       if(!error&&clientSecret&&paymentMethod){
         setError('')
-        // orderPostApi(submitOrderData).then(res=>res.json())
-        // .then(async(data: any)=>{
-        //     console.log(data)
-            
-        //     toast.success("Order Success")
-        //     dispatch(clearCart())
-        //     navigate('/')
-        // }).catch(error=>console.log(error))
         console.log(paymentMethod)
           // orderPostApi body from CheckoutSummary
-       
-    
       }else{
         setError(error?.message||'')
           console.log(error)
@@ -83,7 +77,7 @@ const CheckoutForm = () => {
         payment_method: {
           card: card,
           billing_details: {
-            name: 'Jenny Rosen',
+            name: 'User',
           },
         },
       })
@@ -92,8 +86,25 @@ const CheckoutForm = () => {
         // Handle result.error or result.paymentIntent
         const {paymentIntent, error}=result
           if(paymentIntent?.status==='succeeded'){
-        console.log(paymentIntent)
-        setTransactionID(paymentIntent.id)
+            const paymentInfo={
+              payment_method:paymentIntent.payment_method_types[0],
+              transactionId:paymentIntent.id
+            }
+         dispatch(paymentInfoUpdate(paymentInfo))
+          setTransactionID(paymentIntent.id)
+        console.log(shippingInfo)
+        const newOrder={shippingInfo,email,price,status,order_product,paymentInfo}
+        console.log("newOrder: ",newOrder)
+
+        orderPostApi(newOrder).then(res=>res.json())
+        .then(async(data: any)=>{
+            console.log(data)
+            
+            toast.success("Order Success")
+            dispatch(clearCart())
+            navigate('/')
+        }).catch(error=>console.log(error))
+
       }
       else{
         console.log(error)

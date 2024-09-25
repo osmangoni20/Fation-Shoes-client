@@ -12,11 +12,17 @@ import { clearCart } from "../../redux/features/CartSlice";
 import { add_new_order } from "../../redux/features/OrderSlice";
 import { orderPostApi } from "./Payment/orderApi";
 
-type TOrder={ order_product: TProductInfo[];
-     status: string; shippingInfo: object; 
-      payable_cost: number; payment_info: {
+type TOrder={
+    email:string,
+    order_product: TProductInfo[];
+    status: string;
+    shippingInfo: any;
+    payable_cost: number;
+    payment_info: {
         payment_method: string;
-    }}
+        transactionId: string;
+    };
+}
 
     
 const ShippingAddress = () => {
@@ -28,6 +34,8 @@ const ShippingAddress = () => {
         const [submitData, setSubmitData]=useState<TOrder>()
         const [payment_method,setPayment_method]=useState('');
     const {products,total}=useAppSelector((state)=>state.cartR)
+    const {shippingInfo,payment_info}=useAppSelector((state)=>state.orderR)
+
     // const [itemCollection, setItemCollection] = useState(
     //     JSON.parse(localStorage.getItem("cartItemList"))
     //   );
@@ -39,19 +47,24 @@ const ShippingAddress = () => {
         setModel(false)
     }
     const onSubmit= async(data)=>{
-        setModel(true)
+
         const newOrder={
+            email:user?.email||'',
             order_product:products,
             status:"pending",
             shippingInfo:data,
-            payable_cost:total,
+            price:total,
             payment_info:{
-                payment_method
+                payment_method,
+                transactionId:''
             }
         }
         dispatch(add_new_order(newOrder))
-
-        setSubmitData(newOrder);
+        console.log("shippingInfo", shippingInfo,payment_info.payment_method)
+        if(payment_method==='cash_on_delivery'){
+            setModel(true)
+            setSubmitData(newOrder);
+        }
     }
     
  const isModelConfirm= async()=>{
@@ -146,7 +159,7 @@ const ShippingAddress = () => {
             <h3 className="text-3xl font-bold p-3">Payment Method</h3>
             <div className="flex flex-wrap ">
             <label htmlFor="stripe" className="flex items-center gap-3 paymentMethodCart">
-                <input id="stripe" value={"bkash"} {...register("payment_method")}
+                <input id="stripe" value={"stripe"} {...register("payment_method")}
                 onChange={(e)=>HandlePaymentMethod(e)} 
                 name="payment_method" type="radio"  className="border-none" />
                 Stripe</label>
@@ -163,18 +176,21 @@ const ShippingAddress = () => {
           </div>
           
             <div className="p-3 flex justify-end ">
-                {
-                    payment_method!=='cash_on_delivery'?
-                    <Link to={"/order/payment"}>
-                        <button className=" text-white btn_secondary cursor-pointer ">
-                            Go To Payment
-                        </button>
-                    </Link>:
-               
-            <button className=" text-white btn_secondary cursor-pointer ">
-                  <input type="submit" value={"Order Now"} className="transition-all cursor-pointer translate-x-2 ease-in-out delay-75 duration-200"></input>
-            </button>
-             }
+            {
+                payment_info?.payment_method==='cash_on_delivery'|| payment_info?.payment_method===''&&
+                <button className=" text-white btn_secondary cursor-pointer ">
+                <input type="submit" value={"Order Now"} className="transition-all cursor-pointer translate-x-2 ease-in-out delay-75 duration-200"></input>
+                </button>
+}{
+              payment_info?.payment_method!=='cash_on_delivery'&& <Link to={"/order/payment"}>
+                <button className=" text-white btn_secondary cursor-pointer ">
+                <input type="submit" value={"Payment"} className="transition-all cursor-pointer translate-x-2 ease-in-out delay-75 duration-200"></input>
+                </button>
+               </Link>
+            }
+            
+           
+             
             </div>
             </form>
         </div>
