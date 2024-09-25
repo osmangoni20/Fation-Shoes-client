@@ -105,6 +105,12 @@ const AuthProvider = ({ children }) => {
           error,
         });
       }
+      else if(error?.code==="auth/user-not-found"){
+        setError({
+          errorName: "This email not registered. plz SignUp",
+          error,
+        });
+      }
     });
   };
   const UpdateProfile = (name, img) => {

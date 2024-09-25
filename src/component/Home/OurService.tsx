@@ -6,7 +6,8 @@ const OurService = () => {
     <div className="grid grid-cols-1 md:grid-cols-4 gap-2 p-5 text-white">
      
 
-      <div className="py-6 px-2  flex justify-center items-center align-middle gap-2 service_cart_bg rounded-md">
+      <div className="py-6 px-2  flex justify-center items-center
+       align-middle gap-2 service_cart_bg rounded-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

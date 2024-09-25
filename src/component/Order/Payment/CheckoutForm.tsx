@@ -95,13 +95,10 @@ console.log(shippingInfo)
             }
          dispatch(paymentInfoUpdate(paymentInfo))
           setTransactionID(paymentIntent.id)
-        console.log(shippingInfo)
         const newOrder={shippingInfo,email,price,status,order_product,paymentInfo}
-        console.log("newOrder: ",newOrder)
 
         orderPostApi(newOrder).then(res=>res.json())
         .then(async(data: any)=>{
-            console.log(data)
             
             toast.success("You Order Success")
             dispatch(clearCart())
@@ -153,7 +150,7 @@ const handleSubmit= async(e)=>{
        
         <div className= {`${transactionID && "hidden"} flex justify-center mt-6`}>
        {
-        !isLoading&& <button type="submit" disabled={!stripe||!clientSecret} className="text-white py-2 btn_secondary">
+        !isLoading&& <button type="submit" disabled={!stripe||!clientSecret} className={` ${(!stripe||!clientSecret)&&"disabled"}text-white cursor-pointer py-2 btn_secondary`}>
         Confirm Order
 </button>
        }

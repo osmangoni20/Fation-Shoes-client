@@ -3,14 +3,16 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Modal from "../../component/shared/Modal";
 import toast from "react-hot-toast";
+import Loader from "../../component/shared/Loader";
 
 const AddProduct = () => {
     const {register,handleSubmit}=useForm()
     const [isOpen,setModel]=useState(false)
     const [isSubmitData, setSubmitData]=useState(null)
     const url="https://fation-shoes.onrender.com/add_product"
-    const notify = (message) => toast(message);
+    const [isLoading, setIsLoading]=useState(false)
     const isSubmit= async()=>{
+        setIsLoading(true)
         await fetch(url,{
             method:"POST",
             headers:{
@@ -19,9 +21,11 @@ const AddProduct = () => {
             body:JSON.stringify(isSubmitData)
         }).then(res=>res.json())
         .then(async(data)=>{
+            setIsLoading(false)
             console.log(data)
             setModel(false)
-          notify("Add Successfully Done")
+            toast.success("Add Successfully Done")
+       
         })
     }
 
@@ -83,6 +87,10 @@ const AddProduct = () => {
                 <div className="flex justify-center">
                     <input type="submit" value={"Add Product"} className="font-bold text-lg bg-primary text-white p-4 rounded"></input>
                 </div>
+
+                {
+                    isLoading&&<Loader/>
+                }
             </form>
         </div>
     );

@@ -6,7 +6,8 @@ type TProductInfo={
     pd_brand:string,
     pd_price:number,
     pd_image:string,
-    pd_category:string
+    pd_category:string,
+    pd_description:string
 }
 
 // eslint-disable-next-line react/prop-types
