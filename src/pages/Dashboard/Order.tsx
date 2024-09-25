@@ -58,7 +58,7 @@ const Order = () => {
             <tbody className="space-x-4">
               {/* row 1 */}
               {orderData?.map((order) => (
-              order?.status==="pending"&&<tr key={order._id}>
+             <tr key={order._id}>
                   <td className="flex-1">
                     <p className="text-md font-medium">
                       {order?.orderDate || new Date().toISOString()}

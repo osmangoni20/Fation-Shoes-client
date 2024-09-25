@@ -122,7 +122,6 @@ const route =createBrowserRouter([
         element:<PrivateRoute>
           <Profile/>
         </PrivateRoute>,
-        loader:()=>fetch('https://fation-shoes.onrender.com/product'),
       },
 
       {
@@ -132,13 +131,7 @@ const route =createBrowserRouter([
         </PrivateRoute>,
         loader:()=>fetch('https://fation-shoes.onrender.com/user'),
       },
-      {
-        path:"shop",
-        element:<PrivateRoute>
-          <Shop/>
-        </PrivateRoute>,
-        loader:()=>fetch('https://fation-shoes.onrender.com/product'),
-      },
+      
       
       {
         path:'add-products',
