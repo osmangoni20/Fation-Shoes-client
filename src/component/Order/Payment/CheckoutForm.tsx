@@ -17,7 +17,7 @@ const CheckoutForm = () => {
     const dispatch=useAppDispatch()
     const navigate=useNavigate()
     const[isModel,setModel]=useState(false);
-
+    const [error, setError]= useState<string | undefined>()
     const isClose=()=>{
         setModel(false)
     }
@@ -47,6 +47,7 @@ const CheckoutForm = () => {
             }).catch(error=>console.log(error))
             console.log(paymentMethod)
         }else{
+          setError(error.message)
             console.log(error)
         }
     }
@@ -89,6 +90,7 @@ const handleSubmit= async(e)=>{
         </button>
         </div>
       </form>
+      <p>{error}</p>
         </div>
        </div>
        
