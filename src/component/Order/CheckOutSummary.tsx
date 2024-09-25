@@ -5,8 +5,9 @@ import { useAppSelector } from "../../redux/hooks";
 
 
 // eslint-disable-next-line react/prop-types
-const CheckOutSummary = () => {
+const CheckOutSummary = ({submitType}) => {
   const {total,subTotal,shippingCost}=useAppSelector(state=>state.cartR)
+  
 
     return (
         <div>
@@ -32,9 +33,10 @@ const CheckOutSummary = () => {
             <div className="flex justify-center ">
               {subTotal> 0 && (
                <div>
-                 <button className=" text-white btn_secondary text-xl w-full h-[60px]">
+                 {submitType!=='payment'&&<button className=" text-white btn_secondary text-xl w-full h-[60px]">
                   <Link to={"/order/shippingAddress"}>Proceed Checkout</Link>
                 </button>
+}
                </div>
                 
               )}

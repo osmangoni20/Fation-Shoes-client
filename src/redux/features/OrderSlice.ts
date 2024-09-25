@@ -6,14 +6,14 @@ type TInitialState={
     status: string;
     shippingInfo: object;
     payable_cost: number;
-    payment_method: string;
+    payment_info: object;
 }
 const initialState:TInitialState={
     order_product:[],
     status:"",
     shippingInfo:{},
     payable_cost:0,
-    payment_method:''
+    payment_info:{}
 }
 
 const OrderSlice=createSlice({
@@ -22,6 +22,9 @@ const OrderSlice=createSlice({
     reducers:{
         add_new_order:(state,action:PayloadAction<TInitialState>)=>{
             state=action.payload
+        },
+        paymentInfoUpdate:(state,action:PayloadAction<TInitialState>)=>{
+            state.payment_info={...state.payment_info,...action.payload}
         }
     }
 })

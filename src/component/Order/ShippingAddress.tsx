@@ -14,7 +14,9 @@ import { orderPostApi } from "./Payment/orderApi";
 
 type TOrder={ order_product: TProductInfo[];
      status: string; shippingInfo: object; 
-      payable_cost: number; payment_method: string; }
+      payable_cost: number; payment_info: {
+        payment_method: string;
+    }}
 
     
 const ShippingAddress = () => {
@@ -43,8 +45,12 @@ const ShippingAddress = () => {
             status:"pending",
             shippingInfo:data,
             payable_cost:total,
-            payment_method}
+            payment_info:{
+                payment_method
+            }
+        }
         dispatch(add_new_order(newOrder))
+
         setSubmitData(newOrder);
     }
     
@@ -174,7 +180,7 @@ const ShippingAddress = () => {
         </div>
         </div>
         <div className="col-span-1 my-6">
-         <CheckOutSummary></CheckOutSummary>
+         <CheckOutSummary submitType={"payment"}></CheckOutSummary>
         </div>
         </div>
         </div>

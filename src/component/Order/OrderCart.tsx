@@ -160,7 +160,7 @@ const OrderCart = () => {
           </div>
         </div>
         <div className="col-span-1 my-6">
-         <CheckOutSummary></CheckOutSummary>
+         <CheckOutSummary submitType={"proceed checkout"}></CheckOutSummary>
         </div>
       </div>
     </div>
