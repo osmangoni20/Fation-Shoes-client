@@ -12,7 +12,8 @@ const Profile = () => {
             .then( (data) =>{
          setUserData(data)
             });
-    },[user?.email])
+    },[])
+    console.log(userData)
     return (
         <div>
             <div className="flex justify-center items-center">
@@ -27,7 +28,7 @@ const Profile = () => {
                 <ul className="grid grid-cols-2 gap-10 text-lg text-white mt-5">
                     <li className="profileDataList">
                      <span>Name:</span>
-                    <span>{user?.displayName||(userData?.first_name+userData.last_name)}</span>
+                    <span>{user?.displayName||(userData?.first_name + userData?.last_name)}</span>
                     </li>
                     <li className="profileDataList">
                      Email:

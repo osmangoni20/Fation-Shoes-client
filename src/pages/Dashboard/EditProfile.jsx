@@ -33,17 +33,17 @@ const HandleChangePassword=(e)=>{
 const isSubmit= async()=>{
     setModel(false)
     
-   await UpdateEmail(EditData?.email||user?.email).then(data=>console.log(data))
+await UpdateEmail(EditData?.email||user?.email).then(data=>console.log(data))
   await fetch(`https://fation-shoes.onrender.com/user/${user?.email}`, {
         method: "PATCH",
         headers: {
         "Content-type": "application/json",
         authorization:`Bearer ${token}`
         },
-        body: JSON.stringify(EditData),
+        body: JSON.stringify({...EditData,img:user?.photoURL}),
     }).then((res) => res.json())
         .then( async() =>{
-           
+           console.log(EditData)
             await UpdateProfile((EditData?.first_name),user?.photoURL)
            notify("Update Profile Successfully")
     
@@ -102,7 +102,7 @@ onChange: e => HandleEditInputField(e)
 </div>
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="email"> Email</label> 
-    <input  type="text" id="email" value={userData?.email||user.email} {...register("email",{
+    <input  type="text" disabled id="email" value={userData?.email||user.email} {...register("email",{
 onChange: e => HandleEditInputField(e)})}/>
 </div>
 <div className="w-full my-2">
