@@ -1,7 +1,7 @@
 
 
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import toast from "react-hot-toast";
 import { clearCart } from '../../../redux/features/CartSlice';
@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from '../../shared/Modal';
 import { orderPostApi } from './orderApi';
 import './CheckoutForm.css';
+import useAuth from '../../../hooks/useAuth';
 const CheckoutForm = () => {
 
     const stripe = useStripe();
@@ -17,43 +18,94 @@ const CheckoutForm = () => {
     const dispatch=useAppDispatch()
     const navigate=useNavigate()
     const[isModel,setModel]=useState(false);
-    const [error, setError]= useState<string | undefined>()
+    const [cardError, setError]= useState<string | undefined>()
+    const [clientSecret, setClientSecret] =useState('')
+    const {total}=useAppSelector(state=>state.cartR)
+    const [transactionID, setTransactionID]=useState('')
+    const{user}:any=useAuth()
+  
+     useEffect(() => {
+
+      if(total<0){
+        setError(" The amount must be greater than or equal to the minimum charge amount")
+      }
+      fetch("http://localhost:3000/create-payment-intent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({price:500}),
+      }).then(res=>res.json())
+      .then(data=>{
+        console.log(data.clientSecret)
+        setClientSecret(data.clientSecret);
+      })
+     
+     }, [total])
     const isClose=()=>{
         setModel(false)
     }
     const isConfirmFromModel= async()=>{
         setModel(false)
         if (!stripe || !elements) {
-            // Stripe.js has not loaded yet. Make sure to disable
-            return;
-          }
-    
-        const card=elements.getElement(CardElement)
-        if(card===null){return}
-    
-        const {error, paymentMethod}=await stripe.createPaymentMethod({
-            type:'card',
-            card
-        })
-        if(!error){
-            // orderPostApi body from CheckoutSummary
-            orderPostApi(submitOrderData).then(res=>res.json())
-            .then(async(data: any)=>{
-                console.log(data)
-                
-                toast.success("Order Success")
-                dispatch(clearCart())
-                navigate('/')
-            }).catch(error=>console.log(error))
-            console.log(paymentMethod)
-        }else{
-          setError(error.message)
-            console.log(error)
+          // Stripe.js has not loaded yet. Make sure to disable
+          return;
         }
+    
+      const card=elements.getElement(CardElement)
+      if(card===null){return}
+    
+      const {error, paymentMethod}=await stripe.createPaymentMethod({
+          type:'card',
+          card
+      })
+      console.log(error,paymentMethod)
+      if(!error&&clientSecret&&paymentMethod){
+        setError('')
+        // orderPostApi(submitOrderData).then(res=>res.json())
+        // .then(async(data: any)=>{
+        //     console.log(data)
+            
+        //     toast.success("Order Success")
+        //     dispatch(clearCart())
+        //     navigate('/')
+        // }).catch(error=>console.log(error))
+        console.log(paymentMethod)
+          // orderPostApi body from CheckoutSummary
+       
+    
+      }else{
+        setError(error?.message||'')
+          console.log(error)
+    
+      }
+      console.log(clientSecret)
+     stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: 'Jenny Rosen',
+          },
+        },
+      })
+      .then(function(result) {
+        console.log(result)
+        // Handle result.error or result.paymentIntent
+        const {paymentIntent, error}=result
+          if(paymentIntent?.status==='succeeded'){
+        console.log(paymentIntent)
+        setTransactionID(paymentIntent.id)
+      }
+      else{
+        console.log(error)
+        setError(`Try Again`)
+      }
+      });
     }
 const handleSubmit= async(e)=>{
     e.preventDefault()
     setModel(true)
+    // payment code working after conformation model submit
+
 }
     return (
        <div className="h-screen w-[50%] flex justify-center items-center m-auto">
@@ -84,13 +136,19 @@ const handleSubmit= async(e)=>{
           }}
         />
        
-        <div className='flex justify-center my-6'>
-        <button type="submit" disabled={!stripe} className=" text-white py-2 btn_secondary cursor-pointer ">
+        <div className= {`${transactionID && "hidden"} flex justify-center mt-6`}>
+        <button type="submit" disabled={!stripe||!clientSecret} className="text-white py-2 btn_secondary cursor-pointer">
                             Confirm Order
         </button>
         </div>
+       <div>
+       <p className='text-red-600 text-medium pb-5 text-center'>{cardError}</p>
+       {transactionID&&<div className='text-blue-600 text-center text-medium pb-5-'>
+        <p className='text-2xl font-semibold '>Congratulations !!</p>
+        <p>Your Payment Transaction ID-{transactionID}</p>
+        </div>}
+       </div>
       </form>
-      <p>{error}</p>
         </div>
        </div>
        
