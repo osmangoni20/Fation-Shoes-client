@@ -20,6 +20,11 @@ import ShippingAddress from "../component/Order/ShippingAddress";
 import Order from "../pages/Dashboard/Order";
 import React from "react";
 import Payment from "../component/Order/Payment/Payment.tsx";
+import PaymentHistory from "../pages/Dashboard/UserDashboard/PaymentHistory.tsx";
+import Review from "../component/Home/Review.tsx";
+import AddReview from "../pages/Dashboard/UserDashboard/AddReview.tsx";
+import Shop from "../pages/Dashboard/UserDashboard/Shop.tsx";
+import MyOrder from "../pages/Dashboard/UserDashboard/MyOrder.tsx";
 
 const route =createBrowserRouter([
     {
@@ -93,18 +98,38 @@ const route =createBrowserRouter([
         element:<PrivateRoute><Order/></PrivateRoute>
       },
       {
+        path:"myOrder",
+        element:<PrivateRoute><MyOrder/></PrivateRoute>
+      },
+      {
+        path:"paymentHistory",
+        element:<PrivateRoute><PaymentHistory/></PrivateRoute>
+      },
+      {
+        path:"add_review",
+        element:<PrivateRoute><AddReview/></PrivateRoute>
+      },
+      {
         path:"user_profile",
         element:<PrivateRoute>
           <Profile/>
         </PrivateRoute>,
         loader:()=>fetch('https://fation-shoes.onrender.com/product'),
       },
+
       {
         path:"/dashboard/user_profile/edit_profile",
         element:<PrivateRoute>
           <EditProfile/>
         </PrivateRoute>,
         loader:()=>fetch('https://fation-shoes.onrender.com/user'),
+      },
+      {
+        path:"shop",
+        element:<PrivateRoute>
+          <Shop/>
+        </PrivateRoute>,
+        loader:()=>fetch('https://fation-shoes.onrender.com/product'),
       },
       
       {

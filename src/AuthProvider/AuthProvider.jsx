@@ -30,8 +30,24 @@ const AuthProvider = ({ children }) => {
       if (user) {
         setUser(user);
         setLoading(false);
+        if(user.email){
+            const fetchData = async () => {
+              const res= await fetch(`https://fation-shoes.onrender.com/isAdmin/${user.email}`)
+              const data= await res.json();
+              // setIsAdmin(data);
+              console.log(data)
+              if(data.email){
+                localStorage.setItem('isAdmin',true);
+              }else{
+                localStorage.setItem('isAdmin',false);
+              }
+             
+            }
+        
+            fetchData()
+          }
       } else {
-        setLoading(true);
+        setLoading(false);
       }
       return () => {
         return unsubscribe();
@@ -77,6 +93,12 @@ const AuthProvider = ({ children }) => {
       } else if (error?.code === "auth/invalid-credential") {
         setError({
           errorName: "Your Email or Password incorrect. Go to SignUp",
+          error,
+        });
+      }
+      else if (error?.code === "auth/wrong-password") {
+        setError({
+          errorName: "Your Password incorrect",
           error,
         });
       }
