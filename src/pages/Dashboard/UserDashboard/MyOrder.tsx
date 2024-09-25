@@ -16,37 +16,41 @@ const fetchData=()=>{
    useEffect(() => {
     fetchData()
    }, [])
-   
+   console.log(userOrder)
     return (
         <div>
-            <h2 className='text-center'>Your Order</h2>
-            {
-                userOrder?.order_product?.map(product=>{
+            <h2 className='text-center'>Your Order Item</h2>
+           <div className='flex flex-wrap gap-2 space-y-10'>
+           {
+                userOrder?.map((order)=>{
                     return(
-                        <div className="card w-80 h-[400px] pt-5 bg-base-100 shadow-xl text-black">
-                        <figure className="h-[180px] w-full"><img src={product?.pd_image} alt="Shoes" /></figure>
-                        <div className="card-body">
-                        <h3 className="card-title">
-                        {product?.pd_name}
-                        <div className="badge badge-secondary">{product?.pd_brand}</div>
-                        </h3>
-                    
-                        <div className="card-actions justify-top">
-                        <div className="badge badge-outline bg-gray-500 p-2 text-white font-bold text-md">{ product?.pd_price} $</div> 
-        
-                        </div>
-                
-                        <div className="flex gap-1 justify-center items-center">
                         
-                        <button className="bg-blue-500 font-bold text-white">{userOrder?.status}</button>
-    
-                       
-                        </div>
-                        </div>
-                        </div> 
+                            order?.order_product?.map(product=>{
+                                return(
+                                    <div className="card w-80  pt-5 bg-base-100 shadow-xl text-black">
+                                    <figure className="h-[180px] w-full"><img src={product?.pd_image} alt="Shoes" /></figure>
+                                    <div className="card-body">
+                                    <h3 className="card-title">
+                                    {product?.pd_name}
+                                    <div className="badge badge-secondary">{product?.pd_brand}</div>
+                                    </h3>
+                                
+                                    <div className="card-actions justify-top">
+                                    <div className="badge badge-outline bg-gray-500 p-2 text-white font-bold text-md">{ product?.pd_price} $</div> 
+                    
+                                    </div>
+                                    <p className='text-justify'>{product.pd_description}</p>
+                                    <p className="text-center p-1 uppercase rounded font-bold text-blue-500">{userOrder[0]?.status}</p>
+            
+                                    </div>
+                                    </div> 
+                                )
+                            })
+                        
                     )
                 })
             }
+           </div>
              
         </div>
     );

@@ -26,11 +26,12 @@ const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
   const checkAdmin= async(user)=>{
+    console.log(user)
     const res= await fetch(`https://fation-shoes.onrender.com/admin/${user.email}`)
     const data= await res.json();
     // setIsAdmin(data);
-    console.log(data)
-    if(data.email){
+    console.log("data",data)
+    if(data?.email){
       localStorage.setItem('isAdmin',true);
     }else{
       localStorage.setItem('isAdmin',false);

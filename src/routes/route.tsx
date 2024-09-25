@@ -25,6 +25,7 @@ import Review from "../component/Home/Review.tsx";
 import AddReview from "../pages/Dashboard/UserDashboard/AddReview.tsx";
 import Shop from "../pages/Dashboard/UserDashboard/Shop.tsx";
 import MyOrder from "../pages/Dashboard/UserDashboard/MyOrder.tsx";
+import OrderDetails from "../pages/Dashboard/OrderDetails.tsx";
 
 const route =createBrowserRouter([
     {
@@ -96,6 +97,13 @@ const route =createBrowserRouter([
       {
         path:"order",
         element:<PrivateRoute><Order/></PrivateRoute>
+      },
+      
+      {
+        path:"/dashboard/order/orderDetails/:email",
+        element:<PrivateRoute><OrderDetails/></PrivateRoute>,
+        loader:({params})=>fetch(`https://fation-shoes.onrender.com/order/${params.email}`),
+
       },
       {
         path:"myOrder",

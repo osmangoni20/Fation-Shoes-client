@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 
 const DashboardLayout = () => {
   const { logOut, user } = useAuth();
-  const [isAdmin, setIsAdmin]=useState(false)
+  const [isAdmin, setIsAdmin]=useState(null)
 
 
   useEffect(()=>{
-setIsAdmin( localStorage.getItem('isAdmin'))
+    console.log(localStorage.getItem("isAdmin"))
+setIsAdmin(localStorage.getItem('isAdmin'))
   },[])
 
-  
+  console.log(isAdmin)
   // if(admin.email===user.email){
   //   setIsAdmin(true)
   // }
@@ -26,11 +27,11 @@ setIsAdmin( localStorage.getItem('isAdmin'))
               src={user?.photoURL}
             />
           </figure>
-          <h3 className="uppercase text-2xl">{user?.displayName.split(' ')[0]}</h3>
+          <h3 className="uppercase text-2xl">{user?.displayName?.split(' ')[0]}</h3>
           <p className="lowercase text-sm">{user?.email}</p>
         </div>
         {
-          isAdmin?
+          isAdmin==='true'?
 <ul className="pl-5">
           <NavLink
             to="home"

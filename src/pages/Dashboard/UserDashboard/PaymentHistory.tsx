@@ -7,7 +7,7 @@ const PaymentHistory = () => {
     const {user}:any=useAuth()
     const baseURL = `https://fation-shoes.onrender.com/order/${user?.email}`
 
-    const[order, setUserOrder]=useState<any>()
+    const[userOrder, setUserOrder]=useState<any>()
 const fetchData=()=>{
     axios.get(baseURL).then((response) => {
         setUserOrder(response.data);
@@ -17,7 +17,7 @@ const fetchData=()=>{
     fetchData()
    }, [])
    
-   console.log(order)
+   console.log(userOrder)
   //  const { payment_method,transactionId
     return (
         <div>
@@ -26,6 +26,7 @@ const fetchData=()=>{
     {/* head */}
     <thead>
       <tr>
+        <th>Date</th>
         <th>Email</th>
         <th>Price</th>
         <th>Payment Method</th>
@@ -35,13 +36,14 @@ const fetchData=()=>{
     <tbody>
       {/* row 1 */}
       {
-        order?.map(order=>{
+        userOrder?.map(order=>{
           return(
-            <tr className="bg-base-200">
+            <tr className="space-y-10 "> 
+          <td>{order?.date|| new Date().toLocaleDateString()}</td>
         <td>{order?.email}</td>
-        <td>{order.price}</td>
-        <td>{order?.payment_info?.payment_method}</td>
-        <td>{order?.payment_info?.transactionId}</td>
+        <td>{order?.price}</td>
+        <td>{order?.paymentInfo?.payment_method}</td>
+        <td>{order?.paymentInfo?.transactionId}</td>
       </tr>
           )
         })

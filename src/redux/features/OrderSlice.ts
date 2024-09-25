@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TProductInfo } from "../../component/Home/SingleProduct";
 
 type TInitialState={
+    date:string;
     email:string,
     order_product: TProductInfo[];
     status: string;
@@ -13,6 +14,7 @@ type TInitialState={
     }
 }
 const initialState:TInitialState={
+    date:new Date().toLocaleDateString(),
     email:"",
     order_product:[],
     status:"",
