@@ -63,17 +63,17 @@ const route =createBrowserRouter([
           },
           {
             path:"/order/shippingAddress",
-            element:<ShippingAddress/>
+            element:<PrivateRoute><ShippingAddress/></PrivateRoute>
           },
           {
             path:"/order/payment",
-            element:<Payment/>
+            element:<PrivateRoute><Payment/></PrivateRoute>
           }
         ],
       },
       {
         path: "dashboard",
-        element: <DashboardLayout/>,
+        element:<PrivateRoute><DashboardLayout/></PrivateRoute> ,
         errorElement: <ErrorPage/>,
         
         children: [
@@ -90,7 +90,7 @@ const route =createBrowserRouter([
       },
       {
         path:"order",
-        element:<Order/>
+        element:<PrivateRoute><Order/></PrivateRoute>
       },
       {
         path:"user_profile",

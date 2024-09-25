@@ -100,7 +100,7 @@ console.log(shippingInfo)
         .then(async(data: any)=>{
             console.log(data)
             
-            toast.success("Order Success")
+            toast.success("You Order Success")
             dispatch(clearCart())
             navigate('/')
         }).catch(error=>console.log(error))
