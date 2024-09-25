@@ -33,7 +33,7 @@ const CheckOutSummary = () => {
               {subTotal> 0 && (
                <div>
                  <button className=" text-white btn_secondary text-xl w-full h-[60px]">
-                  <Link to={"/order"}>Proceed Checkout</Link>
+                  <Link to={"/order/shippingAddress"}>Proceed Checkout</Link>
                 </button>
                </div>
                 

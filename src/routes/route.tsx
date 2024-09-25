@@ -19,6 +19,7 @@ import OrderCart from "../component/Order/OrderCart";
 import ShippingAddress from "../component/Order/ShippingAddress";
 import Order from "../pages/Dashboard/Order";
 import React from "react";
+import Payment from "../component/Order/Payment/Payment.tsx";
 
 const route =createBrowserRouter([
     {
@@ -61,8 +62,12 @@ const route =createBrowserRouter([
             element:<OrderCart/>
           },
           {
-            path:"/order",
+            path:"/order/shippingAddress",
             element:<ShippingAddress/>
+          },
+          {
+            path:"/order/payment",
+            element:<Payment/>
           }
         ],
       },

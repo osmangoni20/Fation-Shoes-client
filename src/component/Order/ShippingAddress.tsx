@@ -4,24 +4,35 @@ import Modal from "../shared/Modal";
 import { FormProps, useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
-import { useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { TProductInfo } from "../Home/SingleProduct";
+import { clearCart } from "../../redux/features/CartSlice";
+import { add_new_order } from "../../redux/features/OrderSlice";
 
 type TOrder={ order_product: TProductInfo[];
      status: string; shippingInfo: object; 
       payable_cost: number; payment_method: string; }
+      const url="https://fation-shoes.onrender.com/add_order"
 
-
+      export  const orderPostApi= async(submitData)=>{
+      return await fetch(url,{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body:JSON.stringify(submitData)
+        })
+    }
 const ShippingAddress = () => {
     const{user}:any=useAuth()
     const navigate=useNavigate();
     const {register, handleSubmit}=useForm()
     const[isOpen,setModel]=useState(false);
+    const dispatch=useAppDispatch()
         const [submitData, setSubmitData]=useState<TOrder>()
         const [payment_method,setPayment_method]=useState('');
-    const url="https://fation-shoes.onrender.com/add_order"
     const {products,total}=useAppSelector((state)=>state.cartR)
     // const [itemCollection, setItemCollection] = useState(
     //     JSON.parse(localStorage.getItem("cartItemList"))
@@ -41,21 +52,19 @@ const ShippingAddress = () => {
             shippingInfo:data,
             payable_cost:total,
             payment_method}
+        dispatch(add_new_order(newOrder))
         setSubmitData(newOrder);
     }
- const isSubmit= async()=>{
-    console.log(submitData)
-        await fetch(url,{
-            method:"POST",
-            headers:{
-                "Content-type":"application/json"
-            },
-            body:JSON.stringify(submitData)
-        }).then(res=>res.json())
-        .then(async(data)=>{
+    
+ const isModelConfirm= async()=>{
+
+    
+        orderPostApi(submitData).then(res=>res.json())
+        .then(async(data: any)=>{
             console.log(data)
             setModel(false)
             toast.success("Order Success")
+            dispatch(clearCart())
             navigate('/')
         })
     }
@@ -67,14 +76,14 @@ const ShippingAddress = () => {
 
     return (
         <div className="ghost_bg">
-             <Modal isClose={isClose} isOpen={isOpen} isSubmit={isSubmit}>
+             <Modal isClose={isClose} isOpen={isOpen} isSubmit={isModelConfirm}>
                 <Modal.Header>Are You Confirm Order</Modal.Header>
                 <div className="flex justify-center">
                 <Modal.Submit>Yes</Modal.Submit>
                 </div>
             </Modal>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3">
-          <div className="col-span-2 p-5 my-6">
+          <div className="col-span-2 px-5 my-6">
           <div className="bg-white p-3 flex justify-between items-center border-b-2 border-gray-500">
           <h3 className="text-3xl font-bold">Shipping Address</h3>
           <p> Fill Out Your Information</p>
@@ -138,7 +147,11 @@ const ShippingAddress = () => {
           <div className="bg-white my-1 p-4">
             <h3 className="text-3xl font-bold p-3">Payment Method</h3>
             <ul className="flex flex-wrap ">
-                
+            <li className="flex items-center gap-3 paymentMethodCart">
+                <input value={"bkash"} {...register("payment_method")}
+                onChange={(e)=>HandlePaymentMethod(e)} 
+                name="payment_method" type="radio"  className="border-none" />
+                Stripe</li>
                 <li className="flex items-center gap-3 paymentMethodCart">
                 <input value={"bkash"} {...register("payment_method")}
                 onChange={(e)=>HandlePaymentMethod(e)} 
@@ -147,14 +160,23 @@ const ShippingAddress = () => {
                 <li className="flex items-center gap-3 paymentMethodCart">
                 <input value={"nagod"} {...register("payment_method")}
                  onChange={(e)=>HandlePaymentMethod(e)} name="payment_method" type="radio"   className="border-none" />
-                Nagod</li>
+                SSLCommerce</li>
             </ul>
           </div>
           
             <div className="p-3 flex justify-end ">
+                {
+                    payment_method!=='cash_on_delivery'?
+                    <Link to={"/order/payment"}>
+                        <button className=" text-white btn_secondary cursor-pointer ">
+                            Go To Payment
+                        </button>
+                    </Link>:
+               
             <button className=" text-white btn_secondary cursor-pointer ">
                   <input type="submit" value={"Order Now"} className="transition-all cursor-pointer translate-x-2 ease-in-out delay-75 duration-200"></input>
-                </button>
+            </button>
+             }
             </div>
             </form>
         </div>
