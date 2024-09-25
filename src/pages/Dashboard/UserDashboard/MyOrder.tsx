@@ -19,6 +19,7 @@ const fetchData=()=>{
    
     return (
         <div>
+            <h2 className='text-center'>Your Order</h2>
             {
                 userOrder?.order_product?.map(product=>{
                     return(

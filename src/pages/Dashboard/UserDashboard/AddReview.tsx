@@ -59,7 +59,7 @@ const AddReview = () => {
                
            </div>
                 <div className="flex justify-center">
-                    <input type="submit" value={"Add Product"} className="font-bold text-lg bg-primary text-white p-4 rounded"></input>
+                    <input type="submit" value={"Add Review"} className="font-bold text-lg bg-primary text-white p-4 rounded"></input>
                 </div>
             </form>
         </div>

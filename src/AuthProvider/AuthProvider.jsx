@@ -25,26 +25,24 @@ const AuthProvider = ({ children }) => {
   const [authError, setError] = useState({});
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
+  const checkAdmin= async(user)=>{
+    const res= await fetch(`https://fation-shoes.onrender.com/admin/${user.email}`)
+    const data= await res.json();
+    // setIsAdmin(data);
+    console.log(data)
+    if(data.email){
+      localStorage.setItem('isAdmin',true);
+    }else{
+      localStorage.setItem('isAdmin',false);
+    }
+  }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
         setLoading(false);
         if(user.email){
-            const fetchData = async () => {
-              const res= await fetch(`https://fation-shoes.onrender.com/isAdmin/${user.email}`)
-              const data= await res.json();
-              // setIsAdmin(data);
-              console.log(data)
-              if(data.email){
-                localStorage.setItem('isAdmin',true);
-              }else{
-                localStorage.setItem('isAdmin',false);
-              }
-             
-            }
-        
-            fetchData()
+          checkAdmin(user)
           }
       } else {
         setLoading(false);
@@ -86,7 +84,11 @@ const AuthProvider = ({ children }) => {
   };
   const signIn = (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password).catch((error) => {
+    return signInWithEmailAndPassword(auth, email, password).then((result)=>{
+      if(result?.user.email){
+        checkAdmin(user)
+        }
+    }).catch((error) => {
       console.log(error);
       if (error?.code === "auth/network-request-failed") {
         setError({ errorName: "Your internet connection down", error });
