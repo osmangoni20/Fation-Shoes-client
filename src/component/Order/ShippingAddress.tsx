@@ -10,21 +10,13 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { TProductInfo } from "../Home/SingleProduct";
 import { clearCart } from "../../redux/features/CartSlice";
 import { add_new_order } from "../../redux/features/OrderSlice";
+import { orderPostApi } from "./Payment/orderApi";
 
 type TOrder={ order_product: TProductInfo[];
      status: string; shippingInfo: object; 
       payable_cost: number; payment_method: string; }
-      const url="https://fation-shoes.onrender.com/add_order"
 
-      export  const orderPostApi= async(submitData)=>{
-      return await fetch(url,{
-            method:"POST",
-            headers:{
-                "Content-type":"application/json"
-            },
-            body:JSON.stringify(submitData)
-        })
-    }
+    
 const ShippingAddress = () => {
     const{user}:any=useAuth()
     const navigate=useNavigate();
@@ -146,22 +138,22 @@ const ShippingAddress = () => {
           </div>
           <div className="bg-white my-1 p-4">
             <h3 className="text-3xl font-bold p-3">Payment Method</h3>
-            <ul className="flex flex-wrap ">
-            <li className="flex items-center gap-3 paymentMethodCart">
+            <div className="flex flex-wrap ">
+            <label htmlFor="stripe" className="flex items-center gap-3 paymentMethodCart">
+                <input id="stripe" value={"bkash"} {...register("payment_method")}
+                onChange={(e)=>HandlePaymentMethod(e)} 
+                name="payment_method" type="radio"  className="border-none" />
+                Stripe</label>
+                <label htmlFor="bkash" className="flex items-center gap-3 paymentMethodCart">
                 <input value={"bkash"} {...register("payment_method")}
                 onChange={(e)=>HandlePaymentMethod(e)} 
                 name="payment_method" type="radio"  className="border-none" />
-                Stripe</li>
-                <li className="flex items-center gap-3 paymentMethodCart">
-                <input value={"bkash"} {...register("payment_method")}
-                onChange={(e)=>HandlePaymentMethod(e)} 
-                name="payment_method" type="radio"  className="border-none" />
-                Bkash</li>
-                <li className="flex items-center gap-3 paymentMethodCart">
-                <input value={"nagod"} {...register("payment_method")}
+                Bkash</label>
+                <label htmlFor="nagod" className="flex items-center gap-3 paymentMethodCart">
+                <input id="nagod" required value={"nagod"} {...register("payment_method")}
                  onChange={(e)=>HandlePaymentMethod(e)} name="payment_method" type="radio"   className="border-none" />
-                SSLCommerce</li>
-            </ul>
+                SSLCommerce</label>
+            </div>
           </div>
           
             <div className="p-3 flex justify-end ">
