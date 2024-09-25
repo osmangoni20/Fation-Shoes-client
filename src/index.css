@@ -32,6 +32,7 @@
     .btn-solid{
         @apply px-10 py-2 text-center m-2 text-white rounded-md bg-purple-500
         hover:bg-purple-700 focus:bg-purple-700 font-semibold transition-all}
+       
     }
 @layer base{
   
@@ -90,12 +91,12 @@
 .bg-optional-red{
     @apply bg-[#C91F1F]
 }
-
-.bg-primaryOpacity{
-    @apply bg-[#85c7d9]
+.bg_profileCard{
+    @apply bg-[#514F4D]
 }
+
 .profileDataList{
-    @apply flex gap-3 p-5 bg-primaryOpacity rounded-lg font-semibold font-serif;
+    @apply flex gap-3 p-5 bg_profileCard  rounded-lg font-semibold font-serif;
 }
 .active{
     @apply rounded-md p-3 bg-gray-500 flex align-baseline gap-5 font-semibold text-xl w-full
@@ -114,16 +115,16 @@
     @apply invisible bg-[#207F99] text-white text-[16px] rounded-md p-2 transition delay-300 duration-300
 }
 .product_cart{
-    @apply h-[410px] transition rounded-3xl border-2 scale-90 bg-[#F7F7F7]
+    @apply h-[410px] z-40 transition rounded-2xl pb-2  scale-90 bg-[#ffff]
 }
 .product_cart:hover{
-    @apply bg-opacity-10 transition-all duration-500 ease-out shadow-lg cursor-pointer ghost_bg 
+    @apply bg-opacity-10 transition-all border-2 border-[#514F4D] duration-500 ease-out shadow-lg cursor-pointer ghost_bg 
 }
 .product_cart:hover .cart_button{
     @apply visible translate-x-2 transition-all delay-200 duration-1000 ease-in
 }
 .service_cart_bg{
-@apply bg-[#BD1314]
+@apply bg-[#514F4D]
 }
 .banner{
     @apply bg-[url('https://toffpark.com/wp-content/uploads/2024/06/Toffpark-Shoe-Banners-1.jpg')] bg-cover 

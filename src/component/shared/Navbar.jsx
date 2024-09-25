@@ -2,11 +2,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import UserAuthProfileCard from "./UserAuthProfileCard";
-import instagram from "../../assets/instagram.png";
-import twitter from "../../assets/twitter.png";
-import youtube from "../../assets/youtube.png";
-import whatsapp from "../../assets/whatsapp.png";
-import facebook from "../../assets/facebook.png";
+import logo from '../../assets/logo-2.png'
 import { useSelector } from "react-redux";
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -19,42 +15,8 @@ const Navbar = () => {
   const {products}=useSelector(state=>state.cartR)
   return (
     <div className="">
-      <div className="flex text-xl px-2 justify-between items-center ghost_bg py-2 text-black">
-        <h6>+8801878403884</h6>
-        <ul className="flex items-center gap-3 left-0 justify-between">
-          <li className="border-2   h-[40px] mt-2 w-[40px]  bg-white  border-[#F57F03] rounded-full p-2">
-            <Link target="_blank" to={"https://wa.link/nas487"}>
-              <img src={whatsapp} />
-            </Link>
-          </li>
-          <li className="border-2   h-[40px] mt-2 w-[40px]  bg-white  border-[#F57F03] rounded-full p-2">
-            <Link target="_blank" to={"https://youtube.com"}>
-              <img src={youtube} />
-            </Link>
-          </li>
-          <li
-            className="border-2   h-[40px] mt-2 w-[40px] 
-                                bg-white border-[#F57F03]
-                                rounded-full p-2"
-          >
-            <Link target="_blank" to={"/"}>
-              <img src={facebook} />
-            </Link>
-          </li>
-          <li className="border-2   h-[40px] mt-2 w-[40px]  bg-white border-[#F57F03] rounded-full p-2">
-            <Link target="_blank" to={"https://x.com/osmangoni0827"}>
-              <img src={twitter} />
-            </Link>
-          </li>
-          <li className="border-2   h-[40px] mt-2 w-[40px]  bg-white border-[#F57F03] rounded-full p-2">
-            <Link target="_blank" to={"https://www.instagram.com/"}>
-              <img src={instagram} />
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      <div className="navbar  bg-base-100  sticky  shadow-xl z-40">
+      
+      <div className="navbar z-50  bg-[#514F4D] w-full   py-0 text-white  shadow-xl">
         <div className="navbar-start ">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -158,10 +120,9 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <Link to={"/"} className="text-3xl font-serif">
+          <Link to={"/"} className="p-0">
             {/* <Logo/> */}
-            Fati<span className="text-gray-500 animate-spin">o</span>n Sh
-            <span className="text-gray-500 animate-spin">o</span>es
+          <img src={logo} width={100} height={40} alt="FATION SHOE"></img>
           </Link>
         </div>
         <div className="navbar-center hidden md:flex">

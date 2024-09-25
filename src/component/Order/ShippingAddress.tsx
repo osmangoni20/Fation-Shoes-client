@@ -13,11 +13,12 @@ import { add_new_order } from "../../redux/features/OrderSlice";
 import { orderPostApi } from "./Payment/orderApi";
 
 type TOrder={
+    date:string,
     email:string,
     order_product: TProductInfo[];
     status: string;
     shippingInfo: any;
-    payable_cost: number;
+    price: number;
     payment_info: {
         payment_method: string;
         transactionId: string;
@@ -30,6 +31,7 @@ const ShippingAddress = () => {
     const navigate=useNavigate();
     const {register, handleSubmit}=useForm()
     const[isOpen,setModel]=useState(false);
+    const [createPayment, setCreatePayment]=useState(false)
     const dispatch=useAppDispatch()
         const [submitData, setSubmitData]=useState<TOrder>()
         const [payment_method,setPayment_method]=useState('');
@@ -49,6 +51,7 @@ const ShippingAddress = () => {
     const onSubmit= async(data)=>{
 
         const newOrder={
+            date:new Date().toLocaleDateString(),
             email:user?.email||'',
             order_product:products,
             status:"pending",
@@ -64,6 +67,8 @@ const ShippingAddress = () => {
         if(payment_method==='cash_on_delivery'){
             setModel(true)
             setSubmitData(newOrder);
+        }else{
+            setCreatePayment(true)
         }
     }
     
@@ -177,12 +182,11 @@ const ShippingAddress = () => {
           
             <div className="p-3 flex justify-end ">
             {
-                payment_info?.payment_method==='cash_on_delivery'|| payment_info?.payment_method===''&&
-                <button className=" text-white btn_secondary cursor-pointer ">
+        !createPayment&& <button className=" text-white btn_secondary cursor-pointer ">
                 <input type="submit" value={"Order Now"} className="transition-all cursor-pointer translate-x-2 ease-in-out delay-75 duration-200"></input>
                 </button>
 }{
-              payment_info?.payment_method!=='cash_on_delivery'&& <Link to={"/order/payment"}>
+              createPayment&& <Link to={"/order/payment"}>
                 <button className=" text-white btn_secondary cursor-pointer ">
                 <input type="submit" value={"Payment"} className="transition-all cursor-pointer translate-x-2 ease-in-out delay-75 duration-200"></input>
                 </button>

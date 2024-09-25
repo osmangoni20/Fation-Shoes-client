@@ -11,6 +11,7 @@ import { orderPostApi } from './orderApi';
 import './CheckoutForm.css';
 import useAuth from '../../../hooks/useAuth';
 import { paymentInfoUpdate } from '../../../redux/features/OrderSlice';
+import Loader from '../../shared/Loader';
 
 const CheckoutForm = () => {
 
@@ -19,6 +20,7 @@ const CheckoutForm = () => {
     const {shippingInfo,email,order_product,payment_info,price,status}=useAppSelector(state=>state.orderR)
     const dispatch=useAppDispatch()
     const navigate=useNavigate()
+    const [isLoading, setLoading]=useState(false)
     const[isModel,setModel]=useState(false);
     const [cardError, setError]= useState<string | undefined>()
     const [clientSecret, setClientSecret] =useState('')
@@ -86,6 +88,7 @@ console.log(shippingInfo)
         // Handle result.error or result.paymentIntent
         const {paymentIntent, error}=result
           if(paymentIntent?.status==='succeeded'){
+            setLoading(false)
             const paymentInfo={
               payment_method:paymentIntent.payment_method_types[0],
               transactionId:paymentIntent.id
@@ -114,6 +117,7 @@ console.log(shippingInfo)
     }
 const handleSubmit= async(e)=>{
     e.preventDefault()
+    setLoading(true)
     setModel(true)
     // payment code working after conformation model submit
 
@@ -148,12 +152,17 @@ const handleSubmit= async(e)=>{
         />
        
         <div className= {`${transactionID && "hidden"} flex justify-center mt-6`}>
-        <button type="submit" disabled={!stripe||!clientSecret} className="text-white py-2 btn_secondary cursor-pointer">
-                            Confirm Order
-        </button>
+       {
+        !isLoading&& <button type="submit" disabled={!stripe||!clientSecret} className="text-white py-2 btn_secondary">
+        Confirm Order
+</button>
+       }
         </div>
        <div>
        <p className='text-red-600 text-medium pb-5 text-center'>{cardError}</p>
+       {
+        isLoading&&<Loader/>
+       }
        {transactionID&&<div className='text-blue-600 text-center text-medium pb-5-'>
         <p className='text-2xl font-semibold '>Congratulations !!</p>
         <p>Your Payment Transaction ID-{transactionID}</p>

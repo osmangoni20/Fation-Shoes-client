@@ -29,7 +29,7 @@ export type TProductInfo={
                 <>
     <div className="card product_cart  text-black
       p-0  w-84 
-    bg-base-100 font-serif">
+    bg-base-100 font-serif z-5">
         <figure><img className="w-full p-0 h-[250px]"  src={pd_image} alt="Shoes" /></figure>
         
         <div className="card-body px-4 h-[110px] hover:bg-gray-100 rounded">

@@ -17,7 +17,7 @@ const Home = () => {
         .then(data=>setShoe(data))
     },[])
     return (
-        <div className="ghost_bg">
+        <div className="ghost_bg z-10">
      
         <Banner/>
         <OurService/>
