@@ -7,6 +7,9 @@ import cameraImage from "../../assets/camera.png";
 import profileImage from "../../assets/personlogo.jpg";
 import loader from "../../assets/svg/Spin-1s-200px.svg";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../redux/hooks";
+import { updateUser } from "../../redux/features/UserSlice";
 const EditProfile = () => {
 
 const {register,handleSubmit}=useForm()
@@ -21,7 +24,7 @@ const [uploadImage, setUploadImage] = useState(null);
 // const [progress, setProgress] = useState(false);
 // eslint-disable-next-line no-undef
 const [fieldValue, setFieldValue] = useState({});
-
+const dispatch=useAppDispatch()
 useEffect(()=>{
     fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
         .then((res) => res.json())
@@ -71,6 +74,7 @@ const HandleEditInputField=(e)=>{
 const onSubmit= async(data)=>{
     setModel(true)
     setEditData({...data, img: uploadImage || user?.photoURL})
+    updateUser({name:`${data?.first_name } ${data?.last_name}`,email:data?.email, img: uploadImage || user?.photoURL})
 }
 const HandleImageUpload = (e) => {
     setUploadImage("processing");

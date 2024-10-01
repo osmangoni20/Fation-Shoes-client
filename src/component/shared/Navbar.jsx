@@ -4,6 +4,7 @@ import { useState } from "react";
 import UserAuthProfileCard from "./UserAuthProfileCard";
 import logo from '../../assets/logo-2.png'
 import { useSelector } from "react-redux";
+import { useAppSelector } from "../../redux/hooks";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [showProfileDialog, setProfileDialog] = useState(false);
@@ -17,6 +18,8 @@ const[showNavbar, setNavbar]=useState(false)
   const HandleNavbar=()=>{
     setNavbar(!showNavbar)
   }
+  const {img}=useAppSelector(state=>state.userR)
+
   return (
     <div className="">
       
@@ -215,7 +218,7 @@ const[showNavbar, setNavbar]=useState(false)
               <div>
                 <img
                   className="w-12 h-12 rounded-full mx-2"
-                  src={user?.photoURL} alt=""
+                  src={user?.photoURL||img} alt=""
                 />
               </div>
             ) : (

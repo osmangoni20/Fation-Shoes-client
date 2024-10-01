@@ -1,19 +1,22 @@
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks";
 
 // eslint-disable-next-line react/prop-types
 const UserAuthProfileCard = ({ isOpen }) => {
   const { user, logOut } = useAuth();
   console.log(user?.photoURL);
   const isAdmin=localStorage.getItem('isAdmin')
+  const {img}=useAppSelector(state=>state.userR)
+
   return (
     <div className={`${isOpen ? "visible relative" : "invisible"}`}>
       <div className="card w-80 rounded-b-2xl rounded-t-none text-black bg-base-100 shadow-xl z-40 absolute right-1 top-18 mt-12">
         <div className=" bg_profileCard opacity-35 h-32 mb-5 flex justify-center">
           <figure className="px-10 pt-10 h-[200px]  w-[200px] border-primary border-dotted">
-            {user?.photoURL ? (
+            {user? (
               <img
-                src={user?.photoURL}
+                src={user?.photoURL||img}
                 alt="user photo"
                 className="rounded-full"
               />

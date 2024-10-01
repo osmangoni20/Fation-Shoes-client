@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
+import { useAppSelector } from "../redux/hooks";
 
 const DashboardLayout = () => {
   const { logOut, user } = useAuth();
@@ -19,6 +20,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
   const HandleDashboardSidebar=()=>{
     setSidebar(!showSidebar)
   }
+  const {img}=useAppSelector(state=>state.userR)
   return (
     <div className="md:grid md:grid-cols-10 ">
        <div onClick={HandleDashboardSidebar} tabIndex={0} role="button" className="fixed top-0 btn bg-[#fff] rounded-none btn-ghost md:hidden">
@@ -44,7 +46,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
             <img
               className="h-[120px] w-[120px] rounded-full border-4  border-dotted
               avatar drop-shadow-lg  border-gray-400 shadow-2xl  m-2"
-              src={user?.photoURL}
+              src={user?.photoURL||img}
             />
           </figure>
           <h3 className="uppercase text-2xl">{user?.displayName?.split(' ')[0]}</h3>
