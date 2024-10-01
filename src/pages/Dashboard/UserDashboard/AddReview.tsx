@@ -36,8 +36,8 @@ const AddReview = () => {
         
            
            <h1 className="text-center font-serif font-extralight p-10">Review</h1>
-            <form className="min-w-[720px] p-5 shadow  rounded-md" onSubmit={handleSubmit(onSubmit)}>
-           <div className="grid grid-cols-2 gap-5">
+            <form className="md:min-w-[720px] p-5 shadow  rounded-md" onSubmit={handleSubmit(onSubmit)}>
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
            <div className="w-full my-2">
                     <label className="text-bold block" htmlFor="user_name">Your Name</label>
                     <input  type="text" id="user_name" {...register("user_name")}/>

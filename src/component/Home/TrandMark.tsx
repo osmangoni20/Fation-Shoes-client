@@ -20,7 +20,7 @@ type TTrademarkShoeProducts={
 }
 export const trademarkShoeProducts = [
     {
-      id: 1,
+      _id: "Classic-1",
       pd_name: "Classic 2.5 Edge Shoes",
       subTitle:"Sneakers 2024 Limited Edition",
       pd_brand: "Nike",
@@ -35,7 +35,7 @@ export const trademarkShoeProducts = [
       rating: 4.9
     },
     {
-      id: 2,
+      _id: "Ultraboost_2",
       pd_name: "Ultraboost Infinity",
       pd_brand: "Adidas",
       subTitle:"Sneakers 2024 Limited Edition",
@@ -50,7 +50,7 @@ export const trademarkShoeProducts = [
       rating: 4.8
     },
     {
-      id: 3,
+      _id: "Classic3",
       pd_name: "Classic Chuck Taylor",
       pd_brand: "Converse",
       subTitle:"Sneakers 2024 Limited Edition",
@@ -65,7 +65,7 @@ export const trademarkShoeProducts = [
       rating: 4.7
     },
     {
-      id: 4,
+      _id: "Yeezy4",
       pd_name: "Yeezy Boost 350",
       pd_brand: "Adidas",
       subTitle:"Sneakers 2024 Limited Edition",
@@ -85,17 +85,19 @@ const TrandMark = () => {
     const [singleProducts, setSingleProducts]=useState<TTrademarkShoeProducts|any>(trademarkShoeProducts[0])
     const dispatch=useDispatch()
    const HandleTrandMarkProducts=(id)=>{
-        const filteredProduct= trademarkShoeProducts.find(pd=>pd.id===id)
+        const filteredProduct= trademarkShoeProducts.find(pd=>pd._id===id)
         setSingleProducts(filteredProduct)
         console.log(filteredProduct)
    }
    const HandleAddToCart=()=>{
-    dispatch(addToCart(singleProducts))
+   
+    dispatch(addToCart({...singleProducts}))
+    console.log(singleProducts)
 }
   return (
     <div>
       <div className=" my-2 text-center mt-5">
-        <div className="inline-block py-5">
+        <div className="inline-block py-5 md:pb-8">
           <h1 className="md:text-9xl space-x-4 font-lato font-bold ">Trendmark</h1>
           <p className="text-xl font-semibold text-right">
             Fation 2024 Limited Edition
@@ -142,7 +144,7 @@ const TrandMark = () => {
             </div>
       
        <p className="text-xl text-left font-semibold font-lato">{ singleProducts?.pd_price}
-         <span className="font-medium">USD</span></p> 
+         <span className="font-medium"> USD</span></p> 
 
        <button onClick={HandleAddToCart} className=" cart_button uppercase">Add to Cart</button>
 
@@ -157,7 +159,7 @@ const TrandMark = () => {
         </div>
         </div>
         <div className="h-[200px] hidden  pl-4  bg-[#181818] md:flex items-center z-10">
-          <div onClick={()=>HandleTrandMarkProducts(1)} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
+          <div onClick={()=>HandleTrandMarkProducts("Ultraboost_2")} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
             <div  className="flex  justify-between text-black items-center">
               <p>01</p>
               <svg
@@ -176,7 +178,7 @@ const TrandMark = () => {
             <h3 className="text-medium font-bold">TarandMark</h3>
             <p>Meteor Lace-Up Running Shoes</p>
           </div>
-          <div onClick={()=>HandleTrandMarkProducts(2)} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
+          <div onClick={()=>HandleTrandMarkProducts("Ultraboost_2")} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
             <div  className="flex  justify-between text-black items-center">
                <p>02</p>
               <svg
@@ -195,7 +197,7 @@ const TrandMark = () => {
             <h3 className="text-medium font-bold">TarandMark</h3>
             <p>Omax Lace-Up Sports Shoes</p>
           </div>
-          <div onClick={()=>HandleTrandMarkProducts(3)} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
+          <div onClick={()=>HandleTrandMarkProducts("Classic3")} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
             <div  className="flex  justify-between text-black items-center">
               <p>03</p>
               <svg
@@ -214,7 +216,7 @@ const TrandMark = () => {
             <h3 className="text-medium font-bold">TarandMark</h3>
             <p>Barley Textured Panelled Shoes</p>
           </div>
-          <div onClick={()=>HandleTrandMarkProducts(4)} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
+          <div onClick={()=>HandleTrandMarkProducts("Yeezy4")} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
             <div  className="flex  justify-between text-black items-center">
                <p>04</p>
               <svg

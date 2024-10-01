@@ -19,7 +19,7 @@ const fetchData=()=>{
    console.log(userOrder)
     return (
         <div>
-            <h2 className='text-center'>Your Order Item</h2>
+            <h2 className='text-center md:text-3xl text-xl'>Your Order Item</h2>
            <div className='flex flex-wrap gap-2 space-y-10'>
            {
                 userOrder?.map((order)=>{
@@ -27,7 +27,7 @@ const fetchData=()=>{
                         
                             order?.order_product?.map(product=>{
                                 return(
-                                    <div className="card w-80  pt-5 bg-base-100 shadow-xl text-black">
+                                    <div className="card md:w-80 w-full  pt-5 bg-base-100 shadow-xl text-black">
                                     <figure className="h-[180px] w-full"><img src={product?.pd_image} alt="Shoes" /></figure>
                                     <div className="card-body">
                                     <h3 className="card-title">

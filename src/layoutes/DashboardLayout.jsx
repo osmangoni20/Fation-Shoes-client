@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const DashboardLayout = () => {
   const { logOut, user } = useAuth();
   const [isAdmin, setIsAdmin]=useState(null)
-
+  const [showSidebar, setSidebar]=useState(true)
 
   useEffect(()=>{
     console.log(localStorage.getItem("isAdmin"))
@@ -16,9 +16,29 @@ setIsAdmin(localStorage.getItem('isAdmin'))
   // if(admin.email===user.email){
   //   setIsAdmin(true)
   // }
+  const HandleDashboardSidebar=()=>{
+    setSidebar(!showSidebar)
+  }
   return (
-    <div className="grid grid-cols-10 ">
-      <div className=" text-white min-h-screen col-span-2 font-mono flex flex-col justify-between bg-gray-700 py-5">
+    <div className="md:grid md:grid-cols-10 ">
+       <div onClick={HandleDashboardSidebar} tabIndex={0} role="button" className="fixed top-0 btn bg-[#fff] rounded-none btn-ghost md:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+      {
+        showSidebar&&<div  className=" text-white min-h-screen md:col-span-2 font-mono flex flex-col justify-between bg-gray-700 py-5">
         <div className="flex flex-col justify-center items-center text-xl">
           <figure>
             <img
@@ -71,7 +91,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
                 d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75"
               />
             </svg>
-           Total Order
+           Manage Order
           </NavLink>
           <NavLink
             to="all-products"
@@ -95,7 +115,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
           </NavLink>
 
           <NavLink
-            to="add-products"
+            to="add_products"
             className={({ isActive }) => (isActive ? "active" : "pending")}
           >
             <svg
@@ -112,7 +132,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
                 d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"
               />
             </svg>
-            Add Product
+            Manage Products
           </NavLink>
           <NavLink
             to="user_profile"
@@ -290,8 +310,9 @@ setIsAdmin(localStorage.getItem('isAdmin'))
           </button>
         </div>
       </div>
+      }
 
-      <div className="p-10 col-span-8 bg-light max-h-screen overflow-y-auto">
+      <div className="md:p-10 p-2 md:col-span-8 bg-light max-h-screen overflow-y-auto">
         <Outlet />
       </div>
     </div>

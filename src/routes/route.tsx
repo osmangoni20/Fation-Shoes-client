@@ -21,11 +21,12 @@ import Order from "../pages/Dashboard/Order";
 import React from "react";
 import Payment from "../component/Order/Payment/Payment.tsx";
 import PaymentHistory from "../pages/Dashboard/UserDashboard/PaymentHistory.tsx";
-import Review from "../component/Home/Review.tsx";
+import Testimonial from "../component/Home/Testimonial.tsx";
 import AddReview from "../pages/Dashboard/UserDashboard/AddReview.tsx";
 import Shop from "../pages/Dashboard/UserDashboard/Shop.tsx";
 import MyOrder from "../pages/Dashboard/UserDashboard/MyOrder.tsx";
 import OrderDetails from "../pages/Dashboard/OrderDetails.tsx";
+import Review from "../pages/Review.tsx";
 
 const route =createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const route =createBrowserRouter([
           {
             path: "/about",
             element: <About/>,
+          },
+          {
+            path:"/client_reviews",
+            element:<Review title={"Client's Review"}/>
           },
           {
             path:'/searchProduct/:searchValue',
@@ -134,9 +139,8 @@ const route =createBrowserRouter([
       
       
       {
-        path:'add-products',
+        path:'add_products',
         element:<PrivateRoute><AddProduct/></PrivateRoute>,
-        loader:()=>fetch('https://fation-shoes.onrender.com/product'),
       },
      
       

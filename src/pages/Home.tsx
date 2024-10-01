@@ -1,7 +1,7 @@
 import Banner from "../component/Home/Banner";
 import Product from "../component/Home/Product";
 import OurService from "../component/Home/OurService";
-import Review from "../component/Home/Review";
+import Testimonial from "../component/Home/Testimonial";
 import Add from "../component/Home/Add";
 import TendingProducts from "../component/Home/TendingProducts";
 import { useEffect, useState } from "react";
@@ -37,7 +37,7 @@ const Home = () => {
         isLoading?<Loader/>:<TendingProducts shoes={data}/>
        } 
     
-        <Review/>
+        <Testimonial title={"Client's Review"}/>
     
         </div>
     );

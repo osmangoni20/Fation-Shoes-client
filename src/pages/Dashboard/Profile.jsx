@@ -18,14 +18,14 @@ const Profile = () => {
         <div>
             <div className="flex justify-center items-center">
                 <figure>
-                    <img className="h-[200px] w-[200px] rounded-full border-4 border-black border-dotted" src={user.photoURL} alt="user photo"></img>
+                    <img className="h-[200px] w-[200px] rounded-full border-4 border-black border-dotted" src={userData?.img|| user.photoURL} alt="user photo"></img>
                 <button  className="mt-5 w-[200px] bg-primary rounded text-white text-lg p-2 font-semibold">
                     <Link to={"edit_profile"}>Update Profile </Link>
                     </button>
                 </figure>
             </div>
-            <div className="p-8">
-                <ul className="grid grid-cols-2 gap-10 text-lg text-white mt-5">
+            <div className="md:p-8 p-2">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 text-lg text-white mt-5">
                     <li className="profileDataList">
                      <span>Name:</span>
                     <span>{user?.displayName||(userData?.first_name + userData?.last_name)}</span>

@@ -1,50 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useContext, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { orderCartContext } from "../../context/ListAddCart";
 
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/features/CartSlice";
-const UserReview = [
-  {
-    id: "1",
-    user_name: "Mohamad Abdul Kader",
-    user_review_time: "6/25/2024",
-    user_image:
-      "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    user_review:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero, laborum modi numquam laboriosam a porro quas repellendus, placeat cum error saepe consectetur explicabo unde. Minima, aperiam. Quisquam dolores adipisci distinctio",
-  },
-  {
-    id: "2",
-    user_name: "Abdur Rahman Rahat",
-    user_review_time: "6/25/2024",
-    user_image:
-      "https://img.freepik.com/premium-photo/concept-people-with-young-man-yellow-background_185193-81811.jpg?size=626&ext=jpg&ga=GA1.1.291005766.1716642525&semt=sph",
-    user_review:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero, laborum modi numquam laboriosam a porro quas repellendus, placeat cum error saepe consectetur explicabo unde. Minima, aperiam. Quisquam dolores adipisci distinctio",
-  },
-  {
-    id: "3",
-    user_name: "Tabassum Khatun",
-    user_review_time: "6/25/2024",
-    user_image:
-      "https://media.istockphoto.com/id/1309696402/photo/headshot-of-mid-adult-british-asian-woman-wearing-hijab.jpg?s=1024x1024&w=is&k=20&c=R0lcO4kkLSwKyyHmAncQ7BWD-tf29YCpmCFTnuWk6ho=",
-    user_review:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero, laborum modi numquam laboriosam a porro quas repellendus, placeat cum error saepe consectetur explicabo unde. Minima, aperiam. Quisquam dolores adipisci distinctio",
-  },
-];
+import Testimonial from "../Home/Testimonial";
 
 const ProductDetails = () => {
   
   const shoe = useLoaderData();
   const {user}=useAuth()
   const [add_to_cart_button,set_add_button]=useState(true)
-  const {setCart}=useContext(orderCartContext);
   const dispatch=useDispatch()
+  const navigate=useNavigate()
   const {
-    id,
+    _id,
     pd_name,
     pd_brand,
     pd_category,
@@ -53,27 +24,25 @@ const ProductDetails = () => {
     pd_image,
     pd_size,
   } = shoe;
-  let cartItem=JSON.parse(localStorage.getItem('cartItemList'))||[]
+
 const HandleAdd_to_Cart=()=>{
 
-    dispatch(addToCart(shoe))
+    dispatch(addToCart({...shoe, pd_quantity:1, order_price:Number(pd_price) - Number(pd_price) * 0.2}))
     set_add_button(true)
-     cartItem?.push({...shoe, pd_quantity:1, order_price:Number(pd_price) - Number(pd_price) * 0.2});
-     console.log(cartItem)
-     localStorage.setItem('cartItemList', JSON.stringify(cartItem));
-     setCart(cartItem)
 }
 const HandleOrder=()=>{
-    
+  dispatch(addToCart({...shoe, pd_quantity:1, order_price:Number(pd_price) - Number(pd_price) * 0.2}))
+  set_add_button(true)
+  navigate(`/order_cart/${user?.email}`)
 }
   return (
-    <div className=" flex justify-center ghost_bg py-5">
+    <div className=" md:flex justify-center ghost_bg py-5">
       <div>
-        <div className="max-w-[1100px] py-5 p-5 rounded bg-white flex justify-between  gap-5">
+        <div className="w-full py-5 p-5 rounded bg-white md:flex justify-between  gap-5">
           <div className="w-full">
             <img className="h-[400px]" src={pd_image} alt="product image" />
           </div>
-          <div className="p-0  w-[800px]">
+          <div className="p-0  md:w-[800px] text-center md:text-left">
             <h3 className="text-4xl text-primary">{pd_name}</h3>
             <h6 className="text-ghost text-xl">
               Brand:
@@ -87,7 +56,7 @@ const HandleOrder=()=>{
                </Link> 
               </span>
             </h6>
-            {shoe?.pd_size&& <h6 className="text-ghost text-xl">Size:  {shoe?.pd_size ? pd_size[0] : ""}-
+            {shoe?.pd_size&& <h6 className="text-ghost text-xl"> Available Size:  {shoe?.pd_size ? pd_size[0] : ""}-
             {shoe?.pd_size ? pd_size[5] : ""}</h6>}
            
             <h6 className="font-bold text-xl">
@@ -96,10 +65,10 @@ const HandleOrder=()=>{
             </h6>
             <p className="text-xl py-2 text-justify">{pd_description}</p>
 
-            <div className="py-2 flex gap-2 items-center">
+            <div className="py-2 md:flex gap-2 items-center">
                 {
-                    add_to_cart_button?<button onClick={HandleAdd_to_Cart} className="text-white flex 
-                    items-center gap-2 p-6 btn_secondary">
+                    add_to_cart_button?<button onClick={HandleAdd_to_Cart} className="text-white md:flex 
+                    items-center gap-2 my-2 md:my-0 p-6 btn_secondary hidden ">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -119,8 +88,8 @@ const HandleOrder=()=>{
                       <span> Add to Cart</span>
                     </button>:
                      <Link to={`/order_cart/${user?.email}`}>
-                     <button className="text-white flex 
-                       items-center gap-2 p-6 btn_secondary">
+                     <button  className="text-white flex 
+                    items-center gap-2 my-2 md:my-0 p-6 btn_secondary">
                          <span>
                            <svg
                              xmlns="http://www.w3.org/2000/svg"
@@ -142,8 +111,8 @@ const HandleOrder=()=>{
                      </Link>
                 }
              
-              <Link to={`/product/${id}`}>
-                <button onClick={HandleOrder} className="text-white flex items-center gap-2 py-10 p-6 btn_secondary">
+                <button onClick={HandleOrder}  className="text-white flex 
+                    items-center gap-2 my-2 md:my-0 p-6 btn_secondary">
                 <span> Order Now</span>
                   <span>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
@@ -154,11 +123,11 @@ const HandleOrder=()=>{
                   </span>
                
                 </button>
-              </Link>
+           
             </div>
           </div>
         </div>
-        <div className="max-w-[1100px] bg-white py-5  p-5 rounded my-5">
+        {/* <div className="max-w-[1100px] bg-white py-5  p-5 rounded my-5">
           <div className="py-10">
             <h1 className="text-4xl text-center font-serif">
               Clint's Review
@@ -193,7 +162,8 @@ const HandleOrder=()=>{
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
+        <Testimonial title={"Product Reviews"}/>
       </div>
     </div>
   );

@@ -50,8 +50,8 @@ const AddProduct = () => {
                 </div>
             </Modal>
            <h1 className="text-center font-serif font-extralight p-10">Add New Product</h1>
-            <form className="min-w-[720px] p-5 shadow  rounded-md" onSubmit={handleSubmit(onSubmit)}>
-           <div className="grid grid-cols-2 gap-5">
+            <form className="md:min-w-[720px] p-5 shadow  rounded-md" onSubmit={handleSubmit(onSubmit)}>
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
            <div className="w-full my-2">
             <label className="text-bold " htmlFor="pd_category">Product Category</label>
             <select id="pd_category"{...register("pd_category")}>

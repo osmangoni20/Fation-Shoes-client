@@ -3,6 +3,10 @@ import { useForm } from "react-hook-form";
 import Modal from "../../component/shared/Modal";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import cameraImage from "../../assets/camera.png";
+import profileImage from "../../assets/personlogo.jpg";
+import loader from "../../assets/svg/Spin-1s-200px.svg";
+import axios from "axios";
 const EditProfile = () => {
 
 const {register,handleSubmit}=useForm()
@@ -12,6 +16,12 @@ const token=localStorage.getItem('token-fation-shoe')
 const{user,UpdateProfile,UpdatePassword,UpdateEmail}=useAuth()
 const [userData,setUserData,]=useState(null)
 const [changePassword,setChangePassword]=useState(null);
+// eslint-disable-next-line no-undef
+const [uploadImage, setUploadImage] = useState(null);
+// const [progress, setProgress] = useState(false);
+// eslint-disable-next-line no-undef
+const [fieldValue, setFieldValue] = useState({});
+
 useEffect(()=>{
     fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
         .then((res) => res.json())
@@ -34,13 +44,13 @@ const isSubmit= async()=>{
     setModel(false)
     
 await UpdateEmail(EditData?.email||user?.email).then(data=>console.log(data))
-  await fetch(`https://fation-shoes.onrender.com/user/${user?.email}`, {
+  await fetch(`http://localhost:3000/user/${user?.email}`, {
         method: "PATCH",
         headers: {
         "Content-type": "application/json",
         authorization:`Bearer ${token}`
         },
-        body: JSON.stringify({...EditData,img:user?.photoURL}),
+        body: JSON.stringify(EditData),
     }).then((res) => res.json())
         .then( async() =>{
            console.log(EditData)
@@ -60,8 +70,19 @@ const HandleEditInputField=(e)=>{
 }
 const onSubmit= async(data)=>{
     setModel(true)
-    setEditData(data)
+    setEditData({...data, img: uploadImage || user?.photoURL})
 }
+const HandleImageUpload = (e) => {
+    setUploadImage("processing");
+    setFieldValue({ ...fieldValue, img: e.target.files[0] });
+    const ImagForm = new FormData();
+    ImagForm.set("key", "20eb4f4a88d3505364e15416b41a0df2");
+    ImagForm.append("image", e.target.files[0]);
+    axios.post("https://api.imgbb.com/1/upload", ImagForm).then((imageData) => {
+      console.log(imageData.data);
+      setUploadImage(imageData.data.data.url);
+    });
+  };
 
 return (
     <div>
@@ -79,10 +100,34 @@ return (
     
     <div className="p-5 shadow-md m-2">
     <div>
-        <figure>
-            <img className="h-[120] w-[120px] rounded-full" src={user?.photoURL}/>
-        </figure>
-        <button className="bg-primary text-white m-2 rounded-lg p-2">Upload Picture</button>
+    <div className={"personal_image"}>
+            <label className="label">
+              <input type="file" name="img" onChange={HandleImageUpload} />
+              <figure className={"personal_figure"}>
+                <span className={"personal_avatar"}>
+                  {uploadImage !== "processing" && (
+                    <img
+                      src={uploadImage || user?.photoURL || profileImage}
+                      alt="avatar"
+                      height={150}
+                      width={150}
+                    />
+                  )}
+                  {uploadImage === "processing" && (
+                    <img src={loader} alt="avatar" height={150} width={150} />
+                  )}
+                </span>
+                <figcaption className={"personal_figcaption"}>
+                  <img
+                    src={cameraImage}
+                    height={40}
+                    width={40}
+                    alt={"Profile"}
+                  />
+                </figcaption>
+              </figure>
+            </label>
+    </div>
     </div>
    
 <form className="min-w-[720px] pt-5 " onSubmit={handleSubmit(onSubmit)}>
@@ -102,7 +147,7 @@ onChange: e => HandleEditInputField(e)
 </div>
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="email"> Email</label> 
-    <input  type="text" disabled id="email" value={userData?.email||user.email} {...register("email",{
+    <input  type="text" id="email" value={userData?.email||user.email} {...register("email",{
 onChange: e => HandleEditInputField(e)})}/>
 </div>
 <div className="w-full my-2">

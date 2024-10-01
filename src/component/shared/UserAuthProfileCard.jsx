@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 const UserAuthProfileCard = ({ isOpen }) => {
   const { user, logOut } = useAuth();
   console.log(user?.photoURL);
+  const isAdmin=localStorage.getItem('isAdmin')
   return (
     <div className={`${isOpen ? "visible relative" : "invisible"}`}>
       <div className="card w-80 rounded-b-2xl rounded-t-none text-black bg-base-100 shadow-xl z-40 absolute right-1 top-18 mt-12">
-        <div className=" bg_profileCard opacity-35 h-32 flex justify-center">
+        <div className=" bg_profileCard opacity-35 h-32 mb-5 flex justify-center">
           <figure className="px-10 pt-10 h-[200px]  w-[200px] border-primary border-dotted">
             {user?.photoURL ? (
               <img
@@ -36,12 +37,12 @@ const UserAuthProfileCard = ({ isOpen }) => {
         </div>
         <div className="card-body w-full ">
           {
-            user&&<div className="flex-col  font-semibold text-md p-2 ">
+            user&&<div className="flex-col text-center  font-semibold text-md p-2 ">
             <h3 className="text-xl">{user?.displayName||"Guest User"}</h3>
             <p>{user?.email}</p>
           </div>
           }
-          <ul className="w-full flex justify-between gap-5 p-2 pb-10 border-primary border-t-2 ">
+          <ul className="w-full mt-5 flex justify-between gap-5 p-2 pb-10 border-primary border-t-2 ">
             <li className=" flex align-middle items-center gap-2 font-semibold text-lg w-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +59,7 @@ const UserAuthProfileCard = ({ isOpen }) => {
                 />
               </svg>
 
-              <Link to={"/dashboard/home"}>Dashboard</Link>
+              <a href={ `${isAdmin?"/dashboard/home":"/dashboard/myOrder"}`}>Dashboard</a>
             </li>
             <li className="flex align-middle items-center gap-2 font-semibold text-lg w-full">
               <svg

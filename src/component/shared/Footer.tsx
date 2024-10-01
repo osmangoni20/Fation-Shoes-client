@@ -1,8 +1,9 @@
+import React from "react";
 
 const Footer = () => {
     return (
         <div>
-  <footer className="footer sm:flex sm:flex-wrap  sm:justify-between p-10 bg-[#514F4D] text-white">
+  <footer className="footer md:grid flex flex-wrap p-3  justify-between md:p-10 bg-[#514F4D] text-white">
   <nav className="">
     <h6 className="footer-title text-white">Services</h6> 
     <a className="link link-hover">Branding</a>
@@ -25,7 +26,7 @@ const Footer = () => {
   </nav> 
   <form>
     <h6 className="footer-title ">Newsletter</h6> 
-    <fieldset className="form-control md:w-80">
+    <fieldset className="form-control md:w-80 w-full">
       <label className="label">
         <span className="label-text text-white">Enter your email address</span>
       </label> 
