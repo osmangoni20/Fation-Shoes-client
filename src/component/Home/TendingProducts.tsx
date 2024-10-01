@@ -31,7 +31,7 @@ const TendingProducts = ({shoes}) => {
  <div className="pt-5">
         <div className="flex justify-between items-center">
         <h2 className="pb-0">Casual Shoe</h2>
-        <Link to={""}>
+        <Link to={"/searchProduct/category/casual_shoes"}>
         
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                  strokeWidth="2" stroke="currentColor" className="size-8">
@@ -39,7 +39,7 @@ const TendingProducts = ({shoes}) => {
 </svg>
         </Link>
         </div>
-        <div className="grid grid-cols-4 justify-center gap-2 items-center my-5">
+        <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-2 items-center my-5">
         {
                     // eslint-disable-next-line react/prop-types
                     shoes?.slice(0,6)?.map((shoe,index)=><SingleProduct shoe={shoe} key={index}/>)
@@ -76,7 +76,7 @@ const TendingProducts = ({shoes}) => {
  <div className="flex justify-between items-center">
 
         <h2 className="pb-0">Formal Shoe</h2>
-        <Link to={""}>
+        <Link to={"/searchProduct/category/formal_shoes"}>
         
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                  strokeWidth="2" stroke="currentColor" className="size-8">
@@ -84,7 +84,7 @@ const TendingProducts = ({shoes}) => {
 </svg>
         </Link>
         </div>
-        <div className="grid grid-cols-4 justify-center gap-2 items-center my-5">
+        <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-2 items-center my-5">
         {
                     // eslint-disable-next-line react/prop-types
                     formalData?.slice(0,6)?.map((shoe,index)=><SingleProduct shoe={shoe} key={index}/>)
@@ -119,7 +119,7 @@ const TendingProducts = ({shoes}) => {
  <div className="pt-5">
  <div className="flex justify-between items-center">
         <h2 className="pb-0">Loafer Shoe</h2>
-        <Link to={""}>
+        <Link to={"/searchProduct/category/loafers"}>
         
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                  strokeWidth="2" stroke="currentColor" className="size-8">
@@ -127,7 +127,7 @@ const TendingProducts = ({shoes}) => {
 </svg>
         </Link>
         </div>
-        <div className="grid grid-cols-4 justify-center gap-2 items-center my-5">
+        <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-2 items-center my-5">
         {
                     // eslint-disable-next-line react/prop-types
                     loaferData?.slice(0,6)?.map((shoe,index)=><SingleProduct shoe={shoe} key={index}/>)
@@ -135,7 +135,7 @@ const TendingProducts = ({shoes}) => {
             </div>
             <div className="flex justify-center items-end">
               <button className="btn_ghost flex gap-2 items-center">
-                <Link to={"http://localhost:5173/searchProduct/category/loafers"}>See More</Link>
+                <Link to={"/searchProduct/category/loafers"}>See More</Link>
                 <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                  strokeWidth="1.5" stroke="currentColor" className="size-6">
@@ -167,7 +167,7 @@ const TendingProducts = ({shoes}) => {
 </svg>
         </Link>
         </div>
-        <div className="grid grid-cols-4 justify-center gap-2 items-center my-5">
+        <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-2 items-center my-5">
         {
                     // eslint-disable-next-line react/prop-types
                     loaferData?.slice(0,6)?.map((shoe,index)=><SingleProduct shoe={shoe} key={index}/>)

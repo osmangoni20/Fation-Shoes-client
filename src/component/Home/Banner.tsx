@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
     return (
       <>
         <div
-        className={`h-[600px] w-full py-5 pb-10 banner bg-[url('../../assets/image/top-Shoe-Banners-1.jpg')]`} >
+        className={`md:h-[600px] h-[400px] w-full py-5 pb-10 banner bg-[url('../../assets/image/top-Shoe-Banners-1.jpg')]`} >
         
-          <div className="flex h-full flex-col justify-end pl-36 ">
-            <div className="text-white ">
-              <div className="flex gap-5">
+          <div className="flex h-full flex-col justify-end md:pl-36 ">
+            <div className="text-white hidden md:block">
+              <div className="flex gap-5 ">
               <Link to={"/login"}>
               <button className="btn bg-secondary text-white px-10 text-xl hover:bg-secondary">Explore Now</button>
               </Link>
               <Link to={"/about"}>
-              <button className="btn bg-primary text-white px-10 text-xl hover:bg-primary">About Us</button>
+              <button className="btn bg-primary  text-white px-10 text-xl hover:bg-primary">About Us</button>
               </Link>
               </div>
             </div>

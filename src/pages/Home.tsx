@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import ProductCategory from "../component/Home/ProductCategory";
 import Loader from "../component/shared/Loader";
+import TrandMark from "../component/Home/TrandMark";
 
 
 
@@ -26,14 +27,15 @@ const Home = () => {
      
         <Banner/>
         <OurService/>
+        <TrandMark/>
         {
             isLoading?<Loader/>:<Product shoes={data}/>
         }
-        {/* <Add/> */}
+ 
         <ProductCategory/>
        {
         isLoading?<Loader/>:<TendingProducts shoes={data}/>
-       }
+       } 
     
         <Review/>
     

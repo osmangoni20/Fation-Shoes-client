@@ -37,7 +37,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm  dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box"
+              className="menu menu-sm text-black px-4 w-[250px] rounded-md  dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 "
             >
               <li>
                 <Link to={"/searchProduct/category/casual_shoes"}>
@@ -60,7 +60,10 @@ const Navbar = () => {
                 <Link to={"/about"}>ABOUT US</Link>
               </li>
               <li>
-                <svg
+              <Link to={"/dashboard/user_profile"}>Dashboard</Link>
+              </li>
+               <li className="flex items-center">
+                {/* {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -73,10 +76,10 @@ const Navbar = () => {
                     strokeLinejoin="round"
                     d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"
                   />
-                </svg>
-
-                <Link to={"/dashboard/home"}>Dashboard</Link>
-              </li>
+                </svg> */}
+{/* 
+                <Link to={"/dashboard/home"}>Dashboard</Link>  */}
+              </li> 
 
               {!user ? (
                 <div>
@@ -98,7 +101,7 @@ const Navbar = () => {
                 <>
                   <li
                     onClick={() => logOut()}
-                    className="flex gap-5 text-lg w-full btn mx-4 bg-primary hover:bg-optional-red text-white"
+                    className="flex gap-5 text-lg md:w-full btn mx-4 bg-primary hover:bg-optional-red text-white"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +109,7 @@ const Navbar = () => {
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
-                      className="size-8"
+                      className="md:size-8 size-40"
                     >
                       <path
                         strokeLinecap="round"
@@ -114,7 +117,7 @@ const Navbar = () => {
                         d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9"
                       />
                     </svg>
-                    <button>Log Out</button>
+                    <button className="md:block hidden">Log Out</button>
                   </li>
                 </>
               )}
@@ -151,8 +154,8 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="w-full gap-5 relative flex justify-around items-center">
-        <div className="w-[350px] ">
+        <div className="w-full gap-5 relative flex justify-end md:justify-around items-center">
+        <div className="w-[350px] hidden md:block">
                 <label className="flex items-center rounded-lg  border-2 border-gray-300">
                   <input
                     onBlur={(e) => setSearchValue(e?.target?.value)}
@@ -198,7 +201,7 @@ const Navbar = () => {
           </div>
          
           <div
-            className="cursor-pointer invisible md:visible "
+            className="cursor-pointer hidden md:block "
             onClick={HandleUserProfile}
           >
             {user ? (

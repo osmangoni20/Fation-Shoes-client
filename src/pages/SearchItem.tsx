@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import SingleProduct, { TProductInfo } from '../component/Home/SingleProduct';
 import { useEffect, useState } from 'react';
 import React from 'react';
+import Loader from '../component/shared/Loader';
 
 const SearchItem = () => {
     const {category, searchValue}=useParams();
@@ -31,7 +32,7 @@ const SearchItem = () => {
                 </div>:
                     <div>
                     <figure className='w-full flex justify-center'>
-                        <img  src='https://img.freepik.com/premium-vector/vector-2-style-grungy-red-rubber-stamp-out-stock_9834-1331.jpg?size=626&ext=jpg&ga=GA1.2.291005766.1716642525&semt=ais_user'/>
+                        <Loader/>
                     </figure>
                     </div>
                 }

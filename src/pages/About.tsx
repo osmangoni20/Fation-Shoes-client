@@ -69,12 +69,12 @@ export const teamData = [
 
 const About = () => {
     return (
-      <div className="hero min-h-screen pb-10">
+      <div className="md:hero md:min-h-screen pb-10">
         <div>
        
           <div>
             <h1 className="text-5xl font-bold text-center py-5">Fation Shoes</h1>
-            <p className="py-6 text-justify">Fation Shoes  is one of the nation’s largest family footwear retailers with its own brand of style. Headquartered in Evansville, Indiana, Shoe Carnival stores are located in 35 states and Puerto Rico, as well as online at shoecarnival.com. We are continuing to grow!
+            <p className="p-6 text-justify">Fation Shoes  is one of the nation’s largest family footwear retailers with its own brand of style. Headquartered in Evansville, Indiana, Shoe Carnival stores are located in 35 states and Puerto Rico, as well as online at shoecarnival.com. We are continuing to grow!
 
 With our unique and distinctive concept and promotional marketing, Shoe Carnival steps ahead of our competitors by bringing the best deals on the hottest brands for the whole family! We have an incredibly talented, highly motivated, and diverse team in our Retail Stores, Corporate Office, and Distribution Center. We are looking for team members who understand the importance of customer service, have an excellent work ethic, and a passion for career growth opportunities. Put your best foot forward – join our Talent Network and apply today! Learn more about our careers and current opportunities on our Careers page.
 
@@ -83,14 +83,14 @@ We trade on the NASDAQ Stock Market under the symbol SCVL. Investors and stakeho
             </p>
           </div>
 
-          <div>
+          <div className="max-w-full">
             <h1 className="text-3xl text-center font-bold font-sans">Our Teams</h1>
-           <div className="flex justify-center items-center">
+           <div className="grid md:grid-cols-4 grid-cols-1 justify-center items-center">
             {
               teamData.map(teamMate=>{
                 return(
-<div key={teamMate.id} className="card product_cart  text-black
-      p-0  w-84 
+<div key={teamMate.id} className="card product_cart w-[84]  text-black
+      p-0 
     bg-base-100 z-5">
         <figure><img className="w-full p-0 h-[150px]"  src={teamMate?.photoUrl} alt="Shoes" /></figure>
         

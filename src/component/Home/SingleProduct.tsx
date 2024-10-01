@@ -53,14 +53,14 @@ export type TProductInfo={
           </div>
 
             </div>
-        <p className="text-2xl font-semibold font-lato">{ pd_price} USD</p> 
+        <p className="text-xl font-semibold font-lato">{ pd_price} USD</p> 
        
         </div>
-        <div className="hover:block invisible absolute top-[95%] rounded-md">
-        <div className=" py-2 space-x-4">
-        <button onClick={HandleAddToCart} className=" cart_button uppercase">Add to Cart</button>
+        <div>
+        <div className=" md:space-x-4 flex">
+        <button onClick={HandleAddToCart} className="cart_button uppercase">Add to Cart</button>
         <Link to={`/product/${_id}`}>
-        <button className="cart_button uppercase">See Details</button>
+        <button className="cart_button uppercase hidden md:block">See Details</button>
         </Link>
         </div>
         </div>

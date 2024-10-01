@@ -7,10 +7,10 @@ import whatsapp from "../../assets/whatsapp.png";
 import facebook from "../../assets/facebook.png";
 const Topbar = () => {
     return (
-        <div>
-              <div className="flex text-xl px-2 justify-between items-center ghost_bg py-2 text-black">
-        <h6>+8801878403884</h6>
-        <ul className="flex items-center gap-3 left-0 justify-between">
+        <div className=''>
+          <div className="flex w-full bg-gray-500 text-xl px-2 justify-center md:justify-between items-center ghost_bg py-2 text-black">
+        <h6 className='hidden md:block'>+8801878403884</h6>
+        <ul className="flex items-center gap-3 md:left-0  justify-between">
           <li className="border-2   h-[40px] mt-2 w-[40px]  bg-white  border-[#F57F03] rounded-full p-2">
             <Link target="_blank" to={"https://wa.link/nas487"}>
               <img src={whatsapp} />
