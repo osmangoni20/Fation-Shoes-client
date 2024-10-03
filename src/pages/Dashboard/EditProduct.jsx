@@ -3,6 +3,7 @@
     import Modal from "../../component/shared/Modal";
 import { useLoaderData } from "react-router-dom";
 import toast from "react-hot-toast";
+import Loader from "../../component/shared/Loader";
 
     const EditProduct = () => {
         const {register,handleSubmit, }=useForm()
@@ -10,11 +11,13 @@ import toast from "react-hot-toast";
         const [isOpen,setModel]=useState(false);
         const [EditData,setEditData]=useState(null)
         const token=localStorage.getItem('token-fation-shoe')
+        const [isLoading, setIsLoading]=useState(false)
         const notify = (message) => toast(message);
         const isClose=()=>{
             setModel(false)
         }
         const isSubmit= async()=>{
+            setIsLoading(true)
             setModel(false)
             await fetch(`https://fation-shoes.onrender.com/product/${shoe._id}`, {
                 method: "PATCH",
@@ -27,6 +30,7 @@ import toast from "react-hot-toast";
               })
                 .then((res) => res.json())
                 .then( async() =>{
+                    setIsLoading(false)
                   notify("Update Successfully Done")
                 });
            
@@ -102,8 +106,11 @@ import toast from "react-hot-toast";
        
    </div>
         <div className="flex justify-end ">
-            <input type="submit" value={"Update"} className="p-3 rounded text-white bg-primary font-bold text-lg"></input>
+            <input type="submit" value={"Update"} className="p-3 cursor-pointer rounded text-white bg-primary font-bold text-lg"></input>
         </div>
+        {
+            isLoading&&<Loader/>
+        }
     </form>
               </div>
             </div>

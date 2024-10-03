@@ -16,6 +16,8 @@ import { createContext, useEffect, useState } from "react";
 export const authContext = createContext(null);
 import { app } from "../Firebase/Firebase.config";
 import { FacebookAuthProvider } from "firebase/auth/cordova";
+import { updateUser } from "../redux/features/UserSlice";
+import { useAppDispatch } from "../redux/hooks";
 const auth = getAuth(app);
 
 // eslint-disable-next-line react/prop-types
@@ -37,10 +39,12 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem('isAdmin',false);
     }
   }
+  const dispatch=useAppDispatch()
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        
         setLoading(false);
         if(user.email){
           checkAdmin(user)

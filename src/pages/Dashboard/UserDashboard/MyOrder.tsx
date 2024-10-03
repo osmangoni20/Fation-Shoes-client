@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Loader from '../../../component/shared/Loader';
 
 const MyOrder = () => {
     const {user}:any=useAuth()
@@ -49,6 +50,9 @@ const fetchData=()=>{
                         
                     )
                 })
+            }
+            {
+                userOrder?.length<0&&<Loader/>
             }
            </div>
              

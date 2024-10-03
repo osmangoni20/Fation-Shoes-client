@@ -97,7 +97,6 @@ const route =createBrowserRouter([
         element:<PrivateRoute>
           <AllProducts/>
         </PrivateRoute>,
-        loader:()=>fetch('https://fation-shoes.onrender.com/product'),
       },
       {
         path:"order",

@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import FacebookLogin from "../component/Login-Registration/FacebookLogin";
 import toast  from 'react-hot-toast';
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../redux/hooks";
+import { updateUser } from "../redux/features/UserSlice";
 
 
 const Login = () => {
@@ -17,6 +20,7 @@ const Login = () => {
   const location = useLocation();
   const [passwordReset,setResetPassword]=useState(false)
   const from = location?.state?.from?.pathname || "/";
+  const dispatch=useAppDispatch()
   const HandleResetPassword=()=>{
     setResetPassword(true)
   }
@@ -52,6 +56,14 @@ const Login = () => {
                 console.log(data)
                 localStorage.setItem('token-fation-shoe',data?.token)
             })
+        }
+        else{
+          fetch(`https://fation-shoes.onrender.com/user/${data?.user?.email}`
+
+          ).then(res=>res.json()).then(data=>{
+            console.log(data)
+            updateUser({name:`${data?.first_name } ${data?.last_name}`,email:data?.email, img: data?.img || user?.photoURL})
+        })
         }
        });
     }

@@ -20,7 +20,8 @@ setIsAdmin(localStorage.getItem('isAdmin'))
   const HandleDashboardSidebar=()=>{
     setSidebar(!showSidebar)
   }
-  const {img}=useAppSelector(state=>state.userR)
+  const {img,name,email}=useAppSelector(state=>state.userR)
+  console.log(img,name,email)
   return (
     <div className="md:grid md:grid-cols-10 ">
        <div onClick={HandleDashboardSidebar} tabIndex={0} role="button" className="fixed top-0 btn bg-[#fff] rounded-none btn-ghost md:hidden">

@@ -85,7 +85,7 @@ const AddProduct = () => {
                
            </div>
                 <div className="flex justify-center">
-                    <input type="submit" value={"Add Product"} className="font-bold text-lg bg-primary text-white p-4 rounded"></input>
+                    <input type="submit" value={"Add Product"} className="font-bold py-1 cursor-pointer text-lg bg-primary text-white p-4 rounded"></input>
                 </div>
 
                 {

@@ -6,10 +6,22 @@ import useAuth from "../../hooks/useAuth";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/features/CartSlice";
 import Testimonial from "../Home/Testimonial";
+import ProductReview from "../product/ProductReview";
+import { TProductInfo } from "../Home/SingleProduct";
 
+type TProductData={
+  _id:string,
+  pd_name:string,
+  pd_brand:string,
+  pd_category:string,
+  pd_price:number,
+  pd_description:string,
+  pd_image:string,
+  pd_size:[],
+}
 const ProductDetails = () => {
   
-  const shoe = useLoaderData();
+  const shoe:TProductData = useLoaderData();
   const {user}=useAuth()
   const [add_to_cart_button,set_add_button]=useState(true)
   const dispatch=useDispatch()
@@ -27,11 +39,11 @@ const ProductDetails = () => {
 
 const HandleAdd_to_Cart=()=>{
 
-    dispatch(addToCart({...shoe, pd_quantity:1, order_price:Number(pd_price) - Number(pd_price) * 0.2}))
+    dispatch(addToCart({...shoe}))
     set_add_button(true)
 }
 const HandleOrder=()=>{
-  dispatch(addToCart({...shoe, pd_quantity:1, order_price:Number(pd_price) - Number(pd_price) * 0.2}))
+  dispatch(addToCart({...shoe}))
   set_add_button(true)
   navigate(`/order_cart/${user?.email}`)
 }
@@ -163,6 +175,7 @@ const HandleOrder=()=>{
             </div>
           </div>
         </div> */}
+        <ProductReview pd_info={{pd_id:_id,name:pd_name}}/>
         <Testimonial title={"Product Reviews"}/>
       </div>
     </div>

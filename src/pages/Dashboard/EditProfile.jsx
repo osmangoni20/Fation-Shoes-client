@@ -7,9 +7,9 @@ import cameraImage from "../../assets/camera.png";
 import profileImage from "../../assets/personlogo.jpg";
 import loader from "../../assets/svg/Spin-1s-200px.svg";
 import axios from "axios";
-import { useDispatch } from "react-redux";
 import { useAppDispatch } from "../../redux/hooks";
 import { updateUser } from "../../redux/features/UserSlice";
+import Loader from "../../component/shared/Loader";
 const EditProfile = () => {
 
 const {register,handleSubmit}=useForm()
@@ -25,6 +25,7 @@ const [uploadImage, setUploadImage] = useState(null);
 // eslint-disable-next-line no-undef
 const [fieldValue, setFieldValue] = useState({});
 const dispatch=useAppDispatch()
+const [isLoading, setIsLoading]=useState(false)
 useEffect(()=>{
     fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
         .then((res) => res.json())
@@ -44,6 +45,7 @@ const HandleChangePassword=(e)=>{
     UpdatePassword(changePassword)
 }
 const isSubmit= async()=>{
+  setIsLoading(true)
     setModel(false)
     
 await UpdateEmail(EditData?.email||user?.email).then(data=>console.log(data))
@@ -58,6 +60,7 @@ await UpdateEmail(EditData?.email||user?.email).then(data=>console.log(data))
         .then( async() =>{
            console.log(EditData)
             await UpdateProfile((EditData?.first_name),user?.photoURL)
+            setIsLoading(false)
            notify("Update Profile Successfully")
     
         }
@@ -74,7 +77,8 @@ const HandleEditInputField=(e)=>{
 const onSubmit= async(data)=>{
     setModel(true)
     setEditData({...data, img: uploadImage || user?.photoURL})
-    updateUser({name:`${data?.first_name } ${data?.last_name}`,email:data?.email, img: uploadImage || user?.photoURL})
+    dispatch(updateUser({name:`${data?.first_name } ${data?.last_name}`,email:data?.email, img: uploadImage || user?.photoURL})
+  )
 }
 const HandleImageUpload = (e) => {
     setUploadImage("processing");
@@ -104,7 +108,7 @@ return (
     
     <div className="p-5 shadow-md m-2">
     <div>
-    <div className={"personal_image"}>
+    <div className={"personal_image my-5"}>
             <label className="label">
               <input type="file" name="img" onChange={HandleImageUpload} />
               <figure className={"personal_figure"}>
@@ -183,6 +187,9 @@ onChange: e => HandleEditInputField(e)})}/>
 <div className="flex justify-center">
     <input type="submit" value={"Update Profile"} className="bg-primary cursor-pointer text-white p-3 rounded-lg"></input>
 </div>
+{
+            isLoading&&<Loader/>
+        }
 </form>
 </div>
     </div>
