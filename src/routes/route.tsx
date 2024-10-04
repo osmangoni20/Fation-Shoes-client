@@ -27,6 +27,7 @@ import Shop from "../pages/Dashboard/UserDashboard/Shop.tsx";
 import MyOrder from "../pages/Dashboard/UserDashboard/MyOrder.tsx";
 import OrderDetails from "../pages/Dashboard/OrderDetails.tsx";
 import Review from "../pages/Review.tsx";
+import UserDashboard from "../component/Dashboard/UserDahboard/UserDashboard.tsx";
 
 const route =createBrowserRouter([
     {
@@ -92,6 +93,10 @@ const route =createBrowserRouter([
           <PrivateRoute><Dashboard/></PrivateRoute>
         ) 
       },
+      { path: "user_dashboard", element: (
+        <PrivateRoute><UserDashboard/></PrivateRoute>
+      ) 
+    },
       {
         path:"all-products",
         element:<PrivateRoute>

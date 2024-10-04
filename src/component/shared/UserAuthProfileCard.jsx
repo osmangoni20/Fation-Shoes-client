@@ -1,14 +1,18 @@
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks";
+import { useEffect, useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 const UserAuthProfileCard = ({ isOpen }) => {
   const { user, logOut } = useAuth();
+  const[isAdmin, setIsAdmin]=useState(false)
   console.log(user?.photoURL);
-  const isAdmin=localStorage.getItem('isAdmin')
-  const {img}=useAppSelector(state=>state.userR)
 
+  const {img}=useAppSelector(state=>state.userR)
+useEffect(()=>{
+  setIsAdmin(localStorage.getItem('isAdmin'))
+})
   return (
     <div className={`${isOpen ? "visible relative" : "invisible"}`}>
       <div className="card w-80 rounded-b-2xl rounded-t-none text-black bg-base-100 shadow-xl z-40 absolute right-1 top-18 mt-12">
@@ -62,7 +66,7 @@ const UserAuthProfileCard = ({ isOpen }) => {
                 />
               </svg>
 
-              <a href={ `${isAdmin?"/dashboard/home":"/dashboard/myOrder"}`}>Dashboard</a>
+              <a href={ `${isAdmin==true?"/dashboard/home":"/dashboard/user_dashboard"}`}>Dashboard</a>
             </li>
             <li className="flex align-middle items-center gap-2 font-semibold text-lg w-full">
               <svg

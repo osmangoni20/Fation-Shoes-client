@@ -39,6 +39,25 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem('isAdmin',false);
     }
   }
+  const getUserInformation= async(user)=>{
+    console.log(user)
+    const res= await fetch(`https://fation-shoes.onrender.com/user/${user.email}`)
+    const data= await res.json();
+    // setIsAdmin(data);
+    console.log("data",data)
+    const userInfo={
+      first_name:data?.first_name||data?.name,
+      last_name:data?.last_name,
+      email:data?.email,
+      contact_number:data?.contact_number||data?.mobile_1,
+      gender:data?.gender,
+      date_of_birth:data?.date_of_birth,
+      img: data?.img || user?.photoURL
+    }
+    if(data?.email){
+      dispatch(updateUser(userInfo))
+    }
+  }
   const dispatch=useAppDispatch()
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -48,6 +67,7 @@ const AuthProvider = ({ children }) => {
         setLoading(false);
         if(user.email){
           checkAdmin(user)
+          getUserInformation(user)
           }
       } else {
         setLoading(false);

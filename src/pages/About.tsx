@@ -1,5 +1,6 @@
 import React from "react";
-
+import logo from '../assets/logo-2.png'
+import Contact from "../component/contact/Contact";
 export const teamData = [
   {
     id: 1,
@@ -34,7 +35,7 @@ export const teamData = [
     bio: "Michael is the creative force behind Fation Shoe's innovative designs, with a background in both fashion and industrial design.",
     email: "michael.lee@fationshoe.com",
     phone: "+1 234 567 892",
-    photoUrl: "https://i.ibb.co.com/JCBYCSy/test.png",
+    photoUrl: "https://i.ibb.co.com/s172VSK/man2.png",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/michaellee",
       instagram: "https://instagram.com/michaelleedesigns"
@@ -69,12 +70,16 @@ export const teamData = [
 
 const About = () => {
     return (
-      <div className="md:hero md:min-h-screen pb-10">
+      <div className="md:hero   pb-10">
         <div>
        
-          <div>
-            <h1 className="text-5xl font-bold text-center py-5">Fation Shoes</h1>
-            <p className="p-6 text-justify">Fation Shoes  is one of the nation’s largest family footwear retailers with its own brand of style. Headquartered in Evansville, Indiana, Shoe Carnival stores are located in 35 states and Puerto Rico, as well as online at shoecarnival.com. We are continuing to grow!
+          <div className="grid grid-cols-1 justify-between px-10 shadow-lg md:grid-cols-2
+           bg-[#514F4D] text-white">
+            <figure>
+              <img src={logo} alt="" />
+            </figure>
+            <div>
+            <p className=" py-6 font-lato text-justify">Fation Shoes  is one of the nation’s largest family footwear retailers with its own brand of style. Headquartered in Evansville, Indiana, Shoe Carnival stores are located in 35 states and Puerto Rico, as well as online at shoecarnival.com. We are continuing to grow!
 
 With our unique and distinctive concept and promotional marketing, Shoe Carnival steps ahead of our competitors by bringing the best deals on the hottest brands for the whole family! We have an incredibly talented, highly motivated, and diverse team in our Retail Stores, Corporate Office, and Distribution Center. We are looking for team members who understand the importance of customer service, have an excellent work ethic, and a passion for career growth opportunities. Put your best foot forward – join our Talent Network and apply today! Learn more about our careers and current opportunities on our Careers page.
 
@@ -82,24 +87,27 @@ We trade on the NASDAQ Stock Market under the symbol SCVL. Investors and stakeho
             Best Shoe Shop in the Forks. Service Shoe Shop, conveniently located in the K Mart Mall shines, repairs & dyes all types & styles of boots and shoes. We also repair luggage & zippers, sports equipment. All leather coat & zipper repair, saddle & tack canvas tarp & tent repair. We provide shoe care products, laces & insoles & we refinish leather coats & jackets. No job too big or too small.
             </p>
           </div>
-
-          <div className="max-w-full">
-            <h1 className="text-3xl text-center font-bold font-sans">Our Teams</h1>
+          </div>
+            {/* Team Mate */}
+          <div className="max-w-full text-center md:p-10 p-2">
+            <h3 className="text-sm text-center font-medium font-sans">Our Teams</h3>
+            <h4 className="md:text-5xl text-xl py-2 font-bold text-center font-montserrat">Leadership team</h4>
+            <p>We are building the fashionable shoe</p>
            <div className="grid md:grid-cols-4 grid-cols-1 justify-center items-center">
             {
               teamData.map(teamMate=>{
                 return(
-<div key={teamMate.id} className="card product_cart w-[84]  text-black
+<div key={teamMate.id} className="card product_cart  md:w-[84] w-full  text-black
       p-0 
     bg-base-100 z-5">
-        <figure><img className="w-full p-0 h-[150px]"  src={teamMate?.photoUrl} alt="Shoes" /></figure>
+        <figure><img className="w-full p-0 h-[250px]"  src={teamMate?.photoUrl} alt="Employee" /></figure>
         
         <div className="card-body px-4 space-y-2 rounded">
         <div className="card-title font-montserrat">
           <h6>{ teamMate?.name}</h6>
         <p className="badge bg-primary text-white py-5 text-center">{teamMate?.position.slice(0,20)}</p>
         </div>
-        <p className='text-justify space-x-4'>{teamMate?.bio.slice(0,50)}..</p>
+        <p className='text-justify'>{teamMate?.bio.slice(0,50)}..</p>
         <div className=" space-y-2">
           
         <p className="font-semibold font-lato">{ teamMate?.email} </p> 
@@ -117,6 +125,8 @@ We trade on the NASDAQ Stock Market under the symbol SCVL. Investors and stakeho
            
            </div>
           </div>
+          {/* Contact */}
+          <Contact/>
         </div>
       </div>
     );

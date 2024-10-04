@@ -7,7 +7,7 @@ import cameraImage from "../../assets/camera.png";
 import profileImage from "../../assets/personlogo.jpg";
 import loader from "../../assets/svg/Spin-1s-200px.svg";
 import axios from "axios";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { updateUser } from "../../redux/features/UserSlice";
 import Loader from "../../component/shared/Loader";
 const EditProfile = () => {
@@ -74,11 +74,22 @@ const HandleEditInputField=(e)=>{
     e.preventDefault();
     setInputField({...editInputField,[e.target.name]:e.target.value})
 }
+const {img}=useAppSelector(state=>state.userR)
 const onSubmit= async(data)=>{
     setModel(true)
     setEditData({...data, img: uploadImage || user?.photoURL})
-    dispatch(updateUser({name:`${data?.first_name } ${data?.last_name}`,email:data?.email, img: uploadImage || user?.photoURL})
-  )
+    const userInfo={
+      first_name:data?.first_name,
+      last_name:data?.last_name,
+      email:data?.email,
+      contact_number1:data?.contact_number1||data?.mobile_1,
+      contact_number2:data?.contact_number2||data?.mobile_1,
+      gender:data?.gender,
+      date_of_birth:data?.date_of_birth,
+      img:img|| uploadImage || user?.photoURL
+    }
+    console.log(userInfo)
+    dispatch(updateUser(userInfo))
 }
 const HandleImageUpload = (e) => {
     setUploadImage("processing");
@@ -103,29 +114,28 @@ return (
             <Modal.Submit>Yes</Modal.Submit>
         </div>
     </Modal>
-    <div>
-    <h1 className="text-center font-serif font-extralight ">Update Profile</h1>
+    <div className="text-white">
+    <h1 className="text-center text-white font-serif font-extralight my-5">Update Profile</h1>
     
-    <div className="p-5 shadow-md m-2">
+    <div className="p-5 shadow-md bg-[#171A3B] text-white rounded-xl">
     <div>
-    <div className={"personal_image my-5"}>
+    <div className={"personal_image pt-0 mt-0 pb-5"}>
             <label className="label">
               <input type="file" name="img" onChange={HandleImageUpload} />
               <figure className={"personal_figure"}>
-                <span className={"personal_avatar"}>
+                <span className={"personal_avatar "}>
                   {uploadImage !== "processing" && (
                     <img
                       src={uploadImage || user?.photoURL || profileImage}
                       alt="avatar"
-                      height={150}
-                      width={150}
+                     
                     />
                   )}
                   {uploadImage === "processing" && (
                     <img src={loader} alt="avatar" height={150} width={150} />
                   )}
                 </span>
-                <figcaption className={"personal_figcaption"}>
+                <figcaption className={"personal_figcaption mt-6"}>
                   <img
                     src={cameraImage}
                     height={40}
@@ -142,7 +152,7 @@ return (
     
 <div className="grid grid-cols-2 gap-3 ">
 <div className="w-full my-2">
-    <label className="text-bold block" htmlFor="pd_name">First Name</label>
+    <label className="text-bold block" htmlFor="first_name">First Name</label>
     <input  type="text" id="first_name" defaultValue={userData?.first_name||''}  {...register('first_name', {
 onChange: e => HandleEditInputField(e)
 })}/>
@@ -160,14 +170,27 @@ onChange: e => HandleEditInputField(e)})}/>
 </div>
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="mobile_1">Mobile Number</label>
-    <input type="text" id="mobile_1" defaultValue={userData?.mobile_1||""} {...register("mobile_1",{
+    <input className="text-black" type="text" id="mobile_1" defaultValue={userData?.mobile_1||""} {...register("contact_number1",{
 onChange: e => HandleEditInputField(e)})}/>
 </div>
 
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="mobile_2">Alternative Mobile Number</label>
-    <input type="text" id="mobile_2" defaultValue={userData?.mobile_2||""} {...register("mobile_2",{
+    <input className="text-black" type="text" id="mobile_2" defaultValue={userData?.mobile_2||""} {...register("contact_number2",{
 onChange: e => HandleEditInputField(e)})}/>
+</div>
+<div className="w-full my-2">
+    <label className="text-bold " htmlFor="mobile_2">Date Of Birth</label>
+    <input className="text-black" type="date" id="date_of_birth" defaultValue={userData?.date_of_birth||""} {...register("date_of_birth",{
+onChange: e => HandleEditInputField(e)})}/>
+</div>
+<div className="w-full my-2">
+    <label className="text-bold " htmlFor="gender">Gender</label>
+    <select className="text-black" id="gender" defaultValue={userData?.gender||""} {...register("gender",{
+onChange: e => HandleEditInputField(e)})}>
+  <option value={"male"}>Male</option>
+  <option value={"female"}>Female</option>
+</select>
 </div>
 <div className="w-full my-2 ">
 <label className="text-bold " htmlFor="address">Change Password</label>

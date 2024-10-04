@@ -62,7 +62,16 @@ const Login = () => {
 
           ).then(res=>res.json()).then(data=>{
             console.log(data)
-            updateUser({name:`${data?.first_name } ${data?.last_name}`,email:data?.email, img: data?.img || user?.photoURL})
+            const userInfo:any={
+              first_name:data?.first_name||data?.name,
+              last_name:data?.last_name,
+              email:data?.email,
+              contact_number:data?.contact_number||data?.mobile_1,
+              gender:data?.gender,
+              date_of_birth:data?.date_of_birth,
+              img: data?.img || user?.photoURL
+            }
+            dispatch(updateUser(userInfo))
         })
         }
        });

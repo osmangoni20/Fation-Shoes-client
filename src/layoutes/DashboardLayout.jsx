@@ -41,7 +41,8 @@ setIsAdmin(localStorage.getItem('isAdmin'))
               </svg>
             </div>
       {
-        showSidebar&&<div  className=" text-white min-h-screen md:col-span-2 font-mono flex flex-col justify-between bg-gray-700 py-5">
+        showSidebar&&<div  className=" text-white min-h-screen md:col-span-2 
+        font-mono flex flex-col justify-between bg-[#171A3B] py-5">
         <div className="flex flex-col justify-center items-center text-xl">
           <figure>
             <img
@@ -178,8 +179,8 @@ setIsAdmin(localStorage.getItem('isAdmin'))
         </ul>
           :<div>
             <ul className="pl-5">
-          {/* <NavLink
-            to="home"
+          <NavLink
+            to="user_dashboard"
             className={({ isActive }) => (isActive ? "active" : "pending")}
           >
             <svg
@@ -197,7 +198,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
               />
             </svg>
             Dashboard
-          </NavLink> */}
+          </NavLink>
           <NavLink
             to="myOrder"
             className={({ isActive }) => (isActive ? "active" : "pending")}
@@ -315,7 +316,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
       </div>
       }
 
-      <div className="md:p-10 p-2 md:col-span-8 bg-light max-h-screen overflow-y-auto">
+      <div className="md:p-10 bg-[#030C1B] p-2 md:col-span-8 bg-light max-h-screen overflow-y-auto">
         <Outlet />
       </div>
     </div>

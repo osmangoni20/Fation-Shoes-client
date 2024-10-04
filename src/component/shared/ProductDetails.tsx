@@ -48,11 +48,11 @@ const HandleOrder=()=>{
   navigate(`/order_cart/${user?.email}`)
 }
   return (
-    <div className=" md:flex justify-center ghost_bg py-5">
+    <div className=" md:flex justify-center ghost_bg py-5 md:px-10 p-2">
       <div>
-        <div className="w-full py-5 p-5 rounded bg-white md:flex justify-between  gap-5">
+        <div className="w-full py-5  rounded bg-white md:flex justify-between  gap-5">
           <div className="w-full">
-            <img className="h-[400px]" src={pd_image} alt="product image" />
+            <img className="md:h-[400px]" src={pd_image} alt="product image" />
           </div>
           <div className="p-0  md:w-[800px] text-center md:text-left">
             <h3 className="text-4xl text-primary">{pd_name}</h3>
@@ -62,7 +62,7 @@ const HandleOrder=()=>{
             </h6>
             <h6 className="text-ghost text-xl">
               Category:
-              <span className="text-primary px-2">
+              <span className="text-primary uppercase px-2">
                <Link to={`/searchProduct/category/${pd_category}`}>
                {pd_category || "Lather"}
                </Link> 
@@ -77,7 +77,7 @@ const HandleOrder=()=>{
             </h6>
             <p className="text-xl py-2 text-justify">{pd_description}</p>
 
-            <div className="py-2 md:flex gap-2 items-center">
+            <div className="py-2 flex gap-2 justify-center md:justify-normal items-center">
                 {
                     add_to_cart_button?<button onClick={HandleAdd_to_Cart} className="text-white md:flex 
                     items-center gap-2 my-2 md:my-0 p-6 btn_secondary hidden ">
@@ -175,8 +175,8 @@ const HandleOrder=()=>{
             </div>
           </div>
         </div> */}
+        <hr className="md:hidden py-3"/>
         <ProductReview pd_info={{pd_id:_id,name:pd_name}}/>
-        <Testimonial title={"Product Reviews"}/>
       </div>
     </div>
   );

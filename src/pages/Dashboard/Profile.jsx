@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
+import AccountInfo from "../../component/Dashboard/UserDahboard/AccountInfo";
+import { useAppSelector } from "../../redux/hooks";
 
 
 const Profile = () => {
     const [userData,setUserData]=useState(null)
+    const {img}=useAppSelector(state=>state.userR)
     const {user}=useAuth();
     useEffect(()=>{
         fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
@@ -16,39 +18,12 @@ const Profile = () => {
     console.log(userData)
     return (
         <div>
-            <div className="flex justify-center items-center">
-                <figure>
-                    <img className="h-[200px] w-[200px] rounded-full border-4 border-black border-dotted" src={userData?.img|| user.photoURL} alt="user photo"></img>
-                <button  className="mt-5 w-[200px] bg-primary rounded text-white text-lg p-2 font-semibold">
-                    <Link to={"edit_profile"}>Update Profile </Link>
-                    </button>
-                </figure>
-            </div>
-            <div className="md:p-8 p-2">
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 text-lg text-white mt-5">
-                    <li className="profileDataList">
-                     <span>Name:</span>
-                    <span>{user?.displayName||(userData?.first_name + userData?.last_name)}</span>
-                    </li>
-                    <li className="profileDataList">
-                     Email:
-                    <span>{user?.email||userData.email}</span>
-                    </li>
-                    <li className="profileDataList">
-                     Mobile:
-                    <span>{userData?.mobile_1||""}</span>
-                    </li>
-                    <li className="profileDataList">
-                     Alternative Mobile:
-                    <span>{userData?.mobile_2||""}</span>
-                    </li>
-                    <li className="profileDataList">
-                     Address:
-                    <span>{userData?.address||""}</span>
-                    </li>
+           
+            <div className="bg-[#171A3B] text-white pt-8">
+            <img className="h-[200px] w-[200px] mx-auto rounded-full border-4 border-black border-dotted" src={img||userData?.img|| user.photoURL} alt="user photo"></img>
 
-                </ul>
-            </div>
+                   <AccountInfo/>
+                </div>
         </div>
     );
 };

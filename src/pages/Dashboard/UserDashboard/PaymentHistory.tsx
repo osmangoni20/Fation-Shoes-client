@@ -21,10 +21,10 @@ const fetchData=()=>{
   //  const { payment_method,transactionId
     return (
         <div>
-           <div className="overflow-x-auto">
-  <table className="table">
+           <div className="overflow-x-auto bg-[#171A3B] text-white">
+  <table className="table w-full">
     {/* head */}
-    <thead>
+    <thead className='text-white text-xl text-center w-full'>
       <tr>
         <th>Date</th>
         <th>Email</th>
@@ -33,7 +33,7 @@ const fetchData=()=>{
         <th>Transaction ID</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody className='text-center'>
       {/* row 1 */}
       {
         userOrder?.map(order=>{

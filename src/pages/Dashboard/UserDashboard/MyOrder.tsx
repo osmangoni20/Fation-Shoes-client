@@ -20,37 +20,62 @@ const fetchData=()=>{
    console.log(userOrder)
     return (
         <div>
-            <h2 className='text-center md:text-3xl text-xl'>Your Order Item</h2>
+            <h2 className='text-center md:text-3xl text-xl text-white'>Your Order Item</h2>
            <div className='flex flex-wrap gap-2 space-y-10'>
-           {
-                userOrder?.map((order)=>{
-                    return(
-                        
-                            order?.order_product?.map(product=>{
-                                return(
-                                    <div className="card md:w-80 w-full  pt-5 bg-base-100 shadow-xl text-black">
-                                    <figure className="h-[180px] w-full"><img src={product?.pd_image} alt="Shoes" /></figure>
-                                    <div className="card-body">
-                                    <h3 className="card-title">
-                                    {product?.pd_name}
-                                    <div className="badge badge-secondary">{product?.pd_brand}</div>
-                                    </h3>
+
+
+           <div className='min-w-md my-10 pb-6 bg-[#171A3B] w-full text-center text-white rounded-md p-3'>
+               
+                <table className='w-full space-y-4 '>
+                    <thead className='py-5'>
+                    <th>Date</th>
+                        <th>Product Image</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Transaction Id</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody className='text-center space-y-4'>
+                       
+                    {
+                        userOrder?.map(order=>(
+                            order?.order_product?.map((product)=>{
                                 
-                                    <div className="card-actions justify-top">
-                                    <div className="badge badge-outline bg-gray-500 p-2 text-white font-bold text-md">{ product?.pd_price} $</div> 
-                    
-                                    </div>
-                                    <p className='text-justify'>{product.pd_description}</p>
-                                    <p className="text-center p-1 uppercase rounded font-bold text-blue-500">{userOrder[0]?.status}</p>
-            
-                                    </div>
-                                    </div> 
-                                )
+                              return(
+                                <tr className='py-4 space-y-4 text-sm font-medium text-gray-200' key={product?._id}>
+                                <td>{(order?.order_product[0]?.pd_name===product?.pd_name)&& (order?.date || new Date().toLocaleDateString())}</td>
+                                <td>
+                                    <img className='h-[100px] w-[150px] mx-auto' src={product?.pd_image}></img>
+                                </td>
+                                <td>{product?.pd_name}</td>
+                                <td>{product?.pd_price}</td>
+                                <td>{product?.quantity}</td>
+                                <td>{order?.paymentInfo?.transactionId}</td>
+                                
+                                <td className='text-[#4F87F4]'>{order?.status}</td>
+                            </tr>
+                              )
+                          
                             })
+                        )
+                            
+                               
+                               
+                                
+                               
+                            
                         
                     )
-                })
-            }
+                    }
+                    {
+                       userOrder?.length<0&&<h3>You have placed no orders.</h3>
+                    }
+                       
+                    </tbody>
+                </table>
+            </div>
+          
             {
                 userOrder?.length<0&&<Loader/>
             }
