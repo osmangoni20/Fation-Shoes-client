@@ -15,7 +15,7 @@ const AccountInfo = () => {
                     </Link>
                 </div>
                 <div>
-                    <ul className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+                    <ul className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                     
                         <li className='py-3 border-b-2 border-b-gray-300  space-y-4'>
                             <p className='text-md text-gray-400'>First Name</p>

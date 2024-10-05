@@ -7,11 +7,11 @@ const MainLayout = () => {
     return (
         <div>
             <Topbar/>
-            <div className="sticky top-0 z-50">
+            <div className="sticky top-0 z-50 w-full">
             <Navbar />
             </div>
             <Outlet/>
-            <Footer/>
+            <Footer/> 
         </div>
     );
 };

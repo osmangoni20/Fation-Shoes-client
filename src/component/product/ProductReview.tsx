@@ -55,7 +55,7 @@ const ProductReview = ({ pd_info }) => {
   };
   return (
     <div className="">
-      <h1 className="font-serif font-extralight text-sm md:text-md ">
+      <h1 className="font-serif font-extralight text-sm lg:text-md ">
         Reviews and Ratings
       </h1>
       <p
@@ -112,7 +112,7 @@ const ProductReview = ({ pd_info }) => {
       <div className="py-10">
         {review?.length > 0 && (
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-3  gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-3  gap-10">
               {review?.map((review: { _id: React.Key | null | undefined }) => (
                 <SingleReviews key={review?._id} review={review} />
               ))}

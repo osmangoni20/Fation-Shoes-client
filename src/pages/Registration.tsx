@@ -68,7 +68,7 @@ const Registration = () => {
 
   return (
     <form onSubmit={handleSUbmit} className="hero min-h-screen">
-    <div className="hero-content  flex-col md:flex-row-reverse">
+    <div className="hero-content  flex-col lg:flex-row-reverse">
       <div className="card shrink-0 w-96 shadow-2xl bg-base-100">
         <div className="card-title items-center justify-center font-serif text-xl pt-5">
         <h1>Registration</h1>
@@ -134,7 +134,7 @@ const Registration = () => {
                 value="Register"
               />
             </div>
-            <div className="border-t-2 mt-6 border-primary md:flex justify-center gap-6 ">
+            <div className="border-t-2 mt-6 border-primary lg:flex justify-center gap-6 ">
             <GoogleLogin/>
           
             <FacebookLogin/>

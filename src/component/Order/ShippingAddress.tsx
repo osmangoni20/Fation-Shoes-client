@@ -98,7 +98,7 @@ const ShippingAddress = () => {
                 <Modal.Submit>Yes</Modal.Submit>
                 </div>
             </Modal>
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-3">
           <div className="col-span-2 px-5 my-6">
           <div className="bg-white p-3 flex justify-between items-center border-b-2 border-gray-500">
           <h3 className="text-3xl font-bold">Shipping Address</h3>

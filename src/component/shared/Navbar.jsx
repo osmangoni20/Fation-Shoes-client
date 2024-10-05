@@ -21,12 +21,12 @@ const[showNavbar, setNavbar]=useState(false)
   const {img}=useAppSelector(state=>state.userR)
 
   return (
-    <div className="">
+    <div className="min-w-full">
       
       <div className="navbar z-50  bg-[#514F4D] w-full   py-0 text-white  shadow-xl">
         <div className="navbar-start ">
           <div className="dropdown">
-            <div onClick={HandleNavbar} tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+            <div onClick={HandleNavbar} tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -110,7 +110,7 @@ const[showNavbar, setNavbar]=useState(false)
               <>
                 <li
                   onClick={() => logOut()}
-                  className="flex gap-5 text-lg md:w-full btn mx-4 bg-primary hover:bg-optional-red text-white"
+                  className="flex gap-5 text-lg lg:w-full btn mx-4 bg-primary hover:bg-optional-red text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ const[showNavbar, setNavbar]=useState(false)
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="md:size-8 size-40"
+                    className="lg:size-8 size-40"
                   >
                     <path
                       strokeLinecap="round"
@@ -126,7 +126,7 @@ const[showNavbar, setNavbar]=useState(false)
                       d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9"
                     />
                   </svg>
-                  <button className="md:block hidden">Log Out</button>
+                  <button className="lg:block hidden">Log Out</button>
                 </li>
               </>
             )}
@@ -138,7 +138,7 @@ const[showNavbar, setNavbar]=useState(false)
           <img src={logo} width={100} height={40} alt="FATION SHOE"></img>
           </Link>
         </div>
-        <div className="navbar-center hidden md:flex">
+        <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-lg font-semibold">
             <li>
               <Link to={"/searchProduct/category/casual_shoes"}>
@@ -164,8 +164,8 @@ const[showNavbar, setNavbar]=useState(false)
           </ul>
         </div>
 
-        <div className="w-full gap-5 relative flex justify-end md:justify-around items-center">
-        <div className="w-[350px] hidden md:block">
+        <div className="w-full gap-5 relative flex justify-end lg:justify-around items-center">
+        <div className="w-[350px] hidden md:block lg:block">
                 <label className="flex items-center rounded-lg  border-2 border-gray-300">
                   <input
                     onBlur={(e) => setSearchValue(e?.target?.value)}
@@ -211,7 +211,7 @@ const[showNavbar, setNavbar]=useState(false)
           </div>
          
           <div
-            className="cursor-pointer hidden md:block "
+            className="cursor-pointer hidden lg:block "
             onClick={HandleUserProfile}
           >
             {user ? (

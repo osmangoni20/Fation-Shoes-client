@@ -24,13 +24,13 @@ import Graphs from "../../component/Dashboard/Graphs";
             />
             </svg>
 
-            <h3 className="text-xl">Dashboard</h3>
+            <h3 className="text-xl md:ml-5">Dashboard</h3>
         </div>
 
         <div className="flex justify-center py-5">
             <DashboardCard />
         </div>
-        <div className="grid grid-cols-12 rounded-md bg-[#171A3B] p-5 text-white align-middle items-center gap-5 ">
+        <div className="grid grid-cols-1 lg:grid-cols-12 rounded-md bg-[#171A3B] p-5 text-white align-middle items-center gap-5 ">
 
             
             <div className="col-span-7 grid " >

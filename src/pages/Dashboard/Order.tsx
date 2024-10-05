@@ -68,7 +68,7 @@ const Order = () => {
                     <p className="text-md font-medium">{order?.email}</p>
                   </td>
                   <td className="flex-2">
-                    <div className="flex items-center gap-3 md:w-[100px]">
+                    <div className="flex items-center gap-3 lg:w-[100px]">
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
                           <img

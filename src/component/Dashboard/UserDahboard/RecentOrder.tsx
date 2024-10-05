@@ -17,11 +17,11 @@ const RecentOrder = ({userOrder}) => {
                         <th>Price</th>
                         <th>Status</th>
                     </thead>
-                    <tbody className='text-center '>
+                    <tbody className='text-center space-y-4'>
                     {
                         userOrder?.reverse().map(order=>{
                             return(
-                                <tr className='py-2 text-sm font-medium text-gray-200' key={order?._id}>
+                                <tr className='py-2 space-y-4 text-sm font-medium text-gray-200' key={order?._id}>
                                 <td>{order?.date || new Date().toLocaleDateString()}</td>
                                 <td>{order?.order_product?.length}</td>
                                 <td>{order?.paymentInfo?.transactionId}</td>

@@ -53,7 +53,7 @@ const TendingProducts = ({ shoes }) => {
                   </svg>
                 </Link>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-2 items-center my-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-2 items-center my-5">
                 {
                   // eslint-disable-next-line react/prop-types
                   shoes?.slice(0, 6)?.map((shoe, index) => (
@@ -123,7 +123,7 @@ const TendingProducts = ({ shoes }) => {
                   </svg>
                 </Link>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-2 items-center my-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-2 items-center my-5">
                 {
                   // eslint-disable-next-line react/prop-types
                   formalData?.slice(0, 6)?.map((shoe, index) => (
@@ -187,7 +187,7 @@ const TendingProducts = ({ shoes }) => {
                   </svg>
                 </Link>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-2 items-center my-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-2 items-center my-5">
                 {
                   // eslint-disable-next-line react/prop-types
                   loaferData?.slice(0, 6)?.map((shoe, index) => (
@@ -250,7 +250,7 @@ const TendingProducts = ({ shoes }) => {
                   </svg>
                 </Link>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-2 items-center my-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-2 items-center my-5">
                 {
                   // eslint-disable-next-line react/prop-types
                   loaferData?.slice(0, 6)?.map((shoe, index) => (

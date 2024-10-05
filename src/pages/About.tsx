@@ -70,12 +70,12 @@ export const teamData = [
 
 const About = () => {
     return (
-      <div className="md:hero   pb-10">
+      <div className="lg:hero   pb-10">
         <div>
        
-          <div className="grid grid-cols-1 justify-between px-10 shadow-lg md:grid-cols-2
+          <div className="grid grid-cols-1 justify-between px-10 shadow-lg lg:grid-cols-2
            bg-[#514F4D] text-white">
-            <figure>
+            <figure className="md:mx-auto">
               <img src={logo} alt="" />
             </figure>
             <div>
@@ -89,15 +89,15 @@ We trade on the NASDAQ Stock Market under the symbol SCVL. Investors and stakeho
           </div>
           </div>
             {/* Team Mate */}
-          <div className="max-w-full text-center md:p-10 p-2">
+          <div className="max-w-full text-center lg:p-10 p-2">
             <h3 className="text-sm text-center font-medium font-sans">Our Teams</h3>
-            <h4 className="md:text-5xl text-xl py-2 font-bold text-center font-montserrat">Leadership team</h4>
+            <h4 className="lg:text-5xl text-xl py-2 font-bold text-center font-montserrat">Leadership team</h4>
             <p>We are building the fashionable shoe</p>
-           <div className="grid md:grid-cols-4 grid-cols-1 justify-center items-center">
+           <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 justify-center items-center">
             {
               teamData.map(teamMate=>{
                 return(
-<div key={teamMate.id} className="card product_cart  md:w-[84] w-full  text-black
+<div key={teamMate.id} className="card product_cart  lg:w-[84] w-full  text-black
       p-0 
     bg-base-100 z-5">
         <figure><img className="w-full p-0 h-[250px]"  src={teamMate?.photoUrl} alt="Employee" /></figure>

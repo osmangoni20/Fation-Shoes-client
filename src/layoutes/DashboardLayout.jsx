@@ -23,8 +23,8 @@ setIsAdmin(localStorage.getItem('isAdmin'))
   const {img,name,email}=useAppSelector(state=>state.userR)
   console.log(img,name,email)
   return (
-    <div className="md:grid md:grid-cols-10 ">
-       <div onClick={HandleDashboardSidebar} tabIndex={0} role="button" className="fixed top-0 btn bg-[#fff] rounded-none btn-ghost md:hidden">
+    <div className="lg:grid lg:grid-cols-10 ">
+       <div onClick={HandleDashboardSidebar} tabIndex={0} role="button" className="fixed top-0 btn bg-[#fff] rounded-none btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -41,7 +41,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
               </svg>
             </div>
       {
-        showSidebar&&<div  className=" text-white min-h-screen md:col-span-2 
+        showSidebar&&<div  className=" text-white min-h-screen lg:col-span-2 
         font-mono flex flex-col justify-between bg-[#171A3B] py-5">
         <div className="flex flex-col justify-center items-center text-xl">
           <figure>
@@ -316,7 +316,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
       </div>
       }
 
-      <div className="md:p-10 bg-[#030C1B] p-2 md:col-span-8 bg-light max-h-screen overflow-y-auto">
+      <div className="lg:p-10 bg-[#030C1B] p-2 lg:col-span-8 bg-light max-h-screen overflow-y-auto">
         <Outlet />
       </div>
     </div>

@@ -1,7 +1,7 @@
 
 const Add = () => {
     return (
-        <div className='grid grid-cols-2 p-0 md:flex w-full justify-center '>
+        <div className='grid grid-cols-2 p-0 lg:flex w-full justify-center '>
             {/* <figure>
                 <img className='w-full' src='https://img.freepik.com/premium-psd/black-friday-sale-promotion-banner_1005441-1063.jpg?size=626&ext=jpg&ga=GA1.1.291005766.1716642525&semt=ais_user'></img>
             </figure> */}

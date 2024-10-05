@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
  
-  <footer className="md:grid sm:grid-cols-1 md:grid-cols-4 justify-center items-center text-center flex flex-wrap p-6 bg-[#514F4D] text-white">
+  <footer className="lg:grid sm:grid-cols-1 md:flex md:flex-wrap md:justify-between lg:grid-cols-4 lg:justify-center items-center text-center p-6 bg-[#514F4D] text-white">
       {/* Company Info */}
-      <nav className="mb-6 md:mb-0">
+      <nav className="mb-6 lg:mb-0 md:min-w-full">
         <h6 className="text-white uppercase font-montserrat font-semibold">
           Fation Shoe
         </h6>
         <p>Shoe Fashion Bangladesh Limited</p>
         <ul className="mt-4">
-          <li className="flex items-center gap-2 mb-2">
+          <li className="flex items-center justify-center gap-2 mb-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -32,7 +32,7 @@ const Footer = () => {
                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
               />
             </svg>
-            <p className="text-sm md:text-base">
+            <p className="text-sm lg:text-base">
               House 10, Road 12, Academy Road, Feni Sodor, Chittagong,
               Bangladesh
             </p>
@@ -51,7 +51,7 @@ const Footer = () => {
               />
             </svg>
 
-            <p className="text-sm md:text-base">+8801878473789</p>
+            <p className="text-sm lg:text-base">+8801878473789</p>
           </li>
           <li className="flex items-center justify-center gap-2">
             <svg
@@ -64,46 +64,46 @@ const Footer = () => {
               <path d="m19 8.839-7.77 3.885a2.75 2.75 0 0 1-2.46 0L1 8.839V14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.839Z" />
             </svg>
 
-            <p className="text-sm md:text-base">fationshoe@gmail.com</p>
+            <p className="text-sm lg:text-base">fationshoe@gmail.com</p>
           </li>
         </ul>
       </nav>
 
       {/* Company Links */}
-      <nav className="mb-6 md:mb-0 text-center">
+      <nav className="mb-6 lg:mb-0 text-center pt-8">
         <h6 className="footer-title text-white">Company</h6>
-        <Link to="/about" className="link link-hover block mb-2">
+        <a href="/about" className="link link-hover block mb-2">
           About Us
-        </Link>
-        <Link to="/contact" className="link link-hover block mb-2">
+        </a>
+        <a href="/contact" className="link link-hover block mb-2">
           Contact
-        </Link>
-        <Link to="/privacy_policy" className="link link-hover block mb-2">
+        </a>
+        <a href="/privacy_policy" className="link link-hover block mb-2">
           Privacy Policy
-        </Link>
-        <Link to="/cookie_policy" className="link link-hover block mb-2">
+        </a>
+        <a href="/cookie_policy" className="link link-hover block mb-2">
           Cookie Policy
-        </Link>
-        <Link to="/terms_condition" className="link link-hover block mb-2">
+        </a>
+        <a href="/terms_condition" className="link link-hover block mb-2">
           Terms & Conditions
-        </Link>
+        </a>
       </nav>
 
       {/* Help Links */}
-      <nav className="mb-6 md:mb-0">
+      <nav className="mb-6 lg:mb-0">
         <h6 className="footer-title text-white">Help</h6>
-        <Link to="/payment_service" className="link link-hover block mb-2">
+        <a href="/payment_service" className="link link-hover block mb-2">
           Payment
-        </Link>
-        <Link to="/shipping_service" className="link link-hover block mb-2">
+        </a>
+        <a href="/shipping_service" className="link link-hover block mb-2">
           Shipping
-        </Link>
-        <Link to="/return_replacement" className="link link-hover block mb-2">
+        </a>
+        <a href="/return_replacement" className="link link-hover block mb-2">
           Return and Replacement
-        </Link>
-        <Link to="/contact" className="link link-hover block mb-2">
+        </a>
+        <a href="/contact" className="link link-hover block mb-2">
           Chat With Us
-        </Link>
+        </a>
       </nav>
 
       {/* Social Links */}

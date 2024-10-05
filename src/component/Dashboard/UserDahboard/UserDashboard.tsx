@@ -20,7 +20,7 @@ const fetchData=()=>{
    const totalOrderPrice=userOrder?.reduce((total,order)=>order?.price+total,0)
   return (
     <div>
-      <div className="flex flex-wrap justify-around">
+      <div className="flex flex-wrap md:gap-5 justify-around">
         <div
           className="h-[180px] hover:bg-[#374050]
            bg-[#4F87F4]  py-4 text-white shadow-lg  w-[300px]  border-2 

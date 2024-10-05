@@ -3,7 +3,7 @@ import React from "react";
 const OurService = () => {
   return (
     <div>
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-2 p-5 text-white">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-5 text-white">
      
 
       <div className="py-6 px-2  flex justify-center items-center

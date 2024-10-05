@@ -21,7 +21,7 @@ const SearchItem = () => {
             {
 
                     ProductData.length>0?
-                    <div className="p-5 grid-cols-1 grid md:grid-cols-4 gap-10 justify-center align-to items-start">
+                    <div className="p-5 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-10 justify-center align-to items-start">
                 {
                     ProductData?.map((shoe)=>
                     <SingleProduct

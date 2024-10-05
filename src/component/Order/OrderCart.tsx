@@ -42,7 +42,7 @@ const OrderCart = () => {
  
   return (
     <div className="ghost_bg rounded-b-md">
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3">
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-3">
         <div className="col-span-2 p-5">
           <div className="my-2 bg-white p-4 font-semibold text-xl flex 
           justify-between items-center">

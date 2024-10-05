@@ -57,10 +57,10 @@ export type TProductInfo={
        
         </div>
         <div>
-        <div className=" md:space-x-4 flex">
+        <div className=" lg:space-x-4 flex">
         <button onClick={HandleAddToCart} className="cart_button uppercase">Add to Cart</button>
         <Link to={`/product/${_id}`}>
-        <button className="cart_button uppercase hidden md:block">See Details</button>
+        <button className="cart_button uppercase hidden lg:block">See Details</button>
         </Link>
         </div>
         </div>

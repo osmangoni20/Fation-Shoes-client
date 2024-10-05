@@ -46,10 +46,10 @@ const Contact = () => {
           information you need.
         </p>
       </div>
-      <div className="md:flex md:flex-row md:justify-around flex flex-col-reverse gap-5 items-center">
+      <div className="lg:flex md:flex-row md:justify-between lg:flex-row lg:justify-around flex flex-col-reverse gap-5 items-center">
       <div>
       <form
-          className=" p-5  rounded-md w-full md:max-w-lg"
+          className=" p-5  rounded-md w-full md:max-w-md lg:max-w-lg"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex flex-wrap gap-5">

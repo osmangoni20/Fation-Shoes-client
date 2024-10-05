@@ -19,7 +19,7 @@ const Product = ({shoes}:{shoes:TProductInfo[]}) => {
         shoes?.length?<div>
         <div className="py-10">
             <h1 className="font-serif text-3xl font-bold uppercase text-center">Most Popular Shoe</h1>
-            <div className="grid grid-cols-1 md:grid-cols-4 z-0 justify-center gap-2 items-center my-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 z-0 justify-center gap-2 items-center my-5">
                 {
                     // eslint-disable-next-line react/prop-types
                     shoes?.slice(0,6)?.map((shoe,index)=><SingleProduct shoe={shoe} key={index}/>)

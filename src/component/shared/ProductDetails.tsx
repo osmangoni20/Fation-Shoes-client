@@ -48,13 +48,13 @@ const HandleOrder=()=>{
   navigate(`/order_cart/${user?.email}`)
 }
   return (
-    <div className=" md:flex justify-center ghost_bg py-5 md:px-10 p-2">
+    <div className=" lg:flex justify-center ghost_bg py-5 lg:px-10 p-2">
       <div>
-        <div className="w-full py-5  rounded bg-white md:flex justify-between  gap-5">
+        <div className="w-full py-5  rounded bg-white lg:flex justify-between  gap-5">
           <div className="w-full">
-            <img className="md:h-[400px]" src={pd_image} alt="product image" />
+            <img className="lg:h-[400px]" src={pd_image} alt="product image" />
           </div>
-          <div className="p-0  md:w-[800px] text-center md:text-left">
+          <div className="p-0  lg:w-[800px] text-center lg:text-left">
             <h3 className="text-4xl text-primary">{pd_name}</h3>
             <h6 className="text-ghost text-xl">
               Brand:
@@ -77,10 +77,10 @@ const HandleOrder=()=>{
             </h6>
             <p className="text-xl py-2 text-justify">{pd_description}</p>
 
-            <div className="py-2 flex gap-2 justify-center md:justify-normal items-center">
+            <div className="py-2 flex gap-2 justify-center lg:justify-normal items-center">
                 {
-                    add_to_cart_button?<button onClick={HandleAdd_to_Cart} className="text-white md:flex 
-                    items-center gap-2 my-2 md:my-0 p-6 btn_secondary hidden ">
+                    add_to_cart_button?<button onClick={HandleAdd_to_Cart} className="text-white lg:flex 
+                    items-center gap-2 my-2 lg:my-0 p-6 btn_secondary hidden ">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@ const HandleOrder=()=>{
                     </button>:
                      <Link to={`/order_cart/${user?.email}`}>
                      <button  className="text-white flex 
-                    items-center gap-2 my-2 md:my-0 p-6 btn_secondary">
+                    items-center gap-2 my-2 lg:my-0 p-6 btn_secondary">
                          <span>
                            <svg
                              xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +124,7 @@ const HandleOrder=()=>{
                 }
              
                 <button onClick={HandleOrder}  className="text-white flex 
-                    items-center gap-2 my-2 md:my-0 p-6 btn_secondary">
+                    items-center gap-2 my-2 lg:my-0 p-6 btn_secondary">
                 <span> Order Now</span>
                   <span>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
@@ -175,7 +175,7 @@ const HandleOrder=()=>{
             </div>
           </div>
         </div> */}
-        <hr className="md:hidden py-3"/>
+        <hr className="lg:hidden py-3"/>
         <ProductReview pd_info={{pd_id:_id,name:pd_name}}/>
       </div>
     </div>

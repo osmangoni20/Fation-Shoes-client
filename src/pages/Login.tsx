@@ -99,7 +99,7 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSUbmit} className="hero min-h-screen">
-      <div className="hero-content  flex-col md:flex-row-reverse">
+      <div className="hero-content  flex-col lg:flex-row-reverse">
         <div className="card shrink-0 w-96 shadow-2xl bg-base-100">
           <div className="card-title items-center justify-center font-serif text-xl pt-5">
           <h1>Login Now</h1>
@@ -138,9 +138,10 @@ const Login = () => {
               }
            {/* demo admin user */}
               <div className="flex justify-between">
-                <li className="text-sm  p-1  rounded list-none" onClick={HandleDemoAdmin}>
-                  <input type="checkbox"></input> Demo Admin</li>
-                <li className="text-sm  rounded p-1 list-none" onClick={HandleDemoUser}><input type="checkbox"></input> Demo User</li>
+                <li style={{color:"#207F99"}} className="text-sm cursor-pointer text-purple-500 hover:text-green p-1  rounded list-none" onClick={HandleDemoAdmin}>
+                   Demo Admin</li>
+                <li style={{color:"#F5C913"}} className="text-sm rounded text-yellow-400 cursor-pointer text-green p-1 list-none" onClick={HandleDemoUser}>
+                 Demo User</li>
 
               </div>
             <div className="form-control mt-6">
@@ -161,7 +162,7 @@ const Login = () => {
                 </label>
               </div>
               
-              <div className="md:flex ws-full justify-center mt-2 gap-3 border-t-2 border-primary">
+              <div className="lg:flex ws-full justify-center mt-2 gap-3 border-t-2 border-primary">
             <GoogleLogin/>
         
             {/* <FacebookLogin/> */}

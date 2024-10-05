@@ -10,7 +10,7 @@ const OrderDetails = () => {
         <div>
             <div className='my-5'>
                 <h3 className=' py-2 text-2xl'>User Information</h3>
-               <ul className='grid grid-cols-2 md:gap-5 text-center text-white'>
+               <ul className='grid grid-cols-2 lg:gap-5 text-center text-white'>
               
                     <li className='text-xl font-medium bg-[#374151] rounded-md p-2'>
                         {customer_name}

@@ -97,8 +97,8 @@ const TrandMark = () => {
   return (
     <div>
       <div className=" my-2 text-center mt-5">
-        <div className="inline-block py-5 md:pb-8">
-          <h1 className="md:text-9xl space-x-4 font-lato font-bold ">Trendmark</h1>
+        <div className="inline-block py-5 lg:pb-8">
+          <h1 className="lg:text-9xl space-x-4 font-lato font-bold ">Trendmark</h1>
           <p className="text-xl font-semibold text-right">
             Fation 2024 Limited Edition
           </p>
@@ -110,7 +110,7 @@ const TrandMark = () => {
             src={trandmarkImage}
           />
         </figure>
-        <div className="p-2 hidden md:block">
+        <div className="p-2 hidden lg:block">
         <div className="card w-[30%] pt-2 px-2 bg-[#181818]  text-white absolute 
         right-0 z-20 
       p-0  w-84 z-5">
@@ -158,7 +158,7 @@ const TrandMark = () => {
         </div> 
         </div>
         </div>
-        <div className="h-[200px] hidden  pl-4  bg-[#181818] md:flex items-center z-10">
+        <div className="h-[200px] hidden  pl-4  bg-[#181818] lg:flex items-center z-10">
           <div onClick={()=>HandleTrandMarkProducts("Ultraboost_2")} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
             <div  className="flex  justify-between text-black items-center">
               <p>01</p>

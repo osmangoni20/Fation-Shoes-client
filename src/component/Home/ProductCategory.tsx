@@ -4,17 +4,17 @@ import fationImage from '../../assets/fation3.png'
 import { Link } from "react-router-dom";
 const ProductCategory = () => {
   return (
-    <div className="h-[1000px]">
+    <div className="lg:h-[1000px]">
       <div>
         <div className="my-2 px-6">
-          <h3 className="md:text-5xl text-3xl py-2 md:text-left text-center">
+          <h3 className="lg:text-5xl text-3xl py-2 lg:text-left text-center">
             <span className="font-bold text-[#514F4D]">Meet</span>
             <span className="font-normal"> Categories</span>
           </h3>
         </div>
         <div className="relative">
-          <div className="md:flex block justify-around gap-5 px-8">
-            <div className="p-8 bg-[#514F4D] text-white z-20 sm:w-full md:w-[45%] rounded-md">
+          <div className="lg:flex block justify-around gap-5 px-8">
+            <div className="p-8 bg-[#514F4D] text-white z-20 sm:w-full lg:w-[45%] rounded-md">
               <p className="border-2 border-white rounded-full py-1 px-4 inline-block uppercase">
                 Featured
               </p>
@@ -33,7 +33,7 @@ const ProductCategory = () => {
               </button>
              </Link>
             </div>
-            <div className="p-8 bg-[#207F99] mt-5 md:mt-0 text-white sm:w-full md:w-[45%] rounded-md z-20">
+            <div className="p-8 bg-[#207F99] mt-5 lg:mt-0 text-white sm:w-full lg:w-[45%] rounded-md z-20">
               <p className="border-2 border-white rounded-full py-1 px-4 inline-block uppercase">
                 Featured
               </p>
@@ -54,7 +54,7 @@ const ProductCategory = () => {
             </div>
           </div>
 
-          <div className="h-[600px] hidden md:flex justify-between items-center z-10 absolute top-[80%] text-white w-full bg-[#000000]">
+          <div className="h-[600px] hidden lg:flex justify-between items-center z-10 absolute top-[80%] text-white w-full bg-[#000000]">
             <div className="w-[30%] space-y-3 p-16">
               <h5 className="font-bold text-md uppercase">All Products</h5>
               <h3 className="text-4xl ">Our Shoes</h3>
