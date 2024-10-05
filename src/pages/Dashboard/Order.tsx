@@ -39,11 +39,11 @@ const Order = () => {
         </h3>
       </div>
       <div>
-        <div className="overflow-x-auto">
-          <table className="table">
+        <div className="overflow-x-auto bg-[#171A3B] text-white ">
+          <table className="table text-white">
             {/* head */}
             <thead>
-              <tr className=" text-cetner">
+              <tr className=" text-center text-white">
                 <th>Date</th>
                 <th>Email</th>
                 <th>Customer Name</th>
@@ -55,7 +55,7 @@ const Order = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className="space-x-4">
+            <tbody className="space-x-4 text-center">
               {/* row 1 */}
               {orderData?.map((order) => (
              <tr key={order._id}>

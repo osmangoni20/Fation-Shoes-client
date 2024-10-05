@@ -12,7 +12,8 @@ import { updateUser } from "../redux/features/UserSlice";
 
 
 const Login = () => {
-  
+  const[defaultEmail, setDefaultEmail]=useState("")
+  const [defaultPassword, setDefaultPassword]=useState("")
   const notify = (message) => toast(message);
   const {signIn,authError,user,resetPassword}:any=useAuth()
   console.log(user)
@@ -31,6 +32,9 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form?.password?.value;
+  
+
+   
     if(passwordReset){
       resetPassword(email).then( async()=>{
        await notify("Send Email for Update Password")
@@ -84,6 +88,15 @@ const Login = () => {
     }
   }, [user, from, navigate]);
 
+  const HandleDemoAdmin=()=>{
+    setDefaultEmail("osmangoni0827@gmial.com")
+    setDefaultPassword("osmangoni")
+  }
+  const HandleDemoUser=()=>{
+    setDefaultEmail("ibrahim@gmail.com")
+    setDefaultPassword("123456")
+  }
+
   return (
     <form onSubmit={handleSUbmit} className="hero min-h-screen">
       <div className="hero-content  flex-col md:flex-row-reverse">
@@ -99,6 +112,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="email"
+                defaultValue={defaultEmail}
                 className="input input-bordered"
                 name="email"
                 required
@@ -113,6 +127,7 @@ const Login = () => {
                 <input
                   type="password"
                   placeholder="password"
+                  defaultValue={defaultPassword}
                   className="input input-bordered"
                   name="password"
                   required
@@ -121,8 +136,13 @@ const Login = () => {
                 
                 </> 
               }
-           
+           {/* demo admin user */}
+              <div className="flex justify-between">
+                <li className="text-sm  p-1  rounded list-none" onClick={HandleDemoAdmin}>
+                  <input type="checkbox"></input> Demo Admin</li>
+                <li className="text-sm  rounded p-1 list-none" onClick={HandleDemoUser}><input type="checkbox"></input> Demo User</li>
 
+              </div>
             <div className="form-control mt-6">
               <input
                 className="btn bg-primary text-white"
@@ -141,10 +161,11 @@ const Login = () => {
                 </label>
               </div>
               
-              <div className="md:flex justify-center mt-2 gap-3 border-t-2 border-primary">
+              <div className="md:flex ws-full justify-center mt-2 gap-3 border-t-2 border-primary">
             <GoogleLogin/>
         
-            <FacebookLogin/>
+            {/* <FacebookLogin/> */}
+
             </div>
               </> 
              }

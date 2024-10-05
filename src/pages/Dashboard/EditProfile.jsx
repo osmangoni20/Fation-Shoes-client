@@ -49,7 +49,7 @@ const isSubmit= async()=>{
     setModel(false)
     
 await UpdateEmail(EditData?.email||user?.email).then(data=>console.log(data))
-  await fetch(`http://localhost:3000/user/${user?.email}`, {
+  await fetch(`https://fation-shoes.onrender.com/user/${user?.email}`, {
         method: "PATCH",
         headers: {
         "Content-type": "application/json",

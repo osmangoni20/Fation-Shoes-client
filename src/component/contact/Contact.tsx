@@ -8,12 +8,12 @@ import toast from "react-hot-toast";
 const Contact = () => {
     const { register, handleSubmit } = useForm();
     const { user }: any = useAuth();
-    const {name,img}=useAppSelector(state=>state.userR)
+    const {first_name,img}=useAppSelector(state=>state.userR)
     const [isLoading, setIsLoading]=useState(false)
     const baseurl = "https://fation-shoes.onrender.com/";
 
     const onSubmit = async (data) => {
-        console.log(user,name,img,data)
+        console.log(user,first_name,img,data)
         setIsLoading(true);
         await fetch(`${baseurl}/message`, {
           method: "POST",
@@ -22,7 +22,7 @@ const Contact = () => {
           },
           body: JSON.stringify({
             ...data,
-            user_name:name|| user?.name || user?.displayName||"User",
+            user_name:first_name|| user?.name || user?.displayName||"User",
             img: img||user?.photoURL,
             date: new Date().toLocaleDateString(),
             email: user?.email,
@@ -36,7 +36,7 @@ const Contact = () => {
       };
   return (
     <div>
-      <div className="text-center flex flex-col justify-center">
+      <div className="text-center flex flex-col justify-center py-5">
         <div className="">
           <p className="text-sm font-medium pl-36">Fation Shoe</p>
           <h1 className="text-6xl font-lato font-semibold">Contact</h1>

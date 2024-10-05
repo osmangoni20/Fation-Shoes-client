@@ -12,7 +12,8 @@ const UserAuthProfileCard = ({ isOpen }) => {
   const {img}=useAppSelector(state=>state.userR)
 useEffect(()=>{
   setIsAdmin(localStorage.getItem('isAdmin'))
-})
+},[isAdmin])
+console.log(isAdmin)
   return (
     <div className={`${isOpen ? "visible relative" : "invisible"}`}>
       <div className="card w-80 rounded-b-2xl rounded-t-none text-black bg-base-100 shadow-xl z-40 absolute right-1 top-18 mt-12">
@@ -66,7 +67,7 @@ useEffect(()=>{
                 />
               </svg>
 
-              <a href={ `${isAdmin==true?"/dashboard/home":"/dashboard/user_dashboard"}`}>Dashboard</a>
+              <a href={ `${isAdmin==true||isAdmin=='true'?"/dashboard/home":"/dashboard/user_dashboard"}`}>Dashboard</a>
             </li>
             <li className="flex align-middle items-center gap-2 font-semibold text-lg w-full">
               <svg

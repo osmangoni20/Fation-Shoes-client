@@ -60,10 +60,10 @@ import Loader from "../../component/shared/Loader";
                 </div>
               </Modal>
               <div>
-              <h1 className="text-center font-serif font-extralight ">Edit Product</h1>
+              <h1 className="text-center font-serif font-extralight text-white">Edit Product</h1>
             
               
-    <form className="min-w-[720px] p-5 shadow  rounded-md" onSubmit={handleSubmit(onSubmit)}>
+    <form className="min-w-[720px] bg-[#171A3B] text-white  p-5 shadow  rounded-md" onSubmit={handleSubmit(onSubmit)}>
    <div className="grid grid-cols-2 gap-5">
    <div className="w-full my-2">
             <label className="text-bold " htmlFor="pd_category">Product Category</label>

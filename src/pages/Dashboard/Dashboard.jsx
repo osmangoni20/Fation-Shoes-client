@@ -5,9 +5,10 @@ import Graphs from "../../component/Dashboard/Graphs";
     const Dashboard = () => {
     const shoe = useLoaderData();
     console.log(shoe);
+
     return (
         <div>
-        <div className="flex gap-3 font-serif font-extrabold">
+        <div className="flex gap-3 text-white font-serif font-extrabold">
             <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -29,11 +30,11 @@ import Graphs from "../../component/Dashboard/Graphs";
         <div className="flex justify-center py-5">
             <DashboardCard />
         </div>
-        <div className="grid grid-cols-10 align-middle items-center gap-5">
+        <div className="grid grid-cols-12 rounded-md bg-[#171A3B] p-5 text-white align-middle items-center gap-5 ">
 
             
-            <div className="col-span-6 grid " >
-            <div className="flex gap-3 font-serif font-extrabold pt-10">
+            <div className="col-span-7 grid " >
+            <div className="flex gap-3 font-serif font-extrabold ">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
     <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
     </svg>
@@ -195,7 +196,7 @@ import Graphs from "../../component/Dashboard/Graphs";
         </div>
         
             </div>
-            <div className="grid col-span-2 pt-10">
+            <div className="grid col-span-5  pr-4">
             <Graphs />
             </div>
         </div>

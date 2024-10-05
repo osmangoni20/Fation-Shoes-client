@@ -28,6 +28,13 @@ import MyOrder from "../pages/Dashboard/UserDashboard/MyOrder.tsx";
 import OrderDetails from "../pages/Dashboard/OrderDetails.tsx";
 import Review from "../pages/Review.tsx";
 import UserDashboard from "../component/Dashboard/UserDahboard/UserDashboard.tsx";
+import Contact from "../component/contact/Contact.tsx";
+import PrivacyPolicy from "../pages/privacyPolicy.tsx";
+import CookiePolicy from "../pages/cookiePolicy.tsx";
+import TermsAndCondition from "../pages/TermsAndCondition.tsx";
+import ReturnAndReplacement from "../pages/ReturnAndReplacement.tsx";
+import ShippingService from "../pages/ShippingService.tsx";
+import PaymentService from "../pages/PaymentService.tsx";
 
 const route =createBrowserRouter([
     {
@@ -48,6 +55,34 @@ const route =createBrowserRouter([
           {
             path: "/about",
             element: <About/>,
+          },
+          {
+            path: "/privacy_policy",
+            element: <PrivacyPolicy/>,
+          },
+          {
+            path: "/cookie_policy",
+            element: <CookiePolicy/>,
+          },
+          {
+            path: "/term_condition",
+            element: <TermsAndCondition/>,
+          },
+          {
+            path: "/return_replacement",
+            element: <ReturnAndReplacement/>,
+          },
+          {
+            path: "/shipping_service",
+            element: <ShippingService/>,
+          },
+          {
+            path: "/payment_service",
+            element: <PaymentService/>,
+          },
+          {
+            path:"/contact",
+            element:<Contact/>
           },
           {
             path:"/client_reviews",

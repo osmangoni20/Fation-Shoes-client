@@ -54,7 +54,7 @@ const Testimonial = ({title}) => {
            {title}
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-10 p-5">
-            {review?.map((review: { _id: React.Key | null | undefined; })=><SingleReviews key={review?._id} review={review}/>)}
+            {review?.slice(0,6).map((review: { _id: React.Key | null | undefined; })=><SingleReviews key={review?._id} review={review}/>)}
           </div>
           <div className="flex justify-end">
           <Link to={"/client_reviews"}>
