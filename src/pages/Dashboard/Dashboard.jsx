@@ -1,6 +1,7 @@
     import { useLoaderData } from "react-router-dom";
     import DashboardCard from "../../component/Dashboard/DashboardCard";
 import Graphs from "../../component/Dashboard/Graphs";
+import RecentProduct from "../../component/Dashboard/RecentProduct";
 
     const Dashboard = () => {
     const shoe = useLoaderData();
@@ -200,6 +201,7 @@ import Graphs from "../../component/Dashboard/Graphs";
             <Graphs />
             </div>
         </div>
+        <RecentProduct/>
         </div>
     );
     };

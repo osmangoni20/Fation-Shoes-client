@@ -23,7 +23,7 @@ const[showNavbar, setNavbar]=useState(false)
   return (
     <div className="min-w-full">
       
-      <div className="navbar z-50  bg-[#514F4D] w-full   py-0 text-white  shadow-xl">
+      <div className="navbar z-50 px-10 py-3  bg-[#F0F0F0] w-full    text-black  shadow-xl">
         <div className="navbar-start ">
           <div className="dropdown">
             <div onClick={HandleNavbar} tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -135,7 +135,7 @@ const[showNavbar, setNavbar]=useState(false)
           </div>
           <Link to={"/"} className="p-0">
             {/* <Logo/> */}
-          <img src={logo} width={100} height={40} alt="FATION SHOE"></img>
+          <img className="" src={logo} width={100} height={40} alt="FATION SHOE"></img>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

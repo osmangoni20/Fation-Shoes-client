@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SingleReviews from "../shared/SingleReviews";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {  Pagination, Autoplay ,FreeMode} from 'swiper/modules';
+// Import Swiper styles
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/free-mode';
 // import quoteImg from '../../assets/quote.png'
 // const UserReview=[
 //     {
@@ -53,9 +61,43 @@ const Testimonial = ({title}) => {
           <h1 className="lg:text-5xl text-4xl text-center font-serif py-10 ">
            {title}
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-10 p-5">
-            {review?.slice(0,6).map((review: { _id: React.Key | null | undefined; })=><SingleReviews key={review?._id} review={review}/>)}
-          </div>
+          <Swiper
+style={{paddingTop:"20px"}}
+breakpoints={
+  {
+    340:{
+      slidesPerView:2,
+      spaceBetween:15
+    },
+    700:{
+      slidesPerView:3,
+      spaceBetween:20
+    }
+  }
+}
+      // install Swiper modules
+      modules={[Pagination, Autoplay, FreeMode]}    
+      slidesPerView={3}
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      freeMode={true}
+     
+      className="max-w-[90%] h-[400px] lg:max-w-[90%]"
+    >
+      {review?.map((review)=>{
+        return(
+          <SwiperSlide key={review?._id} >
+              
+              <SingleReviews key={review?._id} review={review}/>
+        </SwiperSlide>
+        )
+      })}
+
+    </Swiper>
+  
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-10 p-5">
+
+          </div> */}
           <div className="flex justify-end">
           <Link to={"/client_reviews"}>
                   <button className="border-2 p-3 rounded flex gap-2 items-center">

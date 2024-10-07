@@ -22,8 +22,8 @@ const fetchData=()=>{
     <div>
       <div className="flex flex-wrap md:gap-5 justify-around">
         <div
-          className="h-[180px] hover:bg-[#374050]
-           bg-[#4F87F4]  py-4 text-white shadow-lg  w-[300px]  border-2 
+          className=" bg-[#374050] text-white h-[150px]
+            shadow-lg  w-[300px]  border-2 
          rounded-tr-xl rounded-bl-xl"
         >
           <svg
@@ -31,7 +31,7 @@ const fetchData=()=>{
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="2.5"
-            stroke="white"
+            stroke="#FFFFF4"
             className="size-16 opacity-15"
           >
             <path
@@ -47,10 +47,10 @@ const fetchData=()=>{
           </span>
         </div>
         <div
-          className="h-[180px] py-4 hover:bg-[#514F4D] bg-[#E05880] text-white shadow-lg  w-[300px]
-             border-2 
-      rounded-tr-xl rounded-bl-xl"
-        >
+          className=" bg-[#374050] text-white h-[150px]
+          shadow-lg  w-[300px]  border-2 
+       rounded-tl-xl rounded-br-xl"
+      >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -72,9 +72,10 @@ const fetchData=()=>{
           </span>
         </div>
         <div
-          className="h-[180px] py-4 hover:bg-[#374050]  bg-[#BD2AF8] text-white shadow-lg  w-[300px] border-2 
-         rounded-tr-xl rounded-bl-xl"
-        >
+         className=" bg-[#374050] text-white h-[150px]
+         shadow-lg  w-[300px]  border-2 
+      rounded-tr-xl rounded-bl-xl"
+     >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

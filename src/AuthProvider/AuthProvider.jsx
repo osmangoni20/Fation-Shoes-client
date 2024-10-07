@@ -98,7 +98,7 @@ const AuthProvider = ({ children }) => {
     console.log(email, password);
     return createUserWithEmailAndPassword(auth, email, password).catch(
       (error) => {
-        console.log(error);
+        console.log(error.code);
         if (error?.code === "auth/network-request-failed") {
           setError({ errorName: "Your internet connection down", error });
         } else if (error.code === "auth/email-already-in-use") {

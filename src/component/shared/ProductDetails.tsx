@@ -8,7 +8,7 @@ import { addToCart } from "../../redux/features/CartSlice";
 import Testimonial from "../Home/Testimonial";
 import ProductReview from "../product/ProductReview";
 import { TProductInfo } from "../Home/SingleProduct";
-
+import { ImageZoom } from 'react-responsive-image-zoom';
 type TProductData={
   _id:string,
   pd_name:string,
@@ -22,7 +22,7 @@ type TProductData={
 const ProductDetails = () => {
   
   const shoe:TProductData = useLoaderData();
-  const {user}=useAuth()
+  const {user}:any=useAuth()
   const [add_to_cart_button,set_add_button]=useState(true)
   const dispatch=useDispatch()
   const navigate=useNavigate()
@@ -47,14 +47,27 @@ const HandleOrder=()=>{
   set_add_button(true)
   navigate(`/order_cart/${user?.email}`)
 }
+const props = {width: 400, height: 250,zoomPosition:"center", zoomWidth: 700,img:pd_image };
   return (
     <div className=" lg:flex justify-center ghost_bg py-5 lg:px-10 p-2">
       <div>
-        <div className="w-full py-5  rounded bg-white lg:flex justify-between  gap-5">
-          <div className="w-full">
-            <img className="lg:h-[400px]" src={pd_image} alt="product image" />
+        <div className="w-full py-5  rounded bg-white lg:flex justify-between  gap-10">
+          <div className="w-full ">
+         
+            <ImageZoom
+      src={pd_image}
+      defaultZoomFactor={1.5}
+      transition={0.5}
+      breakpoints={[
+        { maxWidth: 768, zoomFactor: 1.2 },
+        { maxWidth: 1024, zoomFactor: 1.4 }
+      ]}
+      imgClassName="my-image-class"
+      debug={false}
+    />
           </div>
-          <div className="p-0  lg:w-[800px] text-center lg:text-left">
+         
+          <div className="p-0  lg:pl-10 text-center lg:text-left">
             <h3 className="text-4xl text-primary">{pd_name}</h3>
             <h6 className="text-ghost text-xl">
               Brand:

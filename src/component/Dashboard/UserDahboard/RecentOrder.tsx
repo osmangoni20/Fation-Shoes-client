@@ -9,7 +9,7 @@ const RecentOrder = ({userOrder}) => {
         <div>
             <div className='min-w-md my-10 pb-6 bg-[#171A3B] text-white rounded-md p-3'>
                 <h3 className='text-2xl py-4'>Recent Your Order</h3>
-                <table className='w-full space-y-4 '>
+                <table className='w-full h-full space-y-4 '>
                     <thead className='py-5'>
                         <th>Date</th>
                         <th>Total Product</th>
@@ -17,11 +17,11 @@ const RecentOrder = ({userOrder}) => {
                         <th>Price</th>
                         <th>Status</th>
                     </thead>
-                    <tbody className='text-center space-y-4'>
+                    <tbody className='text-center '>
                     {
                         userOrder?.reverse().map(order=>{
                             return(
-                                <tr className='py-2 space-y-4 text-sm font-medium text-gray-200' key={order?._id}>
+                                <tr className='py-2 h-[50px] space-y-4 text-sm font-medium text-gray-200' key={order?._id}>
                                 <td>{order?.date || new Date().toLocaleDateString()}</td>
                                 <td>{order?.order_product?.length}</td>
                                 <td>{order?.paymentInfo?.transactionId}</td>

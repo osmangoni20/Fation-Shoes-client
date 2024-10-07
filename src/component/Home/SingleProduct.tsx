@@ -33,15 +33,15 @@ export type TProductInfo={
     bg-base-100 z-5">
         <figure><img className="w-full p-0 h-[150px]"  src={pd_image} alt="Shoes" /></figure>
         
-        <div className="card-body px-4 space-y-2 rounded">
+        <div className="card-body px-4 py-4   rounded">
         <h3 className="card-title font-montserrat">
         { pd_name}
         <div className="badge bg-primary text-white">{pd_brand}</div>
         </h3>
-        <p className='text-justify space-x-4'>{pd_description.slice(0,100)}..</p>
+        <p className='text-justify space-x-4'>{pd_description.slice(0,70)}..</p>
         <div className=" space-y-2">
             <p className='text-lg font-lato font-[400]'>Available Size: {<span className='bg-base-200 p-2 '>40</span>}</p>
-            <div>
+            <div className='min-w-full flex items-center justify-between gap-12'>
           <div className='flex items-center'>
           {
             [...Array(5)].map((item)=><span key={item}>
@@ -51,9 +51,9 @@ export type TProductInfo={
             </span>)
            }
           </div>
-
+          <p className="text-xl font-semibold font-lato">{ pd_price} USD</p> 
             </div>
-        <p className="text-xl font-semibold font-lato">{ pd_price} USD</p> 
+       
        
         </div>
         <div>

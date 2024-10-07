@@ -103,7 +103,7 @@ const DashboardCard = () => {
           </div>
           <div className="stat-desc">10% more than last month</div>
         </div>
-        <div className="stat md:hidden">
+        <div className="stat lg:block md:hidden">
           <div className="stat-figure text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -6,7 +6,7 @@ const SingleReviews = ({review}) => {
         <div>
             
               <div
-                className="rounded-md font-montserrat  text-black"
+                className="rounded-md font-montserrat shadow-xl p-4 py-0 w-[400px] border-2  h-[300px]  text-black"
               >
                 <div className=" flex justify-between">
                   <div className=" flex gap-2 items-start">
@@ -15,7 +15,7 @@ const SingleReviews = ({review}) => {
                       src={review?.img}
                     ></img>
                     <span>
-                      <h3 className="font-serif text_ghost text-xl">
+                      <h3 className="font-serif text_ghost text-xl pt-4">
                         {review?.user_name}
                       </h3>
                       <p>{review?.date}</p>
@@ -70,7 +70,7 @@ const SingleReviews = ({review}) => {
                       }
                     )}
                   </div>
-                  <p className="text-justify font-lato py-2">
+                  <p className="text-justify font-lato py-">
                     {review?.review.slice(0,350)}...
                   </p>
                 </div>
