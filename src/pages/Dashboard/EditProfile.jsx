@@ -77,18 +77,19 @@ const HandleEditInputField=(e)=>{
 const {img}=useAppSelector(state=>state.userR)
 const onSubmit= async(data)=>{
     setModel(true)
-    setEditData({...data, img: uploadImage || user?.photoURL})
+    
     const userInfo={
-      first_name:data?.first_name,
-      last_name:data?.last_name,
+      first_name:data?.first_name?data?.first_name:userData?.first_name,
+      last_name:data?.last_name?data?.last_name:userData?.last_name,
       email:data?.email,
-      contact_number1:data?.contact_number1||data?.mobile_1,
-      contact_number2:data?.contact_number2||data?.mobile_1,
-      gender:data?.gender,
-      date_of_birth:data?.date_of_birth,
+      contact_number1:data?.contact_number1?data?.contact_number1:userData?.contact_number1,
+      contact_number2:data?.contact_number2?data?.contact_number2:userData?.contact_number2,
+      gender:data?.gender?data?.gender:userData?.gender,
+      date_of_birth:data?.date_of_birth?data?.date_of_birth:userData?.date_of_birth,
       img:img|| uploadImage || user?.photoURL
     }
-    console.log(userInfo)
+    setEditData(userInfo)
+    console.log(userData,userInfo)
     dispatch(updateUser(userInfo))
 }
 const HandleImageUpload = (e) => {
@@ -170,13 +171,13 @@ onChange: e => HandleEditInputField(e)})}/>
 </div>
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="mobile_1">Mobile Number</label>
-    <input className="text-black" type="text" id="mobile_1" defaultValue={userData?.mobile_1||""} {...register("contact_number1",{
+    <input className="text-black" type="text" id="mobile_1" defaultValue={userData?.contact_number1||""} {...register("contact_number1",{
 onChange: e => HandleEditInputField(e)})}/>
 </div>
 
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="mobile_2">Alternative Mobile Number</label>
-    <input className="text-black" type="text" id="mobile_2" defaultValue={userData?.mobile_2||""} {...register("contact_number2",{
+    <input className="text-black" type="text" id="mobile_2" defaultValue={userData?.contact_number2||""} {...register("contact_number2",{
 onChange: e => HandleEditInputField(e)})}/>
 </div>
 <div className="w-full my-2">

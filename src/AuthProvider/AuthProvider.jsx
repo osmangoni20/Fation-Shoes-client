@@ -18,6 +18,7 @@ import { app } from "../Firebase/Firebase.config";
 import { FacebookAuthProvider } from "firebase/auth/cordova";
 import { updateUser } from "../redux/features/UserSlice";
 import { useAppDispatch } from "../redux/hooks";
+import { clearCart } from "../redux/features/CartSlice";
 const auth = getAuth(app);
 
 // eslint-disable-next-line react/prop-types
@@ -159,6 +160,7 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     signOut(auth).then(() => {
       setUser();
+      dispatch(clearCart())
     });
   };
   const authInfo = {

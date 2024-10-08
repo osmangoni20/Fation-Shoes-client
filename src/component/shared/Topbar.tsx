@@ -26,31 +26,31 @@ const Topbar = () => {
           </span>
         </div>
         <ul className="flex items-center gap-3 lg:left-0  justify-between">
-          <li className="border-2   h-[30px]  w-[30px]  bg-white  border-[#F57F03] rounded-full p-1">
+          <li className="border-2   h-[30px]  w-[30px]  bg-white  border-[#F0F0F0] rounded-full p-1">
             <Link target="_blank" to={"https://wa.link/nas487"}>
               <img src={whatsapp} />
             </Link>
           </li>
-          <li className="border-2   h-[30px]  w-[30px]   bg-white  border-[#F57F03] rounded-full p-1">
+          <li className="border-2   h-[30px]  w-[30px]   bg-white  border-[#F0F0F0] rounded-full p-1">
             <Link target="_blank" to={"https://youtube.com"}>
               <img  src={youtube} />
             </Link>
           </li>
           <li
             className="border-2  h-[30px]  w-[30px] 
-                                bg-white border-[#F57F03]
+                                bg-white border-[#F0F0F0]
                                 rounded-full p-2"
           >
             <Link target="_blank" to={"/"}>
               <img src={facebook} />
             </Link>
           </li>
-          <li className="border-2   h-[30px]  w-[30px]  bg-white border-[#F57F03] rounded-full p-1">
+          <li className="border-2   h-[30px]  w-[30px]  bg-white border-[#F0F0F0] rounded-full p-1">
             <Link target="_blank" to={"https://x.com/osmangoni0827"}>
               <img src={twitter} />
             </Link>
           </li>
-          <li className="border-2  h-[30px]  w-[30px]   bg-white border-[#F57F03] rounded-full p-1">
+          <li className="border-2  h-[30px]  w-[30px]   bg-white border-[#F0F0F0] rounded-full p-1">
             <Link target="_blank" to={"https://www.instagram.com/"}>
               <img src={instagram} />
             </Link>
