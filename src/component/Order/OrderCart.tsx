@@ -10,6 +10,8 @@ const OrderCart = () => {
   const {products,totalSelectedItem,subTotal}=useAppSelector((state:RootState)=>state.cartR)
   console.log(totalSelectedItem,subTotal)
   const dispatch=useAppDispatch()
+
+ 
   // const [itemCollection, setItemCollection] = useState(
   //   JSON.parse(localStorage.getItem("cartItemList"))
   // );

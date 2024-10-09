@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
   updateProfile,
+  GithubAuthProvider,
   updateEmail,
   updatePassword,
 } from "firebase/auth";
@@ -28,6 +29,7 @@ const AuthProvider = ({ children }) => {
   const [authError, setError] = useState({});
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
+  const githubAuthProvider=new GithubAuthProvider();
   const checkAdmin= async(user)=>{
     console.log(user)
     const res= await fetch(`https://fation-shoes.onrender.com/admin/${user.email}`)
@@ -82,6 +84,20 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
+  const githubLogin=()=>{
+    setLoading(true)
+
+return signInWithPopup(auth, githubAuthProvider).catch((error) => {
+    // Handle Errors here.
+    // const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    if (error) {
+      setError({ errorName: errorMessage, error });
+    }
+    // ...
+  });
+  }
   const facebookLogin = () => {
     setLoading(true);
     return signInWithPopup(auth, facebookProvider).catch((error) => {
@@ -175,6 +191,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     logOut,
     googleLogin,
+    githubLogin,
     authError,
   };
   return (

@@ -9,6 +9,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useAppDispatch } from "../redux/hooks";
 import { updateUser } from "../redux/features/UserSlice";
+import GithubLogin from "../component/Login-Registration/GithubLogin";
 
 
 const Login = () => {
@@ -164,7 +165,7 @@ const Login = () => {
               
               <div className="lg:flex ws-full justify-center mt-2 gap-3 border-t-2 border-primary">
             <GoogleLogin/>
-        
+              <GithubLogin/>
             {/* <FacebookLogin/> */}
 
             </div>
