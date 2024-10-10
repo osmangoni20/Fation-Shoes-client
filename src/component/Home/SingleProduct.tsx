@@ -31,7 +31,7 @@ export type TProductInfo={
     <div className="card product_cart  text-black
       p-0  w-84 
     bg-base-100 z-5">
-        <figure><img className="w-full p-0 h-[150px]"  src={pd_image} alt="Shoes" /></figure>
+        <figure><img className="w-full p-0 md:h-[250px] lg:h-[150px]"  src={pd_image} alt="Shoes" /></figure>
         
         <div className="card-body px-4 py-4   rounded">
         <h3 className="card-title font-montserrat">
@@ -57,10 +57,10 @@ export type TProductInfo={
        
         </div>
         <div>
-        <div className=" lg:space-x-4 flex">
+        <div className=" space-x-4 flex ">
         <button onClick={HandleAddToCart} className="cart_button uppercase">Add to Cart</button>
         <Link to={`/product/${_id}`}>
-        <button className="cart_button uppercase hidden lg:block">See Details</button>
+        <button className="cart_button uppercase hidden md:block lg:block">See Details</button>
         </Link>
         </div>
         </div>

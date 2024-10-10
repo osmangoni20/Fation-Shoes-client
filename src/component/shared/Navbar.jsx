@@ -23,7 +23,8 @@ const[showNavbar, setNavbar]=useState(false)
   return (
     <div className="min-w-full">
       
-      <div className="navbar z-50 px-10 py-3  bg-[#F0F0F0] w-full    text-black  shadow-xl">
+      <div className="navbar z-50 md:px-10 lg: px:10 pr-5 py-3 
+       bg-[#F0F0F0] w-full    text-black lg:shadow-xl md:shadow-xl">
         <div className="navbar-start ">
           <div className="dropdown">
             <div onClick={HandleNavbar} tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -140,24 +141,24 @@ const[showNavbar, setNavbar]=useState(false)
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-lg font-semibold">
-            <li>
+            <li className="font-normal">
               <Link to={"/searchProduct/category/casual_shoes"}>
                 CASUAL SHOES
               </Link>
             </li>
-            <li>
+            <li className="font-normal">
               <Link to={"/searchProduct/category/formal_shoes"}>
                 FORMAL SHOES
               </Link>
             </li>
 
-            <li>
+            <li className="font-normal">
               <Link to={"/searchProduct/category/loafers"}>LOAFERS</Link>
             </li>
-            <li>
+            <li className="font-normal">
               <Link to={"/searchProduct/category/boot"}>BOOTS</Link>
             </li>
-            <li>
+            <li className="font-normal">
               <Link to={"/about"}>ABOUT US</Link>
             </li>
            
@@ -241,7 +242,7 @@ const[showNavbar, setNavbar]=useState(false)
             )}
           </div>
           {showProfileDialog && (
-            <UserAuthProfileCard className="" isOpen={showProfileDialog} />
+            <UserAuthProfileCard className=""  setProfileDialog={setProfileDialog} isOpen={showProfileDialog} />
           )}
         </div>
       </div>

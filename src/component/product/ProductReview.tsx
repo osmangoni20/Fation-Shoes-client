@@ -77,6 +77,7 @@ const ProductReview = ({ pd_info }) => {
                 </label>
 
                 <select
+                className="bg-gray-200 text-black border-white"
                   itemType="number"
                   id="pd_rating"
                   {...register("pd_rating")}
@@ -92,10 +93,10 @@ const ProductReview = ({ pd_info }) => {
                 <label className="font-semibold " htmlFor="review">
                   Your Review
                 </label>
-                <textarea className="" id="review" {...register("review")} />
+                <textarea className="bg-gray-200 text-black border-white" id="review" {...register("review")} />
               </div>
 
-              <div className="flex justify-center">
+              <div className="w-full flex justify-end">
                 <input
                   type="submit"
                   value={"Review"}

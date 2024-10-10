@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
   const githubAuthProvider=new GithubAuthProvider();
   const checkAdmin= async(user)=>{
     console.log(user)
-    const res= await fetch(`https://fation-shoes.onrender.com/admin/${user.email}`)
+    const res= await fetch(`https://fation-shoes.onrender.com/admin/${user?.email}`)
     const data= await res.json();
     // setIsAdmin(data);
     console.log("data",data)
@@ -44,22 +44,26 @@ const AuthProvider = ({ children }) => {
   }
   const getUserInformation= async(user)=>{
     console.log(user)
-    const res= await fetch(`https://fation-shoes.onrender.com/user/${user.email}`)
-    const data= await res.json();
+     await fetch(`https://fation-shoes.onrender.com/user/${user.email}`)
+     .then(res=>{
+      const data=res.data
+      console.log("data",data)
+      const userInfo={
+        first_name:data?.first_name||data?.name,
+        last_name:data?.last_name,
+        email:data?.email,
+        contact_number:data?.contact_number||data?.mobile_1,
+        gender:data?.gender,
+        date_of_birth:data?.date_of_birth,
+        img: data?.img || user?.photoURL
+      }
+      if(data?.email){
+        dispatch(updateUser(userInfo))
+      }
+     })
+   
     // setIsAdmin(data);
-    console.log("data",data)
-    const userInfo={
-      first_name:data?.first_name||data?.name,
-      last_name:data?.last_name,
-      email:data?.email,
-      contact_number:data?.contact_number||data?.mobile_1,
-      gender:data?.gender,
-      date_of_birth:data?.date_of_birth,
-      img: data?.img || user?.photoURL
-    }
-    if(data?.email){
-      dispatch(updateUser(userInfo))
-    }
+  
   }
   const dispatch=useAppDispatch()
   useEffect(() => {
@@ -89,11 +93,17 @@ const AuthProvider = ({ children }) => {
 
 return signInWithPopup(auth, githubAuthProvider).catch((error) => {
     // Handle Errors here.
-    // const errorCode = error.code;
+    const errorCode = error.code;
     const errorMessage = error.message;
     // The email of the user's account used.
     if (error) {
-      setError({ errorName: errorMessage, error });
+      if(errorCode==="auth/account-exists-with-different-credential"){ 
+        setError({errorName:"This account already use another auth System",error})
+       }
+       else{
+        setError({ errorName: errorMessage, error });
+       }
+      
     }
     // ...
   });
@@ -126,11 +136,29 @@ return signInWithPopup(auth, githubAuthProvider).catch((error) => {
   };
   const signIn = (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password).then((result)=>{
-      if(result?.user.email){
-        checkAdmin(user)
+    return signInWithEmailAndPassword(auth, email, password).then(data=>{
+       
+      console.log(data)
+      if(data?.user?.email){
+        checkAdmin(data?.user)
         }
-    }).catch((error) => {
+
+        fetch(`https://fation-shoes.onrender.com/user/${data?.user?.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+          const userInfo={
+            first_name:data?.first_name||data?.name,
+            last_name:data?.last_name,
+            email:data?.email,
+            contact_number:data?.contact_number||data?.mobile_1,
+            gender:data?.gender,
+            date_of_birth:data?.date_of_birth,
+            img: data?.img || user?.photoURL
+          }
+          dispatch(updateUser(userInfo))
+      })
+      
+     }).catch((error) => {
       console.log(error);
       if (error?.code === "auth/network-request-failed") {
         setError({ errorName: "Your internet connection down", error });
@@ -177,6 +205,7 @@ return signInWithPopup(auth, githubAuthProvider).catch((error) => {
     signOut(auth).then(() => {
       setUser();
       dispatch(clearCart())
+      localStorage.removeItem("isAdmin")
     });
   };
   const authInfo = {

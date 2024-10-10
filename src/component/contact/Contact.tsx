@@ -4,14 +4,15 @@ import { useForm } from "react-hook-form";
 import { useAppSelector } from "../../redux/hooks";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { clear } from "console";
 
 const Contact = () => {
     const { register, handleSubmit } = useForm();
     const { user }: any = useAuth();
     const {first_name,img}=useAppSelector(state=>state.userR)
     const [isLoading, setIsLoading]=useState(false)
-    const baseurl = "https://fation-shoes.onrender.com/";
-
+    const baseurl = "http://localhost:3000";
+   const [clear, setClear]=useState("")
     const onSubmit = async (data) => {
         console.log(user,first_name,img,data)
         setIsLoading(true);
@@ -29,19 +30,20 @@ const Contact = () => {
           }),
         })
           .then((res) => res.json())
-          .then(async (data) => {
+          .then((data) => {
+            setClear("")
             setIsLoading(false);
-            toast.success("Your Review Successfully Done. Thanks!!");
+            toast.success("Your Message Send");
           });
       };
   return (
     <div>
       <div className="text-center flex flex-col justify-center py-5">
         <div className="">
-          <p className="text-sm font-medium pl-36">Fation Shoe</p>
-          <h1 className="text-6xl font-lato font-semibold">Contact</h1>
+          <p className="text-sm font-medium lg:pl-36 md:block lg:block hidden">Fation Shoe</p>
+          <h1 className="lg:text-6xl md:text-5xl text-4xl font-lato font-semibold">Contact</h1>
         </div>
-        <p>
+        <p className="px-10">
           Reach out to our dedicated team any inquires, assistance, or
           information you need.
         </p>
@@ -55,25 +57,27 @@ const Contact = () => {
           <div className="flex flex-wrap gap-5">
           <div className="w-full my-2">
                     <label className="text-bold block" htmlFor="user_name">Your Name</label>
-                    <input  type="text" id="user_name" {...register("user_name")}/>
+                    <input className="bg-[#E8F0FE] text-black" required defaultValue={clear} type="text" id="user_name" {...register("user_name")}/>
                 </div>
                 <div className="w-full my-2">
                     <label className="text-bold block" htmlFor="contact_subject">Subject</label>
-                    <input  type="text" id="contact_subject" {...register("contact_subject")}/>
+                    <input className="bg-[#E8F0FE] text-black" required defaultValue={clear}  type="text" id="contact_subject" {...register("contact_subject")}/>
                 </div>
             <div className="w-full my-2">
               <label className="font-semibold " htmlFor="user_message">
                 Your Message
               </label>
-              <textarea className="" id="user_message" {...register("user_message")} />
+              <textarea className="bg-[#E8F0FE] text-black" required defaultValue={clear} id="user_message" {...register("user_message")} />
             </div>
 
             <div className="flex justify-center w-full">
-              <input
+              {
+                user?.email?<input
                 type="submit"
                 value={"Send"}
-                className="cursor-pointer h-[40px] font-bold text-lg bg-primary text-white px-4 rounded"
-              ></input>
+                className="cursor-pointer h-[40px] w-[200px] font-bold text-lg bg-primary text-white px-4 rounded"
+              ></input>:<p>Please Login Than you can send your message</p>
+              }
             </div>
           </div>
 

@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../redux/hooks';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+import axios from 'axios';
+
 
 const AccountInfo = () => {
-    const{first_name,last_name,contact_number1,contact_number2,email,date_of_birth,gender}=useAppSelector(state=>state.userR)
-    console.log(first_name,last_name,email,contact_number1)
+    const [userData,setUserData]=useState<any>()
+    const {user}:any=useAuth()
+    useEffect(() => {
+        fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            setUserData(data)
+        })
+      }, []);
+  
+      console.log(console.log(userData))
+
     return (
         <div>
              <div className='min-w-md my-10 p-6 bg-[#171A3B] text-white rounded-md'>
@@ -20,41 +34,41 @@ const AccountInfo = () => {
                         <li className='py-3 border-b-2 border-b-gray-300  space-y-4'>
                             <p className='text-md text-gray-400'>First Name</p>
                             <p className='text-md font-medium text-white'>
-                                {first_name?first_name:<span className='text-gray-600'>Enter your first name</span>}
+                                {userData?.first_name?userData?.first_name:<span className='text-gray-600'>Enter your first name</span>}
                             </p>
                         </li>
                         <li className='py-3 border-b-2 border-b-gray-300  space-y-4'>
                             <p className='text-md text-gray-400'>Last Name</p>
                             <p className='text-md font-medium text-white'>
-                            {last_name?last_name:<span className='text-gray-600'>Enter your last name</span>}
+                            {userData?.last_name?userData?.last_name:<span className='text-gray-600'>Enter your last name</span>}
                             </p>
                         </li>
                         <li className='py-3 border-b-2 border-b-gray-300  space-y-4'>
                             <p className='text-md text-gray-400'>Email</p>
-                            <p className='text-md font-medium text-white'>{email}</p>
+                            <p className='text-md font-medium text-white'>{user?.email}</p>
                         </li>
                         <li className='py-3 border-b-2 border-b-gray-300  space-y-4'>
                             <p className='text-md text-gray-400'>Contact Number</p>
                             <p className='text-md font-medium text-white'>
-                            {contact_number1?contact_number1:<span className='text-gray-600'>Enter your contact number</span>}
+                            {userData?.contact_number1?userData?.contact_number1:<span className='text-gray-600'>Enter your contact number</span>}
                             </p>
                         </li>
                         <li className='py-3 border-b-2 border-b-gray-300  space-y-4'>
                             <p className='text-md text-gray-400'> Alternative Contact Number</p>
                             <p className='text-md font-medium text-white'>
-                            {contact_number2?contact_number2:<span className='text-gray-600'>Enter your contact number</span>}
+                            {userData?.contact_number2?userData?.contact_number2:<span className='text-gray-600'>Enter your contact number</span>}
                             </p>
                         </li>
                         <li className='py-3 border-b-2 border-b-gray-300  space-y-4'>
                             <p className='text-md text-gray-400'>Date of Birth</p>
                             <p className='text-md font-medium text-white'>
-                            {date_of_birth?date_of_birth:<span className='text-gray-600'>Enter your date of birth</span>}
+                            {userData?.date_of_birth?userData?.date_of_birth:<span className='text-gray-600'>Enter your date of birth</span>}
                             </p>
                         </li>
                         <li className='py-3 border-b-2 border-b-gray-300  space-y-4'>
                             <p className='text-md text-gray-400'>Gender</p>
                             <p className='text-md font-medium text-white'>
-                            {gender?gender:<span className='text-gray-600'>Enter your gender</span>}
+                            {userData?.gender?userData?.gender:<span className='text-gray-600'>Enter your gender</span>}
                             </p>
                         </li>
                     </ul>

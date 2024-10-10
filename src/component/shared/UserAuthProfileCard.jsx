@@ -4,7 +4,7 @@ import { useAppSelector } from "../../redux/hooks";
 import { useEffect, useState } from "react";
 
 // eslint-disable-next-line react/prop-types
-const UserAuthProfileCard = ({ isOpen }) => {
+const UserAuthProfileCard = ({ isOpen,setProfileDialog }) => {
   const { user, logOut } = useAuth();
   const[isAdmin, setIsAdmin]=useState(false)
   console.log(user?.photoURL);
@@ -14,6 +14,9 @@ useEffect(()=>{
   setIsAdmin(localStorage.getItem('isAdmin'))
 },[isAdmin])
 console.log(isAdmin)
+const HandleAuthCard=()=>{
+  setProfileDialog(!isOpen)
+}
   return (
     <div className={`${isOpen ? "visible relative" : "invisible"}`}>
       <div className="card w-80 rounded-b-2xl rounded-t-none text-black bg-base-100 shadow-xl z-40 absolute right-1 top-18 mt-12">
@@ -43,7 +46,7 @@ console.log(isAdmin)
             )}
           </figure>
         </div>
-        <div className="card-body w-full ">
+        <div onClick={HandleAuthCard}className="card-body w-full ">
           {
             user&&<div className="flex-col text-center  font-semibold text-md p-2 ">
             <h3 className="text-xl">{user?.displayName||"Guest User"}</h3>

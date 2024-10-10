@@ -32,12 +32,11 @@ const DashboardCard = () => {
     TotalProduct.reduce(
       (total, product) => total + Number(product.pd_price),
       0
-    ) +
-    total_sales_amount * 0.1;
+    )
   console.log(total_purchase_amount, total_sales_amount);
   return (
     <div>
-      <div className="stats shadow  ">
+      <div className="stats shadow  hidden md:stats lg:stats">
         <div className="stat">
           <div className="stat-figure text-primary">
           <svg
@@ -103,9 +102,10 @@ const DashboardCard = () => {
           </div>
           <div className="stat-desc">10% more than last month</div>
         </div>
-        <div className="stat lg:block md:hidden">
+
+        <div className="stat">
           <div className="stat-figure text-secondary">
-            <svg
+          <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -122,11 +122,12 @@ const DashboardCard = () => {
           </div>
           <div className="stat-title">Total Revenue</div>
           <div className="stat-value text-secondary">
-            {total_sales_amount - total_purchase_amount}{" "}
-            <span className="text-sm">Tk</span>
+          {  total_sales_amount-total_purchase_amount}{" "}
+          <span className="text-sm">Tk</span>
           </div>
-          <div className="stat-desc">15% more than last month</div>
+          <div className="stat-desc">10% more than last month</div>
         </div>
+
       </div>
     </div>
   );

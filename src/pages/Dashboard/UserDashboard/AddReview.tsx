@@ -40,7 +40,7 @@ const AddReview = () => {
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
            <div className="w-full my-2">
                     <label className="text-bold block" htmlFor="user_name">Your Name</label>
-                    <input className='text-gray-600' type="text" id="user_name" {...register("user_name")}/>
+                    <input className='text-white' type="text" id="user_name" {...register("user_name")}/>
                 </div>
            <div className="w-full my-2">
             <label className="text-bold " htmlFor="pd_category">Product Category</label>
@@ -53,12 +53,12 @@ const AddReview = () => {
         </div>
                 <div className="w-full my-2">
                     <label className="text-bold block" htmlFor="pd_name">Product Name</label>
-                    <input className='text-gray-600' type="text" id="pd_name" {...register("pd_name")}/>
+                    <input className='text-white' type="text" id="pd_name" {...register("pd_name")}/>
                 </div>
                 
                 <div className="w-full my-2">
             <label className="text-bold " htmlFor="pd_rating">Product Rating</label>
-            <select className='text-gray-600' itemType='number' id="pd_rating"{...register("pd_rating")}>
+            <select className='text-gray-50' itemType='number' id="pd_rating"{...register("pd_rating")}>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
@@ -74,8 +74,8 @@ const AddReview = () => {
                
                
            </div>
-                <div className="flex justify-center">
-                    <input type="submit" value={"Add Review"} className="cursor-pointer h-[40px] py-2 font-bold text-lg bg-primary text-white p-4 rounded"></input>
+                <div className="flex justify-end">
+                    <input type="submit" value={"Submit Review"} className="cursor-pointer h-[40px] py-2 font-medium text-lg bg-primary text-white p-4 rounded"></input>
                 </div>
                 {
                     isLoading&&<Loader/>

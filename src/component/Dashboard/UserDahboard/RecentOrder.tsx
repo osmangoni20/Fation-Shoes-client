@@ -24,7 +24,7 @@ const RecentOrder = ({userOrder}) => {
                                 <tr className='py-2 h-[50px] space-y-4 text-sm font-medium text-gray-200' key={order?._id}>
                                 <td>{order?.date || new Date().toLocaleDateString()}</td>
                                 <td>{order?.order_product?.length}</td>
-                                <td>{order?.paymentInfo?.transactionId}</td>
+                                <td>{order?.paymentInfo?.transactionId||order?.paymentInfo?.payment_method}</td>
                                 <td>{order?.price}</td>
                                 <td className='text-[#4F87F4]'>{order?.status}</td>
                             </tr>

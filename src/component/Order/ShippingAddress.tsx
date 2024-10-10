@@ -19,7 +19,7 @@ type TOrder={
     status: string;
     shippingInfo: any;
     price: number;
-    payment_info: {
+    paymentInfo: {
         payment_method: string;
         transactionId: string;
     };
@@ -57,12 +57,12 @@ const ShippingAddress = () => {
             status:"pending",
             shippingInfo:data,
             price:total,
-            payment_info:{
-                payment_method,
+            paymentInfo:{
+                payment_method:'',
                 transactionId:''
             }
         }
-        dispatch(add_new_order(newOrder))
+        
         console.log("shippingInfo", shippingInfo,payment_info.payment_method)
         if(payment_method==='cash_on_delivery'){
             setModel(true)
@@ -98,8 +98,8 @@ const ShippingAddress = () => {
                 <Modal.Submit>Yes</Modal.Submit>
                 </div>
             </Modal>
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2 px-5 my-6">
+        <div className="max-w-[1200px]  mx-auto grid grid-cols-1 lg:grid-cols-3">
+          <div className="col-span-2 px-5 my-6 md:order-1 lg:order-1 order-2">
           <div className="bg-white p-3 flex justify-between items-center border-b-2 border-gray-500">
           <h3 className="text-3xl font-bold">Shipping Address</h3>
           <p> Fill Out Your Information</p>
@@ -118,33 +118,33 @@ const ShippingAddress = () => {
         </div> */}
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_name">Your Name</label>
-                    <input  type="text" placeholder="Your Name"  required id="customer_name" {...register("customer_name")}/>
+                    <input  className="bg-[#E8F0FE] text-gray-500" type="text" placeholder="Your Name"  required id="customer_name" {...register("customer_name")}/>
                 </div>
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_email">Your Email</label>
-                    <input  type="text" id="customer_email" required {...register("customer_email") }/>
+                    <input className="bg-[#E8F0FE] text-gray-500 " type="text" id="customer_email" required {...register("customer_email") }/>
                 </div>
                 
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_mobile1">Mobile No</label>
-                    <input  type="text" placeholder="Mobile No" required id="customer_mobile1" {...register("customer_mobile1")}/>
+                    <input  className="bg-[#E8F0FE] text-gray-500 " type="text" placeholder="Mobile No" required id="customer_mobile1" {...register("customer_mobile1")}/>
                 </div>
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_mobile2">Alternative Mobile No</label>
-                    <input  type="text" placeholder="Alternative Mobile" required id="customer_mobile2" {...register("customer_mobile2")}/>
+                    <input  className="bg-[#E8F0FE] text-gray-500 " type="text" placeholder="Alternative Mobile" required id="customer_mobile2" {...register("customer_mobile2")}/>
                 </div>
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_country">Country</label>
-                    <input  type="text" value={"Bangladesh"} id="customer_country" {...register("customer_country")}/>
+                    <input  className="bg-[#E8F0FE] text-gray-500 " type="text" value={"Bangladesh"} id="customer_country" {...register("customer_country")}/>
                 </div>
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_city">City</label>
-                    <input  type="text" placeholder="City"  id="customer_city"
+                    <input  className="bg-[#E8F0FE] text-gray-500 "  type="text" placeholder="City"  id="customer_city"
                      {...register("customer_city")}/>
                 </div>
                 <div className="w-full my-2 text-xl p-2 font-medium">
                 <label className="text-bold " htmlFor="customer_receive_address">Product Receive Address</label>
-                    <textarea  placeholder="Product Receive Address" required  id="customer_receive_address"
+                    <textarea  className="bg-[#E8F0FE] text-gray-500 " placeholder="Product Receive Address" required  id="customer_receive_address"
                      {...register("customer_receive_address")}/>
                 </div>
            </div>
@@ -168,7 +168,7 @@ const ShippingAddress = () => {
                 onChange={(e)=>HandlePaymentMethod(e)} 
                 name="payment_method" type="radio"  className="border-none" />
                 Stripe</label>
-                <label htmlFor="bkash" className="flex items-center gap-3 paymentMethodCart">
+                {/* <label htmlFor="bkash" className="flex items-center gap-3 paymentMethodCart">
                 <input value={"bkash"} {...register("payment_method")}
                 onChange={(e)=>HandlePaymentMethod(e)} 
                 name="payment_method" type="radio"  className="border-none" />
@@ -176,7 +176,7 @@ const ShippingAddress = () => {
                 <label htmlFor="nagod" className="flex items-center gap-3 paymentMethodCart">
                 <input id="nagod" required value={"nagod"} {...register("payment_method")}
                  onChange={(e)=>HandlePaymentMethod(e)} name="payment_method" type="radio"   className="border-none" />
-                SSLCommerce</label>
+                SSLCommerce</label> */}
             </div>
           </div>
           

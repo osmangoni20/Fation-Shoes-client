@@ -69,14 +69,7 @@ const Order = () => {
                   </td>
                   <td className="flex-2">
                     <div className="flex items-center gap-3 lg:w-[100px]">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
-                      </div>
+                      
 
                       <div>
                         <h4 className="text-md">

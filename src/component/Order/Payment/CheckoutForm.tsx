@@ -95,7 +95,7 @@ console.log(shippingInfo)
             }
          dispatch(paymentInfoUpdate(paymentInfo))
           setTransactionID(paymentIntent.id)
-        const newOrder={shippingInfo,email,price,status,order_product,paymentInfo}
+        const newOrder={shippingInfo,email,date:new Date().toLocaleString(),price,status,order_product,paymentInfo}
 
         orderPostApi(newOrder).then(res=>res.json())
         .then(async(data: any)=>{
@@ -150,7 +150,7 @@ const handleSubmit= async(e)=>{
        
         <div className= {`${transactionID && "hidden"} flex justify-center mt-6`}>
        {
-        !isLoading&& <button type="submit" disabled={!stripe||!clientSecret} className={` ${(!stripe||!clientSecret)&&"disabled"}text-white cursor-pointer py-2 btn_secondary`}>
+        !isLoading&& <button type="submit" disabled={!stripe||!clientSecret} className={` ${(!stripe||!clientSecret)?"disabled": "text-white cursor-pointer py-2 btn_secondary"}`}>
         Confirm Order
 </button>
        }

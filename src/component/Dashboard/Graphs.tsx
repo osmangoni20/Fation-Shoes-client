@@ -30,12 +30,12 @@ const Graphs = () => {
       ];
     return (
         <div>
-            <LineChart className="text-white" width={400} height={400} data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
+            <LineChart className="text-white" width={450} height={400} data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
   <XAxis dataKey="name" className="text-white" />
   <Tooltip />
   <CartesianGrid stroke="white" />
   <Line className="text-white" type="monotone" dataKey="uv" stroke="#ff7300" yAxisId={0} />
-  <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1} />
+  <Line type="monotone" className="text-white" dataKey="pv" stroke="#387908" yAxisId={1} />
 </LineChart>
         </div>
     );

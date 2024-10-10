@@ -32,7 +32,7 @@ const fetchData=()=>{
             viewBox="0 0 24 24"
             stroke-width="2.5"
             stroke="#FFFFF4"
-            className="size-16 opacity-15"
+            className="size-16"
           >
             <path
               stroke-linecap="round"
@@ -42,7 +42,7 @@ const fetchData=()=>{
           </svg>
 
           <span className="text-center">
-            <h1 className="text-white">{userOrder?.length>9?userOrder?.length:`0${userOrder?.length}`||"00"}</h1>
+            <h1 className="text-white">{userOrder?.length>9?userOrder?.length||0:`0${userOrder?.length||0}`||0}</h1>
             <h2 className="text-xl text-center p-0">Total Order</h2>
           </span>
         </div>
@@ -51,20 +51,20 @@ const fetchData=()=>{
           shadow-lg  w-[300px]  border-2 
        rounded-tl-xl rounded-br-xl"
       >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-           className="size-16 opacity-15"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M14.121 7.629A3 3 0 0 0 9.017 9.43c-.023.212-.002.425.028.636l.506 3.541a4.5 4.5 0 0 1-.43 2.65L9 16.5l1.539-.513a2.25 2.25 0 0 1 1.422 0l.655.218a2.25 2.25 0 0 0 1.718-.122L15 15.75M8.25 12H12m9 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
+         <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="size-16"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
 
           <span className="text-center">
             <h1 className="text-white">{totalOrderPrice||"00"} Tk.</h1>
@@ -82,7 +82,7 @@ const fetchData=()=>{
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-          className="size-16 opacity-15"
+          className="size-16"
           >
             <path
               stroke-linecap="round"

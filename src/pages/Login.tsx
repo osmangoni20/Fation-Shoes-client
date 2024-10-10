@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 import FacebookLogin from "../component/Login-Registration/FacebookLogin";
 import toast  from 'react-hot-toast';
 import React from "react";
-import { useDispatch } from "react-redux";
-import { useAppDispatch } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { updateUser } from "../redux/features/UserSlice";
 import GithubLogin from "../component/Login-Registration/GithubLogin";
 
@@ -17,16 +16,28 @@ const Login = () => {
   const [defaultPassword, setDefaultPassword]=useState("")
   const notify = (message) => toast(message);
   const {signIn,authError,user,resetPassword}:any=useAuth()
-  console.log(user)
+
   const navigate = useNavigate();
   const location = useLocation();
   const [passwordReset,setResetPassword]=useState(false)
   const from = location?.state?.from?.pathname || "/";
   const dispatch=useAppDispatch()
+  const {email}=useAppSelector(state=>state.userR)
   const HandleResetPassword=()=>{
     setResetPassword(true)
   }
- 
+  const checkAdmin= async(user)=>{
+    console.log(user)
+    const res= await fetch(`https://fation-shoes.onrender.com/admin/${user?.email}`)
+    const data= await res.json();
+    // setIsAdmin(data);
+    console.log("data",data)
+    if(data?.email){
+      localStorage.setItem('isAdmin',"true");
+    }else{
+      localStorage.setItem('isAdmin',"false");
+    }
+  }
   const handleSUbmit = async (e) => {
     e.preventDefault();
 
@@ -34,7 +45,6 @@ const Login = () => {
     const email = form.email.value;
     const password = form?.password?.value;
   
-
    
     if(passwordReset){
       resetPassword(email).then( async()=>{
@@ -42,44 +52,22 @@ const Login = () => {
         setResetPassword(false)
       })
     }else{
-      await signIn(email, password).then(data=>{
-        if(! localStorage.getItem('token-fation-shoe')){
-            
-            const UserInfo={
-                name:data?.user?.displayName,
-                email:data?.user?.email,
-                img:data?.user?.photoURL
-            }
-            console.log(UserInfo)
-            fetch('https://fation-shoes.onrender.com/add_user',{
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(UserInfo),
-            }).then(res=>res.json()).then(data=>{
-                console.log(data)
-                localStorage.setItem('token-fation-shoe',data?.token)
-            })
-        }
-        else{
-          fetch(`https://fation-shoes.onrender.com/user/${data?.user?.email}`
+    
 
-          ).then(res=>res.json()).then(data=>{
-            console.log(data)
-            const userInfo:any={
-              first_name:data?.first_name||data?.name,
-              last_name:data?.last_name,
-              email:data?.email,
-              contact_number:data?.contact_number||data?.mobile_1,
-              gender:data?.gender,
-              date_of_birth:data?.date_of_birth,
-              img: data?.img || user?.photoURL
-            }
-            dispatch(updateUser(userInfo))
-        })
-        }
-       });
+     await fetch('https://fation-shoes.onrender.com/add_user',{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({email:email}),
+    }).then(res=>res.json()).then(data=>{
+        console.log(data)
+        localStorage.setItem('token-fation-shoe',data?.token)
+    })
+
+      await signIn(email, password)
+
+
     }
   };
 
@@ -90,14 +78,14 @@ const Login = () => {
   }, [user, from, navigate]);
 
   const HandleDemoAdmin=()=>{
-    setDefaultEmail("osmangoni0827@gmial.com")
+    setDefaultEmail("osmangoni0827@gmail.com")
     setDefaultPassword("osmangoni")
   }
   const HandleDemoUser=()=>{
-    setDefaultEmail("ibrahim@gmail.com")
-    setDefaultPassword("123456")
+    setDefaultEmail(()=>"ibrahim@gmail.com")
+    setDefaultPassword(()=>"123456")
   }
-
+console.log(defaultEmail, defaultPassword)
   return (
     <form onSubmit={handleSUbmit} className="hero min-h-screen">
       <div className="hero-content  flex-col lg:flex-row-reverse">
@@ -114,7 +102,7 @@ const Login = () => {
                 type="email"
                 placeholder="email"
                 defaultValue={defaultEmail}
-                className="input input-bordered"
+                className="input input-bordered text-black font-bold"
                 name="email"
                 required
               />
@@ -129,7 +117,7 @@ const Login = () => {
                   type="password"
                   placeholder="password"
                   defaultValue={defaultPassword}
-                  className="input input-bordered"
+                  className="input input-bordered text-black font-bold"
                   name="password"
                   required
                 />
@@ -139,9 +127,12 @@ const Login = () => {
               }
            {/* demo admin user */}
               <div className="flex justify-between">
-                <li style={{color:"#207F99"}} className="text-sm cursor-pointer text-purple-500 hover:text-green p-1  rounded list-none" onClick={HandleDemoAdmin}>
+                <li style={{color:"#207F99"}}
+                 className="text-sm cursor-pointer text-purple-500 hover:text-green p-1  rounded list-none"
+                  onClick={()=>HandleDemoAdmin()}>
                    Demo Admin</li>
-                <li style={{color:"#F5C913"}} className="text-sm rounded text-yellow-400 cursor-pointer text-green p-1 list-none" onClick={HandleDemoUser}>
+                <li style={{color:"#F5C913"}} className="text-sm rounded text-yellow-400 cursor-pointer
+                 text-green p-1 list-none" onClick={()=>HandleDemoUser()}>
                  Demo User</li>
 
               </div>

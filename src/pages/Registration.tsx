@@ -81,7 +81,7 @@ const Registration = () => {
               <input
                 type="text"
                 
-                className="input input-bordered"
+                className="input text-black input-bordered"
                 name="name"
                 required
               />
@@ -93,7 +93,7 @@ const Registration = () => {
               <input
                 type="email"
               
-                className="input input-bordered"
+                className="input input-bordered text-black"
                 name="email"
                 required
               />
@@ -105,7 +105,7 @@ const Registration = () => {
               <input
                 type="password"
                
-                className="input input-bordered"
+                className="input input-bordered text-black"
                 name="password"
                 required
               />
@@ -117,7 +117,7 @@ const Registration = () => {
               <input
                 type="password"
                
-                className="input input-bordered"
+                className="input input-bordered text-black"
                 name="confirm_password"
                 required
               />

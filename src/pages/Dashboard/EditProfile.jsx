@@ -10,6 +10,7 @@ import axios from "axios";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { updateUser } from "../../redux/features/UserSlice";
 import Loader from "../../component/shared/Loader";
+import { useNavigate } from "react-router-dom";
 const EditProfile = () => {
 
 const {register,handleSubmit}=useForm()
@@ -26,6 +27,7 @@ const [uploadImage, setUploadImage] = useState(null);
 const [fieldValue, setFieldValue] = useState({});
 const dispatch=useAppDispatch()
 const [isLoading, setIsLoading]=useState(false)
+const navigate =useNavigate()
 useEffect(()=>{
     fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
         .then((res) => res.json())
@@ -57,12 +59,12 @@ await UpdateEmail(EditData?.email||user?.email).then(data=>console.log(data))
         },
         body: JSON.stringify(EditData),
     }).then((res) => res.json())
-        .then( async() =>{
-           console.log(EditData)
+        .then( async(data) =>{
+           console.log(EditData,data)
             await UpdateProfile((EditData?.first_name),user?.photoURL)
             setIsLoading(false)
            notify("Update Profile Successfully")
-    
+          navigate('/dashboard/user_profile')
         }
     
     );
@@ -76,7 +78,7 @@ const HandleEditInputField=(e)=>{
 }
 const {img}=useAppSelector(state=>state.userR)
 const onSubmit= async(data)=>{
-    setModel(true)
+   
     
     const userInfo={
       first_name:data?.first_name?data?.first_name:userData?.first_name,
@@ -91,6 +93,7 @@ const onSubmit= async(data)=>{
     setEditData(userInfo)
     console.log(userData,userInfo)
     dispatch(updateUser(userInfo))
+    setModel(true)
 }
 const HandleImageUpload = (e) => {
     setUploadImage("processing");
@@ -166,28 +169,28 @@ onChange: e => HandleEditInputField(e)
 </div>
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="email"> Email</label> 
-    <input  type="text" id="email" value={userData?.email||user.email} {...register("email",{
+    <input   type="text" id="email" value={userData?.email||user.email} {...register("email",{
 onChange: e => HandleEditInputField(e)})}/>
 </div>
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="mobile_1">Mobile Number</label>
-    <input className="text-black" type="text" id="mobile_1" defaultValue={userData?.contact_number1||""} {...register("contact_number1",{
+    <input  type="text" id="mobile_1" defaultValue={userData?.contact_number1||""} {...register("contact_number1",{
 onChange: e => HandleEditInputField(e)})}/>
 </div>
 
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="mobile_2">Alternative Mobile Number</label>
-    <input className="text-black" type="text" id="mobile_2" defaultValue={userData?.contact_number2||""} {...register("contact_number2",{
+    <input  type="text" id="mobile_2" defaultValue={userData?.contact_number2||""} {...register("contact_number2",{
 onChange: e => HandleEditInputField(e)})}/>
 </div>
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="mobile_2">Date Of Birth</label>
-    <input className="text-black" type="date" id="date_of_birth" defaultValue={userData?.date_of_birth||""} {...register("date_of_birth",{
+    <input  type="date" id="date_of_birth" defaultValue={userData?.date_of_birth||""} {...register("date_of_birth",{
 onChange: e => HandleEditInputField(e)})}/>
 </div>
 <div className="w-full my-2">
     <label className="text-bold " htmlFor="gender">Gender</label>
-    <select className="text-black" id="gender" defaultValue={userData?.gender||""} {...register("gender",{
+    <select  id="gender" defaultValue={userData?.gender||""} {...register("gender",{
 onChange: e => HandleEditInputField(e)})}>
   <option value={"male"}>Male</option>
   <option value={"female"}>Female</option>

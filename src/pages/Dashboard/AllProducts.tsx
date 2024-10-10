@@ -24,7 +24,7 @@ import Loader from "../../component/shared/Loader";
         return (
             <div >
                 <div className="grid grid-cols-1 md:mt-16 md:grid-cols-2 
-                 md:gap-5 lg:grid-cols-3 gap-1 justify-center items-start">
+                 md:gap-5 lg:grid-cols-2 xl:grid-cols-3 gap-1 mx-auto items-start">
                 {
                     shoesData?.map((shoe)=><SingleProductCardDashboard
                      shoe={shoe} key={shoe._id}

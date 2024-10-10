@@ -35,6 +35,7 @@ import TermsAndCondition from "../pages/TermsAndCondition.tsx";
 import ReturnAndReplacement from "../pages/ReturnAndReplacement.tsx";
 import ShippingService from "../pages/ShippingService.tsx";
 import PaymentService from "../pages/PaymentService.tsx";
+import UserMessage from "../component/Dashboard/UserMessage.tsx";
 
 const route =createBrowserRouter([
     {
@@ -141,6 +142,10 @@ const route =createBrowserRouter([
       {
         path:"order",
         element:<PrivateRoute><Order/></PrivateRoute>
+      },
+      {
+        path:"user_message",
+        element:<PrivateRoute><UserMessage/></PrivateRoute>
       },
       
       {

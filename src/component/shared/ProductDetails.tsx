@@ -82,18 +82,18 @@ const props = {width: 400, height: 250,zoomPosition:"center", zoomWidth: 700,img
               </span>
             </h6>
             {shoe?.pd_size&& <h6 className="text-ghost text-xl"> Available Size:  {shoe?.pd_size ? pd_size[0] : ""}-
-            {shoe?.pd_size ? pd_size[5] : ""}</h6>}
+            {shoe?.pd_size ? pd_size : ""}</h6>}
            
             <h6 className="font-bold text-xl">
               <span className="line-through pr-6"> {pd_price} Tk. </span>
               {Number(pd_price) - Number(pd_price) * 0.2} Tk.
             </h6>
-            <p className="text-xl py-2 text-justify">{pd_description}</p>
+            <p className="text-xl py-2 text-justify lg:px-2 px-4 md:px-16">{pd_description}</p>
 
             <div className="py-2 flex gap-2 justify-center lg:justify-normal items-center">
                 {
                     add_to_cart_button?<button onClick={HandleAdd_to_Cart} className="text-white lg:flex 
-                    items-center gap-2 my-2 lg:my-0 p-6 btn_secondary hidden ">
+                    items-center gap-2 my-2 lg:my-0 h-[55px] btn_secondary hidden ">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ const props = {width: 400, height: 250,zoomPosition:"center", zoomWidth: 700,img
                     </button>:
                      <Link to={`/order_cart/${user?.email}`}>
                      <button  className="text-white flex 
-                    items-center gap-2 my-2 lg:my-0 p-6 btn_secondary">
+                    items-center gap-2 my-2 lg:my-0  btn_secondary h-[55px] ">
                          <span>
                            <svg
                              xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +137,7 @@ const props = {width: 400, height: 250,zoomPosition:"center", zoomWidth: 700,img
                 }
              
                 <button onClick={HandleOrder}  className="text-white flex 
-                    items-center gap-2 my-2 lg:my-0 p-6 btn_secondary">
+                    items-center gap-2 my-2 lg:my-0 h-[55px]  btn_secondary">
                 <span> Order Now</span>
                   <span>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
