@@ -66,7 +66,7 @@ const route =createBrowserRouter([
             element: <CookiePolicy/>,
           },
           {
-            path: "/term_condition",
+            path: "/terms_condition",
             element: <TermsAndCondition/>,
           },
           {
