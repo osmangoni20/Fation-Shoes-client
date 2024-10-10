@@ -23,11 +23,11 @@ const[showNavbar, setNavbar]=useState(false)
   return (
     <div className="min-w-full">
       
-      <div className="navbar z-50 md:px-10 lg: px:10 pr-5 py-3 
+      <div className="navbar z-50 md:pr-8 lg: px:10 px-0 pr-5 py-3 
        bg-[#F0F0F0] w-full    text-black lg:shadow-xl md:shadow-xl">
         <div className="navbar-start ">
-          <div className="dropdown">
-            <div onClick={HandleNavbar} tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div className="dropdown ">
+            <div onClick={HandleNavbar} tabIndex={0} role="button" className="btn pl-8 btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -47,14 +47,16 @@ const[showNavbar, setNavbar]=useState(false)
             showNavbar&& <ul
             onClick={HandleNavbar}
             tabIndex={0}
-            className="menu menu-sm text-black px-4 w-[250px] rounded-md  dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 "
+            className="menu menu-sm p-0 text-black  space-y-2 bg-[#F0F0F0] w-[300px] min-h-screen ml-0 
+            rounded-tr-md rounded-br-md  dropdown-content mt-3 z-[1]
+            shadow"
           >
             <li>
               <Link to={"/searchProduct/category/casual_shoes"}>
                 CASUAL SHOES
               </Link>
             </li>
-            <li>
+            <li className="bg-gray-100 py-2">
               <Link to={"/searchProduct/category/formal_shoes"}>
                 FORMAL SHOES
               </Link>
@@ -63,13 +65,13 @@ const[showNavbar, setNavbar]=useState(false)
             <li>
               <Link to={"/searchProduct/category/loafers"}>LOAFERS</Link>
             </li>
-            <li>
+            <li className="bg-gray-100 py-2">
               <Link to={"/searchProduct/category/boot"}>BOOTS</Link>
             </li>
             <li>
               <Link to={"/about"}>ABOUT US</Link>
             </li>
-            <li>
+            <li className="bg-gray-100 py-2">
             <Link to={"/dashboard/user_profile"}>Dashboard</Link>
             </li>
              <li className="flex items-center">
@@ -92,7 +94,7 @@ const[showNavbar, setNavbar]=useState(false)
             </li> 
 
             {!user ? (
-              <div>
+              <div className="flex justify-between w-full px-2">
                 <Link
                   to="/login"
                   className="btn px-10 bg-primary hover:bg-secondary text-white"

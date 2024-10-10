@@ -24,7 +24,7 @@ const fetchData=()=>{
            <div className="overflow-x-auto bg-[#171A3B] text-white">
   <table className="table w-full">
     {/* head */}
-    <thead className='text-white text-xl text-center w-full'>
+    <thead className='text-white md:text-[20px]  lg:text-xl text-center w-full'>
       <tr>
         <th>Date</th>
         <th>Email</th>
