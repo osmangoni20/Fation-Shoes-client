@@ -18,6 +18,14 @@ const fetchData=()=>{
     fetchData()
    }, [])
    const totalOrderPrice=userOrder?.reduce((total,order)=>order?.price+total,0)
+   let pendingOrder=0;
+   for (let index = 0; index < userOrder?.length; index++) {
+    const element = userOrder[index];
+    if(element?.status==="pending"){
+      pendingOrder+=1;
+    }
+    
+   }
   return (
     <div>
       <div className="flex flex-wrap md:gap-5 justify-around">
@@ -32,7 +40,7 @@ const fetchData=()=>{
             viewBox="0 0 24 24"
             stroke-width="2.5"
             stroke="#FFFFF4"
-            className="size-16"
+            className="size-16 opacity-60"
           >
             <path
               stroke-linecap="round"
@@ -57,7 +65,7 @@ const fetchData=()=>{
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              className="size-16"
+              className="size-16 opacity-60"
             >
               <path
                 stroke-linecap="round"
@@ -67,7 +75,7 @@ const fetchData=()=>{
             </svg>
 
           <span className="text-center">
-            <h1 className="text-white">{totalOrderPrice||"00"} Tk.</h1>
+            <h1 className="text-white">{totalOrderPrice||"00"}</h1>
             <h2 className="text-xl text-center p-0">Total Purchase</h2>
           </span>
         </div>
@@ -76,24 +84,14 @@ const fetchData=()=>{
          shadow-lg  w-[300px]  border-2 
       rounded-tr-xl rounded-bl-xl"
      >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-          className="size-16"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-            />
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-16 opacity-60">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+</svg>
+
 
           <span className="text-center">
-            <h1 className="text-white">00</h1>
-            <h2 className="text-xl text-center p-0">WishList</h2>
+            <h1 className="text-white">{`${pendingOrder<9?`0${pendingOrder}`:pendingOrder}`}</h1>
+            <h2 className="text-xl text-center p-0">Pending Order</h2>
           </span>
         </div>
       </div>

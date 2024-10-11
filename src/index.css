@@ -21,7 +21,7 @@
     [multiple],
     textarea,
     select{
-        @apply w-full  border bg-gray-400 text-white border-gray-100 rounded-md focus:border-purple-500 
+        @apply w-full  border bg-[#E8F0FE] text-black border-gray-100 rounded-md focus:border-purple-500 
         focus:ring-1
          focus:ring-purple-500;
     }

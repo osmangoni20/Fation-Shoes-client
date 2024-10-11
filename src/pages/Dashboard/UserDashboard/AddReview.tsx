@@ -40,7 +40,7 @@ const AddReview = () => {
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
            <div className="w-full my-2">
                     <label className="text-bold block" htmlFor="user_name">Your Name</label>
-                    <input className='text-white' type="text" id="user_name" {...register("user_name")}/>
+                    <input className='' type="text" id="user_name" {...register("user_name")}/>
                 </div>
            <div className="w-full my-2">
             <label className="text-bold " htmlFor="pd_category">Product Category</label>
@@ -53,12 +53,12 @@ const AddReview = () => {
         </div>
                 <div className="w-full my-2">
                     <label className="text-bold block" htmlFor="pd_name">Product Name</label>
-                    <input className='text-white' type="text" id="pd_name" {...register("pd_name")}/>
+                    <input className='' type="text" id="pd_name" {...register("pd_name")}/>
                 </div>
                 
                 <div className="w-full my-2">
             <label className="text-bold " htmlFor="pd_rating">Product Rating</label>
-            <select className='text-gray-50' itemType='number' id="pd_rating"{...register("pd_rating")}>
+            <select className='' itemType='number' id="pd_rating"{...register("pd_rating")}>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
@@ -68,7 +68,7 @@ const AddReview = () => {
         </div>
                 <div className="w-full my-2">
                     <label className="text-bold " htmlFor="review">Your Review</label>
-                    <textarea className='h-[200px] text-gray-600' id="review" {...register("review")}/>
+                    <textarea className='h-[200px] ' id="review" {...register("review")}/>
                 </div>
              
                
