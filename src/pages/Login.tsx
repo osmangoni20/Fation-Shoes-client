@@ -28,7 +28,7 @@ const Login = () => {
   }
   const checkAdmin= async(user)=>{
     console.log(user)
-    const res= await fetch(`https://fation-shoes.onrender.com/admin/${user?.email}`)
+    const res= await fetch(`https://fationshoe-server.vercel.app/admin/${user?.email}`)
     const data= await res.json();
     // setIsAdmin(data);
     console.log("data",data)
@@ -54,7 +54,7 @@ const Login = () => {
     }else{
     
 
-     await fetch('https://fation-shoes.onrender.com/add_user',{
+     await fetch('https://fationshoe-server.vercel.app/add_user',{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

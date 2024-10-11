@@ -8,7 +8,7 @@ type TInitialState={
     status: string;
     shippingInfo: object;
     price: number;
-    payment_info: {
+    paymentInfo: {
         payment_method:string,
         transactionId:string
     }
@@ -20,7 +20,7 @@ const initialState:TInitialState={
     status:"",
     shippingInfo:{},
     price:0,
-    payment_info:{
+    paymentInfo:{
         payment_method:'',
         transactionId:''
     }
@@ -36,12 +36,12 @@ const OrderSlice=createSlice({
             state.order_product=action.payload.order_product
             state.price=action.payload.price
             state.shippingInfo=action.payload.shippingInfo
-            state.payment_info=action.payload.payment_info
+            state.paymentInfo=action.payload.paymentInfo
             state.status=action.payload.status
             console.log(state)
         },
         paymentInfoUpdate:(state,action:PayloadAction<any>)=>{
-            state.payment_info={...state.payment_info,...action.payload}
+            state.paymentInfo={...state.paymentInfo,...action.payload}
         }
     }
 })

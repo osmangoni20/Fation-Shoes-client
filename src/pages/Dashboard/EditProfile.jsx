@@ -29,7 +29,7 @@ const dispatch=useAppDispatch()
 const [isLoading, setIsLoading]=useState(false)
 const navigate =useNavigate()
 useEffect(()=>{
-    fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
+    fetch(`https://fationshoe-server.vercel.app/user/${user?.email}`)
         .then((res) => res.json())
         .then( (data) =>{
             console.log(data)
@@ -51,7 +51,7 @@ const isSubmit= async()=>{
     setModel(false)
     
 await UpdateEmail(EditData?.email||user?.email).then(data=>console.log(data))
-  await fetch(`https://fation-shoes.onrender.com/user/${user?.email}`, {
+  await fetch(`https://fationshoe-server.vercel.app/user/${user?.email}`, {
         method: "PATCH",
         headers: {
         "Content-type": "application/json",

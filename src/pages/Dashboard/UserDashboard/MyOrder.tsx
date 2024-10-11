@@ -6,7 +6,7 @@ import Loader from '../../../component/shared/Loader';
 
 const MyOrder = () => {
     const {user}:any=useAuth()
-    const baseURL = `https://fation-shoes.onrender.com/order/${user?.email}`
+    const baseURL = `https://fationshoe-server.vercel.app/order/${user?.email}`
 
     const[userOrder, setUserOrder]=useState<any>()
 const fetchData=()=>{

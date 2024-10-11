@@ -10,7 +10,7 @@ const SearchItem = () => {
     const[ProductData,setProductData]=useState<TProductInfo[]>([])
     
     useEffect(()=>{
-        fetch(`https://fation-shoes.onrender.com/product/?searchValue=${searchValue}&searchCategory=${category}`)
+        fetch(`https://fationshoe-server.vercel.app/product/?searchValue=${searchValue}&searchCategory=${category}`)
         .then(res=>res.json())
         .then(data=>setProductData(data))
     },[searchValue,category])

@@ -7,7 +7,7 @@ const RecentProduct = () => {
     const [data,setShoe]=useState<TProductInfo[]>([])
     const [isLoading, setIsLoading]=useState(true)
      useEffect(()=>{
-         fetch('https://fation-shoes.onrender.com/product').then(res=>res.json())
+         fetch('https://fationshoe-server.vercel.app/product').then(res=>res.json())
          .then(data=>{
          setShoe(data)
          setIsLoading(false)

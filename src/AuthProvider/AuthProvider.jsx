@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
   const githubAuthProvider=new GithubAuthProvider();
   const checkAdmin= async(user)=>{
     console.log(user)
-    const res= await fetch(`https://fation-shoes.onrender.com/admin/${user?.email}`)
+    const res= await fetch(`https://fationshoe-server.vercel.app/admin/${user?.email}`)
     const data= await res.json();
     // setIsAdmin(data);
     console.log("data",data)
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
   }
   const getUserInformation= async(user)=>{
     console.log(user)
-     await fetch(`https://fation-shoes.onrender.com/user/${user.email}`)
+     await fetch(`https://fationshoe-server.vercel.app/user/${user.email}`)
      .then(res=>{
       const data=res.data
       console.log("data",data)
@@ -143,7 +143,7 @@ return signInWithPopup(auth, githubAuthProvider).catch((error) => {
         checkAdmin(data?.user)
         }
 
-        fetch(`https://fation-shoes.onrender.com/user/${data?.user?.email}`)
+        fetch(`https://fationshoe-server.vercel.app/user/${data?.user?.email}`)
         .then(res=>res.json())
         .then(data=>{
           const userInfo={

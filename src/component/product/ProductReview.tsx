@@ -15,7 +15,7 @@ const ProductReview = ({ pd_info }) => {
   const [isSubmitData, setSubmitData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isReviewWrite, setReviewWrite] = useState(false);
-  const url = "https://fation-shoes.onrender.com/add_review";
+  const url = "https://fationshoe-server.vercel.app/add_review";
   const { user }: any = useAuth();
   const { first_name,last_name, img } = useAppSelector((state) => state.userR);
   const onSubmit = async (data) => {
@@ -44,7 +44,7 @@ const ProductReview = ({ pd_info }) => {
   };
   const [review, setReview] = useState<TReview[] | any>();
   useEffect(() => {
-    fetch(`https://fation-shoes.onrender.com/pd_review/${pd_info?.pd_id}`)
+    fetch(`https://fationshoe-server.vercel.app/pd_review/${pd_info?.pd_id}`)
       .then((res) => res.json())
       .then((data) => setReview(data.reverse()));
   }, [isLoading]);

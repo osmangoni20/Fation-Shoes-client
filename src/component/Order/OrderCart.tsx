@@ -10,7 +10,7 @@ const OrderCart = () => {
   const {products,totalSelectedItem,subTotal}=useAppSelector((state:RootState)=>state.cartR)
   console.log(totalSelectedItem,subTotal)
   const dispatch=useAppDispatch()
-
+  const[quantity,setQuantity]=useState(1)
  
   // const [itemCollection, setItemCollection] = useState(
   //   JSON.parse(localStorage.getItem("cartItemList"))
@@ -45,8 +45,8 @@ const OrderCart = () => {
   return (
     <div className="ghost_bg rounded-b-md">
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-3">
-        <div className="col-span-2 p-5">
-          <div className="my-2 bg-white p-4 font-semibold text-xl flex 
+        <div className="col-span-2 p-5 md:order-2 lg:order-1 xl:order-1 2xl:order-1 order-2">
+          <div className="my-2 bg-white p-4 font-semibold text-xl flex
           justify-between items-center">
             <h4 className="flex gap-1 items-center">
               <span>
@@ -96,7 +96,8 @@ const OrderCart = () => {
                       </svg>
                     </button>
                   </div>
-                  <div className="flex justify-between items-center">
+                  <div className="md:flex lg:flex xl:flex 2xl:flex justify-between items-center pt-6 pb-2">
+                    <div className="flex justify-between w-[400px]">
                     <img
                       className="h-[150px] w-[200px]"
                       src={item?.pd_image}
@@ -120,13 +121,16 @@ const OrderCart = () => {
                         </span>
                       </h6>
                     </div>
+                    </div>
+                    <div className="flex justify-between items-center md:w-[300px] sm:w-full lg:w-[300px] xl:w-[300px] w-full">
                     <div className="flex gap-2 items-center">
                       <button onClick={()=>HandleQuantity(item?._id,'decrement')} className="btn text-xl">
                         -
                       </button>
                       <input
-                        className="w-[50px] px-0 text-center h-[50px] border-none"
-                        value={item?.quantity}
+                      onChange={(e)=>dispatch(updateProduct({id:item?._id,type:"",value:e.target.value}))}
+                        className="w-[40px] text-center pr-0  h-[50px] border-none"
+                        defaultValue={item?.quantity}
                         type="number"
                       />
                       <button onClick={()=>HandleQuantity(item?._id,'increment')} className="btn text-xl">
@@ -134,13 +138,14 @@ const OrderCart = () => {
                       </button>
                     </div>
                     <div>
-                      <h6 className="text-xl pr-2">
+                      <div className="text-xl pr-2">
                         {" "}
-                        <span className="line-through text-sm text-red-500 px-2">
+                        <p className="line-through text-sm text-red-500 px-2">
                           {item?.pd_price} Tk.
-                        </span>
-                        {item?.order_price} Tk.
-                      </h6>
+                        </p>
+                        <p>{item?.order_price} Tk.</p>
+                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -161,7 +166,7 @@ const OrderCart = () => {
 
           </div>
         </div>
-        <div className="col-span-1 my-6">
+        <div className="col-span-1 my-6 md:order-1 lg:order-2 xl:order-2 2xl:order-2 order-1">
          <CheckOutSummary submitType={"proceed checkout"}></CheckOutSummary>
         </div>
       </div>

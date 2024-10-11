@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 const Order = () => {
   const [orderData, setOrderData] = useState<any>(null);
   const {user}:any=useAuth()
-  const url = `https://fation-shoes.onrender.com/order/`;
+  const url = `https://fationshoe-server.vercel.app/order/`;
   useEffect(() => {
     fetch(`${url}`)
       .then((res) => res.json())
@@ -19,7 +19,7 @@ const Order = () => {
 
   const HandleStatus=(status,id)=>{
     console.log(status,id)
-    fetch(`https://fation-shoes.onrender.com/order/${id}`,{
+    fetch(`https://fationshoe-server.vercel.app/order/${id}`,{
       method:"PATCH",
       headers:{
                 "Content-type":"application/json"

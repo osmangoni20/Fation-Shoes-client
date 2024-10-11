@@ -6,7 +6,7 @@ const SingleReviews = ({review}) => {
         <div>
             
               <div
-                className="rounded-md font-montserrat shadow-xl p-4  h-[300px]  text-black"
+                className="rounded-md font-montserrat shadow-xl p-4 bg-[#EBEBEB] h-[300px]  text-black"
               >
                 <div className=" flex justify-between">
                   <div className=" flex gap-2 items-start">

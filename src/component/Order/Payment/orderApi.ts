@@ -1,4 +1,4 @@
-const url="https://fation-shoes.onrender.com/add_order"
+const url="https://fationshoe-server.vercel.app/add_order"
 
 
 export  const orderPostApi= async(submitData)=>{

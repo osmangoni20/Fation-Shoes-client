@@ -51,7 +51,7 @@ const route =createBrowserRouter([
           {
             path: "/product/:id",
             element: <ProductDetails/>,
-            loader:({params})=>fetch(`https://fation-shoes.onrender.com/product/${params.id}`),
+            loader:({params})=>fetch(`https://fationshoe-server.vercel.app/product/${params.id}`),
           },
           {
             path: "/about",
@@ -151,7 +151,7 @@ const route =createBrowserRouter([
       {
         path:"/dashboard/order/orderDetails/:email",
         element:<PrivateRoute><OrderDetails/></PrivateRoute>,
-        loader:({params})=>fetch(`https://fation-shoes.onrender.com/order/${params.email}`),
+        loader:({params})=>fetch(`https://fationshoe-server.vercel.app/order/${params.email}`),
 
       },
       {
@@ -178,7 +178,7 @@ const route =createBrowserRouter([
         element:<PrivateRoute>
           <EditProfile/>
         </PrivateRoute>,
-        loader:()=>fetch('https://fation-shoes.onrender.com/user'),
+        loader:()=>fetch('https://fationshoe-server.vercel.app/user'),
       },
       
       
@@ -191,7 +191,7 @@ const route =createBrowserRouter([
       {
         path:"/dashboard/all-products/edit/:id",
         element:<EditProduct/>,
-        loader:({params})=>fetch(`https://fation-shoes.onrender.com/product/${params.id}`),
+        loader:({params})=>fetch(`https://fationshoe-server.vercel.app/product/${params.id}`),
       }
 
       ],

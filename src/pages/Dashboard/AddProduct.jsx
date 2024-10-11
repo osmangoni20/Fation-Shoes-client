@@ -13,7 +13,7 @@ const AddProduct = () => {
     const [isSubmitData, setSubmitData]=useState(null)
     const [uploadImage, setUploadImage]=useState('')
     const [loadImage, setLoadImage]=useState(false)
-    const url="https://fation-shoes.onrender.com/add_product"
+    const url="https://fationshoe-server.vercel.app/add_product"
     const [isLoading, setIsLoading]=useState(false)
     const isSubmit= async()=>{
         setIsLoading(true)

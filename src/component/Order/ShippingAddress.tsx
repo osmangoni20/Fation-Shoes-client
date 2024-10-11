@@ -36,7 +36,7 @@ const ShippingAddress = () => {
         const [submitData, setSubmitData]=useState<TOrder>()
         const [payment_method,setPayment_method]=useState('');
     const {products,total}=useAppSelector((state)=>state.cartR)
-    const {shippingInfo,payment_info}=useAppSelector((state)=>state.orderR)
+    const {shippingInfo,paymentInfo}=useAppSelector((state)=>state.orderR)
 
     // const [itemCollection, setItemCollection] = useState(
     //     JSON.parse(localStorage.getItem("cartItemList"))
@@ -50,7 +50,7 @@ const ShippingAddress = () => {
     }
     const onSubmit= async(data)=>{
 
-        const newOrder={
+        const newOrder:TOrder={
             date:new Date().toLocaleDateString(),
             email:user?.email||'',
             order_product:products,
@@ -62,8 +62,8 @@ const ShippingAddress = () => {
                 transactionId:''
             }
         }
-        
-        console.log("shippingInfo", shippingInfo,payment_info.payment_method)
+        dispatch(add_new_order(newOrder))
+        console.log("shippingInfo", shippingInfo,paymentInfo.payment_method)
         if(payment_method==='cash_on_delivery'){
             setModel(true)
             setSubmitData(newOrder);
@@ -98,8 +98,8 @@ const ShippingAddress = () => {
                 <Modal.Submit>Yes</Modal.Submit>
                 </div>
             </Modal>
-        <div className="max-w-[1200px]  mx-auto grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2 px-5 my-6 md:order-1 lg:order-1 order-2">
+            <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-3">
+            <div className="col-span-2 p-5 md:order-2 lg:order-1 xl:order-1 2xl:order-1 order-2">
           <div className="bg-white p-3 flex justify-between items-center border-b-2 border-gray-500">
           <h3 className="text-3xl font-bold">Shipping Address</h3>
           <p> Fill Out Your Information</p>
@@ -199,7 +199,7 @@ const ShippingAddress = () => {
             </form>
         </div>
         </div>
-        <div className="col-span-1 my-6">
+        <div className="col-span-1 my-6 md:order-1 lg:order-2 xl:order-2 2xl:order-2 order-1">
          <CheckOutSummary submitType={"payment"}></CheckOutSummary>
         </div>
         </div>

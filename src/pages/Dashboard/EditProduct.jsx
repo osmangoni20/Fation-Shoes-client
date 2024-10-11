@@ -19,7 +19,7 @@ import Loader from "../../component/shared/Loader";
         const isSubmit= async()=>{
             setIsLoading(true)
             setModel(false)
-            await fetch(`https://fation-shoes.onrender.com/product/${shoe._id}`, {
+            await fetch(`https://fationshoe-server.vercel.app/product/${shoe._id}`, {
                 method: "PATCH",
     
                 headers: {

@@ -9,7 +9,7 @@ const AccountInfo = () => {
     const [userData,setUserData]=useState<any>()
     const {user}:any=useAuth()
     useEffect(() => {
-        fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
+        fetch(`https://fationshoe-server.vercel.app/user/${user?.email}`)
         .then(res=>res.json())
         .then(data=>{
             console.log(data)

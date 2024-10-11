@@ -23,7 +23,7 @@ const[showNavbar, setNavbar]=useState(false)
   return (
     <div className="min-w-full">
       
-      <div className="navbar z-50 md:pr-8 lg: px:10 px-0 pr-5 py-3 
+      <div className="navbar z-50 md:pr-8 lg:px-10 px-0 pr-5 py-3 
        bg-[#F0F0F0] w-full    text-black lg:shadow-xl md:shadow-xl">
         <div className="navbar-start ">
           <div className="dropdown ">

@@ -41,7 +41,7 @@ export type TReview = {
 const Review = ({title}) => {
   const [review, setReview] = useState<TReview[] | any>();
   useEffect(() => {
-    fetch("https://fation-shoes.onrender.com/review")
+    fetch("https://fationshoe-server.vercel.app/review")
       .then((res) => res.json())
       .then((data) => setReview(data));
   }, []);

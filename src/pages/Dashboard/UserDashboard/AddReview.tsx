@@ -10,7 +10,7 @@ const AddReview = () => {
     const [isOpen,setModel]=useState(false)
     const [isSubmitData, setSubmitData]=useState(null)
     const [isLoading, setIsLoading]=useState(false)
-    const url="https://fation-shoes.onrender.com/add_review"
+    const url="https://fationshoe-server.vercel.app/add_review"
     const {user}:any=useAuth()
 
     const onSubmit= async(data)=>{

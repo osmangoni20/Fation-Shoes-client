@@ -12,7 +12,7 @@ import Loader from "../../component/shared/Loader";
         const [shoesData,setShoesData]=useState<TProductInfo[]>([]);
         
         useEffect(()=>{
-            fetch('https://fation-shoes.onrender.com/product')
+            fetch('https://fationshoe-server.vercel.app/product')
             .then(res=>res.json())
             .then(data=>setShoesData(data))
         })

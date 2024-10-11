@@ -9,7 +9,7 @@ const Shop = () => {
   const [shoes, setShoes]=useState<any>([])
 
     useEffect(()=>{
-        fetch('https://fation-shoes.onrender.com/product')
+        fetch('https://fationshoe-server.vercel.app/product')
         .then(res=>res.json())
         .then(data=>setShoes(data))
     },[])

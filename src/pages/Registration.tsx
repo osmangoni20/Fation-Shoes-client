@@ -43,7 +43,7 @@ const Registration = () => {
           }
           signUp(userInfo)
       
-          // fetch('https://fation-shoes.onrender.com/auth/register',{
+          // fetch('https://fationshoe-server.vercel.app/auth/register',{
           //     method: "POST",
           //     headers: {
           //       "Content-Type": "application/json",

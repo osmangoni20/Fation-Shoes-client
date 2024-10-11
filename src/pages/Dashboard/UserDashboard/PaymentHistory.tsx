@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 const PaymentHistory = () => {
     const {user}:any=useAuth()
-    const baseURL = `https://fation-shoes.onrender.com/order/${user?.email}`
+    const baseURL = `https://fationshoe-server.vercel.app/order/${user?.email}`
 
     const[userOrder, setUserOrder]=useState<any>()
 const fetchData=()=>{

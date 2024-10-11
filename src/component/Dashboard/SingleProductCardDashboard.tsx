@@ -16,7 +16,7 @@ import React from "react";
             const notify = (message) => toast(message);
             const isSubmit=()=>{
                 setModel(false)
-                const url=`https://fation-shoes.onrender.com/product/${_id}`;
+                const url=`https://fationshoe-server.vercel.app/product/${_id}`;
                 fetch(url,{
                     method:"DELETE",
                     headers:{

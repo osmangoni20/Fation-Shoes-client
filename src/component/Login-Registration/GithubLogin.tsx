@@ -16,7 +16,7 @@ const GithubLogin =  () => {
                 email:data?.user?.email,
                 img:data?.user?.photoURL
             }
-            fetch('https://fation-shoes.onrender.com/add_user',{
+            fetch('https://fationshoe-server.vercel.app/add_user',{
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

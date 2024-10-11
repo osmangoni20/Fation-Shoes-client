@@ -7,7 +7,7 @@ const RecentMessage = () => {
     const [userMessage,setNewMessage]=useState<any[]>([])
     const [isLoading, setIsLoading]=useState(true)
      useEffect(()=>{
-         fetch('https://fation-shoes.onrender.com/message').then(res=>res.json())
+         fetch('https://fationshoe-server.vercel.app/message').then(res=>res.json())
          .then(data=>{
          setNewMessage(data)
          setIsLoading(false)

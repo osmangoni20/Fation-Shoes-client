@@ -49,7 +49,7 @@ export type TReview = {
 const Testimonial = ({title}) => {
   const [review, setReview] = useState<TReview[] | any>();
   useEffect(() => {
-    fetch("https://fation-shoes.onrender.com/review")
+    fetch("https://fationshoe-server.vercel.app/review")
       .then((res) => res.json())
       .then((data) => setReview(data.reverse()));
   }, []);
@@ -78,7 +78,7 @@ breakpoints={
       spaceBetween:20
     },
     1024:{
-      slidesPerView:3,
+      slidesPerView:2,
       spaceBetween:20
     }
   }

@@ -10,19 +10,19 @@ const TendingProducts = ({ shoes }) => {
   const [loaferData, setLoaferData] = useState([]);
   useEffect(() => {
     fetch(
-      `https://fation-shoes.onrender.com/product/?searchValue=${"casual_shoes"}&searchCategory=${"category"}`
+      `https://fationshoe-server.vercel.app/product/?searchValue=${"casual_shoes"}&searchCategory=${"category"}`
     )
       .then((res) => res.json())
       .then((data) => setCasualData(data));
 
     fetch(
-      `https://fation-shoes.onrender.com/product/?searchValue=${"formal_shoes"}&searchCategory=${"category"}`
+      `https://fationshoe-server.vercel.app/product/?searchValue=${"formal_shoes"}&searchCategory=${"category"}`
     )
       .then((res) => res.json())
       .then((data) => setFormalData(data));
 
     fetch(
-      `https://fation-shoes.onrender.com/product/?searchValue=${"loafers"}&searchCategory=${"category"}`
+      `https://fationshoe-server.vercel.app/product/?searchValue=${"loafers"}&searchCategory=${"category"}`
     )
       .then((res) => res.json())
       .then((data) => setLoaferData(data));

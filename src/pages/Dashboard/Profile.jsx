@@ -9,7 +9,7 @@ const Profile = () => {
     const {img}=useAppSelector(state=>state.userR)
     const {user}=useAuth();
     useEffect(()=>{
-        fetch(`https://fation-shoes.onrender.com/user/${user?.email}`)
+        fetch(`https://fationshoe-server.vercel.app/user/${user?.email}`)
             .then((res) => res.json())
             .then( (data) =>{
          setUserData(data)

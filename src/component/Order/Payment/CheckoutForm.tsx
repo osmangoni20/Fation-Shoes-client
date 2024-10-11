@@ -33,7 +33,7 @@ console.log(shippingInfo)
       if(total<0){
         setError(" The amount must be greater than or equal to the minimum charge amount")
       }else{
-        fetch("https://fation-shoes.onrender.com/create-payment-intent", {
+        fetch("https://fationshoe-server.vercel.app/create-payment-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({price:500}),
