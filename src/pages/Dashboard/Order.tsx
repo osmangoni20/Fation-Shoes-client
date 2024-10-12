@@ -28,11 +28,29 @@ const Order = () => {
     })
   }
   console.log(orderData)
+  let pendingOrder=0;
+  let rearrangeOrder:any[]=[]
+  for (let index = 0; index < orderData?.length; index++) {
+   const element = orderData[index];
+   if(element?.status==="pending"){
+     pendingOrder+=1;
+    rearrangeOrder.unshift(element)
+   }else{
+    rearrangeOrder.push(element)
+   }
+   
+  }
+
+
+
   return (
     <div>
       <div className="flex justify-between items-center p-3 bg_dashboard text-white">
         <h3>
           Total Order: <span>{orderData?.length}</span>
+        </h3>
+        <h3 className="font-medium">
+         Pending Order: <span>{pendingOrder}</span>
         </h3>
         <h3 className="font-medium">
           Order Amount: <span>{order_amount} Tk.</span>
@@ -57,7 +75,7 @@ const Order = () => {
             </thead>
             <tbody className="space-x-4 text-center">
               {/* row 1 */}
-              {orderData?.map((order) => (
+              {rearrangeOrder?.map((order) => (
              <tr key={order._id}>
                   <td className="flex-1">
                     <p className="text-md font-medium">
@@ -91,7 +109,7 @@ const Order = () => {
                     </p>
                   </td>
                   <td className="flex-1">
-                    <p className="text-md font-medium text-yellow-500">
+                    <p className="text-md uppercase font-medium text-yellow-500">
                       {order?.status}
                     </p>
                   </td>

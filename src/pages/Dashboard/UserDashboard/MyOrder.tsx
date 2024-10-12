@@ -18,6 +18,18 @@ const fetchData=()=>{
     fetchData()
    }, [])
    console.log(userOrder)
+   let pendingOrder=0;
+   let rearrangeOrder:any[]=[]
+   for (let index = 0; index < userOrder?.length; index++) {
+    const element = userOrder[index];
+    if(element?.status==="pending"){
+      pendingOrder+=1;
+     rearrangeOrder.unshift(element)
+    }else{
+     rearrangeOrder.push(element)
+    }
+    
+   }
     return (
         <div>
             <h2 className='text-center lg:text-3xl text-xl text-white'>Your Order Item</h2>
@@ -39,7 +51,7 @@ const fetchData=()=>{
                     <tbody className='text-center space-y-4'>
                        
                     {
-                        userOrder?.map(order=>(
+                        rearrangeOrder?.map(order=>(
                             order?.order_product?.map((product)=>{
                                 
                               return(

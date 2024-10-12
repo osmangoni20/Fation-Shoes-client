@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import Loader from '../../component/shared/Loader';
 
 const OrderDetails = () => {
     const {email}=useParams()
@@ -8,7 +9,7 @@ const OrderDetails = () => {
     const {customer_name,customer_email,customer_mobile1,customer_mobile2, customer_city, customer_receive_address,payment_method}=orderDetails[0]?.shippingInfo
     return (
         <div>
-            <div className='my-5'>
+            <div className='my-5 text-white'>
                 <h3 className=' py-2 text-2xl'>User Information</h3>
                <ul className='grid grid-cols-2 lg:gap-5 text-center text-white'>
               
@@ -33,39 +34,70 @@ const OrderDetails = () => {
                </ul>
             </div>
 
-            <h3 className='border-b-2 border-slate-400 py-2 text-2xl'>Product List</h3>
-            <div className='flex gap-5 flex-wrap  items-center'>
-            {
-                orderDetails[0]?.order_product?.map((item)=>{
-                    return(
-                        <div key={item._id}>
-                                <div className="card w-80 h-[400px] pt-5 bg-base-100 shadow-xl text-black">
-                        <figure className="h-[180px] w-full"><img src={item?.pd_image} alt="Shoes" /></figure>
-                        <div className="card-body">
-                        <h3 className="card-title">
-                        {item?.pd_name}
-                        <div className="badge badge-secondary">{item?.pd_brand}</div>
-                        </h3>
-                    
-                        <div className="card-actions justify-top">
-                        <div className="badge badge-outline bg-gray-500 p-2 text-white font-bold text-md">{ item?.pd_price} $</div> 
-        
-                        </div>
-                
-                        <div className="flex gap-1 justify-center items-center">
-                        
-                        <button className="bg-blue-500 font-bold text-white">{item?.status}</button>
-    
+            <div>
+            <h2 className='text-center lg:text-3xl text-xl text-white'>{customer_name} Order Item</h2>
+           <div className='flex flex-wrap gap-2 space-y-10'>
+
+
+           <div className='min-w-md my-10 pb-6 bg-[#171A3B] w-full text-center text-white rounded-md p-3'>
+               
+                <table className='w-full space-y-4 '>
+                    <thead className='py-5 my-5'>
+                    <th>Date</th>
+                        <th>Product Image</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Transaction Id</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody className='text-center space-y-4'>
                        
-                        </div>
-                        </div>
-                        </div> 
-                    
-                        </div>
+                    {
+                        orderDetails?.map(order=>(
+                            order?.order_product?.map((product)=>{
+                                
+                              return(
+                                <tr className= {`${order?.order_product[length-1]?.pd_name===product?.pd_name&&"border-b-2 py-4"} py-4 space-y-4 text-sm font-medium text-gray-200`} key={product?._id}>
+                                <td>{(order?.order_product[0]?.pd_name===product?.pd_name)&& (order?.date || new Date().toLocaleDateString())}</td>
+                                <td>
+                                    <img className='h-[100px] w-[150px] mx-auto' src={product?.pd_image}></img>
+                                </td>
+                                <td>{product?.pd_name}</td>
+                                <td>{product?.pd_price}</td>
+                                <td>{product?.quantity}</td>
+                                <td>{order?.paymentInfo?.transactionId}</td>
+                                
+                                <td className='text-[#4F87F4]'>{order?.status}</td>
+                            </tr>
+                              )
+                          
+                            })
+                            
+                        )
+                            
+                               
+                               
+                                
+                               
+                            
+                        
                     )
-                })
-            }
+                    }
+                    {
+                       orderDetails?.length<0&&<h3>You have placed no orders.</h3>
+                    }
+                       
+                    </tbody>
+                </table>
             </div>
+          
+            {
+                orderDetails?.length<0&&<Loader/>
+            }
+           </div>
+             
+        </div>
         </div>
     );
 };

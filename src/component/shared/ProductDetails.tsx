@@ -9,6 +9,7 @@ import Testimonial from "../Home/Testimonial";
 import ProductReview from "../product/ProductReview";
 import { TProductInfo } from "../Home/SingleProduct";
 import { ImageZoom } from 'react-responsive-image-zoom';
+import RelatedProducts from "../product/RelatedProducts";
 type TProductData={
   _id:string,
   pd_name:string,
@@ -49,7 +50,7 @@ const HandleOrder=()=>{
 }
 const props = {width: 400, height: 250,zoomPosition:"center", zoomWidth: 700,img:pd_image };
   return (
-    <div className=" lg:flex justify-center ghost_bg py-5 lg:px-10 p-2">
+    <div className=" lg:flex justify-center ghost_bg py-5 md:px-4 lg:px-8 p-2">
       <div>
         <div className="w-full py-5  rounded bg-white lg:flex justify-between  gap-10">
           <div className="w-full ">
@@ -190,6 +191,7 @@ const props = {width: 400, height: 250,zoomPosition:"center", zoomWidth: 700,img
         </div> */}
         <hr className="lg:hidden py-3"/>
         <ProductReview pd_info={{pd_id:_id,name:pd_name}}/>
+        <RelatedProducts category={pd_category}/>
       </div>
     </div>
   );
