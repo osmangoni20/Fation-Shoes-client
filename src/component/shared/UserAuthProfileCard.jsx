@@ -1,18 +1,13 @@
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks";
-import { useEffect, useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 const UserAuthProfileCard = ({ isOpen,setProfileDialog }) => {
   const { user, logOut } = useAuth();
-  const[isAdmin, setIsAdmin]=useState(false)
   console.log(user?.photoURL);
+  const {img, isAdmin}=useAppSelector(state=>state.userR)
 
-  const {img}=useAppSelector(state=>state.userR)
-useEffect(()=>{
-  setIsAdmin(localStorage.getItem('isAdmin'))
-},[isAdmin])
 console.log(isAdmin)
 const HandleAuthCard=()=>{
   setProfileDialog(!isOpen)
@@ -70,7 +65,7 @@ const HandleAuthCard=()=>{
                 />
               </svg>
 
-              <a href={ `${isAdmin==true||isAdmin=='true'?"/dashboard/home":"/dashboard/user_dashboard"}`}>Dashboard</a>
+              <a href={ `${(isAdmin==true||isAdmin=='true')?"/dashboard/home":"/dashboard/user_dashboard"}`}>Dashboard</a>
             </li>
             <li className="flex align-middle items-center gap-2 font-semibold text-lg w-full">
               <svg
@@ -99,7 +94,7 @@ const HandleAuthCard=()=>{
                   to="/login"
                   className="btn px-10 bg-primary hover:bg-secondary text-white"
                 >
-                  Login
+                  Sign In
                 </Link>
                 
             

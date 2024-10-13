@@ -9,7 +9,7 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { updateUser } from "../redux/features/UserSlice";
 import GithubLogin from "../component/Login-Registration/GithubLogin";
-
+import loginImage from '../assets/login.png'
 
 const Login = () => {
   const[defaultEmail, setDefaultEmail]=useState("")
@@ -26,18 +26,7 @@ const Login = () => {
   const HandleResetPassword=()=>{
     setResetPassword(true)
   }
-  const checkAdmin= async(user)=>{
-    console.log(user)
-    const res= await fetch(`https://fationshoe-server.vercel.app/admin/${user?.email}`)
-    const data= await res.json();
-    // setIsAdmin(data);
-    console.log("data",data)
-    if(data?.email){
-      localStorage.setItem('isAdmin',"true");
-    }else{
-      localStorage.setItem('isAdmin',"false");
-    }
-  }
+ 
   const handleSUbmit = async (e) => {
     e.preventDefault();
 
@@ -87,10 +76,14 @@ const Login = () => {
   }
 console.log(defaultEmail, defaultPassword)
   return (
-    <form onSubmit={handleSUbmit} className="hero min-h-screen">
+    <div className="md:flex lg:flex xl:flex justify-around items-center px-10 min-h-screen py-10 shadow-2xl ">
+      <div>
+        <img className="hidden md:block lg:block xl:block " src={loginImage} alt=""/>
+      </div>
+      <form onSubmit={handleSUbmit} className="">
       <div className="hero-content  flex-col lg:flex-row-reverse">
-        <div className="card shrink-0 w-96 shadow-2xl bg-base-100">
-          <div className="card-title items-center justify-center font-serif text-xl pt-5">
+        <div className="card shrink-0 md:w-96 lg:w-96 xl:96 w-full bg-base-100">
+          <div className="card-title text-center block md:hidden lg:hidden xl:hidden items-center justify-center font-serif text-xl pt-5">
           <h1>Login Now</h1>
           </div>
           <div className="card-body text-xl font-semibold">
@@ -140,7 +133,7 @@ console.log(defaultEmail, defaultPassword)
               <input
                 className="btn bg-primary text-white"
                 type="submit"
-                value={`${passwordReset?"Submit":"Login"}`}
+                value={`${passwordReset?"Submit":"Sign In"}`}
               />
               {(authError&&!passwordReset)&&<p className="text-red-500 text-sm text-center">{authError?.errorName}</p>} 
             </div>
@@ -175,6 +168,7 @@ console.log(defaultEmail, defaultPassword)
         </div>
       </div>
     </form>
+    </div>
   );
 };
 

@@ -23,7 +23,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
   const {img,name,email}=useAppSelector(state=>state.userR)
   console.log(img,name,email)
   return (
-    <div className="lg:grid lg:grid-cols-10 ">
+    <div className="lg:grid lg:grid-cols-10 bg-[#030C1B]">
        <div onClick={HandleDashboardSidebar} tabIndex={0} role="button" className="fixed top-0 btn bg-[#171A3B] text-white
         rounded-none btn-ghost xl:hidden 2xl:hidden lg:hidden">
               <svg
@@ -317,7 +317,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
       </div>
       }
 
-      <div className="lg:p-10 pt-16 bg-[#030C1B] p-2 lg:col-span-7 xl:col-span-8 bg-light max-h-screen overflow-y-auto">
+      <div className="lg:p-10 pt-16 bg-[#030C1B] h-full m-0 p-2 lg:col-span-7 xl:col-span-8 bg-light max-h-screen overflow-y-auto">
         <Outlet />
       </div>
     </div>

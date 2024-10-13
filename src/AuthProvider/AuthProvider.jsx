@@ -17,7 +17,7 @@ import { createContext, useEffect, useState } from "react";
 export const authContext = createContext(null);
 import { app } from "../Firebase/Firebase.config";
 import { FacebookAuthProvider } from "firebase/auth/cordova";
-import { updateUser } from "../redux/features/UserSlice";
+import { updateAdmin, updateUser } from "../redux/features/UserSlice";
 import { useAppDispatch } from "../redux/hooks";
 import { clearCart } from "../redux/features/CartSlice";
 const auth = getAuth(app);
@@ -37,8 +37,10 @@ const AuthProvider = ({ children }) => {
     // setIsAdmin(data);
     console.log("data",data)
     if(data?.email){
+      dispatch(updateAdmin(true))
       localStorage.setItem('isAdmin',true);
     }else{
+      dispatch(updateAdmin(false))
       localStorage.setItem('isAdmin',false);
     }
   }

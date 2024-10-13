@@ -4,8 +4,8 @@ import useAuth from "../../hooks/useAuth";
 
 // eslint-disable-next-line react/prop-types
 const DashboardCard = () => {
-  const { user } = useAuth();
-  const baseURL = `https://fation-shoes.onrender.com`;
+  const { user }:any = useAuth();
+  const baseURL = `https://fationshoe-server.vercel.app`;
 
   const [TotalOrder, setUserOrder] = useState<any>([]);
   const [TotalProduct, setTotalProduct] = useState<any>([]);

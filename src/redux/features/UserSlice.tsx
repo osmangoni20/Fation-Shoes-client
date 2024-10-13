@@ -10,6 +10,7 @@ type TInitialState={
     gender:string,
     email:string,
     img:string,
+    isAdmin:boolean
 }
 const initialState:TInitialState={
     first_name: "",
@@ -19,7 +20,8 @@ const initialState:TInitialState={
     contact_number1: "",
     contact_number2:"",
     date_of_birth: "",
-    gender: ""
+    gender: "",
+    isAdmin:false
 }
 
 const UserSlice=createSlice({
@@ -38,8 +40,11 @@ const UserSlice=createSlice({
             state.gender=action.payload.gender
             console.log(state)
         },
+        updateAdmin:(state,action:PayloadAction<boolean>)=>{
+            state.isAdmin=action.payload
+        }
     }
 })
 
-export const {updateUser}=UserSlice.actions
+export const {updateUser, updateAdmin}=UserSlice.actions
 export default UserSlice.reducer
