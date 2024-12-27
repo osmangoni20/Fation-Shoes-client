@@ -159,7 +159,7 @@ const TrandMark = () => {
         </div>
         </div>
         <div className="h-[200px] hidden  pl-4  bg-[#181818] lg:flex items-center z-10">
-          <div onClick={()=>HandleTrandMarkProducts("Ultraboost_2")} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
+          <div onClick={()=>HandleTrandMarkProducts("Ultraboost_2")} className=" p-10 h-full  text-[#c5c5c5] text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
             <div  className="flex  justify-between text-black items-center">
               <p>01</p>
               <svg
@@ -178,7 +178,7 @@ const TrandMark = () => {
             <h3 className="text-medium font-bold">TarandMark</h3>
             <p>Meteor Lace-Up Running Shoes</p>
           </div>
-          <div onClick={()=>HandleTrandMarkProducts("Ultraboost_2")} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
+          <div onClick={()=>HandleTrandMarkProducts("Ultraboost_2")} className=" p-10 h-full  text-[#c5c5c5]  text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
             <div  className="flex  justify-between text-black items-center">
                <p>02</p>
               <svg
@@ -197,7 +197,7 @@ const TrandMark = () => {
             <h3 className="text-medium font-bold">TarandMark</h3>
             <p>Omax Lace-Up Sports Shoes</p>
           </div>
-          <div onClick={()=>HandleTrandMarkProducts("Classic3")} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
+          <div onClick={()=>HandleTrandMarkProducts("Classic3")} className=" p-10 h-full  text-[#c5c5c5] text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
             <div  className="flex  justify-between text-black items-center">
               <p>03</p>
               <svg
@@ -216,7 +216,7 @@ const TrandMark = () => {
             <h3 className="text-medium font-bold">TarandMark</h3>
             <p>Barley Textured Panelled Shoes</p>
           </div>
-          <div onClick={()=>HandleTrandMarkProducts("Yeezy4")} className=" p-10 h-full  text-white text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
+          <div onClick={()=>HandleTrandMarkProducts("Yeezy4")} className=" p-10 h-full  text-[#c5c5c5]  text-left hover:bg-white w-[200px] cursor-pointer hover:text-black">
             <div  className="flex  justify-between text-black items-center">
                <p>04</p>
               <svg
