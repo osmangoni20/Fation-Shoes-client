@@ -68,7 +68,7 @@ const UserMessage = () => {
                     <tbody className='text-center '>
                    
                     {
-                        userMessage?.reverse().map((message,index)=>{
+                        userMessage?.map((message,index)=>{
                             return(
                                <tr className='py-2 border-b-2 h-[50px] space-y-4 text-sm font-medium text-gray-200' key={message?._id}>
                                <td>{message?.date}</td>
