@@ -22,7 +22,7 @@ export const teamData = [
     bio: "Jane specializes in digital marketing and has been leading successful marketing campaigns for over a decade.",
     email: "jane.smith@fationshoe.com",
     phone: "+1 234 567 891",
-    photoUrl: "https://i.ibb.co.com/s172VSK/man2.png",
+    photoUrl: "https://i.ibb.co.com/j4HtnBr/rayhan.jpg",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/janesmith",
       twitter: "https://twitter.com/janesmith"
@@ -35,7 +35,7 @@ export const teamData = [
     bio: "Michael is the creative force behind Fation Shoe's innovative designs, with a background in both fashion and industrial design.",
     email: "michael.lee@fationshoe.com",
     phone: "+1 234 567 892",
-    photoUrl: "https://i.ibb.co.com/s172VSK/man2.png",
+    photoUrl: "https://i.ibb.co.com/xCrmBF7/rsz-454545413131312.jpg",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/michaellee",
       instagram: "https://instagram.com/michaelleedesigns"
@@ -43,24 +43,24 @@ export const teamData = [
   },
   {
     id: 4,
-    name: "Emily Johnson",
+    name: "Emilya Johns",
     position: "Product Manager",
     bio: "Emily ensures every product meets the highest quality standards and leads the development of new shoe lines.",
     email: "emily.johnson@fationshoe.com",
     phone: "+1 234 567 893",
-    photoUrl: "https://i.ibb.co.com/s172VSK/man2.png",
+    photoUrl: "https://i.ibb.co.com/sRPm3DT/Kylla-Guru-Co-Founder-Girl-Con-removebg-preview.png",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/emilyjohnson"
     }
   },
   {
     id: 5,
-    name: "David Kim",
+    name: "Tanisha Khan",
     position: "Head of Sales",
     bio: "David has a strong background in sales and business development, leading the team to expand into new markets.",
     email: "david.kim@fationshoe.com",
     phone: "+1 234 567 894",
-    photoUrl: "https://i.ibb.co.com/s172VSK/man2.png",
+    photoUrl: "https://i.ibb.co.com/KGZ5TjB/business-woman-portrait-ipad-company-founder-removebg-preview.png",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/davidkim",
       twitter: "https://twitter.com/davidkim"
