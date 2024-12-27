@@ -35,7 +35,7 @@ export const teamData = [
     bio: "Michael is the creative force behind Fation Shoe's innovative designs, with a background in both fashion and industrial design.",
     email: "michael.lee@fationshoe.com",
     phone: "+1 234 567 892",
-    photoUrl: "https://i.ibb.co.com/xCrmBF7/rsz-454545413131312.jpg",
+    photoUrl: "https://i.ibb.co.com/s172VSK/man2.png",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/michaellee",
       instagram: "https://instagram.com/michaelleedesigns"
@@ -76,7 +76,7 @@ const About = () => {
           <div className="grid grid-cols-1 justify-between lg:items-center px-10  lg:grid-cols-2
             text-black">
             <figure className="md:mx-auto">
-              <img className="h-[200px]" src={logo} alt="" />
+              <img className="h-[200px]" src={logo} alt="" loading="lazy"/>
             </figure>
             <div>
             <p className=" py-6 font-lato text-justify">Fation Shoes  is one of the nation’s largest family footwear retailers with its own brand of style. Headquartered in Evansville, Indiana, Shoe Carnival stores are located in 35 states and Puerto Rico, as well as online at shoecarnival.com. We are continuing to grow!
