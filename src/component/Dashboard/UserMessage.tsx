@@ -6,12 +6,41 @@ const UserMessage = () => {
    
     const [userMessage,setNewMessage]=useState<any[]>([])
     const [isLoading, setIsLoading]=useState(true)
+
+    const shortingMessageData=(data)=>{
+      const shortData:any[]=[]
+      data.forEach(element => {
+
+        if(element.status==="pending"){
+          shortData.unshift(element)
+        }
+        else{
+          shortData.push(element)
+        }
+      });
+
+      setNewMessage(shortData)
+    }
      useEffect(()=>{
-         fetch('https://fationshoe-server.vercel.app/message').then(res=>res.json())
-         .then(data=>{
-         setNewMessage(data)
-         setIsLoading(false)
-     })
+
+      const fetchData= async()=>{
+         try{
+
+          const response=await axios.get("https://fationshoe-server.vercel.app/message")
+          const data=response.data
+          shortingMessageData(data)
+          setIsLoading(false)
+         }
+         catch(error){
+          console.log(error.message)
+         }
+      }
+      fetchData()
+    //      fetch('https://fationshoe-server.vercel.app/message').then(res=>res.json())
+    //      .then(data=>{
+    //      setNewMessage(data)
+    //      setIsLoading(false)
+    //  })
      },[])
      const HandleStatus=(status,id)=>{
         console.log(status,id)
@@ -47,13 +76,13 @@ const UserMessage = () => {
                                <td>{message?.email}</td>
                                <td>{message?.user_message}</td>
                                <td>
-                    {message.status === "pending" && (
+                    {message.status === "pending"? (
                       <select onChange={(e)=>HandleStatus(e?.target?.value,message._id)} className="text-white bg-black rounded-md p-2">
                          <option value="" disabled selected>Select Status</option>
                          <option value={"pending"}>Pending</option>
                         <option value={"done"}>Done</option>
                       </select>
-                    )}
+                    ):"Done"}
                   </td>
                            </tr>
                             )
