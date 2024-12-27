@@ -9,7 +9,7 @@ export const teamData = [
     bio: "John has over 15 years of experience in the footwear industry and is passionate about creating innovative and comfortable shoes.",
     email: "john.doe@fationshoe.com",
     phone: "+1 234 567 890",
-    photoUrl: "https://i.ibb.co.com/s172VSK/man2.png",
+    photoUrl: "https://i.ibb.co.com/LYqF0kW/gentelman1.jpg",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/johndoe",
       twitter: "https://twitter.com/johndoe"
@@ -35,7 +35,7 @@ export const teamData = [
     bio: "Michael is the creative force behind Fation Shoe's innovative designs, with a background in both fashion and industrial design.",
     email: "michael.lee@fationshoe.com",
     phone: "+1 234 567 892",
-    photoUrl: "https://i.ibb.co.com/s172VSK/man2.png",
+    photoUrl: "https://i.ibb.co.com/zGrD2WF/default-profile.png",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/michaellee",
       instagram: "https://instagram.com/michaelleedesigns"
