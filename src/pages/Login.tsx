@@ -120,13 +120,13 @@ console.log(defaultEmail, defaultPassword)
               }
            {/* demo admin user */}
               <div className="flex justify-between">
-                <li style={{color:"#207F99"}}
-                 className="text-sm cursor-pointer text-purple-500 hover:text-green p-1  rounded list-none"
+                <button style={{color:"#207F99"}}
+                 className=" bg-purple-500 text-sm cursor-pointer text-gray-500 hover:text-green p-1  rounded "
                   onClick={()=>HandleDemoAdmin()}>
-                   Demo Admin</li>
-                <li style={{color:"#F5C913"}} className="text-sm rounded text-yellow-400 cursor-pointer
-                 text-green p-1 list-none" onClick={()=>HandleDemoUser()}>
-                 Demo User</li>
+                   Demo Admin</button>
+                <button style={{color:"#F5C913"}} className="text-sm rounded bg-yellow-400 cursor-pointer
+                 text-green p-1 " onClick={()=>HandleDemoUser()}>
+                 Demo User</button>
 
               </div>
             <div className="form-control mt-6">

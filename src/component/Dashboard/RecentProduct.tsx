@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { TProductInfo } from '../Home/SingleProduct';
+import Pagination from '../shared/Pagination';
 
 const RecentProduct = () => {
    
     const [data,setShoe]=useState<TProductInfo[]>([])
     const [isLoading, setIsLoading]=useState(true)
+    const [itemsPerPage, setItemPerPage]=useState(5);
+    const [currentPage, setCurrentPage]=useState(0)
+    const paginationParamsData={dataSize:data.length, itemsPerPage, currentPage, setItemPerPage,  setCurrentPage}
+
      useEffect(()=>{
-         fetch('https://fationshoe-server.vercel.app/product').then(res=>res.json())
+         fetch(`https://fationshoe-server.vercel.app/product?page=${currentPage}&size=${itemsPerPage}`).then(res=>res.json())
          .then(data=>{
          setShoe(data)
          setIsLoading(false)
@@ -45,6 +50,12 @@ const RecentProduct = () => {
                        
                     </tbody>
                 </table>
+
+                <div className='flex justify-center'>
+                    {
+                        data&&<Pagination params={paginationParamsData}/>
+                    }
+                </div>
             </div>
         </div>
     );
