@@ -22,7 +22,7 @@ const AddProduct = () => {
             headers:{
                 "Content-type":"application/json"
             },
-            body:JSON.stringify({...isSubmitData,pd_image:uploadImage})
+            body:JSON.stringify({...isSubmitData,pd_image:uploadImage, isDeleted:false})
         }).then(res=>res.json())
         .then(async(data)=>{
             setIsLoading(false)

@@ -23,6 +23,7 @@ type TOrder={
         payment_method: string;
         transactionId: string;
     };
+    isDeleted:boolean
 }
 
     
@@ -60,7 +61,8 @@ const ShippingAddress = () => {
             paymentInfo:{
                 payment_method:'',
                 transactionId:''
-            }
+            },
+            isDeleted:false
         }
         dispatch(add_new_order(newOrder))
         console.log("shippingInfo", shippingInfo,paymentInfo.payment_method)

@@ -125,7 +125,7 @@ const route =createBrowserRouter([
         errorElement: <ErrorPage/>,
         
         children: [
-          { path: "home", element: (
+          { path: "admin", element: (
           <PrivateRoute><Dashboard/></PrivateRoute>
         ) 
       },

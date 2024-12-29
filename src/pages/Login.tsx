@@ -120,12 +120,12 @@ console.log(defaultEmail, defaultPassword)
               }
            {/* demo admin user */}
               <div className="flex justify-between">
-                <button style={{color:"#207F99"}}
-                 className=" bg-purple-500 text-sm cursor-pointer text-gray-500 hover:text-green p-1  rounded "
+                <button 
+                 className=" bg-primary text-sm cursor-pointer text-white hover:bg-[#207F99] p-1  rounded "
                   onClick={()=>HandleDemoAdmin()}>
                    Demo Admin</button>
-                <button style={{color:"#F5C913"}} className="text-sm rounded bg-yellow-400 cursor-pointer
-                 text-green p-1 " onClick={()=>HandleDemoUser()}>
+                <button  className="text-sm rounded bg-primary cursor-pointer
+                 text-white p-1 " onClick={()=>HandleDemoUser()}>
                  Demo User</button>
 
               </div>

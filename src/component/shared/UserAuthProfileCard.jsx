@@ -65,7 +65,7 @@ const HandleAuthCard=()=>{
                 />
               </svg>
 
-              <a href={ `${(isAdmin==true||isAdmin=='true')?"/dashboard/home":"/dashboard/user_dashboard"}`}>Dashboard</a>
+              <a href={ `${(isAdmin==true||isAdmin=='true')?"/dashboard/admin":"/dashboard/user_dashboard"}`}>Dashboard</a>
             </li>
             <li className="flex align-middle items-center gap-2 font-semibold text-lg w-full">
               <svg
