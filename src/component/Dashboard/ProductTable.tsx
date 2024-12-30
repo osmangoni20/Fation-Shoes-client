@@ -20,11 +20,10 @@ const ProductTable = ({ shoe, onDelete }) => {
     setModel(true);
     const url = `https://fationshoe-server.vercel.app/product/${id}`;
     fetch(url, {
-      method: "PATCH",
+      method: "DELETE",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({ isDeleted: true }),
     })
       .then((res) => res.json())
       .then(async () => {

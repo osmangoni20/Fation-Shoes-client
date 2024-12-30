@@ -57,7 +57,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
         </div>
         {
           isAdmin==='true'?
-<ul className="pl-5">
+      <ul className="pl-5">
           <NavLink
             to="admin"
             className={({ isActive }) => (isActive ? "active" : "pending")}
@@ -115,7 +115,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
           </NavLink>
 
           <NavLink
-            to="add_review"
+            to="reviewList"
             className={({ isActive }) => (isActive ? "active" : "pending")}
           >
            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -258,7 +258,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
             </svg>
             My Order
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="cancel_my_order"
             className={({ isActive }) => (isActive ? "active" : "pending")}
           >
@@ -268,7 +268,7 @@ setIsAdmin(localStorage.getItem('isAdmin'))
 
 
            Cancel Order
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="paymentHistory"
             className={({ isActive }) => (isActive ? "active" : "pending")}

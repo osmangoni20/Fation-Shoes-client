@@ -14,7 +14,7 @@ const RecentProduct = () => {
      useEffect(()=>{
          fetch(`https://fationshoe-server.vercel.app/product?page=${currentPage}&size=${itemsPerPage}`).then(res=>res.json())
          .then(data=>{
-         setShoe(data)
+         setShoe(data?.data)
          setIsLoading(false)
      })
      },[])

@@ -11,12 +11,12 @@ const DashboardCard = () => {
   const [TotalProduct, setTotalProduct] = useState<any>([]);
   const fetchOrderData = () => {
     axios.get(`${baseURL}/order/`).then((response) => {
-      setUserOrder(response.data);
+      setUserOrder(response.data?.data);
     });
   };
   const fetchProductData = () => {
     axios.get(`${baseURL}/product/`).then((response) => {
-      setTotalProduct(response.data);
+      setTotalProduct(response.data?.data);
     });
   };
   useEffect(() => {

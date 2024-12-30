@@ -1,8 +1,21 @@
 import React from 'react';
+import { useAppSelector } from '../../redux/hooks';
 
 const SingleReviews = ({review}) => {
+  const {isAdmin}=useAppSelector(state=>state.userR)
 
-    return (
+  const handleRemove=(id)=>{
+    fetch(`https://fationshoe-server.vercel.app/review/${id}`,{
+        method:"PATCH",
+        headers:{
+            "Content-type":"application/json"
+        },
+        body:JSON.stringify({isDeleted:true})
+    }).then(data=>{
+     console.log(data)
+    })
+  }
+  return (
         <div>
             
               <div
@@ -21,11 +34,16 @@ const SingleReviews = ({review}) => {
                       <p>{review?.date}</p>
                     </span>
                   </div>
-                  {/* <div>
-                        <span className="flex justify-between items-center">
-                        <img className='h-[50px] w-[50px]' src={quoteImg}/>
-                        </span>
-                        </div> */}
+                  <div>
+                       {
+                        isAdmin&& <button
+                        onClick={() => handleRemove(review?._id)}
+                        className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded"
+                      >
+                        Cancel Order
+                      </button>
+                       } 
+                  </div>
                 </div>
                 <div>
                   <div className="flex items-center">

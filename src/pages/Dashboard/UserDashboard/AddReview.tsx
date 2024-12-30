@@ -20,7 +20,7 @@ const AddReview = () => {
             headers:{
                 "Content-type":"application/json"
             },
-            body:JSON.stringify({...data, img:user?.photoURL, date:new Date().toLocaleDateString(), email:user?.email})
+            body:JSON.stringify({...data, isDeleted:false, img:user?.photoURL, date:new Date().toLocaleDateString(), email:user?.email})
         }).then(res=>res.json())
         .then(async(data)=>{
             setIsLoading(false)

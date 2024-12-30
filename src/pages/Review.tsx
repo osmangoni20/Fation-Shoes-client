@@ -48,13 +48,13 @@ const Review = ({title}) => {
   console.log(review);
   return (
     <div className="py-10">
-      {review?.length > 0 && (
+      {review?.data?.length > 0 && (
         <div>
           <h1 className="lg:text-5xl text-4xl text-center font-serif py-10 ">
            {title}
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-10 p-5">
-            {review?.map((review: { _id: React.Key | null | undefined; })=><SingleReviews key={review?._id} review={review}/>)}
+            {review?.data?.map((review: { _id: React.Key | null | undefined; })=><SingleReviews key={review?._id} review={review}/>)}
           </div>
          
         </div>

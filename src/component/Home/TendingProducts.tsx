@@ -13,19 +13,19 @@ const TendingProducts = ({ shoes }) => {
       `https://fationshoe-server.vercel.app/product/?searchValue=${"casual_shoes"}&searchCategory=${"category"}`
     )
       .then((res) => res.json())
-      .then((data) => setCasualData(data));
+      .then((data) => setCasualData(data?.data));
 
     fetch(
       `https://fationshoe-server.vercel.app/product/?searchValue=${"formal_shoes"}&searchCategory=${"category"}`
     )
       .then((res) => res.json())
-      .then((data) => setFormalData(data));
+      .then((data) => setFormalData(data?.data));
 
     fetch(
       `https://fationshoe-server.vercel.app/product/?searchValue=${"loafers"}&searchCategory=${"category"}`
     )
       .then((res) => res.json())
-      .then((data) => setLoaferData(data));
+      .then((data) => setLoaferData(data?.data));
   }, []);
   return (
     <>
@@ -56,7 +56,7 @@ const TendingProducts = ({ shoes }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-2 items-center my-5">
                 {
                   // eslint-disable-next-line react/prop-types
-                  shoes?.slice(0, 6)?.map((shoe, index) => (
+                  shoes?.data?.slice(0, 6)?.map((shoe, index) => (
                     <SingleProduct shoe={shoe} key={index} />
                   ))
                 }

@@ -1,5 +1,5 @@
 import Banner from "../component/Home/Banner";
-import Product from "../component/Home/Product";
+import Product, { TProductProps } from "../component/Home/Product";
 import OurService from "../component/Home/OurService";
 import Testimonial from "../component/Home/Testimonial";
 import Add from "../component/Home/Add";
@@ -13,7 +13,7 @@ import TrandMark from "../component/Home/TrandMark";
 
 
 const Home = () => {
-    const [data,setShoe]=useState([])
+    const [data,setShoe]=useState<TProductProps>()
    const [isLoading, setIsLoading]=useState(true)
     useEffect(()=>{
         fetch('https://fationshoe-server.vercel.app/product').then(res=>res.json())

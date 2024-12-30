@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Loader from "../../../component/shared/Loader";
+import Loader from "../../component/shared/Loader";
 
-const MyOrder = () => {
+const CancelOrder = () => {
   const { user }: any = useAuth();
-  const baseURL = `https://fationshoe-server.vercel.app/order/${user?.email}`;
+  const baseURL = `https://fationshoe-server.vercel.app/order/cancel-order`;
 
   const [userOrder, setUserOrder] = useState<any>();
-  const [isCancelOrder, setIsCancelOrder]=useState(false)
   const fetchData = () => {
     axios.get(baseURL).then((response) => {
       setUserOrder(response.data);
@@ -17,26 +16,17 @@ const MyOrder = () => {
   };
   useEffect(() => {
     fetchData();
-  }, [isCancelOrder]);
+  }, []);
   console.log(userOrder);
 
-  const handleOrderCancel=(id)=>{
-    fetch(`https://fationshoe-server.vercel.app/order/${id}`,{
-        method:"PATCH",
-        headers:{
-            "Content-type":"application/json"
-        },
-        body:JSON.stringify({isDeleted:true})
-    }).then(data=>{
-      setUserOrder(!isCancelOrder)
-    })
-}
+
+
 
   // shorting order
   let pendingOrder = 0;
   let rearrangeOrder: any[] = [];
-  for (let index = 0; index < userOrder?.length; index++) {
-    const element = userOrder[index];
+  for (let index = 0; index < userOrder?.data.length; index++) {
+    const element = userOrder.data[index];
     if (element?.status === "pending") {
       pendingOrder += 1;
       rearrangeOrder.unshift(element);
@@ -47,7 +37,7 @@ const MyOrder = () => {
   return (
     <div>
       <h2 className="text-center lg:text-3xl text-xl text-white">
-        Your Order Item
+        Cancel Order Item
       </h2>
       <div className="flex flex-wrap gap-2 space-y-10">
         <div className="min-w-md my-10 pb-6 bg-[#171A3B] w-full text-center text-white rounded-md p-3">
@@ -60,6 +50,7 @@ const MyOrder = () => {
               <th>Quantity</th>
               <th>Transaction Id</th>
               <th>Status</th>
+              <th>Action</th>
             </thead>
             <tbody className="text-center space-y-4">
               {rearrangeOrder?.map((order) =>
@@ -79,7 +70,7 @@ const MyOrder = () => {
                       </td>
                       <td>
                         <img
-                          className="h-[100px] w-[150px] mx-auto"
+                          className="h-full w-full object-cover rounded mx-auto"
                           src={product?.pd_image}
                         ></img>
                       </td>
@@ -89,21 +80,11 @@ const MyOrder = () => {
                       <td>{order?.paymentInfo?.transactionId}</td>
 
                       <td className="text-[#4F87F4]">{order?.status}</td>
-                      <td>
-                      <td>
-                      <button
-                      onClick={() => handleOrderCancel(product?._id)}
-                      className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded"
-                    >
-                      Cancel Order
-                    </button>
-                      </td>
-                      </td>
+                     
                     </tr>
                   );
                 })
               )}
-              {userOrder?.length < 0 && <h3>You have placed no orders.</h3>}
             </tbody>
           </table>
         </div>
@@ -114,4 +95,4 @@ const MyOrder = () => {
   );
 };
 
-export default MyOrder;
+export default CancelOrder;

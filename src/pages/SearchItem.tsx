@@ -18,7 +18,7 @@ const SearchItem = () => {
       `https://fationshoe-server.vercel.app/product/?searchValue=${searchValue}&searchCategory=${category}&page=${currentPage}&size=${itemsPerPage}`
     )
       .then((res) => res.json())
-      .then((data) => setProductData(data));
+      .then((data) => setProductData(data?.data));
   }, [searchValue, category, itemsPerPage, currentPage]);
   console.log(paginationParamsData);
   return (

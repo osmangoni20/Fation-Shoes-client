@@ -11,7 +11,7 @@ const Shop = () => {
     useEffect(()=>{
         fetch('https://fationshoe-server.vercel.app/product')
         .then(res=>res.json())
-        .then(data=>setShoes(data))
+        .then(data=>setShoes(data?.data))
     },[])
     console.log(shoes)
     return (

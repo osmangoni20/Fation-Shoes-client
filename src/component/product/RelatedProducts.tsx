@@ -14,7 +14,7 @@ const RelatedProducts = ({category}) => {
     useEffect(()=>{
         fetch(`https://fationshoe-server.vercel.app/product/?searchValue=${category}&searchCategory=category`)
         .then(res=>res.json())
-        .then(data=>setProductData(data))
+        .then(data=>setProductData(data?.data))
     },[category])
     console.log(ProductData)
     return (

@@ -42,7 +42,7 @@ type TAllProducts = {
                     onDelete={HandleDelete}/>
                 }
                 {
-                    Number(shoesData?.data.length)<0 &&<Loader/>
+                    Number(shoesData?.data?.length)<0 &&<Loader/>
                 }
             </div>
             {

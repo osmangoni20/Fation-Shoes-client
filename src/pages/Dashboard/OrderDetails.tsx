@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Loader from '../../component/shared/Loader';
 
 const OrderDetails = () => {
     const {email}=useParams()
     console.log(email)
-    const orderDetails:any=useLoaderData()
-    const {customer_name,customer_email,customer_mobile1,customer_mobile2, customer_city, customer_receive_address,payment_method}=orderDetails[0]?.shippingInfo
+    const [orderDetails, setOrderDetails]=useState<any>()
+    useEffect(()=>{
+        fetch(`http://localhost:5000/order/${email}`)
+        .then(res=>res.json())
+        .then(data=>setOrderDetails(data))
+    },[])
+
+    console.log(orderDetails)
+    const {customer_name,customer_email,customer_mobile1,customer_mobile2, customer_city, customer_receive_address,payment_method}=orderDetails?.data[0]?.shippingInfo
     return (
         <div>
             <div className='my-5 text-white'>
@@ -54,7 +61,7 @@ const OrderDetails = () => {
                     <tbody className='text-center space-y-4'>
                        
                     {
-                        orderDetails?.map(order=>(
+                        orderDetails?.data?.map(order=>(
                             order?.order_product?.map((product)=>{
                                 
                               return(

@@ -20,7 +20,7 @@ import ShippingAddress from "../component/Order/ShippingAddress";
 import Order from "../pages/Dashboard/Order";
 import React from "react";
 import Payment from "../component/Order/Payment/Payment.tsx";
-import PaymentHistory from "../pages/Dashboard/UserDashboard/PaymentHistory.tsx";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory.tsx";
 import Testimonial from "../component/Home/Testimonial.tsx";
 import AddReview from "../pages/Dashboard/UserDashboard/AddReview.tsx";
 import Shop from "../pages/Dashboard/UserDashboard/Shop.tsx";
@@ -36,6 +36,7 @@ import ReturnAndReplacement from "../pages/ReturnAndReplacement.tsx";
 import ShippingService from "../pages/ShippingService.tsx";
 import PaymentService from "../pages/PaymentService.tsx";
 import UserMessage from "../component/Dashboard/UserMessage.tsx";
+import CancelOrder from "../pages/Dashboard/CancelOrder.tsx";
 
 const route =createBrowserRouter([
     {
@@ -86,7 +87,7 @@ const route =createBrowserRouter([
             element:<Contact/>
           },
           {
-            path:"/client_reviews",
+            path:"/reviewList",
             element:<Review title={"Client's Review"}/>
           },
           {
@@ -140,6 +141,10 @@ const route =createBrowserRouter([
         </PrivateRoute>,
       },
       {
+        path:"reviewList",
+        element:<Review title={""}/>
+      },
+      {
         path:"order",
         element:<PrivateRoute><Order/></PrivateRoute>
       },
@@ -147,17 +152,24 @@ const route =createBrowserRouter([
         path:"user_message",
         element:<PrivateRoute><UserMessage/></PrivateRoute>
       },
-      
+      {
+        path:"cancel_order",
+        element:<PrivateRoute><CancelOrder/></PrivateRoute>
+      },
+      {
+        path:"paymentList",
+        element:<PrivateRoute><PaymentHistory/></PrivateRoute>
+      },
       {
         path:"/dashboard/order/orderDetails/:email",
         element:<PrivateRoute><OrderDetails/></PrivateRoute>,
-        loader:({params})=>fetch(`https://fationshoe-server.vercel.app/order/${params.email}`),
 
       },
       {
         path:"myOrder",
         element:<PrivateRoute><MyOrder/></PrivateRoute>
       },
+      
       {
         path:"paymentHistory",
         element:<PrivateRoute><PaymentHistory/></PrivateRoute>

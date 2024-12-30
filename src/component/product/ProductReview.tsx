@@ -3,11 +3,11 @@ import Loader from "../shared/Loader";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
-import RatingStar from "../shared/RatingStar";
 import { useAppSelector } from "../../redux/hooks";
 import { TReview } from "../Home/Testimonial";
 import { Link } from "react-router-dom";
 import SingleReviews from "../shared/SingleReviews";
+import StarRating from "../shared/RatingStar";
 
 const ProductReview = ({ pd_info }) => {
   const { register, handleSubmit } = useForm();
@@ -17,7 +17,13 @@ const ProductReview = ({ pd_info }) => {
   const [isReviewWrite, setReviewWrite] = useState(false);
   const url = "https://fationshoe-server.vercel.app/add_review";
   const { user }: any = useAuth();
-  const { first_name,last_name, img } = useAppSelector((state) => state.userR);
+  const { first_name, last_name, img } = useAppSelector((state) => state.userR);
+  const [rating, setRating] = useState<number>(0);
+
+  const handleRatingChange = (newRating: number) => {
+    setRating(newRating);
+  };
+
   const onSubmit = async (data) => {
     console.log(pd_info, user, name, img, data);
     setIsLoading(true);
@@ -29,10 +35,15 @@ const ProductReview = ({ pd_info }) => {
       body: JSON.stringify({
         ...data,
         ...pd_info,
-        user_name: `${first_name} ${last_name}` || user?.name || user?.displayName || "User",
+        user_name:
+          `${first_name} ${last_name}` ||
+          user?.name ||
+          user?.displayName ||
+          "User",
         img: img || user?.photoURL,
         date: new Date().toLocaleDateString(),
         email: user?.email,
+        rating: rating,
       }),
     })
       .then((res) => res.json())
@@ -75,8 +86,8 @@ const ProductReview = ({ pd_info }) => {
                 <label className="font-semibold" htmlFor="pd_rating">
                   Rating
                 </label>
-
-                <select
+                <StarRating onRatingChange={handleRatingChange} />
+                {/* <select
                 className="bg-gray-200 text-black border-white"
                   itemType="number"
                   id="pd_rating"
@@ -87,13 +98,17 @@ const ProductReview = ({ pd_info }) => {
                   <option value={3}>Three Star</option>
                   <option value={4}>Four Star</option>
                   <option value={5}>Five Star</option>
-                </select>
+                </select> */}
               </div>
               <div className="w-full my-2">
                 <label className="font-semibold " htmlFor="review">
                   Your Review
                 </label>
-                <textarea className="bg-gray-200 text-black border-white" id="review" {...register("review")} />
+                <textarea
+                  className="bg-gray-200 text-black border-white"
+                  id="review"
+                  {...register("review")}
+                />
               </div>
 
               <div className="w-full flex justify-end">

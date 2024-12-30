@@ -107,7 +107,7 @@ breakpoints={
 
           </div> */}
           <div className="flex justify-end">
-          <Link to={"/client_reviews"}>
+          <Link to={"/reviewList"}>
                   <button className="border-2 p-3 rounded flex gap-2 items-center">
                     See More
                     <span>
