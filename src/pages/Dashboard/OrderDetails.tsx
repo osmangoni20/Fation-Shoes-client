@@ -7,7 +7,7 @@ const OrderDetails = () => {
     console.log(email)
     const [orderDetails, setOrderDetails]=useState<any>()
     useEffect(()=>{
-        fetch(`http://localhost:5000/order/${email}`)
+        fetch(`https://fationshoe-server.vercel.app/order/${email}`)
         .then(res=>res.json())
         .then(data=>setOrderDetails(data))
     },[])
