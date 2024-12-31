@@ -32,6 +32,7 @@ const MyOrder = () => {
             },
         });
         const updateData=userOrder?.data?.filter(order=>order?._id!=id)
+        console.log(updateData)
         setUserOrder({...userOrder, data:updateData})
         if (!response.ok) {
             throw new Error("Failed to cancel order!");
@@ -39,7 +40,7 @@ const MyOrder = () => {
 
         const result = await response.json();
         console.log(result.message);
-        setIsCancelOrder(!isCancelOrder);
+        // setIsCancelOrder(!isCancelOrder);
     } catch (error) {
         console.error("Error:", error.message);
     }
