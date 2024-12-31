@@ -152,9 +152,9 @@ return (
     </div>
     </div>
    
-<form className="min-w-[720px] pt-5 " onSubmit={handleSubmit(onSubmit)}>
+<form className="md:min-w-[720px] lg:min-w-[720px]  pt-5 " onSubmit={handleSubmit(onSubmit)}>
     
-<div className="grid grid-cols-2 gap-3 ">
+<div className="grid lg:grid-cols-2 grid-cols-1 gap-3 ">
 <div className="w-full my-2">
     <label className="text-bold block" htmlFor="first_name">First Name</label>
     <input  type="text" id="first_name" defaultValue={userData?.first_name||''}  {...register('first_name', {

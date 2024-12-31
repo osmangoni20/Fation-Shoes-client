@@ -23,16 +23,28 @@ const MyOrder = () => {
   }, [isCancelOrder]);
   console.log(userOrder);
 
-  const handleOrderCancel=(id)=>{
-    fetch(`https://fationshoe-server.vercel.app/cancel-order/${id}`,{
-        method:"DELETE",
-        headers:{
-            "Content-type":"application/json"
-        },
-    }).then(data=>{
-      setIsCancelOrder(!isCancelOrder)
-    })
-}
+  const handleOrderCancel = async (id) => {
+    try {
+        const response = await fetch(`https://fationshoe-server.vercel.app/cancel-order/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const updateData=userOrder?.data?.filter(order=>order?._id!=id)
+        setUserOrder({...userOrder, data:updateData})
+        if (!response.ok) {
+            throw new Error("Failed to cancel order!");
+        }
+
+        const result = await response.json();
+        console.log(result.message);
+        setIsCancelOrder(!isCancelOrder);
+    } catch (error) {
+        console.error("Error:", error.message);
+    }
+};
+
 
   // shorting order
   let pendingOrder = 0;
@@ -100,7 +112,7 @@ const MyOrder = () => {
                       <td>
                       <td>
                       <button
-                      onClick={() => handleOrderCancel(product?._id)}
+                      onClick={() => handleOrderCancel(order?._id)}
                       className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded"
                     >
                       Cancel Order

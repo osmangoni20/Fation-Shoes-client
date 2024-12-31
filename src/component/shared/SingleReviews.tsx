@@ -4,16 +4,18 @@ import { useAppSelector } from '../../redux/hooks';
 const SingleReviews = ({review}) => {
   const {isAdmin}=useAppSelector(state=>state.userR)
 
-  const handleRemove=(id)=>{
-    fetch(`https://fationshoe-server.vercel.app/review/${id}`,{
-        method:"DELETE",
-        headers:{
-            "Content-type":"application/json"
-        }
-    }).then(data=>{
-     console.log(data)
-    })
-  }
+  // const handleRemove=(id)=>{
+
+
+  //   fetch(`https://fationshoe-server.vercel.app/review/${id}`,{
+  //       method:"DELETE",
+  //       headers:{
+  //           "Content-type":"application/json"
+  //       }
+  //   }).then(data=>{
+  //    console.log(data)
+  //   })
+  // }
   return (
         <div>
             
@@ -33,7 +35,7 @@ const SingleReviews = ({review}) => {
                       <p>{review?.date}</p>
                     </span>
                   </div>
-                  <div>
+                  {/* <div>
                        {
                         isAdmin&& <button
                         onClick={() => handleRemove(review?._id)}
@@ -42,7 +44,7 @@ const SingleReviews = ({review}) => {
                         Remove
                       </button>
                        } 
-                  </div>
+                  </div> */}
                 </div>
                 <div>
                   <div className="flex items-center">

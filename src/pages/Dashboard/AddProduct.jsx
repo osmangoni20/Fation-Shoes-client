@@ -66,8 +66,8 @@ const AddProduct = () => {
                 </div>
             </Modal>
            <h1 className="text-center text-white font-serif font-extralight p-10">Add New Product</h1>
-            <form className="lg:min-w-[720px] p-5 shadow bg-[#171A3B] text-white   rounded-md" onSubmit={handleSubmit(onSubmit)}>
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <form className="md:min-w-[720px] lg:min-w-[720px] p-5 shadow bg-[#171A3B] text-white   rounded-md" onSubmit={handleSubmit(onSubmit)}>
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
            <div className={"personal_image pt-0 mt-0 pb-5"}>
             <label className="label">
               <input type="file" name="img" onChange={HandleImageUpload} />

@@ -63,8 +63,8 @@ import Loader from "../../component/shared/Loader";
               <h1 className="text-center font-serif font-extralight text-white">Edit Product</h1>
             
               
-    <form className="min-w-[720px] bg-[#171A3B] text-white  p-5 shadow  rounded-md" onSubmit={handleSubmit(onSubmit)}>
-   <div className="grid grid-cols-2 gap-5">
+    <form className="md:min-w-[720px] lg:min-w-[720px] bg-[#171A3B] text-white  p-5 shadow  rounded-md" onSubmit={handleSubmit(onSubmit)}>
+   <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
    <div className="w-full my-2">
             <label className="text-bold " htmlFor="pd_category">Product Category</label>
             <select id="pd_category" defaultValue={editInputField?.pd_category} {...register("pd_category",{
