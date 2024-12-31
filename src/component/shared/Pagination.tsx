@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Pagination = ({params}) => {
 
     const {currentPage,itemsPerPage, setItemPerPage, setCurrentPage, totalPages}=params
-    console.log(itemsPerPage, currentPage)
+    console.log(itemsPerPage, currentPage,totalPages)
     const totalPage=totalPages
     const pages=[...Array(totalPage).keys()];
     const handleItemPerPage=(e)=>{
@@ -34,8 +34,9 @@ const Pagination = ({params}) => {
         <div className='my-10 flex justify-center'>
            {
             totalPage>0&&<div className='flex items-center'>
-            <button className='px-1 bg-gray-400' onClick={()=>handlePrevPage()}> 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+            <button className='p-1 bg-[#F0F0F0] border-2 border-white rounded-full' onClick={()=>handlePrevPage()}> 
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
+            stroke="currentColor" className="size-6">
    <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
  </svg>
  
@@ -43,7 +44,7 @@ const Pagination = ({params}) => {
              {
                  pages.map(page=><button className={`${currentPage===page?"bg-[#207F99] text-white":"bg-gray-200"} rounded-full  px-2  mx-1 text-center`} onClick={()=>handleCurrentPage(page)}>{page+1}</button>)
              }
-             <button className='bg-gray-400' onClick={()=>handleNextPage()}> 
+             <button className='p-1 bg-[#F0F0F0] border-2 border-white rounded-full'  onClick={()=>handleNextPage()}> 
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
    <path strokeLinecap="round" strokeLinejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
  </svg>

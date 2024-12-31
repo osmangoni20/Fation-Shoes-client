@@ -40,7 +40,7 @@ export type TReview = {
   pd_category: string;
   pd_name: string;
   review: string;
-  pd_rating: number;
+  rating: number;
   date: string;
   email: string;
   img: string;
@@ -51,12 +51,12 @@ const Testimonial = ({title}) => {
   useEffect(() => {
     fetch("https://fationshoe-server.vercel.app/review")
       .then((res) => res.json())
-      .then((data) => setReview(data.reverse()));
+      .then((data) => setReview(data));
   }, []);
   console.log(review);
   return (
     <div className="py-10">
-      {review?.length > 0 && (
+      {review?.data?.length > 0 && (
         <div>
           <h1 className="lg:text-5xl text-4xl text-center font-serif py-10 ">
            {title}
@@ -92,7 +92,7 @@ breakpoints={
      
       className="max-w-[90%] h-[400px] lg:max-w-[90%]"
     >
-      {review?.map((review)=>{
+      {review?.data?.map((review)=>{
         return(
           <SwiperSlide key={review?._id} >
               

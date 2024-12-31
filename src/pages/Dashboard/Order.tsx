@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Pagination from "../../component/shared/Pagination";
+import Loader from "../../component/shared/Loader";
 
 type TorderParams={
   data:any[],
@@ -78,7 +79,7 @@ const Order = () => {
           <table className="table text-white w-full border-collapse">
             {/* head */}
             <thead>
-              <tr className=" text-center text-white">
+              <tr className=" text-center text-white text-xl">
                 <th>Date</th>
                 <th>Email</th>
                 <th>Customer Name</th>
@@ -156,6 +157,7 @@ const Order = () => {
               ))}
             </tbody>
           </table>
+          {Number(orderData?.data.length)< 0 && <Loader />}
         </div>
         <div>{orderData && <Pagination params={paginationParamsData} />}</div>
       </div>

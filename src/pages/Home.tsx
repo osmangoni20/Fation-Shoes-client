@@ -9,12 +9,14 @@ import React from "react";
 import ProductCategory from "../component/Home/ProductCategory";
 import Loader from "../component/shared/Loader";
 import TrandMark from "../component/Home/TrandMark";
+import { useAppSelector } from "../redux/hooks";
 
 
 
 const Home = () => {
     const [data,setShoe]=useState<TProductProps>()
    const [isLoading, setIsLoading]=useState(true)
+   const {isAdmin}=useAppSelector(state=>state.userR)
     useEffect(()=>{
         fetch('https://fationshoe-server.vercel.app/product').then(res=>res.json())
         .then(data=>{
@@ -37,7 +39,7 @@ const Home = () => {
         isLoading?<Loader/>:<TendingProducts shoes={data}/>
        } 
     
-        <Testimonial title={"Client's Review"}/>
+        {isAdmin===false&&<Testimonial title={"Client's Review"}/>}
     
         </div>
     );

@@ -20,7 +20,7 @@ const AddReview = () => {
             headers:{
                 "Content-type":"application/json"
             },
-            body:JSON.stringify({...data, isDeleted:false, img:user?.photoURL, date:new Date().toLocaleDateString(), email:user?.email})
+            body:JSON.stringify({...data, isServiceReview:true, isDeleted:false, img:user?.photoURL, date:new Date().toLocaleDateString(), email:user?.email})
         }).then(res=>res.json())
         .then(async(data)=>{
             setIsLoading(false)
@@ -57,8 +57,8 @@ const AddReview = () => {
                 </div>
                 
                 <div className="w-full my-2">
-            <label className="text-bold " htmlFor="pd_rating">Product Rating</label>
-            <select className='' itemType='number' id="pd_rating"{...register("pd_rating")}>
+            <label className="text-bold " htmlFor="rating">Product Rating</label>
+            <select className='' itemType='number' id="rating"{...register("rating")}>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>

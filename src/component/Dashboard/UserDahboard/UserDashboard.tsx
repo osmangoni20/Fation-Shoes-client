@@ -4,11 +4,16 @@ import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import AccountInfo from "./AccountInfo";
 
+type TOrderProps={
+  data:any,
+  totalPages:number,
+  totalItems:number
+}
 const UserDashboard = () => {
     const {user}:any=useAuth()
     const baseURL = `https://fationshoe-server.vercel.app/order/${user?.email}`
 
-    const[userOrder, setUserOrder]=useState<any>()
+    const[userOrder, setUserOrder]=useState<TOrderProps>()
 const fetchData=()=>{
     axios.get(baseURL).then((response) => {
         setUserOrder(response.data);
@@ -17,20 +22,17 @@ const fetchData=()=>{
    useEffect(() => {
     fetchData()
    }, [])
-   const totalOrderPrice=userOrder?.reduce((total,order)=>order?.price+total,0)
-   let pendingOrder=0;
-   for (let index = 0; index < userOrder?.length; index++) {
-    const element = userOrder[index];
-    if(element?.status==="pending"){
-      pendingOrder+=1;
-    }
+   console.log(userOrder)
+const totalOrderPrice = userOrder?.data?.reduce((total, order) => total + (order?.price || 0), 0);
+
+const pendingOrder = userOrder?.data?.filter(order => order?.status === "pending").length || 0;
+
     
-   }
   return (
     <div>
       <div className="flex flex-wrap md:gap-5 justify-around">
         <div
-          className=" bg-[#374050] text-white h-[150px]
+          className=" bg-[#171A3B] text-white h-[150px]
             shadow-lg  w-[300px]  border-2 
          rounded-tr-xl rounded-bl-xl"
         >
@@ -50,12 +52,12 @@ const fetchData=()=>{
           </svg>
 
           <span className="text-center">
-            <h1 className="text-white">{userOrder?.length>9?userOrder?.length||0:`0${userOrder?.length||0}`||0}</h1>
+            <h1 className="text-white">{userOrder?.data?.length>9?userOrder?.data.length||0:`0${userOrder?.data.length||0}`||0}</h1>
             <h2 className="text-xl text-center p-0">Total Order</h2>
           </span>
         </div>
         <div
-          className=" bg-[#374050] text-white h-[150px]
+          className=" bg-[#171A3B] text-white h-[150px]
           shadow-lg  w-[300px]  border-2 
        rounded-tl-xl rounded-br-xl"
       >
@@ -80,7 +82,7 @@ const fetchData=()=>{
           </span>
         </div>
         <div
-         className=" bg-[#374050] text-white h-[150px]
+         className=" bg-[#171A3B] text-white h-[150px]
          shadow-lg  w-[300px]  border-2 
       rounded-tr-xl rounded-bl-xl"
      >
@@ -95,8 +97,8 @@ const fetchData=()=>{
           </span>
         </div>
       </div>
-
-      <RecentOrder userOrder={userOrder} />
+      
+      <RecentOrder userOrder={userOrder?.data} />
       <AccountInfo/>
     </div>
   );

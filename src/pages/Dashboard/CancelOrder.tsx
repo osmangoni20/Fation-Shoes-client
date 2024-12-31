@@ -36,12 +36,14 @@ const CancelOrder = () => {
   }
   return (
     <div>
-      <h2 className="text-center lg:text-3xl text-xl text-white">
+      <h2 className="text-center lg:text-2xl text-xl text-white">
         Cancel Order Item
       </h2>
       <div className="flex flex-wrap gap-2 space-y-10">
         <div className="min-w-md my-10 pb-6 bg-[#171A3B] w-full text-center text-white rounded-md p-3">
-          <table className="w-full space-y-4 border-collapse">
+          {
+            userOrder?.data?.length>0?
+            <table className="w-full space-y-4 border-collapse">
             <thead className="py-5 my-5">
               <th>Date</th>
               <th>Product Image</th>
@@ -87,9 +89,12 @@ const CancelOrder = () => {
               )}
             </tbody>
           </table>
+            :<p>Not Found Any Cancel Order</p>
+          }
+           {userOrder?.data.length < 0 && <Loader />}
         </div>
 
-        {userOrder?.length < 0 && <Loader />}
+       
       </div>
     </div>
   );

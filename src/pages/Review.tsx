@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SingleReviews from "../component/shared/SingleReviews";
+import { reverse } from "dns";
+import { useAppSelector } from "../redux/hooks";
+import Loader from "../component/shared/Loader";
 // import quoteImg from '../../assets/quote.png'
 // const UserReview=[
 //     {
@@ -32,7 +35,7 @@ export type TReview = {
   pd_category: string;
   pd_name: string;
   review: string;
-  pd_rating: number;
+  rating: number;
   date: string;
   email: string;
   img: string;
@@ -40,6 +43,7 @@ export type TReview = {
 
 const Review = ({title}) => {
   const [review, setReview] = useState<TReview[] | any>();
+  const {isAdmin}=useAppSelector(state=>state.userR)
   useEffect(() => {
     fetch("https://fationshoe-server.vercel.app/review")
       .then((res) => res.json())
@@ -47,14 +51,15 @@ const Review = ({title}) => {
   }, []);
   console.log(review);
   return (
-    <div className="py-10">
+    <div className="">
       {review?.data?.length > 0 && (
         <div>
-          <h1 className="lg:text-5xl text-4xl text-center font-serif py-10 ">
+          <h1 className={`lg:text-5xl text-4xl text-center font-serif py-10 `}>
            {title}
           </h1>
-          <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-10 p-5">
-            {review?.data?.map((review: { _id: React.Key | null | undefined; })=><SingleReviews key={review?._id} review={review}/>)}
+          <div className={`grid grid-cols-1  ${isAdmin?"lg:grid-cols-2":"lg:grid-cols-3"} gap-10 p-5`}>
+            {review?.data?.reverse().map((review: { _id: React.Key | null | undefined; })=><SingleReviews key={review?._id} review={review}/>)}
+            {review?.data.length<0&& <Loader/>}
           </div>
          
         </div>

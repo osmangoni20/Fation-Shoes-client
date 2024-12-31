@@ -6,11 +6,10 @@ const SingleReviews = ({review}) => {
 
   const handleRemove=(id)=>{
     fetch(`https://fationshoe-server.vercel.app/review/${id}`,{
-        method:"PATCH",
+        method:"DELETE",
         headers:{
             "Content-type":"application/json"
-        },
-        body:JSON.stringify({isDeleted:true})
+        }
     }).then(data=>{
      console.log(data)
     })
@@ -19,7 +18,7 @@ const SingleReviews = ({review}) => {
         <div>
             
               <div
-                className="rounded-md font-montserrat shadow-xl p-4 bg-[#EBEBEB] min-h-[200px]  text-black"
+                className={`rounded-md font-montserrat shadow-xl p-4 ${ isAdmin?"bg-[#171A3B] text-white":"bg-[#514F4D] text-white"}  min-h-[250px] overflow-hidden text-black`}
               >
                 <div className=" flex justify-between">
                   <div className=" flex gap-2 items-start">
@@ -28,7 +27,7 @@ const SingleReviews = ({review}) => {
                       src={review?.img}
                     ></img>
                     <span>
-                      <h3 className="font-serif text_ghost text-xl">
+                      <h3 className="font-serif  text-xl">
                         {review?.user_name}
                       </h3>
                       <p>{review?.date}</p>
@@ -40,14 +39,14 @@ const SingleReviews = ({review}) => {
                         onClick={() => handleRemove(review?._id)}
                         className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded"
                       >
-                        Cancel Order
+                        Remove
                       </button>
                        } 
                   </div>
                 </div>
                 <div>
                   <div className="flex items-center">
-                    {[...Array(Number(review?.pd_rating) || 0)].map(
+                    {[...Array(Number(review?.rating) || 0)].map(
                       (rating) => {
                         return (
                           <svg
@@ -66,7 +65,7 @@ const SingleReviews = ({review}) => {
                         );
                       }
                     )}
-                    {[...Array(5 - Number(review?.pd_rating) || 0)].map(
+                    {[...Array(5 - Number(review?.rating) || 0)].map(
                       (rating) => {
                         return (
                           <svg

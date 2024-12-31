@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../../../component/shared/Loader";
+import Pagination from "../../../component/shared/Pagination";
 
 const MyOrder = () => {
   const { user }: any = useAuth();
@@ -10,6 +11,8 @@ const MyOrder = () => {
 
   const [userOrder, setUserOrder] = useState<any>();
   const [isCancelOrder, setIsCancelOrder]=useState(false)
+  const [itemsPerPage, setItemPerPage] = useState(5);
+  const [currentPage, setCurrentPage] = useState(0);
   const fetchData = () => {
     axios.get(baseURL).then((response) => {
       setUserOrder(response.data);
@@ -21,22 +24,21 @@ const MyOrder = () => {
   console.log(userOrder);
 
   const handleOrderCancel=(id)=>{
-    fetch(`https://fationshoe-server.vercel.app/order/${id}`,{
-        method:"PATCH",
+    fetch(`https://fationshoe-server.vercel.app/cancel-order/${id}`,{
+        method:"DELETE",
         headers:{
             "Content-type":"application/json"
         },
-        body:JSON.stringify({isDeleted:true})
     }).then(data=>{
-      setUserOrder(!isCancelOrder)
+      setIsCancelOrder(!isCancelOrder)
     })
 }
 
   // shorting order
   let pendingOrder = 0;
   let rearrangeOrder: any[] = [];
-  for (let index = 0; index < userOrder?.length; index++) {
-    const element = userOrder[index];
+  for (let index = 0; index < userOrder?.data.length; index++) {
+    const element = userOrder?.data[index];
     if (element?.status === "pending") {
       pendingOrder += 1;
       rearrangeOrder.unshift(element);
@@ -44,6 +46,14 @@ const MyOrder = () => {
       rearrangeOrder.push(element);
     }
   }
+
+  const paginationParamsData = {
+    totalPages: userOrder?.totalPages,
+    itemsPerPage,
+    currentPage,
+    setItemPerPage,
+    setCurrentPage,
+  };
   return (
     <div>
       <h2 className="text-center lg:text-3xl text-xl text-white">
@@ -51,8 +61,8 @@ const MyOrder = () => {
       </h2>
       <div className="flex flex-wrap gap-2 space-y-10">
         <div className="min-w-md my-10 pb-6 bg-[#171A3B] w-full text-center text-white rounded-md p-3">
-          <table className="w-full space-y-4 border-collapse">
-            <thead className="py-5 my-5">
+        <table className="table text-white w-full border-collapse">
+            <thead className="py-5 my-5 text-white text-center">
               <th>Date</th>
               <th>Product Image</th>
               <th>Product Name</th>
@@ -60,16 +70,14 @@ const MyOrder = () => {
               <th>Quantity</th>
               <th>Transaction Id</th>
               <th>Status</th>
+              <th>Action</th>
             </thead>
             <tbody className="text-center space-y-4">
               {rearrangeOrder?.map((order) =>
                 order?.order_product?.map((product) => {
                   return (
                     <tr
-                      className={`${
-                        order?.order_product[length - 1]?.pd_name ===
-                          product?.pd_name && "border-b-2 py-4"
-                      } py-4 space-y-4 text-sm font-medium text-gray-200 transition duration-300`}
+                      className={`transition duration-300 hover:bg-gray-400`}
                       key={product?._id}
                     >
                       <td>
@@ -79,14 +87,14 @@ const MyOrder = () => {
                       </td>
                       <td>
                         <img
-                          className="h-[100px] w-[150px] mx-auto"
+                          className="h-full w-full object-cover"
                           src={product?.pd_image}
                         ></img>
                       </td>
                       <td>{product?.pd_name}</td>
                       <td>{product?.pd_price}</td>
                       <td>{product?.quantity}</td>
-                      <td>{order?.paymentInfo?.transactionId}</td>
+                      <td>{order?.paymentInfo?.transactionId||"Cash on Delivery"}</td>
 
                       <td className="text-[#4F87F4]">{order?.status}</td>
                       <td>
@@ -106,6 +114,7 @@ const MyOrder = () => {
               {userOrder?.length < 0 && <h3>You have placed no orders.</h3>}
             </tbody>
           </table>
+          <div>{userOrder && <Pagination params={paginationParamsData} />}</div>
         </div>
 
         {userOrder?.length < 0 && <Loader />}

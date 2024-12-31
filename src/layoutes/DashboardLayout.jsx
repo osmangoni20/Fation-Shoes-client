@@ -4,23 +4,22 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../redux/hooks";
 import logo from '../assets/logo.png'
 const DashboardLayout = () => {
+  const {img,name,email, isAdmin}=useAppSelector(state=>state.userR)
   const { logOut, user } = useAuth();
-  const [isAdmin, setIsAdmin]=useState(null)
   const [showSidebar, setSidebar]=useState(true)
 
-  useEffect(()=>{
-    console.log(localStorage.getItem("isAdmin"))
-setIsAdmin(localStorage.getItem('isAdmin'))
-  },[])
+//   useEffect(()=>{
+//     console.log(localStorage.getItem("isAdmin"))
+// setIsAdmin(localStorage.getItem('isAdmin'))
+//   },[])
 
-  console.log(isAdmin)
+
   // if(admin.email===user.email){
   //   setIsAdmin(true)
   // }
   const HandleDashboardSidebar=()=>{
     setSidebar(!showSidebar)
   }
-  const {img,name,email}=useAppSelector(state=>state.userR)
   console.log(img,name,email)
   return (
     <div className="lg:grid lg:grid-cols-10 bg-[#030C1B]">

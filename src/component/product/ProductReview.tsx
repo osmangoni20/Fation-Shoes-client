@@ -83,15 +83,15 @@ const ProductReview = ({ pd_info }) => {
           >
             <div className="flex flex-wrap gap-5">
               <div className="w-full my-2">
-                <label className="font-semibold" htmlFor="pd_rating">
+                <label className="font-semibold" htmlFor="rating">
                   Rating
                 </label>
                 <StarRating onRatingChange={handleRatingChange} />
                 {/* <select
                 className="bg-gray-200 text-black border-white"
                   itemType="number"
-                  id="pd_rating"
-                  {...register("pd_rating")}
+                  id="rating"
+                  {...register("rating")}
                 >
                   <option value={1}>One Star</option>
                   <option value={2}>Two Star</option>
